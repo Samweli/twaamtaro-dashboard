@@ -14,7 +14,7 @@
       <div style="">
       <form method="POST" class="w3-center" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
         
-            <input style="display: inline;" class="w3-input w3-border " type="text" name="citizenNo" placeholder="Ingiza namba ya simu ya mwananchi mf. +2557xxxxxxxx" required="true"> <button  type="submit" name="submit" id="assignClick" class="w3-btn w3-black w3-small"  >Assign</button>
+            <input style="display: inline;" class="w3-input w3-border w3-small" type="text" name="citizenNo" placeholder="Ingiza namba ya simu ya mwananchi mf. +2557xxxxxxxx" required="true"> <button  type="submit" name="submit" id="assignClick" class="w3-btn w3-black w3-small"  >Assign</button>
         
     </form>
     </div>
@@ -131,15 +131,14 @@
     xhttp.send();
   }
 
-
-  function checkStatus() { 
-	var xhttp = new XMLHttpRequest();
+ function notify() { 
+  var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
        document.getElementById("serverResult").innerHTML = this.responseText;
       }
     };
-    xhttp.open("POST", "checkStatus.php", true);
+    xhttp.open("POST", "notify.php", true);
     xhttp.send();
   }
 </script>

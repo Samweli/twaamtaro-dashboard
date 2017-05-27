@@ -26,8 +26,8 @@
             $sms = $client->account->messages->create(
                 $number,
                 array(
-                    'from' => "+447490079080", 
-                    'body' => "Habari, Kiongozi wako ameangalia mtaro wako na kuona kua sio msafi! Tafadhali unaombwa kuusafisha"
+                    'from' => $TMsender, 
+                    'body' => "Habari, msimu wa mvua unakaribia, hivyo mnakumbushwa kusafisha mitaro yenu ili kueuka mafuriko yanayosababishwa na mitaro michafu"
                 )
             );
 
