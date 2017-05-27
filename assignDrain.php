@@ -10,11 +10,9 @@
   include('dbcon.php'); 
   //click a drain and fetch its id; 
   
-
   //assign a drain t a citizen
 
 if((isset($_POST['submit']))) 
-//if(null != ($_POST['submit'])) 
 {	
   $mobile = $_POST['citizenNo'];
   var_dump($mobile);
@@ -26,10 +24,7 @@ if((isset($_POST['submit'])))
   	$num_row = mysqli_num_rows($result);
     $user_row = mysqli_fetch_array($result);
 
-    //$citizenNo = $user_row['phone'];
     $citizen = $user_row['citizenId'];
-
-            #var_dump($role);
     if( $num_row < 0 ) 
       {
         echo "Mwananchi huyu hajaandikishwa";
@@ -44,7 +39,6 @@ if((isset($_POST['submit'])))
 
 		    if( $drainnum_row < 0 ) {
 		        	echo "Hakuna mitaro ambayo haina msimamizi";
-		        	//exit();
 		        }
 
 		    var_dump($drain_row['id']);
@@ -59,12 +53,9 @@ if((isset($_POST['submit'])))
           
           include 'twiliosettings.php';
 
-          $sms = $client->account->messages->create($mobile,  array(
-          //twilio number       
-            'from' => "+447490079080", 
-                
-          // the sms body
-          'body' => "Umepatia mtaro wa kusimamia, wasiliana na mwenyekiti wako wa mtaa kwa maelezo zaidi.!"
+          $sms = $client->account->messages->create($mobile,  array(      
+            'from' => $TMsender,
+            'body' => "Umepatia mtaro wa kusimamia, wasiliana na mwenyekiti wako wa mtaa kwa maelezo zaidi.!"
             )
           );
         }
@@ -74,11 +65,8 @@ if((isset($_POST['submit'])))
       } //End citizen is registered
         include 'twiliosettings.php';
 
-        $sms = $client->account->messages->create($mobile,  array(
-          //twilio number       
+        $sms = $client->account->messages->create($mobile,  array(      
           'from' => "+447490079080", 
-                
-           // the sms body
           'body' => "Umepatiwa mtaro wa kusimamia, wasiliana na mwenyekiti wako wa mtaa kwa maelezo zaidi.!"
             )
         );
@@ -86,7 +74,5 @@ if((isset($_POST['submit'])))
         // Display a confirmation message on the screen
         echo "Sent message to $name";
  } 
- /*else
-{ echo "Something is soooo wrong!!"; }*/
 
 ?>

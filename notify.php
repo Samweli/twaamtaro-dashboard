@@ -33,5 +33,3 @@
 
             // Display a confirmation message on the screen
             echo "Ujumbe umetumwa kwa namba $number";
-            echo $sms->sid;
-            $messageId = $client->messages($sms->sid)->fetch();
