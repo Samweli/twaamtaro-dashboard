@@ -6,14 +6,15 @@
 </head>
 <body class="w3-center w3-container">
 <div class="w3-row w3-margin">
-  <div class="w3-col w3-third">
+  <div class="w3-col w3-third w3-hide-small">
     &nbsp
   </div>
-  <div class="w3-col w3-third">
+
+  <div class="w3-col w3-third m4 s12">
       <div style="">
       <form method="POST" class="w3-center" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
         
-            <input style="display: inline;" class="w3-input w3-border w3-small" type="text" name="citizenNo" placeholder="Ingiza namba ya simu ya mwananchi mf. +2557xxxxxxxx" required="true"> <button  type="submit" name="submit" id="assignClick" class="w3-btn w3-black w3-small"  >Assign</button>
+            <input style="display: inline;" class="w3-input w3-border " type="text" name="citizenNo" placeholder="Ingiza namba ya simu ya mwananchi mf. +2557xxxxxxxx" required="true"> <button  type="submit" name="submit" id="assignClick" class="w3-btn w3-black w3-small"  >Assign</button>
         
     </form>
     </div>
@@ -91,13 +92,15 @@
 
       <button class="w3-btn w3-green w3-small" onclick="assignClear()">Clear</button>
 
-       <button class="w3-btn w3-green w3-small" onclick="notify()">Notify All Citizens</button>
+      
     </p>
+    <p><button class="w3-btn w3-blue w3-small" onclick="notify()">Notify All Citizens</button></p>
+
     <span id="serverResult"></span>
 
 
   </div>
-  <div class="w3-col w3-third"></div>
+  <div class="w3-col w3-third s12"></div>
 </div>
 
 
