@@ -3,146 +3,125 @@
 <head>
 	<title>SMS</title>
 	<link rel="stylesheet" type="text/css" href="styles/w3.css">
+  <!--link rel="stylesheet" type="text/css" href="styles/application.css" -->
+  <link rel="stylesheet" type="text/css" href="styles/drains.css">
 </head>
 <body class="w3-center w3-container">
-<div class="w3-row w3-margin">
-  <div class="w3-col w3-third w3-hide-small">
-    &nbsp
-  </div>
+  <div class="w3-row w3-margin">
+    <div class="w3-col">
+    <h2>Tuma Ujumbe kwa ajili ya Twaa Mtaro</h2>
 
-  <div class="w3-col w3-third m4 s12">
-      <div style="">
-      <form method="POST" class="w3-center" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
-        
-            <input style="display: inline;" class="w3-input w3-border w3-small" type="text" name="citizenNo" placeholder="Ingiza namba ya simu ya mwananchi mf. +2557xxxxxxxx" required="true"> <button  type="submit" name="submit" id="assignClick" class="w3-btn w3-black w3-small"  >Assign</button>
-        
-    </form>
-    </div>
+    <input type="text" name="search">
 
-    <?php  
-      include('dbco.php'); 
-      include 'twiliosettings.php';
+   <table class="w3-table w3-bordered w3-hoverable">
+    <tr>
+      <th>Namba ya Mtaro</th>
+      <th>Jina la Mtaro</th>
+      <th>Mtaa</th>
+      <th>Mhusika</th>
+      <th>Actions</th>
+    </tr>
+  
 
-      if((isset($_POST['submit']))) 
-      { 
-        $mobile = $_POST['citizenNo'];
+    <tr>
+      <td>121</td>
+      <td>Mtaro wa Kigogo juu</td>
+      <td>Kigogo</td>
+      <td>Bwana Juma</td>
+      <td>
+        <button id="" class="btn warning" onclick="notClear()" >SIO MSAFI</button>
 
-        $sqlCitizen = "SELECT * FROM citizen WHERE phone ='$mobile'";
-        $result = mysqli_query($dbcon,$sqlCitizen) or die(mysqli_error('$dbcon'));
+        <button class="btn success" onclick="assignClear()">MSAFI</button>
+      </td>
+    </tr>
+    <?php
+      include 'dbcon.php';
+      $drain = pg_query($dbcon, "SELECT * FROM mitaroKigogo");
 
+      if (!$drain) {
+        echo "Table is empty ";
+      }
+      while($drain_row=pg_fetch_assoc($drain)) {
+    ?>
+    <tr>
+      <td><?php echo $drain_row["gid"]; ?></td>
+      <td><?php echo $drain_row["name"];  ?></td>
+      <td><?php echo $drain_row["address"]; ?></td>
+      <td>
+        <?php 
+           $drainId=$drain_row['gid'];
+          //echo($drainId);
+          $sqlCitizen = pg_query($dbcon,"SELECT * FROM sidewalk_claims WHERE gid=$drainId");
 
-          $num_row = mysqli_num_rows($result);
-          $user_row = mysqli_fetch_array($result);
-          $citizen = $user_row['id'];
-          if( $num_row < 0 ) 
-            {
-              echo "Mwananchi huyu hajaandikishwa";
-            } 
-            else 
-            {
-              $sqlDrain = "SELECT DISTINCT * FROM drain WHERE id NOT IN ('SELECT drainId FROM adopted_drains')";
-              $resultDrain = mysqli_query($dbcon,$sqlDrain) or die(mysqli_error('$dbcon'));
+          if(pg_num_rows($sqlCitizen) > 0) {
+            echo "Claimed";
+            //$citizenInfo=pg_fetch_assoc($sqlCitizen);
+            //$citisenId=$citizenInfo["user_id"];
+          } else {
+            echo "Not Claimed";
+            
+          }
+          
 
-              $drainnum_row = mysqli_num_rows($resultDrain);
-              $drain_row = mysqli_fetch_array($resultDrain);
+         ?>
+          
+      </td>
+      <td>
+        <button id="" class="btn warning" onclick="notClear()" >SIO MSAFI</button>
 
-              if( $drainnum_row < 0 ) {
-                    echo "Hakuna mitaro ambayo haina msimamizi";
-                  }
+        <button class="btn success" onclick="assignClear()">MSAFI</button>
+      </td>
+       <?php }  ?>
+    </tr>
 
-              $toAssign = $drain_row['id'];
-              $assign = "INSERT INTO adopted_drains(drainId, citizenId, streetleader) VALUES ('$toAssign', '$citizen', 101)";
-              $assignment = mysqli_query($dbcon,$assign) or die(mysqli_error($dbcon));
-                
-              if ($assignment) {
-                echo "Umempatia mwananchi mtaro";
+    </table>
+       
+      </p>
+      <p><button class="btn w3-blue" onclick="notify()">TUMA TAARIFA</button></p>
 
-                $sms = $client->account->messages->create($mobile,  array(
-                //twilio number       
-                  'from' => $TMsender, 
-                      
-                // the sms body
-                'body' => "Umefanikiwa kumpatia mwananchi mwenye namba $mobile mtaro wenye jina $toAssign!"
-                  )
-                );
-              }
-              else
-                  echo "Umeshindwa kumpa mtaro huyo mwananchi";
-                
-            } //End assigning drain
+      <span id="serverResult"></span>
 
-              //Send notification to the assigned citizen
-              $sms = $client->account->messages->create($mobile,  array(
-                //twilio number       
-                'from' => $TMsender, 
-                'body' => "Umepatiwa mtaro wa kusimamia, wasiliana na mwenyekiti wako wa mtaa kwa maelezo zaidi.!"
-                  )
-              );
-
-              // Display a confirmation message on the screen
-              echo "Ujumbe umemfikia $mobile";
-       }
-
-      ?>
-
-    <p>
-      <button class="w3-btn w3-orange w3-small" onclick="needsHelp">Needs Help</button>
-
-      <button class="w3-btn w3-red w3-small" onclick="notClear()" >Unclear</button>
-
-      <button class="w3-btn w3-green w3-small" onclick="assignClear()">Clear</button>
-
-      
-    </p>
-    <p><button class="w3-btn w3-blue w3-small" onclick="notify()">Notify All Citizens</button></p>
-
-    <span id="serverResult"></span>
-
-
-  </div>
-  <div class="w3-col w3-third s12"></div>
-</div>
+    </div> <!--End Column -->
+  </div> <!-- End Row -->
 
 
 
+  <!-- AJAX Scrits for Button Actions -->
+  <script>
 
-<!-- AJAX Scrits for Button Actions -->
-<script>
+    function notClear() {
+    	var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+         document.getElementById("serverResult").innerHTML = this.responseText;
+        }
+      };
+    	xhttp.open("GET", "notClear.php", true);
+      xhttp.send();
+    }
 
-  function notClear() {
+    function assignClear() { 
   	var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-       document.getElementById("serverResult").innerHTML = this.responseText;
-      }
-    };
-  	xhttp.open("GET", "notClear.php", true);
-    xhttp.send();
-  }
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+         document.getElementById("serverResult").innerHTML = this.responseText;
+        }
+      };
+      xhttp.open("POST", "assignClear.php", true);
+      xhttp.send();
+    }
 
-  function assignClear() { 
-	var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-       document.getElementById("serverResult").innerHTML = this.responseText;
-      }
-    };
-    xhttp.open("POST", "assignClear.php", true);
-    xhttp.send();
-  }
-
- function notify() { 
-  var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-       document.getElementById("serverResult").innerHTML = this.responseText;
-      }
-    };
-    xhttp.open("POST", "notify.php", true);
-    xhttp.send();
-  }
-</script>
-
+   function notify() { 
+    var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+         document.getElementById("serverResult").innerHTML = this.responseText;
+        }
+      };
+      xhttp.open("POST", "notify.php", true);
+      xhttp.send();
+    }
+  </script>
 </body>
 </html>
 

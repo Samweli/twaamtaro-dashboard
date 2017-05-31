@@ -1,9 +1,8 @@
 <?php
- include 'dbco.php';
- //fetch id of the clicked drain, unclear = yes
-
-    //$sqlDrain = "SELECT * FROM adopted_drains WHERE drainId = $fetchedId ";
+ include 'dbcon.php';
+ 
     $sqlDrain = "SELECT * FROM adopted_drains";
+    
     $resultDrain = mysqli_query($dbcon,$sqlDrain) or die(mysqli_error('$dbcon'));
     $drainnum_row = mysqli_num_rows($resultDrain);
     $drain_row = mysqli_fetch_array($resultDrain);
@@ -20,13 +19,13 @@
     if( $drainnum_row > 0 ) {
         
 //select citizens phone number
-        $number = $citizen_row['phone'];        
+        $number = '+255782120252';        
   
         include 'twiliosettings.php';
             $sms = $client->account->messages->create(
                 $number,
                 array(  
-                    'from' => "+14256540807",
+                    'from' => $TMsender,
                     'body' => "Habari, Mtaro wako umesafishwa!", 
                     'provideFeedback' => true
                 )

@@ -1,14 +1,12 @@
 <?php
-try {
-$dbuser = 'postgres';
-$dbpass = 'nancy';
-$host = 'localhost';
-$dbname = 'mitaroKigogo';
 
-$dbcon = new PDO("pgsql:host=$host;dbname=$dbname", $dbuser, $dbpass);
-}catch (PDOException $e) {
-echo "Error : " . $e->getMessage() . "<br/>";
-die();
-}
+$dbcon = pg_connect("host=127.0.0.1 port=5432 dbname=mitaroKigogo user=postgres password=nancy");
+
+  //For Checking if the connection has been established
+   /*if(!$dbcon) {
+      echo "Error : Unable to open database\n";
+   } else {
+      echo "Opened database successfully\n";
+   }*/
 
 ?>
