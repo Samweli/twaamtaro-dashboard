@@ -1,37 +1,27 @@
 <?php
- include 'dbcon.php';
- 
-    $sqlDrain = "SELECT * FROM adopted_drains";
+
+//include 'dbcon.php';
+
+    //$sqlDrain = "SELECT * FROM adopted_drains";
     
-    $resultDrain = mysqli_query($dbcon,$sqlDrain) or die(mysqli_error('$dbcon'));
-    $drainnum_row = mysqli_num_rows($resultDrain);
-    $drain_row = mysqli_fetch_array($resultDrain);
-    $citizen = $drain_row['citizenId'];
+    //Select the citizen phone number from the database
+    //$citizen_row = pg_fetch_array($result); 
+    //$mobile=$citizen_row['phone'];
 
-    $sqlCitizen = "SELECT * FROM citizen WHERE id ='$citizen'";
-    $result = mysqli_query($dbcon,$sqlCitizen) or die(mysqli_error('$dbcon'));
+    //Assign the number to a variable
 
-    $citizen_row = mysqli_fetch_array($result); 
-    $mobile = $citizen_row['phone'];
+    $number = '+255782120252'; 
     
-
-//if drain is found, select corresonding citizen
-    if( $drainnum_row > 0 ) {
-        
-//select citizens phone number
-        $number = '+255782120252';        
-  
+          
         include 'twiliosettings.php';
             $sms = $client->account->messages->create(
                 $number,
                 array(  
                     'from' => $TMsender,
-                    'body' => "Habari, Mtaro wako umesafishwa!", 
-                    'provideFeedback' => true
+                    'body' => "Habari, Mtaro wako umesafishwa!",
                 )
             );
 
             echo "Ujumbe umetumwa kwa namba $number";
           
-        }
-  
+ ?> 

@@ -22,6 +22,7 @@
 
     //Chagua Mhusika
         $sqlCitizen = "SELECT * FROM users WHERE id ='$citizenId'";
+        $sqlCitizen = pg_query($dbcon,"SELECT * FROM users WHERE id ='$citizenId'")
 
         $result = pg_query($dbcon,$sqlCitizen) or die(pg_error('$dbcon'));
 

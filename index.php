@@ -11,7 +11,7 @@
     <div class="w3-col">
     <h2>Tuma Ujumbe kwa ajili ya Twaa Mtaro</h2>
 
-    <input type="text" name="search">
+    <p><input type="text" name="search">  <button class="btn w3-blue" onclick="search()">TAFUTA</button></p>
 
    <table class="w3-table w3-bordered w3-hoverable">
     <tr>
@@ -107,7 +107,7 @@
          document.getElementById("serverResult").innerHTML = this.responseText;
         }
       };
-      xhttp.open("POST", "assignClear.php", true);
+      xhttp.open("POST", "clear.php", true);
       xhttp.send();
     }
 
