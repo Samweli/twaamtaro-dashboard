@@ -1,18 +1,46 @@
 <?php
+include 'dbcon.php';
 
+    $drainId= $_GET['thedrain'];
+    $sqlCitizen = pg_query($dbcon,"SELECT * FROM sidewalk_claims WHERE gid=$drainId");
 
-    echo "You are here <br>";
-    $number = '+255782120252'; 
-          
-    include 'twiliosettings.php';
+    if(pg_num_rows($sqlCitizen) > 0) {
+        
 
-        $sms = $client->messages->create('+255782120252',
+        $updateStatus = pg_query($dbcon,"UPDATE sidewalk_claims SET shoveled = true WHERE gid=$drainId");
+        if ($updateStatus) {
+                   //echo "Eneo hili la Mtaro limesafishwa";
+            while ($citizenInfo=pg_fetch_assoc($sqlCitizen)) {
+
+            $citizenId=$citizenInfo["user_id"];
+
+            $citizen = pg_query($dbcon,"SELECT * FROM users WHERE id=$citizenId");
+            $citizenName=pg_fetch_assoc($citizen);
+            $mhusika = $citizenName["first_name"]." ".$citizenName["last_name"];
+            $number = $citizenName["sms_number"];
+
+            include 'twiliosettings.php';
+            $sms = $client->messages->create($number,
             array(
-                'from' => '+255782120252',
-                'body' => "Habari, Mtaro wako umesafishwa!",
+                'from' => '+14256540807',
+                'body' => "Habari, Mtaro wako umesafishwa!"
                 )
             );
+            // Display a confirmation message on the screen
+            echo "<script> alert('Ujumbe umetumwa kwa mhusika, ".$mhusika."mwenye namba ".$number."'); </script>";
+               } 
+        else {
+                   //echo "Something went wrong";
+                   echo "<script> alert('Kuna tatizo'); </script>";
 
-            echo "Ujumbe umetumwa kwa namba $number";
-          
- ?> 
+               }          
+           echo "<script> window.location = 'index.php'; </script>";
+        } //End While
+    } //End if 
+    else {
+        echo "<script> alert('Mtaro huu haujatwaliwa bado'); </script>"; 
+        echo "<script> window.location = 'index.php'; </script>";
+    }
+     
+?>
+

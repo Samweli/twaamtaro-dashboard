@@ -1,7 +1,3 @@
-
-
-
-
 <form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
         <input class="w3-input w3-border" type="text" name="citizenNo" placeholder="Ingiza namba ya simu ya mwananchi ">
         <button  type="submit" name="submit" id="assignClick" class="w3-btn w3-black w3-small"  >Assign</button>

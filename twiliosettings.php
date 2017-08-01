@@ -11,7 +11,7 @@ require_once "Twilio/autoload.php";
 
     // Instantiate a new Twilio Rest Client
     $client = new Client($AccountSid, $AuthToken);
-    echo "<br>The settings work <br>";
+    //echo "<br>The settings work <br>";
 
 /*-------My Credentials -------
 
