@@ -1,6 +1,6 @@
-<link rel="stylesheet" type="text/css" href="../styles/w3.css">
-<link rel="stylesheet" type="text/css" href="../styles/application.css">
-<link rel="stylesheet" type="text/css" href="../styles/drains.css">
+<link rel="stylesheet" type="text/css" href="../../styles/w3.css">
+<link rel="stylesheet" type="text/css" href="../../styles/application.css">
+<link rel="stylesheet" type="text/css" href="../../styles/drains.css">
 
   <?php
       include 'dbcon.php';
@@ -12,7 +12,7 @@ $numrows = $r[count];
 //echo $numrows;
 
 // number of rows to show per page
-$rowsperpage = 50;
+$rowsperpage = 200;
 // find out total pages
 $totalpages = ceil($numrows / $rowsperpage);
 
@@ -99,9 +99,10 @@ $dardrain = pg_query($dbcon, "SELECT *
       </td>
       <td>
         <?php //; ?>
-        <button id="siomsafi" name="" class="btn warning" >MCHAFU</button>
-        <button id="msafi" name="" class="btn success">MSAFI</button> 
-        <button id="taarifu" name="" class="btn w3-blue">TAARIFU</button>
+        <a href="<?php echo 'notClear.php?thedrain='.$drainId; ?>"><button id="siomsafi" name="" class="btn warning" >DIRTY</button></a>
+        <a href="<?php echo 'clear.php?thedrain='.$drainId; ?>"><button id="msafi" name="" class="btn success">CLEAN</button></a> 
+        
+         <a href="<?php echo 'inform.php?thedrain='.$drainId; ?>"><button id="taarifu" name="" class="btn w3-blue">NOTIFY</button></a>
       </td>
        <!-- AJAX Scrits for Button Actions -->
     

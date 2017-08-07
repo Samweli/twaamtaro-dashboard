@@ -58,6 +58,6 @@
       }
     </script>
  
-    <div id="statuschart" style="width: 500px; height: 500px; margin: 0px; padding: 0;"></div>
+    <div id="statuschart" style="width: 800px; height: 500px; margin: 0px; padding: 0;"></div>
     <br>
-    <div id="claimschart" style="width: 500px; height: 500px; margin: 0px; padding: 0;"></div>
+    <div id="claimschart" style="width: 800px; height: 500px; margin: 0px; padding: 0;"></div>

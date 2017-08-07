@@ -33,7 +33,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <body class="w3-light-grey">
 <?php
       include 'dbcon.php';
-      $drain = pg_query($dbcon, "SELECT * FROM mitaroKigogo");
+      $drain = pg_query($dbcon, "SELECT * FROM mitaro_dar");
       //All Drains in Dar
       //$drain = pg_query($dbcon, "SELECT * FROM mitaro_dar");
 
@@ -64,15 +64,15 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   </header>
 
   <div class="w3-row-padding w3-margin-bottom">
-    <div class="w3-col l2 m2 s6">
-      <div class="w3-container w3-teal w3-padding-16">
+    <div class="w3-col l2 m2 s6 ">
+      <div class="w3-container w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-amber " title="Bofya kuona mitaro yote">
         <h4>Mitaro Yote</h4>
         <h3 class="w3-text-black"><?php $drains = pg_num_rows($drain); echo $drains; ?></h3>
       </div>
     </div>
 
-    <div class="w3-col l2 m2 s6">
-      <div class="w3-container w3-blue w3-padding-16" onclick="filter('clear')">
+    <div class="w3-col l2 m2 s6 ">
+      <div class="w3-container w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-blue" onclick="filter('clear')" title="Bofya kuona mitaro misafi">
       <input type="hidden" name="clear" id="filtervalue" value="clear">
         <h4>Misafi</h4>
 
@@ -83,8 +83,8 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         </h3>
       </div>
     </div>
-    <div class="w3-col l2 m2 s6">
-      <div class="w3-container w3-orange w3-text-white w3-padding-16" onclick="filter('notclear')">
+    <div class="w3-col l2 m2 s6 ">
+      <div class="w3-container w3-text-black w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-orange " onclick="filter('notclear')" title="Bofya kuona mitaro michafu">
       <input type="hidden" name="notclear" id="filtervalue">
         <div class="w3-clear"></div>
         <h4>Michafu</h4>
@@ -94,8 +94,8 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         </h3>
         </div>
     </div>
-    <div class="w3-col l2 m2 s6">
-      <div class="w3-container w3-red w3-padding-16">
+    <div class="w3-col l2 m2 s6 ">
+      <div class="w3-container w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-red" title="Bofya kuona mitaro inayohitaji msaada">
         <div class="w3-clear"></div>
         <h4>Msaada</h4>
         <h3 class="w3-text-black">
@@ -104,8 +104,8 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         </h3>
       </div>
     </div>
-    <div class="w3-col l2 m2 s6">
-      <a href="citizens.php" target="_blank"><div class="w3-container w3-teal w3-text-white w3-padding-16" >
+    <div class="w3-col l2 m2 s6 ">
+      <a href="citizens.php" target="_blank"><div class="w3-container w3-text-black w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-teal " title="Bofya kuona wananchi wote">
         <div class="w3-clear"></div>
         <h4>Wananchi</h4>
         <h3 class="w3-text-black"><?php $user= pg_query($dbcon, "SELECT * FROM users"); 
@@ -114,8 +114,8 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         </h3>
       </div></a>
     </div>
-    <div class="w3-col l2 m2 s6">
-      <div class="w3-container w3-green w3-text-white w3-padding-16">
+    <div class="w3-col l2 m2 s6 ">
+      <div class="w3-container w3-text-black w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-green" title="">
         
         <div class="w3-clear"></div>
         <h4>Eneo</h4>
@@ -149,7 +149,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
       <div class="w3-rest " style="margin-right:16px" >
       <span id="serverResult">
-        <?php include 'kigogo.php'; ?>
+        <?php include 'functions/page.php'; ?>
       </span>
       </div>
     </div>

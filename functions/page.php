@@ -12,7 +12,7 @@ $numrows = $r[count];
 //echo $numrows;
 
 // number of rows to show per page
-$rowsperpage = 50;
+$rowsperpage = 200;
 // find out total pages
 $totalpages = ceil($numrows / $rowsperpage);
 

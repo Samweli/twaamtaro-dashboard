@@ -66,14 +66,14 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
   <div class="w3-row-padding w3-margin-bottom">
     <div class="w3-col l2 m2 s6">
-      <div class="w3-container w3-teal w3-padding-16">
+      <div class="w3-container w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-amber" title="Click to view all drains">
         <h4>All Drains</h4>
         <h3 class="w3-text-black"><?php $drains = pg_num_rows($drain); echo $drains; ?></h3>
       </div>
     </div>
 
     <div class="w3-col l2 m2 s6">
-      <div class="w3-container w3-blue w3-padding-16" onclick="filter('clear')">
+      <div class="w3-container w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-blue" onclick="filter('clear')" title="Click to view cleaned drains">
       <input type="hidden" name="clear" id="filtervalue" value="clear">
         <h4>Clean</h4>
 
@@ -85,7 +85,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       </div>
     </div>
     <div class="w3-col l2 m2 s6">
-      <div class="w3-container w3-orange w3-text-white w3-padding-16" onclick="filter('notclear')">
+      <div class="w3-container w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-orange" onclick="filter('notclear')" title="Click to view dirty drains">
       <input type="hidden" name="notclear" id="filtervalue">
         <div class="w3-clear"></div>
         <h4>Dirty</h4>
@@ -96,8 +96,8 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         </div>
     </div>
     <div class="w3-col l2 m2 s6">
-      <div class="w3-container w3-red w3-padding-16">
-        <div class="w3-clear"></div>
+      <div class="w3-container w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-red">
+        <div class="w3-clear" title=""></div>
         <h4>Need Help</h4>
         <h3 class="w3-text-black">
         <?php $helpdrain = pg_query($dbcon, "SELECT * FROM mitaroKigogo WHERE need_help = true");
@@ -106,7 +106,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       </div>
     </div>
     <div class="w3-col l2 m2 s6">
-      <a href="citizens.php" target="_blank"><div class="w3-container w3-teal w3-text-white w3-padding-16" >
+      <a href="citizens.php" target="_blank"><div class="w3-container  w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-teal" title="Click to view all citizens" >
         <div class="w3-clear"></div>
         <h4>Citizens</h4>
         <h3 class="w3-text-black"><?php $user= pg_query($dbcon, "SELECT * FROM users"); 
@@ -116,7 +116,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       </div></a>
     </div>
     <div class="w3-col l2 m2 s6">
-      <div class="w3-container w3-green w3-text-white w3-padding-16">
+      <div class="w3-container w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-green" title="">
         
         <div class="w3-clear"></div>
         <h4>Area</h4>
@@ -164,7 +164,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <!-- Footer -->
   <footer class="w3-container w3-padding-16 w3-light-grey">
    
-    <p>Twaa Mtaro by <a href="https://www.worldbank.org" target="_blank"> The World Bank</a></p>
+    <p>Twaa Mtaro by <a href="#" target="_blank">TURP</a></p>
   </footer>
 
   <!-- End page content -->

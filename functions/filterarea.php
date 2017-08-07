@@ -4,7 +4,7 @@
       $filtervalue = $_GET['filterarea'];
       //$filtervalue = 'Tandale';
       
-          $drainsql = "SELECT * FROM mitaroKigogo WHERE address = '".$filtervalue."'";
+          $drainsql = "SELECT * FROM mitaro_dar WHERE address = '".$filtervalue."'";
           
         
         $filterdrain = pg_query($dbcon,$drainsql);
