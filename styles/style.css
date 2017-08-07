@@ -1,4 +1,7 @@
-  <style>
+ a:link {
+    text-decoration: none;
+  }
+
     .row.content {height: 550px}
     
     .sidenav {
@@ -9,4 +12,3 @@
     @media screen and (max-width: 767px) {
       .row.content {height: auto;} 
     }
-  </style>

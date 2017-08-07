@@ -12,7 +12,7 @@ md5('password'), md5('token6'),now(), now(), 5, now(), now(), '192.254.235.17', 
 (1010, now(), now(), 'Beatrice', 'Charles', 'WB', 'beatrice@gmail.com','+255687902733', 'false', 0, 1, md5('password'), md5('token7'),now(), now(), 5, now(), now(), '192.254.235.19', '192.254.235.20')
 ,(1011, now(), now(), 'Kelvin', 'Temba', 'WB', 'kelvintemba@gmail.com','+255714063370', false, 0, 1, md5('password'), md5('token8'),now(), now(), 5, now(), now(), '192.254.235.17', '192.254.235.19');
 (1012, now(), now(), 'Grace', 'Georgia', 'WB', 'gracegeorgia@live.com','+255656651444', false, 0, 1, md5('password'), md5('token9'),now(), now(), 5, now(), now(), '192.254.235.17', '192.254.235.19');
-
+(1003, now(), now(), 'Edward', 'Anderson', 'WB', 'edwardanderson@wbgroup.org','+255782120252', false, 0, 1, md5('password'), md5('token10'),now(), now(), 1, now(), now(), '192.254.235.17', '192.254.235.19');
 
 
 ------------------------------------------
@@ -36,7 +36,7 @@ UPDATE sidewalk_claims SET shoveled = false WHERE id = 10008;
 //Claims for same drain
 INSERT INTO sidewalk_claims (id, created_at, updated_at, user_id, gid, shoveled, notes) VALUES 
 (10013, now(), now(), 1012, 5, true, 'Dirty'), 
-(10014, now(), now(), 1005, 8, true, 'Shallow'), 
+(10017, now(), now(), 1003, 8, true, 'Shallow'), 
 (10015, now(), now(), 1007, 10, true, ''),
 (10016, now(), now(), 1006, 4, true, '');
 
@@ -54,28 +54,49 @@ UPDATE mitaroKigogo SET cleared = true WHERE gid = 10;
 UPDATE mitaroKigogo SET cleared = false WHERE gid = 11;
 UPDATE mitaroKigogo SET cleared = false WHERE gid = 12;
 UPDATE mitaroKigogo SET cleared = false WHERE gid = 15;
-UPDATE mitaroKigogo SET cleared = false WHERE gid = 13;
-UPDATE mitaroKigogo SET cleared = false WHERE gid = 14;
-UPDATE mitaroKigogo SET cleared = false WHERE gid = 16;
-UPDATE mitaroKigogo SET cleared = false WHERE gid = 17;
-UPDATE mitaroKigogo SET cleared = false WHERE gid = 18;
-UPDATE mitaroKigogo SET cleared = false WHERE gid = 19;
-UPDATE mitaroKigogo SET cleared = false WHERE gid = 20;
-UPDATE mitaroKigogo SET cleared = true WHERE gid = 21;
-UPDATE mitaroKigogo SET cleared = true WHERE gid = 22;
-UPDATE mitaroKigogo SET cleared = true WHERE gid = 23;
-UPDATE mitaroKigogo SET cleared = true WHERE gid = 24;
-UPDATE mitaroKigogo SET cleared = true WHERE gid = 25;
 
-UPDATE mitaroKigogo SET cleared = false WHERE gid = 26;
-UPDATE mitaroKigogo SET cleared = false WHERE gid = 27;
-UPDATE mitaroKigogo SET cleared = false WHERE gid = 28;
-UPDATE mitaroKigogo SET cleared = true WHERE gid = 31;
-UPDATE mitaroKigogo SET cleared = true WHERE gid = 29;
-UPDATE mitaroKigogo SET cleared = true WHERE gid = 30;
+UPDATE mitaroKigogo SET address = 'Mwananyamala' WHERE gid = 20;
+UPDATE mitaroKigogo SET address = 'Mwananyamala' WHERE gid = 21;
+UPDATE mitaroKigogo SET address = 'Mwananyamala' WHERE gid = 22;
+UPDATE mitaroKigogo SET address = 'Mwananyamala' WHERE gid = 23;
+UPDATE mitaroKigogo SET address = 'Mwananyamala' WHERE gid = 28;
+UPDATE mitaroKigogo SET address = 'Mwananyamala' WHERE gid = 29;
+UPDATE mitaroKigogo SET address = 'Mwananyamala' WHERE gid = 27;
+UPDATE mitaroKigogo SET address = 'Mwananyamala' WHERE gid = 24;
+UPDATE mitaroKigogo SET address = 'Mwananyamala' WHERE gid = 26;
 
-UPDATE mitaroKigogo SET address = 'Kigogo';
+UPDATE mitaroKigogo SET address = 'Tandale' WHERE gid = 10;
+UPDATE mitaroKigogo SET address = 'Tandale' WHERE gid = 11;
+UPDATE mitaroKigogo SET address = 'Tandale' WHERE gid = 12;
+UPDATE mitaroKigogo SET address = 'Tandale' WHERE gid = 13;
+UPDATE mitaroKigogo SET address = 'Tandale' WHERE gid = 18;
+UPDATE mitaroKigogo SET address = 'Tandale' WHERE gid = 19;
+UPDATE mitaroKigogo SET address = 'Tandale' WHERE gid = 17;
+UPDATE mitaroKigogo SET address = 'Tandale' WHERE gid = 14;
+UPDATE mitaroKigogo SET address = 'Tandale' WHERE gid = 16;
 
+UPDATE mitaroKigogo SET address = 'Tabata' WHERE gid = 30;
+UPDATE mitaroKigogo SET address = 'Tabata' WHERE gid = 31;
+UPDATE mitaroKigogo SET address = 'Tabata' WHERE gid = 32;
+UPDATE mitaroKigogo SET address = 'Tabata' WHERE gid = 33;
+UPDATE mitaroKigogo SET address = 'Tabata' WHERE gid = 38;
+UPDATE mitaroKigogo SET address = 'Tabata' WHERE gid = 39;
+UPDATE mitaroKigogo SET address = 'Tabata' WHERE gid = 37;
+UPDATE mitaroKigogo SET address = 'Tabata' WHERE gid = 34;
+UPDATE mitaroKigogo SET address = 'Tabata' WHERE gid = 36;
+
+UPDATE mitaro_dar SET address = 'Tandale' WHERE gid = 100;
+UPDATE mitaro_dar SET address = 'Tandale' WHERE gid = 101;
+UPDATE mitaro_dar SET address = 'Tandale' WHERE gid = 102;
+UPDATE mitaro_dar SET address = 'Tandale' WHERE gid = 1003;
+UPDATE mitaro_dar SET address = 'Tandale' WHERE gid = 108;
+UPDATE mitaro_dar SET address = 'Tandale' WHERE gid = 109;
+UPDATE mitaro_dar SET address = 'Tandale' WHERE gid = 103;
+UPDATE mitaro_dar SET address = 'Tandale' WHERE gid = 104;
+UPDATE mitaro_dar SET address = 'Tandale' WHERE gid = 106;
+UPDATE mitaro_dar SET address = 'Tandale' WHERE gid = 107;
+UPDATE mitaro_dar SET address = 'Tandale' WHERE gid = 105;
+UPDATE mitaro_dar SET address = 'Tandale' WHERE gid = 1006;
 
 UPDATE users SET sms_number = '+255755923102' WHERE id = 1009;
 

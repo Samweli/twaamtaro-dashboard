@@ -1,13 +1,13 @@
  <!DOCTYPE html>
 
-<title>Twaa Mtaro Dash</title>
+<title>Wananchi - Twaa Mtaro Dash</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!--link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"-->
-<link rel="stylesheet" type="text/css" href="styles/w3.css">
-  <link rel="stylesheet" type="text/css" href="styles/application.css">
-  <link rel="stylesheet" type="text/css" href="styles/drains.css">
-  <link rel="stylesheet" type="text/css" href="styles/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" type="text/css" href="../styles/w3.css">
+  <link rel="stylesheet" type="text/css" href="../styles/application.css">
+  <link rel="stylesheet" type="text/css" href="../styles/drains.css">
+  <link rel="stylesheet" type="text/css" href="../styles/style.css">
 <script>
   function filterEneo(area) { 
     var xhttp = new XMLHttpRequest();
@@ -43,11 +43,13 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 ?>
 <!-- Top container -->
 <div class="w3-bar w3-top w3-dark-grey w3-large w3-padding-right" style="z-index:4">
-  <span class="w3-margin-right w3-right w3-padding-right w3-text-small"><a href="#"> Swahili </a></span>
-  <span class="w3-right w3-padding-right"><a href="en/"> English</a></span>
-
+  <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+  <span class="w3-bar-item w3-align-center"></span>
   <div class="w3-center">
     <input type="text" name="search" id="searchterm"> <button class="btn w3-blue w3-margin-right w3-padding-right" name="searchbtn" onclick="search()">TAFUTA</button>
+  
+  <span class="w3-margin-right w3-right w3-padding-right w3-text-small"><a href="../" class=""> Swahili </a></span> 
+  <span class="w3-right w3-padding-right"><a href="index.php" class=""> English</a></span>
   </div>
 </div>
 
@@ -59,81 +61,16 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin:10px;margin-top:40px;">
 
-  <!-- Header -->
-  <header class="w3-container" style="padding-top:22px">
-  </header>
-
-  <div class="w3-row-padding w3-margin-bottom">
-    <div class="w3-col l2 m2 s6">
-      <div class="w3-container w3-teal w3-padding-16">
-        <h4>Mitaro Yote</h4>
-        <h3 class="w3-text-black"><?php $drains = pg_num_rows($drain); echo $drains; ?></h3>
-      </div>
-    </div>
-
-    <div class="w3-col l2 m2 s6">
-      <div class="w3-container w3-blue w3-padding-16" onclick="filter('clear')">
-      <input type="hidden" name="clear" id="filtervalue" value="clear">
-        <h4>Misafi</h4>
-
-        <h3 class="w3-text-black">
-          <?php $cleandrain = pg_query($dbcon, "SELECT * FROM mitaroKigogo WHERE cleared = true" ); 
-          $cleandrains = pg_num_rows($cleandrain); echo $cleandrains; 
-          ?>
-        </h3>
-      </div>
-    </div>
-    <div class="w3-col l2 m2 s6">
-      <div class="w3-container w3-orange w3-text-white w3-padding-16" onclick="filter('notclear')">
-      <input type="hidden" name="notclear" id="filtervalue">
-        <div class="w3-clear"></div>
-        <h4>Michafu</h4>
-        <h3 class="w3-text-black">
-        <?php $dirtydrain = pg_query($dbcon, "SELECT * FROM mitaroKigogo WHERE cleared = false"); 
-        $dirtydrains = pg_num_rows($dirtydrain); echo $dirtydrains; ?>
-        </h3>
-        </div>
-    </div>
-    <div class="w3-col l2 m2 s6">
-      <div class="w3-container w3-red w3-padding-16">
-        <div class="w3-clear"></div>
-        <h4>Msaada</h4>
-        <h3 class="w3-text-black">
-        <?php $helpdrain = pg_query($dbcon, "SELECT * FROM mitaroKigogo WHERE need_help = true");
-        $helpdrains = pg_num_rows($helpdrain); echo $helpdrains; ?>
-        </h3>
-      </div>
-    </div>
-    <div class="w3-col l2 m2 s6">
-      <a href="citizens.php" target="_blank"><div class="w3-container w3-teal w3-text-white w3-padding-16" >
-        <div class="w3-clear"></div>
-        <h4>Wananchi</h4>
-        <h3 class="w3-text-black"><?php $user= pg_query($dbcon, "SELECT * FROM users"); 
-        $users = pg_num_rows($user); echo $users; ?>
-          
-        </h3>
-      </div></a>
-    </div>
-    <div class="w3-col l2 m2 s6">
-      <div class="w3-container w3-green w3-text-white w3-padding-16">
-        
-        <div class="w3-clear"></div>
-        <h4>Eneo</h4>
-        <h3 class="w3-text-black">Kigogo</h3>
-        </div>
-      </div>
-    </div>
-  </div>
 <hr>
 
   <div class="w3-panel" style="margin:30px;">
     <div class="w3-row-padding" style="margin:0 -16px">
       <div class="w3-quarter w3-center">
-        <h4>Karibu Twaa Mtaro</h4>
+        <h4>Welcome</h4>
         <ul class="w3-ul">
-
-          <li class="w3-padding"><a href="http://www.twaamtaro.org" target="_blank"><button class="w3-btn-block w3-btn w3-bar-item btn w3-blue">ANGALIA RAMANI</button></a></li>
-          <li class="w3-padding"><button class="w3-btn-block w3-btn w3-bar-item btn w3-blue" onclick="notify()">TUMA TAARIFA</button>
+        <li class="w3-padding"><a href="index.php" target="_blank"><button class="w3-btn-block w3-btn w3-bar-item btn w3-blue">DASHBOARD</button></a></li>
+          <li class="w3-padding"><a href="http://www.twaamtaro.org" target="_blank"><button class="w3-btn-block w3-btn w3-bar-item btn w3-blue">VIEW MAP</button></a></li>
+          <li class="w3-padding"><button class="w3-btn-block w3-btn w3-bar-item btn w3-blue" onclick="notify()">NOTIFY ALL CITIZENS</button>
           <span id="notifyResult"></span>
           </li>
           
@@ -148,9 +85,51 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     </div>
 
       <div class="w3-rest " style="margin-right:16px" >
-      <span id="serverResult">
-        <?php include 'kigogo.php'; ?>
-      </span>
+      <h3 class="w3-center w3-text-black">ADOPT A DRAIN CITIZENS</h3>
+      <span id="serverResult"></span>
+      
+  <table class="w3-table w3-hoverable w3-responsive w3-white" border="0">
+  
+      <tr class="w3-light-grey w3-border-bottom" >
+        <th>Citizen ID</th>
+        <th>Name</th>
+        <th>Phone Number</th>
+        <th>Drains</th>
+      </tr>
+    
+      <?php
+
+          //&& !$searchclaims
+          $citizen = pg_query($dbcon,"SELECT * FROM users");
+          while($user_row=pg_fetch_assoc($citizen)) {
+            $user = $user_row['id'];
+            $mhusika = $user_row['first_name'].' '.$user_row['last_name'];
+            $namba = $user_row['sms_number'];
+            $mitaro = " ";
+
+            $sqlClaims = pg_query($dbcon,"SELECT * FROM sidewalk_claims WHERE user_id='$user'");
+
+            if(pg_num_rows($sqlClaims) > 0) {
+              while ($claimsInfo=pg_fetch_assoc($sqlClaims)) {
+                $mitaro .=$claimsInfo['gid'];
+              }
+
+            } else {
+              echo $mitaro ="No Claims";
+              
+            }
+      ?>
+      <tr>
+        <td><?php echo $user; ?></td>
+        <td><?php echo $mhusika; ?></td>
+        <td><?php echo $namba; ?></td>
+        <td><?php echo $mitaro; ?></td>
+         <?php } //End While
+           ?>
+      </tr>
+
+      </table>
+
       </div>
     </div>
   </div>
@@ -163,7 +142,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <!-- Footer -->
   <footer class="w3-container w3-padding-16 w3-light-grey">
    
-    <p>Twaa Mtaro by <a href="#" target="_blank"> TUR</a></p>
+    <p>Twaa Mtaro by <a href="https://www.worldbank.org" target="_blank"> The World Bank</a></p>
   </footer>
 
   <!-- End page content -->

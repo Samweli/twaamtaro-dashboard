@@ -34,7 +34,7 @@ include 'dbcon.php';
            echo "<script> alert('Ujumbe umetumwa kwa mhusika, ".$mhusika." mwenye namba ".$number."'); </script>";
 
             
-            echo "<script> window.location = 'index.php'; </script>";
+            echo "<script> window.location = '../index.php'; </script>";
             }
         }// End while
                    //echo "<script> alert('Eneo hili la Mtaro ni chafu'); </script>";
@@ -44,13 +44,13 @@ include 'dbcon.php';
                     echo "<script> alert('Kuna tatizo'); </script>";
                }          
            
-      echo "<script> window.location = 'index.php'; </script>";
+      echo "<script> window.location = '../index.php'; </script>";
     } //End if 
 
     else {
         //echo "Mtaro huu haujatwaliwa bado";
         echo "<script> alert('Mtaro huu haujatwaliwa bado'); </script>"; 
-        echo "<script> window.location = 'index.php'; </script>";
+        echo "<script> window.location = '../index.php'; </script>";
     }
      
 ?>

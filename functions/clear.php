@@ -28,18 +28,20 @@ include 'dbcon.php';
             );
             // Display a confirmation message on the screen
             echo "<script> alert('Ujumbe umetumwa kwa mhusika, ".$mhusika."mwenye namba ".$number."'); </script>";
-               } 
+            } //End While
+           }
+
         else {
                    //echo "Something went wrong";
                    echo "<script> alert('Kuna tatizo'); </script>";
 
                }          
-           echo "<script> window.location = 'index.php'; </script>";
-        } //End While
-    } //End if 
+           echo "<script> window.location = '../index.php'; </script>";
+        
+    } //End if num rows
     else {
         echo "<script> alert('Mtaro huu haujatwaliwa bado'); </script>"; 
-        echo "<script> window.location = 'index.php'; </script>";
+        echo "<script> window.location = '../index.php'; </script>";
     }
      
 ?>
