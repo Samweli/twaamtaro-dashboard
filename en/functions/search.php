@@ -1,11 +1,8 @@
-  <!DOCTYPE html>
+  
 <head>
-  <title>Tafuta</title>
-  <link rel="stylesheet" type="text/css" href="styles/w3.css">
-  <!--link rel="stylesheet" type="text/css" href="styles/application.css" -->
-  <link rel="stylesheet" type="text/css" href="styles/drains.css">
+  <title>Search</title>
 </head>
-<body class="w3-center w3-container">
+
   <div class="w3-row w3-margin" style="padding-bottom:10px">
     
   <?php
@@ -31,9 +28,9 @@
 
 if(pg_num_rows($searchuser) > 0){
   ?>
-  <h3 class="w3-center w3-text-black">MAJIBU</h3>
+  <h3 class="w3-center w3-text-black">SEARCH RESULTS</h3>
   <table class="w3-table w3-hoverable w3-responsive w3-white" border="0">
-  <tr class="w3-light-grey"><th class="w3-center" colspan="4">WANANCHI</th></tr>
+  <tr class="w3-light-grey"><th class="w3-center" colspan="4">CITIZENS</th></tr>
       <tr class="w3-light-grey w3-border-bottom" >
         <th>Citizen ID</th>
         <th>Name</th>
@@ -77,7 +74,7 @@ if(pg_num_rows($searchuser) > 0){
         } //End if*/
         else
          { 
-        echo "<span class=\"w3-center\">Hakuna taarifa yoyote inayohusu ".$search."</span>"
+        echo "<span class=\"w3-center\">There is no any information related to ".$search."</span>"
 ;
         }//End Else  
 
@@ -85,6 +82,6 @@ if(pg_num_rows($searchuser) > 0){
         ?>
       </div> <!--End Column -->
     </div> <!-- End Row -->
-</body>
+
 
   <!-- AJAX Scrits for Button Actions -->

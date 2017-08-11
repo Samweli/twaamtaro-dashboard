@@ -3,7 +3,7 @@
   <option > --Chagua Eneo-- </option>
    	<?php
       include 'dbcon.php';
-      $drain = pg_query($dbcon, "SELECT DISTINCT address FROM mitaroKigogo");
+      $drain = pg_query($dbcon, "SELECT DISTINCT address FROM mitaro_dar");
        
       while($address_row=pg_fetch_assoc($drain)) {
          $drainAddress=$address_row['address'];

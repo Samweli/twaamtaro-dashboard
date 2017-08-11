@@ -25,7 +25,7 @@
                     $number,
                     array(
                         'from' => $TMsender, 
-                        'body' => "Habari, msimu wa mvua unakaribia, hivyo mnakumbushwa kusafisha mitaro yenu ili kuepuka mafuriko yanayosababishwa na mitaro michafu"
+                        'body' => "Hello, the rain season is around the corner, you are reminded to clean your drains in order to prevent floods that are caused by dirty drains."
                     )
                 );
 
@@ -33,7 +33,7 @@
 
         }
         // Display a confirmation message on the screen
-        echo "Umefanikiwa kuwataarifu wakazi wako wasafishe mitaro";
+        echo "You have succeded to notify your citizens to clean their drains";
             
     }
     else {

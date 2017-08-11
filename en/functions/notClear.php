@@ -27,11 +27,11 @@ include 'dbcon.php';
                 $number,
                 array(
                     'from' => $TMsender, 
-                    'body' => "Habari, Kiongozi wako ameangalia mtaro wako na kuona kua sio msafi! Tafadhali unaombwa kuusafisha"
+                    'body' => "Hello, You street leader has inspected your drain and noticed that it is not clean. You are kindly requested to clean your drain."
                 )
             );
             // Display a confirmation message on the screen
-           echo "<script> alert('Ujumbe umetumwa kwa mhusika, ".$mhusika." mwenye namba ".$number."'); </script>";
+           echo "<script> alert('A message has been sent to the citizen, ".$mhusika." with number ".$number."'); </script>";
 
             
             echo "<script> window.location = '../index.php'; </script>";
@@ -41,7 +41,7 @@ include 'dbcon.php';
                } 
         else {
                    //echo "Something went wrong";
-                    echo "<script> alert('Kuna tatizo'); </script>";
+                    echo "<script> alert('Something went wrong'); </script>";
                }          
            
       echo "<script> window.location = '../index.php'; </script>";
@@ -49,7 +49,7 @@ include 'dbcon.php';
 
     else {
         //echo "Mtaro huu haujatwaliwa bado";
-        echo "<script> alert('Mtaro huu haujatwaliwa bado'); </script>"; 
+        echo "<script> alert('This drain has not been claimed yet'); </script>"; 
         echo "<script> window.location = '../index.php'; </script>";
     }
      

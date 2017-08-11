@@ -1,18 +1,14 @@
 <?php
     include 'dbcon.php';
-
       $filtervalue = $_GET['filterarea'];
-      //$filtervalue = 'Tandale';
-      
-          $drainsql = "SELECT * FROM mitaroKigogo WHERE address = '".$filtervalue."'";
-          
-        
-        $filterdrain = pg_query($dbcon,$drainsql);
-    ?>
+      $drainsql = "SELECT * FROM mitaro_dar WHERE address = '".$filtervalue."'";
+      $filterdrain = pg_query($dbcon,$drainsql);
+?>
 <div class="w3-container">
-   <table class="w3-table w3-hoverable w3-responsive w3-white" border="0">
-        <tr class="w3-light-grey w3-border-bottom">
-        <th class="w3-center" colspan="5">DRAINS AT  <?php echo strtoupper($filtervalue); ?></th></tr>
+  <table class="w3-table w3-hoverable w3-responsive w3-white" border="0">
+      <tr class="w3-light-grey w3-border-bottom">
+        <th class="w3-center" colspan="5"> <?php echo strtoupper($filtervalue); ?> DRAINS</th>
+      </tr>
       <tr class="w3-light-grey w3-border-bottom">
         <th>DRAIN GID</th>
         <th>DRAIN NAME</th>
@@ -56,7 +52,7 @@
           <a href="<?php echo 'functions/notClear.php?thedrain='.$drainId; ?>"><button id="siomsafi" name="" class="btn warning" >DIRTY</button></a>
           <a href="<?php echo 'functions/clear.php?thedrain='.$drainId; ?>"><button id="msafi" name="" class="btn success">CLEAN</button></a> 
         
-          <a href="<?php echo 'functions/inform.php?thedrain='.$drainId; ?>"><button id="taarifu" name="" class="btn w3-blue">NOTIFY</button></a>
+          <!-- a href="<?php //echo 'functions/inform.php?thedrain='.$drainId; ?>"><button id="taarifu" name="" class="btn w3-blue">NOTIFY</button></a -->
         </td>
          <?php } //End While  ?>
       </tr>

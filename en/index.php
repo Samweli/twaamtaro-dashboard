@@ -1,39 +1,35 @@
  <!DOCTYPE html>
+<head>
+  <title>Twaa Mtaro Dash</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"-->
+  <link rel="stylesheet" type="text/css" href="../styles/w3.css">
+    <link rel="stylesheet" type="text/css" href="../styles/application.css">
+    <link rel="stylesheet" type="text/css" href="../styles/drains.css">
+    <link rel="stylesheet" type="text/css" href="../styles/style.css">
+  <script>
+    function filterEneo(area) { 
+      var xhttp = new XMLHttpRequest();
+      var area = document.getElementById("eneo").value;
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+           document.getElementById("serverResult").innerHTML = this.responseText;
+          }
+        };
+        xhttp.open("GET", "functions/filterarea.php?filterarea="+area, true);
+        xhttp.send();
+    }
+  </script> 
+  <style>
+  html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+  </style>
+</head>
 
-<title>Twaa Mtaro Dash</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"-->
-<link rel="stylesheet" type="text/css" href="../styles/w3.css">
-  <link rel="stylesheet" type="text/css" href="../styles/application.css">
-  <link rel="stylesheet" type="text/css" href="../styles/drains.css">
-  <link rel="stylesheet" type="text/css" href="../styles/style.css">
-<script>
-  function filterEneo(area) { 
-    var xhttp = new XMLHttpRequest();
-    var area = document.getElementById("eneo").value;
-      xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-         document.getElementById("serverResult").innerHTML = this.responseText;
-        }
-      };
-      xhttp.open("GET", "functions/filterarea.php?filterarea="+area, true);
-      xhttp.send();
-  }
-</script> 
-<style>
-html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
-
-.pie {
-  width: 100px; height: 100px;
-  border-radius: 50%;
-  background: yellowgreen;
-}
-</style>
 <body class="w3-light-grey">
 <?php
       include 'dbcon.php';
-      $drain = pg_query($dbcon, "SELECT * FROM mitaroKigogo");
+      $drain = pg_query($dbcon, "SELECT * FROM mitaro_dar");
       //All Drains in Dar
       //$drain = pg_query($dbcon, "SELECT * FROM mitaro_dar");
 
@@ -66,7 +62,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
   <div class="w3-row-padding w3-margin-bottom">
     <div class="w3-col l2 m2 s6">
-      <div class="w3-container w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-amber" title="Click to view all drains">
+      <div class="w3-container w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-amber" onclick="window.location.reload(true)" title="Click to view all drains">
         <h4>All Drains</h4>
         <h3 class="w3-text-black"><?php $drains = pg_num_rows($drain); echo $drains; ?></h3>
       </div>
@@ -78,7 +74,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         <h4>Clean</h4>
 
         <h3 class="w3-text-black">
-          <?php $cleandrain = pg_query($dbcon, "SELECT * FROM mitaroKigogo WHERE cleared = true" ); 
+          <?php $cleandrain = pg_query($dbcon, "SELECT * FROM mitaro_dar WHERE cleared = true" ); 
           $cleandrains = pg_num_rows($cleandrain); echo $cleandrains; 
           ?>
         </h3>
@@ -90,7 +86,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         <div class="w3-clear"></div>
         <h4>Dirty</h4>
         <h3 class="w3-text-black">
-        <?php $dirtydrain = pg_query($dbcon, "SELECT * FROM mitaroKigogo WHERE cleared = false"); 
+        <?php $dirtydrain = pg_query($dbcon, "SELECT * FROM mitaro_dar WHERE cleared = false"); 
         $dirtydrains = pg_num_rows($dirtydrain); echo $dirtydrains; ?>
         </h3>
         </div>
@@ -100,7 +96,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         <div class="w3-clear" title=""></div>
         <h4>Need Help</h4>
         <h3 class="w3-text-black">
-        <?php $helpdrain = pg_query($dbcon, "SELECT * FROM mitaroKigogo WHERE need_help = true");
+        <?php $helpdrain = pg_query($dbcon, "SELECT * FROM mitaro_dar WHERE need_help = true");
         $helpdrains = pg_num_rows($helpdrain); echo $helpdrains; ?>
         </h3>
       </div>
@@ -137,20 +133,18 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
           <li class="w3-padding"><button class="w3-btn-block w3-btn w3-bar-item btn w3-blue" onclick="notify()">NOTIFY ALL CITIZENS</button>
           <span id="notifyResult"></span>
           </li>
-          
+          <li class="w3-padding"><a href="functions/reports.php" target="_blank"><button class="w3-btn-block w3-btn w3-bar-item btn w3-blue">VIEW REPORTS</button></a></li>
           <li>
             <?php include 'functions/eneo.php'; ?>
           </li>
-          <li>
-             <?php include 'functions/report.php'; ?>
-          </li>
+          
         </ul>
       
     </div>
 
       <div class="w3-rest " style="margin-right:16px" >
       <span id="serverResult">
-        <?php include 'kigogo.php'; ?>
+        <?php include 'functions/page.php'; ?>
       </span>
       </div>
     </div>

@@ -23,24 +23,24 @@ include 'dbcon.php';
             $sms = $client->messages->create($number,
             array(
                 'from' => '+14256540807',
-                'body' => "Habari, Mtaro wako umesafishwa!"
+                'body' => "Hello, Your drain has been cleaned!"
                 )
             );
             // Display a confirmation message on the screen
-            echo "<script> alert('Ujumbe umetumwa kwa mhusika, ".$mhusika."mwenye namba ".$number."'); </script>";
+            echo "<script> alert('A message has been sent to, ".$mhusika." with number ".$number."'); </script>";
             } //End While
            }
 
         else {
                    //echo "Something went wrong";
-                   echo "<script> alert('Kuna tatizo'); </script>";
+                   echo "<script> alert('Something went wrong'); </script>";
 
                }          
            echo "<script> window.location = '../index.php'; </script>";
         
     } //End if num rows
     else {
-        echo "<script> alert('Mtaro huu haujatwaliwa bado'); </script>"; 
+        echo "<script> alert('This drain has not been claimed'); </script>"; 
         echo "<script> window.location = '../index.php'; </script>";
     }
      

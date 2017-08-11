@@ -14,6 +14,15 @@ md5('password'), md5('token6'),now(), now(), 5, now(), now(), '192.254.235.17', 
 (1012, now(), now(), 'Grace', 'Georgia', 'WB', 'gracegeorgia@live.com','+255656651444', false, 0, 1, md5('password'), md5('token9'),now(), now(), 5, now(), now(), '192.254.235.17', '192.254.235.19');
 (1003, now(), now(), 'Edward', 'Anderson', 'WB', 'edwardanderson@wbgroup.org','+255782120252', false, 0, 1, md5('password'), md5('token10'),now(), now(), 1, now(), now(), '192.254.235.17', '192.254.235.19');
 
+(1013, now(), now(), 'Nancy', 'Navish', 'WB', 'navish45@live.com','+255782120252', false, 0, 1, 
+md5('password'), md5('token11'),now(), now(), 5, now(), now(), '192.254.235.17', '192.254.235.19'),
+(1014, now(), now(), 'Beatrice', 'Charles', 'WB', 'beatrix@gmail.com','+255687902733', 'false', 0, 1, md5('password'), md5('token12'),now(), now(), 5, now(), now(), '192.254.235.19', '192.254.235.20')
+,(1015, now(), now(), 'Kelvin', 'Temba', 'WB', 'kelvin@gmail.com','+255714063370', false, 0, 1, md5('password'), md5('token13'),now(), now(), 5, now(), now(), '192.254.235.17', '192.254.235.19');
+
+(1016, now(), now(), 'Grace', 'Georgia', 'WB', 'grace@live.com','+255656651444', false, 0, 1, md5('password'), md5('token14'),now(), now(), 5, now(), now(), '192.254.235.17', '192.254.235.19');
+
+(1017, now(), now(), 'Edward', 'Anderson', 'WB', 'edward@wbgroup.org','+255782120252', false, 0, 1, md5('password'), md5('token15'),now(), now(), 1, now(), now(), '192.254.235.17', '192.254.235.19');
+
 
 ------------------------------------------
 INSERT INTO sidewalk_claims (id, created_at, updated_at, user_id, gid, shoveled, notes) VALUES 
@@ -27,18 +36,19 @@ INSERT INTO sidewalk_claims (id, created_at, updated_at, user_id, gid, shoveled,
 
 
 INSERT INTO sidewalk_claims (id, created_at, updated_at, user_id, gid, shoveled, notes) VALUES 
-(10009, now(), now(), 1005, 5, true, 'Dirty'), 
-(10010, now(), now(), 1006, 8, true, 'Shallow'), 
-(10011, now(), now(), 1004, 10, true, ''),
-(10012, now(), now(), 1007, 4, true, '');
+(10018, now(), now(), 1013, 5, true, 'Dirty'), 
+(10019, now(), now(), 1014, 8, true, 'Shallow'), 
+(10020, now(), now(), 1015, 10, true, ''),
+(10021, now(), now(), 1017, 10, true, ''),
+(10022, now(), now(), 1016, 4, true, '');
 UPDATE sidewalk_claims SET shoveled = false WHERE id = 10008;
 
 //Claims for same drain
 INSERT INTO sidewalk_claims (id, created_at, updated_at, user_id, gid, shoveled, notes) VALUES 
-(10013, now(), now(), 1012, 5, true, 'Dirty'), 
-(10017, now(), now(), 1003, 8, true, 'Shallow'), 
-(10015, now(), now(), 1007, 10, true, ''),
-(10016, now(), now(), 1006, 4, true, '');
+(10018, now(), now(), 1012, 120, true, 'Dirty'), 
+(10019, now(), now(), 1003, 124, true, 'Shallow'), 
+(10020, now(), now(), 1007, 130, true, ''),
+(10016, now(), now(), 1006, 104, true, '');
 
 
 UPDATE mitaroKigogo SET cleared = true WHERE gid = 1;

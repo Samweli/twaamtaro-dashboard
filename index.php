@@ -65,7 +65,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
   <div class="w3-row-padding w3-margin-bottom">
     <div class="w3-col l2 m2 s6 ">
-      <div class="w3-container w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-amber " title="Bofya kuona mitaro yote">
+      <div class="w3-container w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-amber " onclick="window.location.reload(true)" title="Bofya kuona mitaro yote">
         <h4>Mitaro Yote</h4>
         <h3 class="w3-text-black"><?php $drains = pg_num_rows($drain); echo $drains; ?></h3>
       </div>
@@ -77,7 +77,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         <h4>Misafi</h4>
 
         <h3 class="w3-text-black">
-          <?php $cleandrain = pg_query($dbcon, "SELECT * FROM mitaroKigogo WHERE cleared = true" ); 
+          <?php $cleandrain = pg_query($dbcon, "SELECT * FROM mitaro_dar WHERE cleared = true" ); 
           $cleandrains = pg_num_rows($cleandrain); echo $cleandrains; 
           ?>
         </h3>
@@ -89,7 +89,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         <div class="w3-clear"></div>
         <h4>Michafu</h4>
         <h3 class="w3-text-black">
-        <?php $dirtydrain = pg_query($dbcon, "SELECT * FROM mitaroKigogo WHERE cleared = false"); 
+        <?php $dirtydrain = pg_query($dbcon, "SELECT * FROM mitaro_dar WHERE cleared = false"); 
         $dirtydrains = pg_num_rows($dirtydrain); echo $dirtydrains; ?>
         </h3>
         </div>
@@ -99,7 +99,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         <div class="w3-clear"></div>
         <h4>Msaada</h4>
         <h3 class="w3-text-black">
-        <?php $helpdrain = pg_query($dbcon, "SELECT * FROM mitaroKigogo WHERE need_help = true");
+        <?php $helpdrain = pg_query($dbcon, "SELECT * FROM mitaro_dar WHERE need_help = true");
         $helpdrains = pg_num_rows($helpdrain); echo $helpdrains; ?>
         </h3>
       </div>
@@ -136,7 +136,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
           <li class="w3-padding"><button class="w3-btn-block w3-btn w3-bar-item btn w3-blue" onclick="notify()">TUMA TAARIFA</button>
           <span id="notifyResult"></span>
           </li>
-          
+          <li class="w3-padding"><a href="" target="_blank"><button class="w3-btn-block w3-btn w3-bar-item btn w3-blue">ANGALIA GRAFU</button></a></li>
           <li>
             <?php include 'functions/eneo.php'; ?>
           </li>

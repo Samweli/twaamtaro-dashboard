@@ -65,15 +65,15 @@ UPDATE mitaro_dar SET address = 'Mwananyamala' WHERE gid = 27;
 UPDATE mitaro_dar SET address = 'Mwananyamala' WHERE gid = 24;
 UPDATE mitaro_dar SET address = 'Mwananyamala' WHERE gid = 26;
 
-UPDATE mitaro_dar SET address = 'Tandale' WHERE gid = 10;
-UPDATE mitaro_dar SET address = 'Tandale' WHERE gid = 11;
-UPDATE mitaro_dar SET address = 'Tandale' WHERE gid = 12;
-UPDATE mitaro_dar SET address = 'Tandale' WHERE gid = 13;
-UPDATE mitaro_dar SET address = 'Tandale' WHERE gid = 18;
-UPDATE mitaro_dar SET address = 'Tandale' WHERE gid = 19;
-UPDATE mitaro_dar SET address = 'Tandale' WHERE gid = 17;
-UPDATE mitaro_dar SET address = 'Tandale' WHERE gid = 14;
-UPDATE mitaro_dar SET address = 'Tandale' WHERE gid = 16;
+UPDATE mitaro_dar SET address = 'Kigogo' WHERE gid = 40;
+UPDATE mitaro_dar SET address = 'Kigogo' WHERE gid = 41;
+UPDATE mitaro_dar SET address = 'Kigogo' WHERE gid = 42;
+UPDATE mitaro_dar SET address = 'Kigogo' WHERE gid = 43;
+UPDATE mitaro_dar SET address = 'Kigogo' WHERE gid = 48;
+UPDATE mitaro_dar SET address = 'Kigogo' WHERE gid = 49;
+UPDATE mitaro_dar SET address = 'Kigogo' WHERE gid = 47;
+UPDATE mitaro_dar SET address = 'Kigogo' WHERE gid = 44;
+UPDATE mitaro_dar SET address = 'Kigogo' WHERE gid = 46;
 
 UPDATE mitaro_dar SET address = 'Tabata' WHERE gid = 30;
 UPDATE mitaro_dar SET address = 'Tabata' WHERE gid = 31;
@@ -85,18 +85,18 @@ UPDATE mitaro_dar SET address = 'Tabata' WHERE gid = 37;
 UPDATE mitaro_dar SET address = 'Tabata' WHERE gid = 34;
 UPDATE mitaro_dar SET address = 'Tabata' WHERE gid = 36;
 
-UPDATE mitaro_dar SET address = 'Tandale' WHERE gid = 100;
-UPDATE mitaro_dar SET address = 'Tandale' WHERE gid = 101;
-UPDATE mitaro_dar SET address = 'Tandale' WHERE gid = 102;
-UPDATE mitaro_dar SET address = 'Tandale' WHERE gid = 1003;
-UPDATE mitaro_dar SET address = 'Tandale' WHERE gid = 108;
-UPDATE mitaro_dar SET address = 'Tandale' WHERE gid = 109;
-UPDATE mitaro_dar SET address = 'Tandale' WHERE gid = 103;
-UPDATE mitaro_dar SET address = 'Tandale' WHERE gid = 104;
-UPDATE mitaro_dar SET address = 'Tandale' WHERE gid = 106;
-UPDATE mitaro_dar SET address = 'Tandale' WHERE gid = 107;
-UPDATE mitaro_dar SET address = 'Tandale' WHERE gid = 105;
-UPDATE mitaro_dar SET address = 'Tandale' WHERE gid = 1006;
+UPDATE mitaro_dar SET address = 'Kigogo' WHERE gid = 110;
+UPDATE mitaro_dar SET address = 'Kigogo' WHERE gid = 111;
+UPDATE mitaro_dar SET address = 'Kigogo' WHERE gid = 112;
+UPDATE mitaro_dar SET address = 'Kigogo' WHERE gid = 1013;
+UPDATE mitaro_dar SET address = 'Kigogo' WHERE gid = 118;
+UPDATE mitaro_dar SET address = 'Kigogo' WHERE gid = 119;
+UPDATE mitaro_dar SET address = 'Kigogo' WHERE gid = 113;
+UPDATE mitaro_dar SET address = 'Kigogo' WHERE gid = 114;
+UPDATE mitaro_dar SET address = 'Kigogo' WHERE gid = 116;
+UPDATE mitaro_dar SET address = 'Kigogo' WHERE gid = 117;
+UPDATE mitaro_dar SET address = 'Kigogo' WHERE gid = 115;
+UPDATE mitaro_dar SET address = 'Kigogo' WHERE gid = 1016;
 
 UPDATE users SET sms_number = '+255755923102' WHERE id = 1009;
 

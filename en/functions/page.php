@@ -1,6 +1,3 @@
-<link rel="stylesheet" type="text/css" href="../../styles/w3.css">
-<link rel="stylesheet" type="text/css" href="../../styles/application.css">
-<link rel="stylesheet" type="text/css" href="../../styles/drains.css">
 
   <?php
       include 'dbcon.php';
@@ -102,7 +99,7 @@ $dardrain = pg_query($dbcon, "SELECT *
         <a href="<?php echo 'notClear.php?thedrain='.$drainId; ?>"><button id="siomsafi" name="" class="btn warning" >DIRTY</button></a>
         <a href="<?php echo 'clear.php?thedrain='.$drainId; ?>"><button id="msafi" name="" class="btn success">CLEAN</button></a> 
         
-         <a href="<?php echo 'inform.php?thedrain='.$drainId; ?>"><button id="taarifu" name="" class="btn w3-blue">NOTIFY</button></a>
+         <!-- a href="<?php //echo 'inform.php?thedrain='.$drainId; ?>"><button id="taarifu" name="" class="btn w3-blue">NOTIFY</button></a-->
       </td>
        <!-- AJAX Scrits for Button Actions -->
     

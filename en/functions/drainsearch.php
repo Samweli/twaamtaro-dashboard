@@ -15,13 +15,13 @@
     if($searchdrain ) {
         ?>
       <table class="w3-table w3-bordered w3-hoverable">
-        <tr><th class="w3-center" colspan="5">MITARO</th></tr>
+        <tr><th class="w3-center" colspan="5">DRAINS</th></tr>
       <tr>
-        <th>Namba ya Mtaro</th>
-        <th>Jina la Mtaro</th>
-        <th>Mtaa</th>
-        <th>Mhusika</th>
-        <th>Hali</th>
+        <th>DRAIN GID</th>
+        <th>DRAIN NAME</th>
+        <th>STREET</th>
+        <th>CITIZEN</th>
+        <th>SEND SMS</th>
       </tr>
       <?php
         while($drain_row=pg_fetch_assoc($searchdrain)) {
@@ -54,12 +54,10 @@
             
         </td>
         <td>
-        <form>
-            <button id="siomsafi"  class="btn warning" type="submit" onclick="notClear()"   >SIO MSAFI</button>
-
-          <button id="msafi" class="btn success" onclick="assignClear()">MSAFI</button>
-        </form>
-        </td>
+          <a href="<?php echo 'functions/notClear.php?thedrain='.$drainId; ?>"><button id="siomsafi" name="" class="btn warning" >DIRTY</button></a>
+          <a href="<?php echo 'functions/clear.php?thedrain='.$drainId; ?>"><button id="msafi" name="" class="btn success">CLEAN</button></a> 
+          
+           <a href="<?php echo 'functions/inform.php?thedrain='.$drainId; ?>"><button id="taarifu" name="" class="btn w3-blue">NOTIFY</button></a>
         </td>
          <?php } //End While  ?>
       </tr>

@@ -1,9 +1,9 @@
 
   <select id="eneo" class="w3-padding w3-select" onchange="filterEneo(this.value)">
-  <option > --Select Area-- </option>
+  <option > --- Select Area --- </option>
    	<?php
       include 'dbcon.php';
-      $drain = pg_query($dbcon, "SELECT DISTINCT address FROM mitaroKigogo");
+      $drain = pg_query($dbcon, "SELECT DISTINCT address FROM mitaro_dar");
        
       while($address_row=pg_fetch_assoc($drain)) {
          $drainAddress=$address_row['address'];

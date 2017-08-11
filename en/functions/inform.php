@@ -24,11 +24,11 @@ include 'dbcon.php';
             $sms = $client->messages->create($number,
             array(
                 'from' => '+14256540807',
-                'body' => "Habari, Mtaro wako ni msafi!"
+                'body' => "Hello, your drain has been cleaned!"
                 )
             );
             // Display a confirmation message on the screen
-            echo "<script> alert('Ujumbe umetumwa kwa mhusika, ".$mhusika." mwenye namba ".$number."'); </script>";
+            echo "<script> alert('A message has been sent to, ".$mhusika." of number ".$number."'); </script>";
             }
 
         elseif ($drainClean = false) {
@@ -36,11 +36,11 @@ include 'dbcon.php';
                 $number,
                 array(
                     'from' => $TMsender, 
-                    'body' => "Habari, Kiongozi wako ameangalia mtaro wako na kuona kua sio msafi! Tafadhali unaombwa kuusafisha"
+                    'body' => "Hello, You street leader has inspected your drain and noticed that it is not clean. You are kindly requested to clean your drain."
                 )
             );
             // Display a confirmation message on the screen
-           echo "<script> alert('Ujumbe umetumwa kwa mhusika, ".$mhusika." mwenye namba ".$number."'); </script>";
+           echo "<script> alert('A message has been sent to, ".$mhusika." with number ".$number."'); </script>";
         } //End ElseIf
 
             
@@ -49,7 +49,7 @@ include 'dbcon.php';
         }// End while
       } //End if 
         else { 
-        echo "<script> alert('Mtaro huu haujatwaliwa bado'); </script>"; 
+        echo "<script> alert('This drain has not been claimed'); </script>"; 
         echo "<script> window.location = '../index.php'; </script>";
         }
           
