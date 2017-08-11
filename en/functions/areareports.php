@@ -1,54 +1,49 @@
 <?php
   include 'dbcon.php';
-    //$filtervalue = $_GET['filterarea'];
+  //$filtervalue = $_GET['filterarea'];
 
-    $filtervalue = 'Tandale';
-    $drainsql = "SELECT gid FROM mitaro_dar WHERE address = '".$filtervalue."'";
-    $filterdrains = pg_query($dbcon,$drainsql);
-    $AllDrains = pg_num_rows($filterdrains);
-    $AreaDrains = pg_fetch_assoc($filterdrains);
+  $filtervalue = 'Tandale';
+  $filterAreaDrains = pg_query($dbcon,"SELECT * FROM mitaro_dar WHERE address = '".$filtervalue."'");
+  $AreaAllDrains = pg_num_rows($filterAreaDrains);
 
-$claims=0;$clean=0;
-$dirty=0; //Claimed Drains of a given area
+  $areaclaimsql = "SELECT mitaro_dar.gid, mitaro_dar.address 
+      FROM mitaro_dar
+      INNER JOIN sidewalk_claims on sidewalk_claims.gid = mitaro_dar.gid AND mitaro_dar.address = '".$filtervalue."'";
+  $filterclaims = pg_query($dbcon,$areaclaimsql);
+  $AreaAllClaims = pg_num_rows($filterclaims); //All drains from a particular area
 
-//foreach ($AreaDrains as $drain) {
+
+  $sqlAreaDirty = "SELECT mitaro_dar.gid, mitaro_dar.address 
+      FROM mitaro_dar
+      INNER JOIN sidewalk_claims on 
+      sidewalk_claims.gid = mitaro_dar.gid AND sidewalk_claims.shoveled=false AND mitaro_dar.address = '".$filtervalue."'";
+
+  $sqlAreaClean = "SELECT mitaro_dar.gid, mitaro_dar.address 
+      FROM mitaro_dar
+      INNER JOIN sidewalk_claims on 
+      sidewalk_claims.gid = mitaro_dar.gid AND sidewalk_claims.shoveled=true AND mitaro_dar.address = '".$filtervalue."'";
  
- do {
-   
-    //if ($sqlAllClaims) {
- $sqlAllClaims = pg_query($dbcon,"SELECT * FROM sidewalk_claims WHERE gid= $drain"); //Check if its claimed
- $AllClaims = pg_num_rows($sqlAllClaims);
+  $sqlAreaHelp = "SELECT mitaro_dar.gid, mitaro_dar.address 
+      FROM mitaro_dar
+      INNER JOIN sidewalk_claims on 
+      sidewalk_claims.gid = mitaro_dar.gid AND sidewalk_claims.shoveled=true AND mitaro_dar.need_help = true AND mitaro_dar.address = '".$filtervalue."'";
+
+  $sqlAreaDirtyDrains = pg_query($dbcon, $sqlAreaDirty);
+  $sqlAreaCleanDrains = pg_query($dbcon, $sqlAreaClean);
+  $sqlAreaHelpDrains = pg_query($dbcon, $sqlAreaHelp);
+
+  $AreaCleanDrains = pg_num_rows($sqlAreaCleanDrains);
+  $AreaDirtyDrains = pg_num_rows($sqlAreaDirtyDrains);
+  $AreaHelpDrains = pg_num_rows($sqlAreaHelpDrains);
  
-
-    $sqlCleanDrains = pg_query($dbcon,"SELECT * FROM sidewalk_claims WHERE gid= $drain AND shoveled=true");
-    $sqlDirtyDrains = pg_query($dbcon,"SELECT * FROM sidewalk_claims WHERE gid= $drain AND shoveled=false");
-      if ($sqlCleanDrains) {
-        $clean++;
-      }
-      if ($sqlDirtyDrains) {
-        $dirty++;
-      } 
-
-     //} 
-
- /*else { 
-    echo "Drains in this area have not been claimed yet";
- } 
-}*/
-$claims++;
-} while ($sqlAllClaims);  
-  $sqlHelpDrains = pg_query($dbcon, "SELECT * FROM mitaro_dar WHERE need_help = true");       
- 
-    $unClaimed = $AllDrains-$claims;
+  $AreaunClaimed = $AreaAllDrains-$AreaAllClaims;
     
-    //$DirtyDrains = pg_num_rows($sqlDirtyDrains);
-    $HelpDrains = pg_num_rows($sqlHelpDrains);
 
-echo "All Drains ".$AllDrains;
-echo " - All Claims ".$claims;
-echo " - unClaimed ".$unClaimed;
-echo " - Dirty Claims ".$dirty;
-echo " - Clean Claims ".$clean; 
+echo "All Drains ".$AreaAllDrains;
+echo " - All Claims ".$AreaAllClaims;
+echo " - unClaimed ".$AreaunClaimed;
+echo " - Dirty Claims ".$AreaDirtyDrains;
+echo " - Clean Claims ".$AreaCleanDrains; 
 
 ?>  
 
@@ -61,44 +56,53 @@ echo " - Clean Claims ".$clean;
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(statusChart);
-      google.charts.setOnLoadCallback(claimsChart);
+      google.charts.setOnLoadCallback(AreaStatusChart);
+      google.charts.setOnLoadCallback(AreaClaimsChart);
 
-      function statusChart() {
+      function AreaStatusChart() {
         var data = google.visualization.arrayToDataTable([
           ['Drain', 'Status'],
-          ['Clean',    <?php echo $clean; ?> ],
-          ['Dirty',     <?php echo $dirty; ?>],
-          ['Help',  <?php echo $HelpDrains; ?>]
+          ['Clean',    <?php echo $AreaCleanDrains; ?> ],
+          ['Dirty',     <?php echo $AreaDirtyDrains; ?>],
+          ['Help',  <?php echo $AreaHelpDrains; ?>]
         ]);
         var options = {
           title: 'Cleanness Report for Claimed Drains'
         };
-        var chart = new google.visualization.PieChart(document.getElementById('statuschart'));
+        //Error Handling
+        var errContainer = document.getElementById('areastatuschart');
+        var errMsg = 'Both Graph Data has zero values';
+
+        google.visualization.errors.addError(errCcontainer, errMsg,
+        response.getDetailedMessage(), {'showInTooltip': false});
+        var chart = new google.visualization.PieChart(document.getElementById('areastatuschart'));
         chart.draw(data, options);
+
       }
 
-      function claimsChart() {
+      function AreaClaimsChart() {
         var data = google.visualization.arrayToDataTable([
           ['Drain', 'Claims'],
-          ['Claimed',    <?php echo $claims; ?> ],
-          ['Not Claimed',     <?php echo $unClaimed; ?>]
+          ['Claimed',    <?php echo $AreaAllClaims; ?> ],
+          ['Not Claimed',     <?php echo $AreaunClaimed; ?>]
         ]);
         var options = {
           title: 'Claimed vs Unclaimed Drains'
         };
-        var chart = new google.visualization.PieChart(document.getElementById('claimschart'));
+        var errContainer = document.getElementById('areaclaimschart');
+        var chart = new google.visualization.PieChart(document.getElementById('areaclaimschart'));
         chart.draw(data, options);
       }
     </script>
 
 </head>  
-  <div class="w3-row-padding">
+  <div class="w3-row-padding w3-center">
+  <h2><?php echo $filtervalue; ?></h2>
    <div class="w3-half s12">
-     <div id="statuschart" style="width: 800px; height: 500px; margin: 0px; padding: 0;"></div>
+     <div id="areastatuschart" style="width: 100%; height: 500px; margin: 0px; padding: 0;"></div>
    </div>
    <div class="w3-half s12">
-     <div id="claimschart" style="width: 800px; height: 500px; margin: 0px; padding: 0;"></div>
+     <div id="areaclaimschart" style="width: 100%; height: 500px; margin: 0px; padding: 0;"></div>
    </div>
   </div>
     

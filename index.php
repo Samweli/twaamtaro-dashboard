@@ -136,12 +136,9 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
           <li class="w3-padding"><button class="w3-btn-block w3-btn w3-bar-item btn w3-blue" onclick="notify()">TUMA TAARIFA</button>
           <span id="notifyResult"></span>
           </li>
-          <li class="w3-padding"><a href="" target="_blank"><button class="w3-btn-block w3-btn w3-bar-item btn w3-blue">ANGALIA GRAFU</button></a></li>
+          <li class="w3-padding"><a href="#" target="_blank"><button class="w3-btn-block w3-btn w3-bar-item btn w3-blue">ANGALIA GRAFU</button></a></li>
           <li>
             <?php include 'functions/eneo.php'; ?>
-          </li>
-          <li>
-             <?php include 'functions/report.php'; ?>
           </li>
         </ul>
       
