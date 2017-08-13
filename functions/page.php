@@ -48,11 +48,11 @@ $dardrain = pg_query($dbcon, "SELECT *
       ?>
       <table class="w3-table w3-hoverable w3-responsive w3-white" border="0">
     <tr class="w3-light-grey w3-border-bottom"> 
-      <th>GID</th>
-      <th>DRAIN NAME</th>
-      <th>ADDRESS</th>
-      <th>CITIZEN</th>
-      <th>SEND SMS</th>
+      <th>NAMBA YA MTARO</th>
+      <th>JINA LA MTARO</th>
+      <th>MTAA</th>
+      <th>MHUSIKA</th>
+      <th>TUMA UJUMBE</th>
     </tr>
   
     <?php

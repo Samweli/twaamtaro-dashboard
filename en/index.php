@@ -144,7 +144,7 @@
 
       <div class="w3-rest " style="margin-right:16px" >
       <span id="serverResult">
-        <?php include 'functions/page.php'; ?>
+        <?php include 'en/functions/page.php'; ?>
       </span>
       </div>
     </div>
