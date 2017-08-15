@@ -4,7 +4,7 @@
       //$drain = pg_query($dbcon, "SELECT * FROM mitaroKigogo");  // find out how many rows are in the table 
 $drainrows = pg_query($dbcon, "SELECT COUNT(*) FROM mitaro_dar");
 $r = pg_fetch_assoc($drainrows);
-$numrows = $r[count];
+$numrows = $r['count'];
 
 //echo $numrows;
 

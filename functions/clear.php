@@ -19,10 +19,12 @@ include 'dbcon.php';
             $mhusika = $citizenName["first_name"]." ".$citizenName["last_name"];
             $number = $citizenName["sms_number"];
 
-            include 'twiliosettings.php';
+            echo getenv('TW_SENDER');
+
+            include '../twiliosettings.php';
             $sms = $client->messages->create($number,
             array(
-                'from' => '+14256540807',
+                'from' => $TMsender,
                 'body' => "Habari, Mtaro wako umesafishwa!"
                 )
             );

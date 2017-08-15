@@ -33,11 +33,11 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <body class="w3-light-grey">
 <?php
       include 'dbcon.php';
-      $drain = pg_query($dbcon, "SELECT * FROM mitaro_dar");
+      $homedrain = pg_query($dbcon, "SELECT * FROM mitaro_dar");
       //All Drains in Dar
       //$drain = pg_query($dbcon, "SELECT * FROM mitaro_dar");
 
-      if (!$drain) {
+      if (!$homedrain) {
         echo "Table is empty ";
       }
 ?>
@@ -60,75 +60,13 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <div class="w3-main" style="margin:10px;margin-top:40px;">
 
   <!-- Header -->
-  <header class="w3-container" style="padding-top:22px">
+  <header class="w3-container" style="padding-top:2px">
   </header>
-
-  <div class="w3-row-padding w3-margin-bottom">
-    <div class="w3-col l2 m2 s6 ">
-      <div class="w3-container w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-amber " onclick="window.location.reload(true)" title="Bofya kuona mitaro yote">
-        <h4>Mitaro Yote</h4>
-        <h3 class="w3-text-black"><?php $drains = pg_num_rows($drain); echo $drains; ?></h3>
-      </div>
-    </div>
-
-    <div class="w3-col l2 m2 s6 ">
-      <div class="w3-container w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-blue" onclick="filter('clear')" title="Bofya kuona mitaro misafi">
-      <input type="hidden" name="clear" id="filtervalue" value="clear">
-        <h4>Misafi</h4>
-
-        <h3 class="w3-text-black">
-          <?php $cleandrain = pg_query($dbcon, "SELECT * FROM mitaro_dar WHERE cleared = true" ); 
-          $cleandrains = pg_num_rows($cleandrain); echo $cleandrains; 
-          ?>
-        </h3>
-      </div>
-    </div>
-    <div class="w3-col l2 m2 s6 ">
-      <div class="w3-container w3-text-black w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-orange " onclick="filter('notclear')" title="Bofya kuona mitaro michafu">
-      <input type="hidden" name="notclear" id="filtervalue">
-        <div class="w3-clear"></div>
-        <h4>Michafu</h4>
-        <h3 class="w3-text-black">
-        <?php $dirtydrain = pg_query($dbcon, "SELECT * FROM mitaro_dar WHERE cleared = false"); 
-        $dirtydrains = pg_num_rows($dirtydrain); echo $dirtydrains; ?>
-        </h3>
-        </div>
-    </div>
-    <div class="w3-col l2 m2 s6 ">
-      <div class="w3-container w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-red" title="Bofya kuona mitaro inayohitaji msaada">
-        <div class="w3-clear"></div>
-        <h4>Msaada</h4>
-        <h3 class="w3-text-black">
-        <?php $helpdrain = pg_query($dbcon, "SELECT * FROM mitaro_dar WHERE need_help = true");
-        $helpdrains = pg_num_rows($helpdrain); echo $helpdrains; ?>
-        </h3>
-      </div>
-    </div>
-    <div class="w3-col l2 m2 s6 ">
-      <a href="citizens.php" target="_blank"><div class="w3-container w3-text-black w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-teal " title="Bofya kuona wananchi wote">
-        <div class="w3-clear"></div>
-        <h4>Wananchi</h4>
-        <h3 class="w3-text-black"><?php $user= pg_query($dbcon, "SELECT * FROM users"); 
-        $users = pg_num_rows($user); echo $users; ?>
-          
-        </h3>
-      </div></a>
-    </div>
-    <div class="w3-col l2 m2 s6 ">
-      <div class="w3-container w3-text-black w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-green" title="">
-        
-        <div class="w3-clear"></div>
-        <h4>Eneo</h4>
-        <h3 class="w3-text-black">Kigogo</h3>
-        </div>
-      </div>
-    </div>
-  </div>
-<hr>
 
   <div class="w3-panel" style="margin:30px;">
     <div class="w3-row-padding" style="margin:0 -16px">
-      <div class="w3-quarter w3-center">
+
+      <div class="w3-quarter w3-center w3-light-grey">
         <h4>Karibu Twaa Mtaro</h4>
         <ul class="w3-ul">
 
@@ -144,7 +82,68 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       
     </div>
 
-      <div class="w3-rest " style="margin-right:16px" >
+      <div class="w3-rest w3-three-quarter" style="margin-right:16px" >
+      <div class="w3-row-padding w3-margin-bottom">
+    <div class="w3-col l2 m2 s6 " style="width:20%">
+      <div class="w3-container w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-amber " onclick="window.location.reload(true)" title="Bofya kuona mitaro yote">
+        <h4>Mitaro Yote</h4>
+        <h3 class="w3-text-black"><?php $drains = pg_num_rows($homedrain); echo $drains; ?></h3>
+      </div>
+    </div>
+
+    <div class="w3-col l2 m2 s6 " style="width:20%">
+      <div class="w3-container w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-blue" onclick="filter('clear')" title="Bofya kuona mitaro misafi">
+      <input type="hidden" name="clear" id="filtervalue" value="clear">
+        <h4>Misafi</h4>
+
+        <h3 class="w3-text-black">
+          <?php $cleandrain = pg_query($dbcon, "SELECT * FROM mitaro_dar WHERE cleared = true" ); 
+          $cleandrains = pg_num_rows($cleandrain); echo $cleandrains; 
+          ?>
+        </h3>
+      </div>
+    </div>
+    <div class="w3-col l2 m2 s6 " style="width:20%">
+      <div class="w3-container w3-text-black w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-orange " onclick="filter('notclear')" title="Bofya kuona mitaro michafu">
+      <input type="hidden" name="notclear" id="filtervalue">
+        <div class="w3-clear"></div>
+        <h4>Michafu</h4>
+        <h3 class="w3-text-black">
+        <?php $dirtydrain = pg_query($dbcon, "SELECT * FROM mitaro_dar WHERE cleared = false"); 
+        $dirtydrains = pg_num_rows($dirtydrain); echo $dirtydrains; ?>
+        </h3>
+        </div>
+    </div>
+    <div class="w3-col l2 m2 s6 " style="width:20%">
+      <div class="w3-container w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-red" title="Bofya kuona mitaro inayohitaji msaada">
+        <div class="w3-clear"></div>
+        <h4>Msaada</h4>
+        <h3 class="w3-text-black">
+        <?php $helpdrain = pg_query($dbcon, "SELECT * FROM mitaro_dar WHERE need_help = true");
+        $helpdrains = pg_num_rows($helpdrain); echo $helpdrains; ?>
+        </h3>
+      </div>
+    </div>
+    <div class="w3-col l2 m2 s6 " style="width:20%">
+      <a href="citizens.php" target="_blank"><div class="w3-container w3-text-black w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-teal " title="Bofya kuona wananchi wote">
+        <div class="w3-clear"></div>
+        <h4>Wananchi</h4>
+        <h3 class="w3-text-black"><?php $user= pg_query($dbcon, "SELECT * FROM users"); 
+        $users = pg_num_rows($user); echo $users; ?>
+          
+        </h3>
+      </div></a>
+    </div>
+    <!--div class="w3-col l2 m2 s6 ">
+      <div class="w3-container w3-text-black w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-green" title="">
+        
+        <div class="w3-clear"></div>
+        <h4>Eneo</h4>
+        <h3 class="w3-text-black">Kigogo</h3>
+        </div>
+      </div-->
+    </div>
+  
       <span id="serverResult">
         <?php include 'functions/page.php'; ?>
       </span>

@@ -77,9 +77,6 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
           <li>
             <?php include 'functions/eneo.php'; ?>
           </li>
-          <li>
-             <?php include 'functions/report.php'; ?>
-          </li>
         </ul>
       
     </div>
@@ -142,7 +139,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <!-- Footer -->
   <footer class="w3-container w3-padding-16 w3-light-grey">
    
-    <p>Twaa Mtaro by <a href="https://www.worldbank.org" target="_blank"> The World Bank</a></p>
+    <p>Twaa Mtaro</p>
   </footer>
 
   <!-- End page content -->

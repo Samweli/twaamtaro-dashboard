@@ -59,11 +59,8 @@
             
         </td>
         <td>
-        <form>
-            <button id="siomsafi"  class="btn warning" type="submit" onclick="notClear()"   >SIO MSAFI</button>
-
-          <button id="msafi" class="btn success" onclick="assignClear()">MSAFI</button>
-        </form>
+          <a href="<?php echo 'functions/notClear.php?thedrain='.$drainId; ?>"><button id="siomsafi" name="" class="btn warning" >MCHAFU</button></a>
+          <a href="<?php echo 'functions/clear.php?thedrain='.$drainId; ?>"><button id="msafi" name="" class="btn success">MSAFI</button></a> 
         </td>
         </td>
          <?php } //End While  ?>

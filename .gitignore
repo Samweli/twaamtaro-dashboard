@@ -18,4 +18,4 @@ config.js
 dbco.php
 package.json
 show.php
-sms.sql
+twiliosettings.php
