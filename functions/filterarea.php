@@ -11,8 +11,8 @@
     ?>
 <div class="w3-container">
    <table class="w3-table w3-hoverable w3-responsive w3-white" border="0">
-        <tr class="w3-light-grey w3-border-bottom">
-        <th class="w3-center" colspan="5">MITARO  YA  <?php echo strtoupper($filtervalue); ?></th></tr>
+        <tr class="w3-dark-grey w3-border-bottom">
+        <th class="w3-center " colspan="5">MITARO  YA  <?php echo strtoupper($filtervalue); ?></th></tr>
       <tr class="w3-light-grey w3-border-bottom">
         <th>Namba ya Mtaro</th>
         <th>Jina la Mtaro</th>

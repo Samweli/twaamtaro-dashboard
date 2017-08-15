@@ -82,17 +82,16 @@
       <div class="w3-rest " style="margin-right:16px" >
       <div class="w3-row-padding w3-margin-bottom">
     <div class="w3-col l2 m2 s6" style="width:20%">
-      <div class="w3-container w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-amber" onclick="window.location.reload(true)" title="Click to view all drains">
+      <div class="w3-container w3-padding w3-white w3-hover-shadow w3-border w3-border-teal" onclick="window.location.reload(true)" title="Click to view all drains">
         <h4>All Drains</h4>
         <h3 class="w3-text-black"><?php $drains = pg_num_rows($homedrain); echo $drains; ?></h3>
       </div>
     </div>
 
     <div class="w3-col l2 m2 s6" style="width:20%">
-      <div class="w3-container w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-blue" onclick="filter('clear')" title="Click to view cleaned drains">
-      <input type="hidden" name="clear" id="filtervalue" value="clear">
+      <div class="w3-container w3-padding w3-white w3-hover-shadow w3-border w3-border-teal" onclick="filter('clear')" title="Click to view cleaned drains">
+      <div class="w3-clear"></div><span class="w3-right"><img src="../assets/images/broom.png" title="Clean Drains" width="30" height="30"></span>
         <h4>Clean</h4>
-
         <h3 class="w3-text-black">
           <?php $cleandrain = pg_query($dbcon, "SELECT * FROM mitaro_dar WHERE cleared = true" ); 
           $cleandrains = pg_num_rows($cleandrain); echo $cleandrains; 
@@ -101,9 +100,8 @@
       </div>
     </div>
     <div class="w3-col l2 m2 s6" style="width:20%">
-      <div class="w3-container w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-orange" onclick="filter('notclear')" title="Click to view dirty drains">
-      <input type="hidden" name="notclear" id="filtervalue">
-        <div class="w3-clear"></div>
+      <div class="w3-container w3-padding w3-white w3-hover-shadow w3-border w3-border-teal" onclick="filter('notclear')" title="Click to view dirty drains">
+      <div class="w3-clear"></div><span class="w3-right"><img src="../assets/images/trash.png" title="Dirty Drains" width="30" height="30"></span>
         <h4>Dirty</h4>
         <h3 class="w3-text-black">
         <?php $dirtydrain = pg_query($dbcon, "SELECT * FROM mitaro_dar WHERE cleared = false"); 
@@ -112,9 +110,9 @@
         </div>
     </div>
     <div class="w3-col l2 m2 s6 " style="width:20%">
-      <div class="w3-container w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-red">
-        <div class="w3-clear" title=""></div>
-        <h4>Need Help</h4>
+      <div class="w3-container w3-padding w3-white w3-hover-shadow w3-border w3-border-teal">
+        <div class="w3-clear"></div><span class="w3-right"><img src="../assets/images/help.png" title="Help Needed" width="30" height="30"></span>
+        <h4>Help</h4>
         <h3 class="w3-text-black">
         <?php $helpdrain = pg_query($dbcon, "SELECT * FROM mitaro_dar WHERE need_help = true");
         $helpdrains = pg_num_rows($helpdrain); echo $helpdrains; ?>
@@ -122,8 +120,8 @@
       </div>
     </div>
     <div class="w3-col l2 m2 s6" style="width:20%">
-      <a href="citizens.php" target="_blank"><div class="w3-container  w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-teal" title="Click to view all citizens" >
-        <div class="w3-clear"></div>
+      <a href="citizens.php" target="_blank"><div class="w3-container  w3-padding w3-white w3-hover-shadow w3-border w3-border-teal" title="Click to view all citizens" >
+        <div class="w3-clear"></div><span class="w3-right"><img src="../assets/images/group.png" title="Citizens" width="30" height="30"></span>
         <h4>Citizens</h4>
         <h3 class="w3-text-black"><?php $user= pg_query($dbcon, "SELECT * FROM users"); 
         $users = pg_num_rows($user); echo $users; ?>
@@ -216,6 +214,10 @@ function search() {
       };
       xhttp.open("GET", "functions/filter.php?filter="+filterword, true);
       xhttp.send();
+  }
+  function activediv()
+  {
+    document.getElementById("filterbtn").style.boxShadow="0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)";
   }
 </script>
 

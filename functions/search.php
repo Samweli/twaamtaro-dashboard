@@ -6,7 +6,7 @@
   <link rel="stylesheet" type="text/css" href="styles/drains.css">
 </head>
 <body class="w3-center w3-container">
-  <div class="w3-row w3-margin" style="padding-bottom:10px">
+  <div class="w3-row w3-margin" >
     
   <?php
 
@@ -33,7 +33,7 @@ if(pg_num_rows($searchuser) > 0){
   ?>
   <h3 class="w3-center w3-text-black">MAJIBU</h3>
   <table class="w3-table w3-hoverable w3-responsive w3-white" border="0">
-  <tr class="w3-light-grey"><th class="w3-center" colspan="4">WANANCHI</th></tr>
+  <tr class="w3-dark-grey"><th class="w3-center" colspan="4">WANANCHI</th></tr>
       <tr class="w3-light-grey w3-border-bottom" >
         <th>Namba ya Mkazi</th>
         <th>Jina la Mkazi</th>

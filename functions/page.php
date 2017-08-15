@@ -47,13 +47,16 @@ $dardrain = pg_query($dbcon, "SELECT *
 
       ?>
       <table class="w3-table w3-hoverable w3-responsive w3-white" border="0">
-    <tr class="w3-light-grey w3-border-bottom"> 
-      <th>NAMBA YA MTARO</th>
-      <th>JINA LA MTARO</th>
-      <th>MTAA</th>
-      <th>MHUSIKA</th>
-      <th>TUMA UJUMBE</th>
-    </tr>
+      <tr>
+        <th class="w3-dark-grey w3-center" colspan="5">MITARO YOTE</th>
+      </tr>
+      <tr class="w3-light-grey w3-border-bottom"> 
+        <th>NAMBA YA MTARO</th>
+        <th>JINA LA MTARO</th>
+        <th>MTAA</th>
+        <th>MHUSIKA</th>
+        <th>TUMA UJUMBE</th>
+      </tr>
   
     <?php
       
@@ -113,12 +116,16 @@ $range = 3;
 // if not on page 1, don't show back links
 if ($currentpage > 1) {
    // show << link to go back to page 1
-   echo " <a href='{$_SERVER['PHP_SELF']}?currentpage=1'><button class=\"w3-btn w3-blue w3-round-xxlarge\"><< First Page </button></a> ";
+   ?>
+   <button class="w3-btn w3-blue w3-round-xxlarge" onclick="firstpage()"><< First Page </button>
+
+   <?php
    // get previous page num
    $prevpage = $currentpage - 1;
    // show < link to go back to 1 page
-   echo " <a href='{$_SERVER['PHP_SELF']}?currentpage=$prevpage'><button class=\"w3-btn w3-blue w3-round-xxlarge w3-margin-right\">< PreviousPage</button></a> ";
-} // end if 
+   ?>
+  <button class="w3-btn w3-blue w3-round-xxlarge w3-margin-right" onclick="previouspage()">< PreviousPage</button>
+<?php } // end if 
 
 // loop to show links to range of pages around current page
 for ($x = ($currentpage - $range); $x < (($currentpage + $range) + 1); $x++) {
@@ -127,11 +134,15 @@ for ($x = ($currentpage - $range); $x < (($currentpage + $range) + 1); $x++) {
       // if we're on current page...
       if ($x == $currentpage) {
          // 'highlight' it but don't make a link
-         echo " <button class=\"w3-button w3-blue w3-circle\"><b>$x</b></button> ";
+        ?> 
+        <button class="w3-button w3-blue w3-circle" ><?php echo "<b>".$x."</b>"; ?></button>
+        <?php
       // if not current page...
       } else {
          // make it a link
-         echo " <a href='{$_SERVER['PHP_SELF']}?currentpage=$x'><button class=\"w3-btn w3-grey w3-circle\">$x</button></a> ";
+         ?>
+         <button class="w3-btn w3-grey w3-circle" onclick="nextpage()"><?php echo "<b>".$x."</b>"; ?></button>
+         <?php
       } // end else
    } // end if 
 } // end for
@@ -141,11 +152,61 @@ if ($currentpage != $totalpages) {
    // get next page
    $nextpage = $currentpage + 1;
     // echo forward link for next page 
-   echo " <a href='{$_SERVER['PHP_SELF']}?currentpage=$nextpage'><button class=\"w3-btn w3-blue w3-round-xxlarge w3-margin-left\">Next Page ></button></a> ";
-   // echo forward link for lastpage
-   echo " <a href='{$_SERVER['PHP_SELF']}?currentpage=$totalpages'><button class=\"w3-btn w3-blue w3-round-xxlarge\">Last Page >></button></a> ";
-} // end if
+  ?>
+  <button class="w3-btn w3-blue w3-round-xxlarge w3-margin-left" onclick="nextpage()">Next Page ></button>
+   <?php // echo forward link for lastpage ?>
+   <button class="w3-btn w3-blue w3-round-xxlarge" onclick="lastpage()">Last Page >></button>
+<?php } // end if
 /****** end build pagination links ******/
  
 ?>
 </div>
+<script>
+function firstpage() { 
+    var xhttp = new XMLHttpRequest();
+    var first= "<?php echo $_SERVER['PHP_SELF'].'\?currentpage"=1'; ?>";
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+         document.getElementById("serverResult").innerHTML = this.responseText;
+        } 
+      };
+      xhttp.open("GET", first, true);
+      xhttp.send();
+  }
+  function previouspage() { 
+    var xhttp = new XMLHttpRequest();
+    var prev= "<?php echo $_SERVER['PHP_SELF'].'\?currentpage"='.$prevpage; ?>";
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+         document.getElementById("serverResult").innerHTML = this.responseText;
+        } 
+      };
+      xhttp.open("GET", prev, true);
+      xhttp.send();
+  }
+  function nextpage() { 
+    var xhttp = new XMLHttpRequest();
+    var next= "<?php echo $_SERVER['PHP_SELF'].'\?currentpage"='.$nextpage; ?>";
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+         document.getElementById("serverResult").innerHTML = this.responseText;
+        } 
+      }
+      xhttp.open("GET", next , true);
+      xhttp.send();
+  }
+    function lastpage() { 
+    var xhttp = new XMLHttpRequest();
+    var total= "<?php echo $_SERVER['PHP_SELF'].'\?currentpage"='.$totalpages; ?>";
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+         document.getElementById("serverResult").innerHTML = this.responseText;
+        } 
+      };
+      xhttp.open("GET", total, true);
+      xhttp.send();
+  }
+
+
+  
+</script>

@@ -82,18 +82,18 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       
     </div>
 
-      <div class="w3-rest w3-three-quarter" style="margin-right:16px" >
+      <div class="w3-rest "  >
       <div class="w3-row-padding w3-margin-bottom">
     <div class="w3-col l2 m2 s6 " style="width:20%">
-      <div class="w3-container w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-amber " onclick="window.location.reload(true)" title="Bofya kuona mitaro yote">
+      <div class="w3-container w3-padding w3-white w3-hover-shadow w3-border w3-border-teal " onclick="alldrains()" title="Bofya kuona mitaro yote" id="alldrain">
         <h4>Mitaro Yote</h4>
         <h3 class="w3-text-black"><?php $drains = pg_num_rows($homedrain); echo $drains; ?></h3>
       </div>
     </div>
 
     <div class="w3-col l2 m2 s6 " style="width:20%">
-      <div class="w3-container w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-blue" onclick="filter('clear')" title="Bofya kuona mitaro misafi">
-      <input type="hidden" name="clear" id="filtervalue" value="clear">
+      <div class="w3-container w3-padding w3-white w3-hover-shadow w3-border w3-border-teal" onclick="filter('clear','clearbtn')" title="Bofya kuona mitaro misafi" id="clearbtn">
+      <div class="w3-clear"></div><span class="w3-right"><img src="assets/images/broom.png" title="Clean Drains" width="30" height="30"></span>
         <h4>Misafi</h4>
 
         <h3 class="w3-text-black">
@@ -104,9 +104,8 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       </div>
     </div>
     <div class="w3-col l2 m2 s6 " style="width:20%">
-      <div class="w3-container w3-text-black w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-orange " onclick="filter('notclear')" title="Bofya kuona mitaro michafu">
-      <input type="hidden" name="notclear" id="filtervalue">
-        <div class="w3-clear"></div>
+      <div class="w3-container w3-text-black w3-padding w3-white w3-hover-shadow w3-border w3-border-teal " onclick="filter('notclear','dirtybtn')" title="Bofya kuona mitaro michafu" id="dirtybtn">
+        <div class="w3-clear"></div><span class="w3-right"><img src="assets/images/trash.png" title="Dirty Drains" width="20" height="20"></span>
         <h4>Michafu</h4>
         <h3 class="w3-text-black">
         <?php $dirtydrain = pg_query($dbcon, "SELECT * FROM mitaro_dar WHERE cleared = false"); 
@@ -115,8 +114,8 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         </div>
     </div>
     <div class="w3-col l2 m2 s6 " style="width:20%">
-      <div class="w3-container w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-red" title="Bofya kuona mitaro inayohitaji msaada">
-        <div class="w3-clear"></div>
+      <div class="w3-container w3-padding w3-white w3-hover-shadow w3-border w3-border-teal" title="Bofya kuona mitaro inayohitaji msaada" id="filterbtn">
+        <div class="w3-clear"></div><span class="w3-right"><img src="assets/images/help.png" title="Help Needed" width="20" height="20"></span>
         <h4>Msaada</h4>
         <h3 class="w3-text-black">
         <?php $helpdrain = pg_query($dbcon, "SELECT * FROM mitaro_dar WHERE need_help = true");
@@ -125,17 +124,17 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       </div>
     </div>
     <div class="w3-col l2 m2 s6 " style="width:20%">
-      <a href="citizens.php" target="_blank"><div class="w3-container w3-text-black w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-teal " title="Bofya kuona wananchi wote">
-        <div class="w3-clear"></div>
-        <h4>Wananchi</h4>
+      <div class="w3-container w3-padding w3-text-black w3-white w3-hover-shadow w3-border w3-border-teal " title="Bofya kuona wananchi wote" onclick="allcitizens()">
+        <div class="w3-clear"></div><span class="w3-right"><img src="assets/images/group.png" title="Citizens" width="20" height="20"></span>
+        <h5>Wananchi</h5>
         <h3 class="w3-text-black"><?php $user= pg_query($dbcon, "SELECT * FROM users"); 
         $users = pg_num_rows($user); echo $users; ?>
           
         </h3>
-      </div></a>
+      </div>
     </div>
     <!--div class="w3-col l2 m2 s6 ">
-      <div class="w3-container w3-text-black w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-green" title="">
+      <div class="w3-container w3-text-black w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-teal" title="">
         
         <div class="w3-clear"></div>
         <h4>Eneo</h4>
@@ -144,9 +143,11 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       </div-->
     </div>
   
-      <span id="serverResult">
-        <?php include 'functions/page.php'; ?>
-      </span>
+      <div class="w3-border w3-border-teal w3-margin-0 w3-white">
+        <span id="serverResult">
+          <?php include 'functions/reports.php'; ?>
+        </span>
+      </div>
       </div>
     </div>
   </div>
@@ -159,7 +160,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <!-- Footer -->
   <footer class="w3-container w3-padding-16 w3-light-grey">
    
-    <p>Twaa Mtaro by <a href="#" target="_blank"> TUR</a></p>
+    <p>Twaa Mtaro by <a href="#" target="_blank"> TURP</a></p>
   </footer>
 
   <!-- End page content -->
@@ -209,7 +210,7 @@ function search() {
       xhttp.open("GET", "functions/search.php?searchword="+searchword, true);
       xhttp.send();
   }
-  function filter(filterword) { 
+  function filter(filterword, btnvalue) { 
     var xhttp = new XMLHttpRequest();
     //var filterword = document.getElementById("filtervalue").value;
       xhttp.onreadystatechange = function() {
@@ -217,9 +218,53 @@ function search() {
          document.getElementById("serverResult").innerHTML = this.responseText;
         }
       };
+      if (btnvalue == "clearbtn") {
+        document.getElementById("clearbtn").style.boxShadow="0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)";
+        document.getElementById("dirtybtn").style.boxShadow="0 0 0 0 rgba(0,0,0,0),0 0 0 0 rgba(0,0,0,0)";
+        document.getElementById("alldrain").style.boxShadow="0 0 0 0 rgba(0,0,0,0),0 0 0 0 rgba(0,0,0,0)";
+      }
+      else
+        if (btnvalue == "dirtybtn") {
+        document.getElementById("dirtybtn").style.boxShadow="0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)";
+        document.getElementById("clearbtn").style.boxShadow="0 0 0 0 rgba(0,0,0,0),0 0 0 0 rgba(0,0,0,0)";
+        document.getElementById("alldrain").style.boxShadow="0 0 0 0 rgba(0,0,0,0),0 0 0 0 rgba(0,0,0,0)";
+      }
+      
       xhttp.open("GET", "functions/filter.php?filter="+filterword, true);
       xhttp.send();
   }
+  function activediv()
+  {
+    document.getElementById("filterbtn").style.boxShadow="0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)";
+  }
+  function alldrains() { 
+    var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+         document.getElementById("serverResult").innerHTML = this.responseText;
+        }
+        document.getElementById('alldrain').style.boxShadow='0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)';
+        document.getElementById("clearbtn").style.boxShadow="0 0 0 0 rgba(0,0,0,0),0 0 0 0 rgba(0,0,0,0)";
+        document.getElementById("dirtybtn").style.boxShadow="0 0 0 0 rgba(0,0,0,0),0 0 0 0 rgba(0,0,0,0)";
+      };
+      xhttp.open("GET", "functions/page.php", true);
+      xhttp.send();
+  }
+  function allcitizens() { 
+    var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+         document.getElementById("serverResult").innerHTML = this.responseText;
+        }
+        document.getElementById('allcitizen').style.boxShadow='0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)';
+        document.getElementById("clearbtn").style.boxShadow="0 0 0 0 rgba(0,0,0,0),0 0 0 0 rgba(0,0,0,0)";
+        document.getElementById("dirtybtn").style.boxShadow="0 0 0 0 rgba(0,0,0,0),0 0 0 0 rgba(0,0,0,0)";
+        document.getElementById("alldrain").style.boxShadow="0 0 0 0 rgba(0,0,0,0),0 0 0 0 rgba(0,0,0,0)";
+      };
+      xhttp.open("GET", "functions/citizens.php", true);
+      xhttp.send();
+  }
+
 </script>
 
 </body>
