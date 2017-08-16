@@ -62,8 +62,9 @@
 
 <div class="w3-panel" style="margin:30px;">   
     <div class="w3-row-padding" style="margin:0 -16px">
+
       <div class="w3-quarter w3-center w3-margin-0 w3-padding-0">
-        
+            <h4>Welcome to Adopt a Drain</h4>
         <ul class="w3-ul">
  
           <li class="w3-padding"><a href="index.php" ><button class="w3-btn-block w3-btn w3-bar-item btn w3-teal">HOME</button></a></li>
@@ -85,7 +86,7 @@
       <div class="w3-rest " >
       <div class="w3-row-padding w3-margin-bottom">
     <div class="w3-col l2 m2 s6" style="width:20%">
-      <div class="w3-container w3-padding w3-white w3-hover-shadow w3-border w3-border-teal" onclick="window.location.reload(true)" title="Click to view all drains">
+      <div class="w3-container w3-padding w3-white w3-hover-shadow w3-border w3-border-teal" onclick="alldrains()" title="Click to view all drains">
         <h4>All Drains</h4>
         <h3 class="w3-text-black"><?php $drains = pg_num_rows($homedrain); echo $drains; ?></h3>
       </div>
@@ -113,7 +114,7 @@
         </div>
     </div>
     <div class="w3-col l2 m2 s6 " style="width:20%">
-      <div class="w3-container w3-padding w3-white w3-hover-shadow w3-border w3-border-teal">
+      <div class="w3-container w3-padding w3-white w3-hover-shadow w3-border w3-border-teal" id="filterbtn" onclick="filter('help')">
         <div class="w3-clear"></div><span class="w3-right"><img src="../assets/images/help.png" title="Help Needed" width="30" height="30"></span>
         <h4>Help</h4>
         <h3 class="w3-text-black">
@@ -123,14 +124,14 @@
       </div>
     </div>
     <div class="w3-col l2 m2 s6" style="width:20%">
-      <a href="citizens.php" target="_blank"><div class="w3-container  w3-padding w3-white w3-hover-shadow w3-border w3-border-teal" title="Click to view all citizens" >
+      <div class="w3-container  w3-padding w3-white w3-hover-shadow w3-border w3-border-teal" title="Click to view all citizens" onclick="allcitizens()">
         <div class="w3-clear"></div><span class="w3-right"><img src="../assets/images/group.png" title="Citizens" width="30" height="30"></span>
         <h4>Citizens</h4>
         <h3 class="w3-text-black"><?php $user= pg_query($dbcon, "SELECT * FROM users"); 
         $users = pg_num_rows($user); echo $users; ?>
           
         </h3>
-      </div></a>
+      </div>
     </div>
     <!--div class="w3-col l2 m2 s6">
       <div class="w3-container w3-padding-16 w3-transparent w3-hover-shadow w3-border w3-border-green" title="">
@@ -141,7 +142,7 @@
         </div>
       </div>
     </div-->
-  
+  </div>
       <div class="w3-border w3-border-teal w3-margin-0 w3-white">
         <span id="serverResult">
           <?php include 'functions/reports.php'; ?>
@@ -223,6 +224,72 @@ function search() {
   function activediv()
   {
     document.getElementById("filterbtn").style.boxShadow="0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)";
+  }
+  function alldrains() { 
+    var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+         document.getElementById("serverResult").innerHTML = this.responseText;
+        }
+        
+      };
+      xhttp.open("GET", "functions/page.php", true);
+      xhttp.send();
+  }
+  function allcitizens() { 
+    var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+         document.getElementById("serverResult").innerHTML = this.responseText;
+        }
+
+      };
+      xhttp.open("GET", "functions/citizens.php", true);
+      xhttp.send();
+  }
+  function firstpage() { 
+    var xhttp = new XMLHttpRequest();
+    var first= "<?php echo 'functions/page.php\?currentpage=1'; ?>";
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+         document.getElementById("serverResult").innerHTML = this.responseText;
+        } 
+      };
+      xhttp.open("GET", first, true);
+      xhttp.send();
+  }
+  function previouspage() { 
+    var xhttp = new XMLHttpRequest();
+    var prev= "<?php echo 'functions/page.php\?currentpage='.$prevpage; ?>";
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+         document.getElementById("serverResult").innerHTML = this.responseText;
+        } 
+      };
+      xhttp.open("GET", prev, true);
+      xhttp.send();
+  }
+  function nextpage() { 
+    var xhttp = new XMLHttpRequest();
+    var next= "<?php echo 'functions/page.php\?currentpage='.$nextpage; ?>";
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+         document.getElementById("serverResult").innerHTML = this.responseText;
+        } 
+      }
+      xhttp.open("GET", next , true);
+      xhttp.send();
+  }
+    function lastpage() { 
+    var xhttp = new XMLHttpRequest();
+    var total= "<?php echo $_SERVER['PHP_SELF'].'\?currentpage='.$totalpages; ?>";
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+         document.getElementById("serverResult").innerHTML = this.responseText;
+        } 
+      };
+      xhttp.open("GET", total, true);
+      xhttp.send();
   }
 </script>
 

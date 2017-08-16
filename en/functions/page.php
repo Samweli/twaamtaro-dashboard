@@ -47,6 +47,9 @@ $dardrain = pg_query($dbcon, "SELECT *
 
       ?>
       <table class="w3-table w3-hoverable w3-responsive w3-white" border="0">
+      <tr>
+        <th class="w3-dark-grey w3-center" colspan="5">ALL DRAINS</th>
+      </tr>
     <tr class="w3-light-grey w3-border-bottom">
       <th>GID</th>
       <th>DRAIN NAME</th>
@@ -97,8 +100,8 @@ $dardrain = pg_query($dbcon, "SELECT *
       </td>
       <td>
         <?php //; ?>
-        <a href="<?php echo 'notClear.php?thedrain='.$drainId; ?>"><button id="siomsafi" name="" class="btn warning" >DIRTY</button></a>
-        <a href="<?php echo 'clear.php?thedrain='.$drainId; ?>"><button id="msafi" name="" class="btn success">CLEAN</button></a> 
+        <a href="<?php echo 'functions/notClear.php?thedrain='.$drainId; ?>"><button id="siomsafi" name="" class="btn warning" >DIRTY</button></a>
+        <a href="<?php echo 'functions/clear.php?thedrain='.$drainId; ?>"><button id="msafi" name="" class="btn success">CLEAN</button></a> 
         
          <!-- a href="<?php //echo 'inform.php?thedrain='.$drainId; ?>"><button id="taarifu" name="" class="btn w3-blue">NOTIFY</button></a-->
       </td>

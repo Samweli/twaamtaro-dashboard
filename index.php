@@ -14,11 +14,6 @@
 <style>
 html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
-.pie {
-  width: 100px; height: 100px;
-  border-radius: 50%;
-  background: yellowgreen;
-}
 </style>
 <body class="w3-light-grey">
 <?php

@@ -1,18 +1,17 @@
  <?php
       include 'dbcon.php';
       
-?>
-
       
+?>
   <table class="w3-table w3-hoverable w3-responsive w3-white" border="0">
       <tr>
-        <th class="w3-dark-grey w3-center" colspan="5">WANANCHI WOTE</th>
+        <th class="w3-dark-grey w3-center" colspan="5">ALL CITIZENS</th>
       </tr>
       <tr class="w3-light-grey w3-border-bottom" >
-        <th>Namba ya Mkazi</th>
-        <th>Jina la Mkazi</th>
-        <th>Simu</th>
-        <th>Mitaro</th>
+        <th>Citizen ID</th>
+        <th>Name</th>
+        <th>Phone Number</th>
+        <th>Drains</th>
       </tr>
     
       <?php
@@ -20,7 +19,7 @@
           //&& !$searchclaims
           $citizen = pg_query($dbcon,"SELECT * FROM users");
           if (!$citizen) {
-        echo "Hakuna wananchi wowote walioandikishwa ";
+        echo "There are no any registered citizens ";
       }
           while($user_row=pg_fetch_assoc($citizen)) {
             $user = $user_row['id'];

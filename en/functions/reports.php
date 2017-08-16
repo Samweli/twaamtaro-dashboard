@@ -17,7 +17,7 @@
   
 ?>  
  
-  <div class="w3-row-padding w3-margin">
+  <div class="w3-row-padding w3-margin w3-border-teal">
     
   <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
       <select id="eneo" class="w3-padding " name="filterarea">
@@ -37,10 +37,6 @@
   </form>
     </div>
 
-    <div class="w3-col l4 m4 s12">
-   &nbsp
-    </div>
-  </div>
 
   <!--div class="w3-row-padding" id="areabased"></div-->
 <?php
@@ -87,31 +83,29 @@
 
    
     ?>
-    <div class="w3-row-padding w3-center">
+    <div class="w3-row w3-center">
       <h2><?php echo $filtervalue; ?></h2>
-      <div class="w3-half s12">
-      <span id="errclaims"></span>
-       <div id="areastatuschart" style="width: 100%; height: 500px; margin: 0px; padding: 0;"></div>
-       <?php if ($AreaAllClaims < 1 ) {
+      <table>
+        <tr>
+        <?php if ($AreaAllClaims < 1 ) {
           echo "<p>None of the drains are claimed, thus no graph can be constructed</p>";
           }
         ?>
-      </div>
-      <div class="w3-half s12">
-       <div id="areaclaimschart" style="width: 100%; height: 500px; margin: 0px; padding: 0;"></div>
-     </div>
-<?php  } ?>
-  </div>
-  <div class="w3-row-padding w3-center">
-  <h2>Overall Report</h2>
-   <div class="w3-half s12">
-     <div id="statuschart" style="width: 100%; height: 500px; margin: 0px; padding: 0;"></div>
-   </div>
-   <div class="w3-half s12">
-     <div id="claimschart" style="width: 100%; height: 500px; margin: 0px; padding: 0;"></div>
-   </div>
-  </div>
+          <td><div id="areastatuschart" style="border: 1px; margin: 0px; padding: 0;"></div></td>
+          <td><div id="areaclaimschart" style="border: 1px; margin: 0px; padding: 0;"></div></td>
+          <?php  } ?>
+        </tr>
+      </table>
 
+    <h2>Overall Report</h2>
+   <table class="w3-responsive">
+    <tr>
+      <td><div id="statuschart" style="border: 1px; margin: 0px; padding: 0;"></div></td>
+      <td><div id="claimschart" style="border: 1px; margin: 0px; padding: 0;"></div></td>
+
+    </tr>
+    </table>
+  </div>
 
   
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -130,7 +124,9 @@
           ['Help',  <?php echo $AreaHelpDrains; ?>]
         ]);
         var options = {
-          title: 'Cleanness Report for Claimed Drains'
+          title: 'Cleanness Report for Claimed Drains',
+          'width':400,
+          'height':300
         };
         var chart = new google.visualization.PieChart(document.getElementById('areastatuschart'));
         chart.draw(data, options);
@@ -143,7 +139,9 @@
           ['Not Claimed',     <?php echo $AreaunClaimed; ?>]
         ]);
         var options = {
-          title: 'Claimed vs Unclaimed Drains'
+          title: 'Claimed vs Unclaimed Drains',
+          'width':400,
+          'height':300
         };
         //Error Handling
         var errContainer = document.getElementById('errclaims');
@@ -163,7 +161,9 @@
           ['Help',  <?php echo $HelpDrains; ?>]
         ]);
         var options = {
-          title: 'Cleanness Report for Claimed Drains'
+          title: 'Cleanness Report for Claimed Drains',
+          'width':400,
+          'height':300
         };
         var chart = new google.visualization.PieChart(document.getElementById('statuschart'));
         chart.draw(data, options);
@@ -176,7 +176,9 @@
           ['Not Claimed',     <?php echo $unClaimed; ?>]
         ]);
         var options = {
-          title: 'Claimed vs Unclaimed Drains'
+          title: 'Claimed vs Unclaimed Drains',
+          'width':400,
+          'height':300
         };
         var chart = new google.visualization.PieChart(document.getElementById('claimschart'));
         chart.draw(data, options);

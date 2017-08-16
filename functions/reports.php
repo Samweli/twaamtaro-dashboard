@@ -84,7 +84,7 @@
     ?>
     <div class="w3-row w3-center" >
       <h2><?php echo $filtervalue; ?></h2>
-      <table>
+      <table class="w3-responsive">
         <tr>
         <?php if ($AreaAllClaims < 1 ) {
           echo "<p>Hakuna mtaro uliotwaliwa, Hivyo hauwezi kuata grafu yoyote</p>";

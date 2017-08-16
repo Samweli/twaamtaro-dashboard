@@ -8,18 +8,24 @@
       $filtervalue = $_GET['filter'];
 
         if ($filtervalue == "notclear") {
-          $drainsql = "SELECT * FROM mitaroKigogo WHERE cleared = false";
-          $tabletitle = "DIRTY";
+          $drainsql = "SELECT * FROM mitaro_dar WHERE cleared = false";
+          $tabletitle = "DIRTY DRAINS";
         } else if ($filtervalue == "clear")  {
-          $drainsql = "SELECT * FROM mitaroKigogo WHERE cleared = true";
-          $tabletitle = "CLEAN";
+          $drainsql = "SELECT * FROM mitaro_dar WHERE cleared = true";
+          $tabletitle = "CLEAN DRAINS";
+        }
+        else if ($filtervalue == "help")  {
+          $drainsql = "SELECT * FROM mitaro_dar WHERE need_help = true";
+          $tabletitle = "DRAINS THAT NEED HELP";
         }
 
         $filterdrain = pg_query($dbcon,$drainsql);
+        $numrows = pg_num_rows($filterdrain);
+        if ($numrows > 1) { 
     ?>
    <table class="w3-table w3-hoverable w3-responsive w3-white" border="0">
-        <tr class="w3-light-grey w3-border-bottom">
-        <th class="w3-center" colspan="5"><?php echo $tabletitle; ?> DRAINS</th></tr>
+        <tr class="w3-dark-grey w3-border-bottom">
+        <th class="w3-center" colspan="5"><?php echo $tabletitle; ?></th></tr>
       <tr class="w3-light-grey w3-border-bottom">
         <th>DRAIN GID</th>
         <th>DRAIN NAME</th>
@@ -68,31 +74,15 @@
       </tr>
 
       </table>
-  <script>
 
-    function notClear() {
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-         document.getElementById("serverResult").innerHTML = this.responseText;
-        }
-      };
-      xhttp.open("GET", "notClear.php", true);
-      xhttp.send();
-    }
-
-    </script>
-       <?php   ?>
-    </tr>
-
-    </table>
-       
-      </p>
-      
 
     </div> <!--End Column -->
   </div> <!-- End Row -->
-
+  <?php } //End If
+    else  {
+      echo "<p class=\"w3-center w3-padding\">The aren't any drains that need help</p>";
+    }
+    ?>
 
 
   <!-- AJAX Scrits for Button Actions -->

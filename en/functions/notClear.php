@@ -21,7 +21,7 @@ include 'dbcon.php';
             $mhusika = $citizenName["first_name"]." ".$citizenName["last_name"];
             $number = $citizenName["sms_number"];
 
-            include 'twiliosettings.php';
+            include '../../twiliosettings.php';
 
                 $sms = $client->account->messages->create(
                 $number,

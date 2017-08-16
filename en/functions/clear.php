@@ -19,7 +19,7 @@ include 'dbcon.php';
             $mhusika = $citizenName["first_name"]." ".$citizenName["last_name"];
             $number = $citizenName["sms_number"];
 
-            include 'twiliosettings.php';
+            include '../../twiliosettings.php';
             $sms = $client->messages->create($number,
             array(
                 'from' => '+14256540807',
@@ -27,7 +27,13 @@ include 'dbcon.php';
                 )
             );
             // Display a confirmation message on the screen
-            echo "<script> alert('A message has been sent to, ".$mhusika." with number ".$number."'); </script>";
+            if ($sms) {
+                echo "<script> alert('A message has been sent to, ".$mhusika." with number ".$number."'); </script>";
+            } else {
+                echo "<script> alert('Something went wrong'); </script>";
+            }
+            
+            
             } //End While
            }
 
