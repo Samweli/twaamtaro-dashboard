@@ -125,7 +125,7 @@
           ['Mssaada',  <?php echo $AreaHelpDrains; ?>]
         ]);
         var options = {
-          title: 'Cleanness Report for Claimed Drains',
+          title: 'Ripoti ya usafi wa mitaro iliyotwaliwa',
           'width':400,
           'height':300
         };

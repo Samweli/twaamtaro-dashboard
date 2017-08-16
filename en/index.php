@@ -41,7 +41,6 @@
 <div class="w3-bar w3-top w3-dark-grey w3-large w3-padding-right" style="z-index:4">
    <div class="w3-center w3-padding-top" >
    <span class="w3-margin-right w3-right w3-padding-right w3-text-small"><a href="../" class=""> Swahili </a></span> 
-  <span class="w3-right w3-padding-right"><a href="#" class=""> English</a></span>
     <input type="text" name="search" id="searchterm"> <button class="btn w3-teal w3-margin-right w3-padding-right" name="searchbtn" onclick="search()">SEARCH</button>
   
   
@@ -83,7 +82,7 @@
         </ul>
       
     </div>
-      <div class="w3-rest " style="margin-right:16px" >
+      <div class="w3-rest " >
       <div class="w3-row-padding w3-margin-bottom">
     <div class="w3-col l2 m2 s6" style="width:20%">
       <div class="w3-container w3-padding w3-white w3-hover-shadow w3-border w3-border-teal" onclick="window.location.reload(true)" title="Click to view all drains">

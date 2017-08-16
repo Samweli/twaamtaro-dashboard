@@ -16,19 +16,9 @@
 
   
 ?>  
-  <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="../../styles/w3.css">
-  <link rel="stylesheet" type="text/css" href="../../styles/style.css">
-
-  </head>
  
   <div class="w3-row-padding w3-margin">
-    <div class="w3-col l4 m4 s12">
-  &nbsp
-    </div>
-    <div class="w3-col l4 m4 s12">
+    
   <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
       <select id="eneo" class="w3-padding " name="filterarea">
       <option > --- Select Area --- </option>

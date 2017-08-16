@@ -30,7 +30,7 @@ if(pg_num_rows($searchuser) > 0){
   ?>
   <h3 class="w3-center w3-text-black">SEARCH RESULTS</h3>
   <table class="w3-table w3-hoverable w3-responsive w3-white" border="0">
-  <tr class="w3-light-grey"><th class="w3-center" colspan="4">CITIZENS</th></tr>
+  <tr class="w3-dark-grey"><th class="w3-center" colspan="4">CITIZENS</th></tr>
       <tr class="w3-light-grey w3-border-bottom" >
         <th>Citizen ID</th>
         <th>Name</th>
