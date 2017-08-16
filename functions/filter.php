@@ -14,6 +14,10 @@
           $drainsql = "SELECT * FROM mitaro_dar WHERE cleared = true";
           $tabletitle = "MISAFI";
         }
+        else if ($filtervalue == "help")  {
+          $drainsql = "SELECT * FROM mitaro_dar WHERE need_help = true";
+          $tabletitle = "INAYOHITAJI MSAADA";
+        }
 
         $filterdrain = pg_query($dbcon,$drainsql);
         //$r = pg_num_rows($filterdrain);
@@ -53,9 +57,9 @@
       $dardrain = pg_query($dbcon, "SELECT * 
         FROM mitaro_dar 
         LIMIT  $rowsperpage OFFSET $offset");
+
+        if ($numrows > 1) { 
     ?>
-
-
 
 
    <table class="w3-table w3-hoverable w3-responsive w3-white" border="0">
@@ -68,8 +72,7 @@
         <th>Mhusika</th>
         <th>Hali</th>
       </tr>
-      <?php
-        
+      <?php      
         while($drain_row=pg_fetch_assoc($filterdrain)) {
       ?>
       <tr>
@@ -104,13 +107,16 @@
           <a href="<?php echo 'functions/clear.php?thedrain='.$drainId; ?>"><button id="msafi" name="" class="btn success">MSAFI</button></a> 
         </td>
         </td>
-         <?php } //End While  ?>
+         <?php } //End While  
+        
+         ?>
       </tr>
 
       </table>
 
       <div class="w3-center">
 <?php
+
 $range = 3;
 
 // if not on page 1, don't show back links
@@ -151,6 +157,10 @@ if ($currentpage != $totalpages) {
 /****** end build pagination links ******/
  
 ?>
+  <?php   } // End If 
+         else {
+          echo "<p class=\"w3-center w3-padding\"> Hakuna mitaro inayohitaji msaada</p>";
+          } ?>
 </div>
   <script>
 
@@ -166,7 +176,7 @@ if ($currentpage != $totalpages) {
     }
 
     </script>
-       <?php   ?>
+     
 
 
   <!-- AJAX Scrits for Button Actions -->

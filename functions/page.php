@@ -46,6 +46,8 @@ $dardrain = pg_query($dbcon, "SELECT *
 // range of num links to show
 
       ?>
+
+<div id="serverResult">
       <table class="w3-table w3-hoverable w3-responsive w3-white" border="0">
       <tr>
         <th class="w3-dark-grey w3-center" colspan="5">MITARO YOTE</th>
@@ -160,11 +162,11 @@ if ($currentpage != $totalpages) {
 /****** end build pagination links ******/
  
 ?>
-</div>
+</div></div>
 <script>
 function firstpage() { 
     var xhttp = new XMLHttpRequest();
-    var first= "<?php echo $_SERVER['PHP_SELF'].'\?currentpage"=1'; ?>";
+    var first= "<?php echo $_SERVER['PHP_SELF'].'\?currentpage=1'; ?>";
       xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
          document.getElementById("serverResult").innerHTML = this.responseText;
@@ -175,7 +177,7 @@ function firstpage() {
   }
   function previouspage() { 
     var xhttp = new XMLHttpRequest();
-    var prev= "<?php echo $_SERVER['PHP_SELF'].'\?currentpage"='.$prevpage; ?>";
+    var prev= "<?php echo $_SERVER['PHP_SELF'].'\?currentpage='.$prevpage; ?>";
       xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
          document.getElementById("serverResult").innerHTML = this.responseText;
@@ -186,7 +188,7 @@ function firstpage() {
   }
   function nextpage() { 
     var xhttp = new XMLHttpRequest();
-    var next= "<?php echo $_SERVER['PHP_SELF'].'\?currentpage"='.$nextpage; ?>";
+    var next= "<?php echo $_SERVER['PHP_SELF'].'\?currentpage='.$nextpage; ?>";
       xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
          document.getElementById("serverResult").innerHTML = this.responseText;
@@ -197,7 +199,7 @@ function firstpage() {
   }
     function lastpage() { 
     var xhttp = new XMLHttpRequest();
-    var total= "<?php echo $_SERVER['PHP_SELF'].'\?currentpage"='.$totalpages; ?>";
+    var total= "<?php echo $_SERVER['PHP_SELF'].'\?currentpage='.$totalpages; ?>";
       xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
          document.getElementById("serverResult").innerHTML = this.responseText;

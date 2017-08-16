@@ -33,7 +33,7 @@
 
       <?php } ?>
       </select>
-      <button class="w3-btn btn w3-blue" name="graphbtn">TENGENEZA GRAFU</button>
+      <button class="w3-btn btn w3-teal" name="graphbtn">TENGENEZA GRAFU</button>
   </form>
   </div>
 

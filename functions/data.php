@@ -173,6 +173,35 @@ Indexes:
  cleared      | boolean                        | 
  claims_count | integer                        | 
 
+ Table "public.mitaro_dar"
+      Column       |              Type              |                        Modifiers                         
+-------------------+--------------------------------+----------------------------------------------------------
+ gid               | integer                        | not null default nextval('mitaro_dar_gid_seq'::regclass)
+ the_geom          | geometry(MultiLineString,4326) | 
+ full_id           | character varying(254)         | 
+ waterway          | character varying(254)         | 
+ covered           | character varying(254)         | 
+ depth             | character varying(254)         | 
+ width             | character varying(254)         | 
+ blockage          | character varying(254)         | 
+ tunnel            | character varying(254)         | 
+ diameter          | character varying(254)         | 
+ ditch             | character varying(254)         | 
+ drain             | character varying(254)         | 
+ name              | character varying(254)         | 
+ bridge            | character varying(254)         | 
+ height            | character varying(254)         | 
+ surface           | character varying(254)         | 
+ smoothness        | character varying(254)         | 
+ oneway            | character varying(254)         | 
+ cleared           | boolean                        | 
+ need_help         | boolean                        | 
+ claims_count      | integer                        | 
+ user_phone_number | text                           | 
+ address           | character varying              | 
+Indexes:
+    "mitaro_dar_pkey" PRIMARY KEY, btree (gid)
+
 
 
 

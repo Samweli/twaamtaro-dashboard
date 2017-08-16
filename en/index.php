@@ -42,7 +42,7 @@
    <div class="w3-center w3-padding-top" >
    <span class="w3-margin-right w3-right w3-padding-right w3-text-small"><a href="../" class=""> Swahili </a></span> 
   <span class="w3-right w3-padding-right"><a href="#" class=""> English</a></span>
-    <input type="text" name="search" id="searchterm"> <button class="btn w3-blue w3-margin-right w3-padding-right" name="searchbtn" onclick="search()">SEARCH</button>
+    <input type="text" name="search" id="searchterm"> <button class="btn w3-teal w3-margin-right w3-padding-right" name="searchbtn" onclick="search()">SEARCH</button>
   
   
   </div>
@@ -64,14 +64,18 @@
 <div class="w3-panel" style="margin:30px;">   
     <div class="w3-row-padding" style="margin:0 -16px">
       <div class="w3-quarter w3-center w3-margin-0 w3-padding-0">
-        <h4>Welcome to adopt a drain</h4>
+        
         <ul class="w3-ul">
+ 
+          <li class="w3-padding"><a href="index.php" ><button class="w3-btn-block w3-btn w3-bar-item btn w3-teal">HOME</button></a></li>
 
-          <li class="w3-padding"><a href="http://www.twaamtaro.org" target="_blank"><button class="w3-btn-block w3-btn w3-bar-item btn w3-blue">VIEW MAP</button></a></li>
-          <li class="w3-padding"><button class="w3-btn-block w3-btn w3-bar-item btn w3-blue" onclick="notify()">NOTIFY ALL CITIZENS</button>
+          <li class="w3-padding"><button class="w3-btn-block w3-btn w3-bar-item btn w3-teal" onclick="allcitizens()">CITIZENS</button></li>
+
+          <li class="w3-padding"><a href="http://www.twaamtaro.org" target="_blank"><button class="w3-btn-block w3-btn w3-bar-item btn w3-teal">VIEW MAP</button></a></li>
+          <li class="w3-padding"><button class="w3-btn-block w3-btn w3-bar-item btn w3-teal" onclick="notify()">NOTIFY ALL CITIZENS</button>
           <span id="notifyResult"></span>
           </li>
-          <li class="w3-padding"><a href="functions/reports.php" target="_blank"><button class="w3-btn-block w3-btn w3-bar-item btn w3-blue">VIEW REPORTS</button></a></li>
+          
           <li>
             <?php include 'functions/eneo.php'; ?>
           </li>
@@ -139,9 +143,11 @@
       </div>
     </div-->
   
-      <span id="serverResult">
-        <?php include 'functions/page.php'; ?>
-      </span>
+      <div class="w3-border w3-border-teal w3-margin-0 w3-white">
+        <span id="serverResult">
+          <?php include 'functions/reports.php'; ?>
+        </span>
+      </div>
       </div>
     </div>
   </div>

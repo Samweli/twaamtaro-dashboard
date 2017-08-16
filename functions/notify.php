@@ -19,7 +19,7 @@
             //Get the citizen's phone number
             $mhusika = $citizenInfo["first_name"]." ".$citizenInfo["last_name"];
             $number = $citizenInfo["sms_number"];
-            include 'twiliosettings.php';
+            include '../twiliosettings.php';
 
                 $sms = $client->account->messages->create(
                     $number,
@@ -37,5 +37,5 @@
             
     }
     else {
-        echo "There are no adopted drains";
+        echo "Hakuna mitaro iliyotwaliwa";
     }

@@ -15,7 +15,7 @@ LICENSE
 Procfile
 assign.php
 config.js
-dbco.php
+dbcon.php
 package.json
 show.php
 twiliosettings.php

@@ -1,6 +1,6 @@
  <?php
       include 'dbcon.php';
-      $drain = pg_query($dbcon, "SELECT * FROM mitaroKigogo");
+      $drain = pg_query($dbcon, "SELECT * FROM mitaro_dar");
       //All Drains in Dar
       //$drain = pg_query($dbcon, "SELECT * FROM mitaro_dar");
 

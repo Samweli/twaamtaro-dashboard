@@ -1,3 +1,4 @@
+
  <!DOCTYPE html>
 
 <title>Twaa Mtaro Dash</title>
@@ -9,17 +10,6 @@
   <link rel="stylesheet" type="text/css" href="styles/drains.css">
   <link rel="stylesheet" type="text/css" href="styles/style.css">
 <script>
-  function filterEneo(area) { 
-    var xhttp = new XMLHttpRequest();
-    var area = document.getElementById("eneo").value;
-      xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-         document.getElementById("serverResult").innerHTML = this.responseText;
-        }
-      };
-      xhttp.open("GET", "functions/filterarea.php?filterarea="+area, true);
-      xhttp.send();
-  }
 </script> 
 <style>
 html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
@@ -43,11 +33,10 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 ?>
 <!-- Top container -->
 <div class="w3-bar w3-top w3-dark-grey w3-large w3-padding-right" style="z-index:4">
-  <span class="w3-margin-right w3-right w3-padding-right w3-text-small"><a href="#"> Swahili </a></span>
   <span class="w3-right w3-padding-right"><a href="en/"> English</a></span>
 
   <div class="w3-center">
-    <input type="text" name="search" id="searchterm"> <button class="btn w3-blue w3-margin-right w3-padding-right" name="searchbtn" onclick="search()">TAFUTA</button>
+    <input type="text" name="search" id="searchterm"> <button class="btn w3-teal w3-margin-right w3-padding-right" name="searchbtn" onclick="search()">TAFUTA</button>
   </div>
 </div>
 
@@ -69,12 +58,13 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       <div class="w3-quarter w3-center w3-light-grey">
         <h4>Karibu Twaa Mtaro</h4>
         <ul class="w3-ul">
+          <li class="w3-padding"><a href="index.php" ><button class="w3-btn-block w3-btn w3-bar-item btn w3-teal">MWANZO</button></a></li>
 
-          <li class="w3-padding"><a href="http://www.twaamtaro.org" target="_blank"><button class="w3-btn-block w3-btn w3-bar-item btn w3-blue">ANGALIA RAMANI</button></a></li>
-          <li class="w3-padding"><button class="w3-btn-block w3-btn w3-bar-item btn w3-blue" onclick="notify()">TUMA TAARIFA</button>
+          <li class="w3-padding"><button class="w3-btn-block w3-btn w3-bar-item btn w3-teal" onclick="allcitizens()">WANANCHI</button></li>
+          <li class="w3-padding"><a href="http://www.twaamtaro.org" target="_blank"><button class="w3-btn-block w3-btn w3-bar-item btn w3-teal">ANGALIA RAMANI</button></a></li>
+          <li class="w3-padding"><button class="w3-btn-block w3-btn w3-bar-item btn w3-teal" onclick="notify()">TUMA TAARIFA</button>
           <span id="notifyResult"></span>
           </li>
-          <li class="w3-padding"><a href="functions/reports.php" target="_blank"><button class="w3-btn-block w3-btn w3-bar-item btn w3-blue">ANGALIA GRAFU</button></a></li>
           <li>
             <?php include 'functions/eneo.php'; ?>
           </li>
@@ -92,7 +82,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     </div>
 
     <div class="w3-col l2 m2 s6 " style="width:20%">
-      <div class="w3-container w3-padding w3-white w3-hover-shadow w3-border w3-border-teal" onclick="filter('clear','clearbtn')" title="Bofya kuona mitaro misafi" id="clearbtn">
+      <div class="w3-container w3-padding w3-white w3-hover-shadow w3-border w3-border-teal" onclick="filter('clear')" title="Bofya kuona mitaro misafi" id="clearbtn">
       <div class="w3-clear"></div><span class="w3-right"><img src="assets/images/broom.png" title="Clean Drains" width="30" height="30"></span>
         <h4>Misafi</h4>
 
@@ -104,7 +94,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       </div>
     </div>
     <div class="w3-col l2 m2 s6 " style="width:20%">
-      <div class="w3-container w3-text-black w3-padding w3-white w3-hover-shadow w3-border w3-border-teal " onclick="filter('notclear','dirtybtn')" title="Bofya kuona mitaro michafu" id="dirtybtn">
+      <div class="w3-container w3-text-black w3-padding w3-white w3-hover-shadow w3-border w3-border-teal " onclick="filter('notclear')" title="Bofya kuona mitaro michafu" id="dirtybtn">
         <div class="w3-clear"></div><span class="w3-right"><img src="assets/images/trash.png" title="Dirty Drains" width="20" height="20"></span>
         <h4>Michafu</h4>
         <h3 class="w3-text-black">
@@ -114,7 +104,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         </div>
     </div>
     <div class="w3-col l2 m2 s6 " style="width:20%">
-      <div class="w3-container w3-padding w3-white w3-hover-shadow w3-border w3-border-teal" title="Bofya kuona mitaro inayohitaji msaada" id="filterbtn">
+      <div class="w3-container w3-padding w3-white w3-hover-shadow w3-border w3-border-teal" title="Bofya kuona mitaro inayohitaji msaada" id="filterbtn" onclick="filter('help')">
         <div class="w3-clear"></div><span class="w3-right"><img src="assets/images/help.png" title="Help Needed" width="20" height="20"></span>
         <h4>Msaada</h4>
         <h3 class="w3-text-black">
@@ -124,7 +114,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       </div>
     </div>
     <div class="w3-col l2 m2 s6 " style="width:20%">
-      <div class="w3-container w3-padding w3-text-black w3-white w3-hover-shadow w3-border w3-border-teal " title="Bofya kuona wananchi wote" onclick="allcitizens()">
+      <div class="w3-container w3-padding w3-text-black w3-white w3-hover-shadow w3-border w3-border-teal " title="Bofya kuona wananchi wote" onclick="allcitizens()" id="allcitizen">
         <div class="w3-clear"></div><span class="w3-right"><img src="assets/images/group.png" title="Citizens" width="20" height="20"></span>
         <h5>Wananchi</h5>
         <h3 class="w3-text-black"><?php $user= pg_query($dbcon, "SELECT * FROM users"); 
@@ -210,7 +200,7 @@ function search() {
       xhttp.open("GET", "functions/search.php?searchword="+searchword, true);
       xhttp.send();
   }
-  function filter(filterword, btnvalue) { 
+  function filter(filterword) { 
     var xhttp = new XMLHttpRequest();
     //var filterword = document.getElementById("filtervalue").value;
       xhttp.onreadystatechange = function() {
@@ -218,18 +208,7 @@ function search() {
          document.getElementById("serverResult").innerHTML = this.responseText;
         }
       };
-      if (btnvalue == "clearbtn") {
-        document.getElementById("clearbtn").style.boxShadow="0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)";
-        document.getElementById("dirtybtn").style.boxShadow="0 0 0 0 rgba(0,0,0,0),0 0 0 0 rgba(0,0,0,0)";
-        document.getElementById("alldrain").style.boxShadow="0 0 0 0 rgba(0,0,0,0),0 0 0 0 rgba(0,0,0,0)";
-      }
-      else
-        if (btnvalue == "dirtybtn") {
-        document.getElementById("dirtybtn").style.boxShadow="0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)";
-        document.getElementById("clearbtn").style.boxShadow="0 0 0 0 rgba(0,0,0,0),0 0 0 0 rgba(0,0,0,0)";
-        document.getElementById("alldrain").style.boxShadow="0 0 0 0 rgba(0,0,0,0),0 0 0 0 rgba(0,0,0,0)";
-      }
-      
+
       xhttp.open("GET", "functions/filter.php?filter="+filterword, true);
       xhttp.send();
   }
@@ -243,9 +222,7 @@ function search() {
         if (this.readyState == 4 && this.status == 200) {
          document.getElementById("serverResult").innerHTML = this.responseText;
         }
-        document.getElementById('alldrain').style.boxShadow='0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)';
-        document.getElementById("clearbtn").style.boxShadow="0 0 0 0 rgba(0,0,0,0),0 0 0 0 rgba(0,0,0,0)";
-        document.getElementById("dirtybtn").style.boxShadow="0 0 0 0 rgba(0,0,0,0),0 0 0 0 rgba(0,0,0,0)";
+        
       };
       xhttp.open("GET", "functions/page.php", true);
       xhttp.send();
@@ -256,14 +233,56 @@ function search() {
         if (this.readyState == 4 && this.status == 200) {
          document.getElementById("serverResult").innerHTML = this.responseText;
         }
-        document.getElementById('allcitizen').style.boxShadow='0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)';
-        document.getElementById("clearbtn").style.boxShadow="0 0 0 0 rgba(0,0,0,0),0 0 0 0 rgba(0,0,0,0)";
-        document.getElementById("dirtybtn").style.boxShadow="0 0 0 0 rgba(0,0,0,0),0 0 0 0 rgba(0,0,0,0)";
-        document.getElementById("alldrain").style.boxShadow="0 0 0 0 rgba(0,0,0,0),0 0 0 0 rgba(0,0,0,0)";
+
       };
       xhttp.open("GET", "functions/citizens.php", true);
       xhttp.send();
   }
+  function firstpage() { 
+    var xhttp = new XMLHttpRequest();
+    var first= "<?php echo 'functions/page.php\?currentpage=1'; ?>";
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+         document.getElementById("serverResult").innerHTML = this.responseText;
+        } 
+      };
+      xhttp.open("GET", first, true);
+      xhttp.send();
+  }
+  function previouspage() { 
+    var xhttp = new XMLHttpRequest();
+    var prev= "<?php echo 'functions/page.php\?currentpage='.$prevpage; ?>";
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+         document.getElementById("serverResult").innerHTML = this.responseText;
+        } 
+      };
+      xhttp.open("GET", prev, true);
+      xhttp.send();
+  }
+  function nextpage() { 
+    var xhttp = new XMLHttpRequest();
+    var next= "<?php echo 'functions/page.php\?currentpage='.$nextpage; ?>";
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+         document.getElementById("serverResult").innerHTML = this.responseText;
+        } 
+      }
+      xhttp.open("GET", next , true);
+      xhttp.send();
+  }
+    function lastpage() { 
+    var xhttp = new XMLHttpRequest();
+    var total= "<?php echo $_SERVER['PHP_SELF'].'\?currentpage='.$totalpages; ?>";
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+         document.getElementById("serverResult").innerHTML = this.responseText;
+        } 
+      };
+      xhttp.open("GET", total, true);
+      xhttp.send();
+  }
+
 
 </script>
 
