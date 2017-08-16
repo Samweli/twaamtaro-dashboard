@@ -19,7 +19,8 @@
             //Get the citizen's phone number
             $mhusika = $citizenInfo["first_name"]." ".$citizenInfo["last_name"];
             $number = $citizenInfo["sms_number"];
-            include 'twiliosettings.php';
+            if ($number != null ) {
+                include '../../twiliosettings.php';
 
                 $sms = $client->account->messages->create(
                     $number,
@@ -28,10 +29,13 @@
                         'body' => "Hello, the rain season is around the corner, you are reminded to clean your drains in order to prevent floods that are caused by dirty drains."
                     )
                 );
+    
+            }
+            
+            else
+                continue;
 
-                //echo "Ujumbe umetumwa kwa mhusika, ".$mhusika."mwenye namba ".$number;
-
-        }
+        } //End While
         // Display a confirmation message on the screen
         echo "You have succeded to notify your citizens to clean their drains";
             

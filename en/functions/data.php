@@ -4,7 +4,7 @@ INSERT INTO users(id, created_at, updated_at, first_name, last_name, organizatio
 
 (1006, now(), now(), 'Samwel', 'Twesa', 'WB', 'smwltwesa6@gmail.com','+255765299266', false, 0, 1, 
 md5('password'), md5('token3'),now(), now(), 5, now(), now(), '192.254.235.17', '192.254.235.19'),
-(1007, now(), now(), 'Edgar', 'Mlowe', 'WB', 'mloweegdarvitus@gmail.com','+25565498847', 'false', 0, 1, md5('password'), md5('token4'),now(), now(), 5, now(), now(), '192.254.235.19', '192.254.235.20')
+(1007, now(), now(), 'Edgar', 'Mlowe', 'WB', 'mloweegdarvitus@gmail.com','+255654988047', 'false', 0, 1, md5('password'), md5('token4'),now(), now(), 5, now(), now(), '192.254.235.19', '192.254.235.20')
 ,(1008, now(), now(), 'Beatrice', 'Mkumbo', 'WB', 'charsbeaty@gmail.com','+255757529054', false, 0, 1, md5('password'), md5('token5'),now(), now(), 5, now(), now(), '192.254.235.17', '192.254.235.19'),
 
 (1009, now(), now(), 'Nancy', 'Navish', 'WB', 'navish456@live.com','+255782120252', false, 0, 1, 
