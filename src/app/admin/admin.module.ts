@@ -1,5 +1,5 @@
 import { AdminRoutingModule } from './admin-routing/admin-routing.module';
-import { AdminDashboard1Component } from './admin-dashboard1/admin-dashboard1.component';
+//import { AdminDashboard1Component } from './admin-dashboard1/admin-dashboard1.component';
 import { AdminControlSidebarComponent } from './admin-control-sidebar/admin-control-sidebar.component';
 import { AdminFooterComponent } from './admin-footer/admin-footer.component';
 import { AdminContentComponent } from './admin-content/admin-content.component';
@@ -22,7 +22,6 @@ import { AdminDashboard2Component } from './admin-dashboard2/admin-dashboard2.co
     AdminContentComponent,
     AdminFooterComponent,
     AdminControlSidebarComponent,
-    AdminDashboard1Component,
     AdminDashboard2Component
   ],
   exports: [AdminComponent]

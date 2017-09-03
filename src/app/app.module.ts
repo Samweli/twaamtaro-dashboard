@@ -2,6 +2,7 @@ import { AdminModule } from './admin/admin.module';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { StarterComponent } from './starter/starter.component';
@@ -19,9 +20,13 @@ import { AdminFooterComponent } from './admin/admin-footer/admin-footer.componen
 import { AdminControlSidebarComponent } from './admin/admin-control-sidebar/admin-control-sidebar.component';
 import { AdminDashboard2Component } from './admin/admin-dashboard2/admin-dashboard2.component';
 
+import { DrainsService } from './drains/drains.service';
+import { DrainListComponent } from './drains/drain-list.component';
+
 @NgModule({
   declarations: [
     AppComponent,
+    DrainListComponent,
     StarterComponent,
     StarterHeaderComponent,
     StarterLeftSideComponent,
@@ -32,9 +37,12 @@ import { AdminDashboard2Component } from './admin/admin-dashboard2/admin-dashboa
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AdminModule
+    AdminModule,
+    HttpModule,
   ],
-  providers: [],
+  providers: [
+    DrainsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

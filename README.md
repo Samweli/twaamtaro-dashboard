@@ -1,9 +1,7 @@
 Introduction
 ============
-
-This is the **Angular** version of **AdminLTE** -- what is a fully responsive admin template. Based on **[Bootstrap 3](https://github.com/twbs/bootstrap)** framework. Highly customizable and easy to use. Fits many screen resolutions from small mobile devices to large desktops. Check out the live preview now and see for yourself.
-
-For more AdminLTE information visit  [AdminLTE.IO](https://adminlte.io/)
+Twaa Mtaro dashboard is a tool to view Twaa Mtaro Infographics. 
+The main repository for the project is at ([Twaa Mtaro](https://github.com/navish/twaa-mtaro)).
 
 Installation
 ------------
@@ -16,12 +14,12 @@ npm install -g @angular/cli
 ```
 - Clone the repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/Angular2-AdminLTE.git
+git clone https://github.com/YOUR_USERNAME/twaamtaro-dashboard.git
 ```
 
 - Install the packages
 ```bash
-cd Angular2-AdminLTE
+cd twaamtaro-dashboard
 npm install
 ```
 
@@ -47,7 +45,7 @@ Contribution
 Contribution are always **welcome and recommended**! Here is how:
 
 - Fork the repository ([here is the guide](https://help.github.com/articles/fork-a-repo/)).
-- Clone to your machine ```git clone https://github.com/YOUR_USERNAME/Angular2-AdminLTE.git```
+- Clone to your machine ```git clone https://github.com/YOUR_USERNAME/twaamtaro-dashboard.git```
 - Make your changes
 - Create a pull request
 
@@ -55,11 +53,6 @@ Contribution are always **welcome and recommended**! Here is how:
 - Contributions are only accepted through Github pull requests.
 - Finally, contributed code must work in all supported browsers (see above for browser support).
 
-License
--------
-Angular2-AdminLTE is an open source project by that is licensed under [MIT](http://opensource.org/licenses/MIT).
 
- Credits
--------------
-[AdminLTE.IO](https://adminlte.io/)
+
 

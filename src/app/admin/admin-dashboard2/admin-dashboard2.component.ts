@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+
+
 // Variable in assets/js/scripts.js file
 declare var AdminLTE: any;
 
@@ -12,8 +14,13 @@ export class AdminDashboard2Component implements OnInit {
   constructor() { }
 
   ngOnInit() {
-     // Actualiza la barra latera y el footer
-    AdminLTE.init();
+     AdminLTE.init();
   }
 
+  /*constructor(private drainService: DrainsService) { }
+
+  ngOnInit(): void {
+    this.drainService.getDrains()
+      .then(drains => this.drains = drains.slice(1, 5));
+  }*/
 }
