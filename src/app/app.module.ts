@@ -1,8 +1,10 @@
 import { AdminModule } from './admin/admin.module';
+import { DrainListModule } from './drains/drains.module';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+
 
 import { AppComponent } from './app.component';
 import { StarterComponent } from './starter/starter.component';
@@ -26,7 +28,6 @@ import { DrainListComponent } from './drains/drain-list.component';
 @NgModule({
   declarations: [
     AppComponent,
-    DrainListComponent,
     StarterComponent,
     StarterHeaderComponent,
     StarterLeftSideComponent,
