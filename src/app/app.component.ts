@@ -10,5 +10,6 @@ import { DrainsService } from './drains/drains.service';
 export class AppComponent {
   title = 'app';
   drains;
+  
 }
 

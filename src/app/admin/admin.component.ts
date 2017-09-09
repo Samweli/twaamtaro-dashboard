@@ -1,4 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Http } from '@angular/http';
+import { DrainListComponent } from './../drains/drain-list.component';
+import { DrainsService } from './../drains/drains.service';
 
 @Component({
   selector: 'app-admin',
@@ -10,18 +13,28 @@ export class AdminComponent implements OnInit, OnDestroy {
   bodyClasses = 'skin-blue sidebar-mini';
   body: HTMLBodyElement = document.getElementsByTagName('body')[0];
 
-  constructor() { }
-
   ngOnInit() {
     // add the the body classes
-    //this.body.classList.add('skin-blue');
+    this.body.classList.add('skin-blue');
     this.body.classList.add('sidebar-mini');
   }
-
+  
    ngOnDestroy() {
-    // remove the the body classes
-    //this.body.classList.remove('skin-blue');
+    //remove the the body classes
+    this.body.classList.remove('skin-blue');
     this.body.classList.remove('sidebar-mini');
   }
+  pieChartData =  {
+  chartType: 'PieChart',
+  dataTable: [
+    ['Task', 'Hours per Day'],
+    ['Work',     11],
+    ['Eat',      2],
+    ['Commute',  2],
+    ['Watch TV', 2],
+    ['Sleep',    7]
+  ],
+  options: {'title': 'Tasks'},
+};
 
 }

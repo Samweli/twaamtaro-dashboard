@@ -1,13 +1,13 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { DrainListComponent } from './drain-list.component';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
     imports: [CommonModule],
-    exports: [DrainListComponent],
-    declarations: [DrainListComponent],
+    exports: [],
+    declarations: [],
     providers: [],
-	schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+	schemas: []
 })
 export class DrainListModule {
 }

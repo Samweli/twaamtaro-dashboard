@@ -1,14 +1,7 @@
-<div class="content-wrapper">
+<div class="content-wrapper"  >
   <!-- Content Header (Page header) -->
   <section class="content-header">
-    <h1>
-      Dashboard
-      <small></small>
-    </h1>
-    <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li class="active">Dashboard</li>
-    </ol>
+
   </section>
 
   <!-- Main content -->
@@ -16,71 +9,58 @@
     <!-- Info boxes -->
     <div class="w3-row w3-padding-bottom">
     <div class="w3-col l2 m2 s6 w3-padding-right" style="width:20%">
-      <div class="w3-container w3-padding w3-white w3-hover-shadow w3-border w3-border-teal " onclick="alldrains()" title="Bofya kuona mitaro yote" id="alldrain">
-        <h4>Mitaro Yote</h4>
+        <a routerLink="../drain-list"><div class="w3-container w3-padding w3-white w3-hover-shadow w3-border w3-border-teal " (click)="alldrains()" title="Bofya kuona mitaro yote" id="alldrain">
+        <h4>All Drains</h4>
         <h4 class="w3-text-black">5</h4>
-      </div>
+      </div></a>
     </div>
 
     <div class="w3-col l2 m2 s6" style="width:20%">
-      <div class="w3-container w3-padding w3-white w3-hover-shadow w3-border w3-border-teal" onclick="filter('clear')" title="Bofya kuona mitaro misafi" id="clearbtn">
-      <div class="w3-clear"></div><span class="w3-right"><img src="assets/images/broom.png" title="Clean Drains" width="30" height="30"></span>
-        <h4>Misafi</h4>
-
-        <h4 class="w3-text-black">
-        58
-        </h4>
-      </div>
+      <a routerLink="../clean-drains"><div class="w3-container w3-padding w3-white w3-hover-shadow w3-border w3-border-teal"  title="Bofya kuona mitaro misafi" id="clearbtn">
+      <div class="w3-clear"></div><span class="w3-right"><img src="assets/img/broom.png" title="Clean Drains" width="30" height="30"></span>
+        <h4>Clean Drains</h4>
+        <h4 class="w3-text-black">58</h4>
+      </div></a>
     </div>
     <div class="w3-col l2 m2 s6 w3-padding-left" style="width:20%">
-      <div class="w3-container w3-text-black w3-padding w3-white w3-hover-shadow w3-border w3-border-teal " onclick="filter('notclear')" title="Bofya kuona mitaro michafu" id="dirtybtn">
-        <div class="w3-clear"></div><span class="w3-right"><img src="assets/images/trash.png" title="Dirty Drains" width="20" height="20"></span>
-        <h4>Michafu</h4>
-        <h4 class="w3-text-black">
-      9
-        </h4>
-        </div>
+        <a routerLink="../dirty-drains"><div class="w3-container w3-text-black w3-padding w3-white w3-hover-shadow w3-border w3-border-teal " onclick="filter('notclear')" title="Bofya kuona mitaro michafu" id="dirtybtn">
+        <div class="w3-clear"></div><span class="w3-right"><img src="assets/img/trash.png" title="Dirty Drains" width="20" height="20"></span>
+        <h4>Dirty Drains</h4>
+        <h4 class="w3-text-black">9</h4>
+        </div></a>
     </div>
     <div class="w3-col l2 m2 s6 w3-padding-left" style="width:20%">
-      <div class="w3-container w3-padding w3-white w3-hover-shadow w3-border w3-border-teal" title="Bofya kuona mitaro inayohitaji msaada" id="filterbtn" onclick="filter('help')">
-        <div class="w3-clear"></div><span class="w3-right"><img src="assets/images/help.png" title="Help Needed" width="20" height="20"></span>
-        <h4>Msaada</h4>
-        <h4 class="w3-text-black">
-        23
-        </h4>
-      </div>
+        <a routerLink="../help-drains"><div class="w3-container w3-padding w3-white w3-hover-shadow w3-border w3-border-teal" title="Bofya kuona mitaro inayohitaji msaada" id="filterbtn" onclick="filter('help')">
+        <div class="w3-clear"></div><span class="w3-right"><img src="assets/img/help.png" title="Help Needed" width="20" height="20"></span>
+        <h4>Need Help</h4>
+        <h4 class="w3-text-black">23</h4>
+      </div></a>
     </div>
     <div class="w3-col l2 m2 s6 w3-padding-left" style="width:20%">
-      <div class="w3-container w3-padding w3-text-black w3-white w3-hover-shadow w3-border w3-border-teal " title="Bofya kuona wananchi wote" onclick="allcitizens()" id="allcitizen">
-        <div class="w3-clear"></div><span class="w3-right"><img src="assets/images/group.png" title="Citizens" width="20" height="20"></span>
-        <h4>Wananchi</h4>
-        <h4 class="w3-text-black">963
-        </h4>
-      </div>
+        <a routerLink="../citizens"><div class="w3-container w3-padding w3-text-black w3-white w3-hover-shadow w3-border w3-border-teal " title="Bofya kuona wananchi wote" onclick="allcitizens()" id="allcitizen">
+        <div class="w3-clear"></div><span class="w3-right"><i class="fa fa-users"></i></span>
+        <h4>Citizens</h4>
+        <h4 class="w3-text-black">963</h4>
+      </div></a>
     </div>
       <!-- /.col -->
     </div>
     <!-- /.row -->
+<!-- START AJAX RESONSES -->
+    <div class="w3-row w3-top-padding" id="serverResult">
+        
+    </div>
+    <!-- END AJAX RESONSES -->
 
+    <!-- /.row -->
     <div class="w3-row ">
         <div class="box w3-card-2 w3-border w3-border-teal" >
           <div class="box-header with-border">
-            <h3 class="box-title">Monthly Recap Report</h3>
+            <h3 class="box-title">Graphs</h3>
 
             <div class="box-tools pull-right">
               <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
-              <div class="btn-group">
-                <button type="button" class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-wrench"></i></button>
-                <ul class="dropdown-menu" role="menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
-                </ul>
-              </div>
               <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
             </div>
           </div>
@@ -88,9 +68,10 @@
           <div class="box-body">
             <div class="row">
                 <!--drain-list></drain-list-->
+                <google-chart [data]="pieChartData"></google-chart>
                 <div class="chart">
-                  <!-- Sales Chart Canvas -->
-                  <canvas id="salesChart" style="height: 180px;"></canvas>
+                  <!-- Chart Canvas -->
+                  
                 </div>
                 <!-- /.chart-responsive -->
            
@@ -112,40 +93,15 @@
     </div>
     <!-- /.row -->
 
-    <!-- Main row -->
-    <div class="w3-row ">
-        <!-- MAP & BOX PANE -->
-        <div class="box w3-card-2 w3-border w3-border-teal">
-          <div class="box-header">
-            <h3 class="box-title">Visitors Report</h3>
 
-            <div class="box-tools pull-right">
-              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-              <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-            </div>
-          </div>
-          <!-- /.box-header -->
-          <div class="box-body">
-             <h3>Generating graphs</h3>
-             <h4>{{drains.gid}}</h4>
-             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-             consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-             cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-             proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-          </div>
-        </div>
-    </div><!-- Main row -->
 
         <!-- /.box -->
         <div class="w3-row">
 
-        <!-- TABLE: LATEST ORDERS -->
+        <!-- TABLE: WARD RANKINGS -->
         <div class="box w3-card-2 w3-border w3-border-teal">
           <div class="box-header">
-            <h3 class="box-title">Latest Orders</h3>
+            <h3 class="box-title"></h3>
 
             <div class="box-tools pull-right">
               <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -156,25 +112,25 @@
           <!-- /.box-header -->
           <div class="box-body">
             <div class="table-responsive">
-              <table class="table no-margin">
+              <table class="w3-table w3-hoverable w3-responsive w3-white" border="0">
                 <thead>
-                  <tr>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
+                  <tr class="w3-light-grey w3-border-bottom" >
+                    <th>WARD</th>
+                    <th>CLEAN</th>
+                    <th>DIRTY</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a href="pages/examples/invoice.html"></a></td>
-                    <td></td>
-                    <td><span class="label label-success"></span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#00a65a" data-height="20"></div>
-                    </td>
+                    <td><a href="#">Kigogo</a></td>
+                    <td>56</td>
+                    <td>44</td>
                   </tr>
-                  
+                  <tr>
+                    <td><a href="#">Hananasif</a></td>
+                    <td>46</td>
+                    <td>54</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -182,14 +138,63 @@
           </div>
           <!-- /.box-body -->
           <div class="box-footer clearfix">
-            <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Next</a>
-            <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right"></a>
+            
           </div>
           <!-- /.box-footer -->
         </div>
         <!-- /.box -->
     </div>
     <!-- /.row -->
+    <!-- /.box -->
+    <div class="w3-row">
+      
+              <!-- TABLE: WARD RANKINGS -->
+              <div class="box w3-card-2 w3-border w3-border-teal">
+                <div class="box-header">
+                  <h3 class="box-title"></h3>
+      
+                  <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                      </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table class="w3-table w3-hoverable w3-responsive w3-white" border="0">
+                      <thead>
+                        <tr class="w3-light-grey w3-border-bottom" >
+                          <th>ID</th>
+                          <th>NAME</th>
+                          <th>ADDRESS</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><a href="#">3</a></td>
+                          <td>56</td>
+                          <td>Hananasif</td>
+                        </tr>
+                        <tr>
+                          <td><a href="#">4</a></td>
+                          <td>46</td>
+                          <td>Kigogo</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- /.table-responsive -->
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer clearfix">
+                  
+                </div>
+                <!-- /.box-footer -->
+              </div>
+              <!-- /.box -->
+          </div>
+          <!-- /.row -->
   </section>
   <!-- /.content -->
 </div>

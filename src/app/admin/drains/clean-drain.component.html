@@ -1,0 +1,44 @@
+<div class="content-wrapper"  >
+<div class="box w3-card-2 w3-border w3-border-teal w3-padding" >
+	<div class="box-header with-border">
+		<h3 class=" w3-center">RESULTS: {{ title }}</h3>
+
+		<div class="box-tools pull-right">
+			<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+				</button>
+			<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+		</div>
+	</div>
+	<!-- /.box-header -->
+	<div class="box-body">
+		<div class="row">
+			<!-- templates -->
+			<div >
+			<div id="error"><h4>{{ErrMsg}}</h4></div>
+				
+				<table class="w3-table w3-hoverable w3-responsive w3-white" border="0">
+					<thead>
+					<tr class="w3-light-grey w3-border-bottom" >
+						<th>ID</th>
+						<th>NAME</th>
+						<th>ADDRESS</th>
+						<th>STATUS</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr *ngFor="let drain of (drains | cleanDrains)">
+						<td><a href="#">{{drain.gid}}</a></td>
+						<td>{{drain.name}}</td>
+						<td>{{drain.address}}</td>
+						<td>{{drain.cleared}}</td>
+					</tr>
+					
+					</tbody>
+				</table>	
+		</div>
+		</div>
+	</div>
+	<!-- ./box-body -->
+</div>
+<!-- /.box -->
+</div>
