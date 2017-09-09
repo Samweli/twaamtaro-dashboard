@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Http } from '@angular/http';
-import { DrainListComponent } from './../drains/drain-list.component';
-import { DrainsService } from './../drains/drains.service';
+import { DrainListComponent } from './drains/drain-list.component';
+import { DrainsService } from './drains/drains.service';
 
 @Component({
   selector: 'app-admin',

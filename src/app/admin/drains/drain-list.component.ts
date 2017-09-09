@@ -10,7 +10,7 @@ import { Drain } from './drain';
   providers: [],
 })
 export class DrainListComponent implements OnInit {
-  title = 'List!';
+  title = 'All Drains';
   drains: Drain[];
 
   constructor(private drainService: DrainsService) { }

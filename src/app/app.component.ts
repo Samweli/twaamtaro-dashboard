@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Http } from '@angular/http';
-import { DrainsService } from './drains/drains.service';
+import { DrainsService } from './admin/drains/drains.service';
 
 @Component({
   selector: 'app-root',
