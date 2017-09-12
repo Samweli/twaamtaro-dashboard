@@ -27,14 +27,11 @@ export class AdminComponent implements OnInit, OnDestroy {
   pieChartData =  {
   chartType: 'PieChart',
   dataTable: [
-    ['Task', 'Hours per Day'],
-    ['Work',     11],
-    ['Eat',      2],
-    ['Commute',  2],
-    ['Watch TV', 2],
-    ['Sleep',    7]
+    ['Task', 'Cleanness Feedback'],
+    ['Clean',     121],
+    ['Dirty',    8362  ],
   ],
-  options: {'title': 'Tasks'},
+  options: {'title': 'Cleanness'},
 };
 
 }

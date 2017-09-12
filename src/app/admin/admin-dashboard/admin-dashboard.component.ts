@@ -5,11 +5,11 @@ import { Component, OnInit } from '@angular/core';
 declare var AdminLTE: any;
 declare var w3: any;
 @Component({
-  selector: 'app-admin-dashboard2',
-  templateUrl: './admin-dashboard2.component.html',
-  styleUrls: ['./admin-dashboard2.component.css']
+  selector: 'app-admin-dashboard',
+  templateUrl: './admin-dashboard.component.html',
+  styleUrls: ['./admin-dashboard.component.css']
 })
-export class AdminDashboard2Component implements OnInit {
+export class AdminDashboardComponent implements OnInit {
 
   constructor() { }
   cleanDrains() 

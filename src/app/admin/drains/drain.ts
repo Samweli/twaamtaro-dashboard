@@ -1,5 +1,6 @@
 export interface Clean { cleared: boolean; }
 export interface Help { need_help: boolean; }
+export interface Addresss { address: string; }
 
 export class Drain{
     constructor(

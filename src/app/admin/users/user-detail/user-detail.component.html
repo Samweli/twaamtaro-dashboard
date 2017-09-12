@@ -1,0 +1,25 @@
+<div class="content-wrapper  w3-padding-top"  >
+  <div class="box w3-card-2 w3-border w3-border-teal" >
+    <div class="box-header with-border">
+      <h2 class=" w3-center"> {{ title }}</h2>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <div class="row">
+        <!-- templates -->
+        <div id="error"><h4>{{ErrMsg}}</h4></div>
+              
+        <ul *ngIf="user">
+        <h3>{{user.first_name}} details!</h3>
+        <li><label>Id: </label> {{user.id}}</li>
+        <li><label>Name: </label> {{user.first_name}} {{user.last_name}}</li>
+        <li><label>Email: </label> {{user.email}}</li>
+        <button class="w3-btn" (click)="goBack()">Back</button>
+        </ul>
+    </div>
+  </div>
+</div>
+<!-- ./box-body -->
+</div>
+<!-- /.box -->
+

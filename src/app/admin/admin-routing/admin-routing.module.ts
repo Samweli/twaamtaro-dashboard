@@ -1,8 +1,9 @@
-import { AdminDashboard2Component } from './../admin-dashboard2/admin-dashboard2.component';
+import { AdminDashboardComponent } from './../admin-dashboard/admin-dashboard.component';
 import { AdminComponent } from './../admin.component';
 import { DrainListComponent } from './../drains/drain-list.component';
 import { CleanDrainComponent } from './../drains/clean-drain.component';
 import { DirtyDrainComponent } from './../drains/dirty-drain.component';
+import { FilterDrainsComponent } from './../drains/filter-drains.component';
 import { HelpDrainComponent } from './../drains/help-drain.component';
 import { NgModule, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -10,6 +11,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { StarterComponent } from './../../starter/starter.component';
 import { ReportComponent } from './../reports/reports.component';
+import { NotFoundComponent } from './../not-found/not-found.component';
+import { UsersComponent } from './../users/users-list/users.component';
+import { UserDetailComponent } from './../users/user-detail/user-detail.component';
+
 
 @NgModule({
   imports: [
@@ -20,21 +25,24 @@ import { ReportComponent } from './../reports/reports.component';
         children: [
           {
             path: '',
-            redirectTo: 'dashboard2',
+            redirectTo: 'dashboard',
             pathMatch: 'full'
           },
           {
-            path: 'dashboard2',
-            component: AdminDashboard2Component
+            path: 'dashboard',
+            component: AdminDashboardComponent
           },
           { path: 'reports', component: ReportComponent },
           { path: 'clean-drains', component: CleanDrainComponent },
           { path: 'dirty-drains', component: DirtyDrainComponent },
           { path: 'drain-list', component: DrainListComponent },
           { path: 'help-drains', component: HelpDrainComponent },
-        ]        
-      },
-      
+          { path: 'users', component: UsersComponent }, 
+          { path: 'user-details/:id', component: UserDetailComponent }, 
+          { path: '*', component: NotFoundComponent },
+          { path: 'filter-drains', component: FilterDrainsComponent }, 
+        ] ,    
+      }, 
       { path: 'starter', component: StarterComponent },
     ]),
 

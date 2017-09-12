@@ -5,13 +5,12 @@ import { Observable }    from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
-//import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/filter';
 
 import { Drain } from './drain';
 
 
 @Injectable()
-
 export class DrainsService {
   
   private headers = new Headers({'Content-Type': 'application/json'});
@@ -23,15 +22,23 @@ export class DrainsService {
            .map((response: Response) => <Drain[]>response.json())
            .catch(this.errorHandler);
           } 
-           errorHandler(error: Response) {
+  getDrainAddress(address):Observable<Drain[]> {
+            return this.getDrains()
+            .map(drains => drains => drains.address === address)
+            .catch(this.errorHandler);            
+      }
+  errorHandler(error: Response) {
              console.error(error);
              return Observable.throw(error || 'Sorry, something went wrong');
-           
+ 
   }
-/*private handleError(error: any): Promise<any> {
-    console.error('You failed to fetch data', error); // for demo purposes only
-    return Promise.reject(error.message || error);
-  }  */
+  /*getWards(ward: string): Observable<Drain[]> {
+    return this.getDrains()
+    .map((res: Response) => res.json())
+    .filter(ward => Drain.address === ward);
+    }*/
+  
+
 
 
 }

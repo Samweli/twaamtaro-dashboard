@@ -10,6 +10,7 @@ import { NgModule } from '@angular/core';
 import { Directive } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { ReportModule } from './admin/reports/reports.module';
+//import { UserDetailModule } from './admin/users/user-detail/user-detail.module';
 
 import { AppComponent } from './app.component';
 import { StarterComponent } from './starter/starter.component';
@@ -25,9 +26,10 @@ import { AdminLeftSideComponent } from './admin/admin-left-side/admin-left-side.
 import { AdminContentComponent } from './admin/admin-content/admin-content.component';
 import { AdminFooterComponent } from './admin/admin-footer/admin-footer.component';
 import { AdminControlSidebarComponent } from './admin/admin-control-sidebar/admin-control-sidebar.component';
-import { AdminDashboard2Component } from './admin/admin-dashboard2/admin-dashboard2.component';
+import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import { NotificationBarComponent } from "./admin/notification-bar/notification-bar.component";
 
-import { DrainsService } from './admin/drains/drains.service';
+/*import { DrainsService } from './admin/drains/drains.service';
 import { DrainListComponent } from './admin/drains/drain-list.component';
 import { DirtyDrainComponent } from './admin/drains/dirty-drain.component';
 import { CleanDrainComponent } from './admin/drains/clean-drain.component';
@@ -36,7 +38,10 @@ import { HelpDrainComponent } from './admin/drains/help-drain.component';
 import { DirtyDrainsPipe } from './admin/drains/drains.pipe';
 
 import { ReportComponent } from './admin/reports/reports.component';
-
+import { UsersComponent } from './admin/users/users-list/users.component';
+import { UserDetailComponent } from './admin/users/user-detail/user-detail.component';
+import { WardComponent } from './admin/ward/ward.component';
+*/
 @NgModule({
   declarations: [
     AppComponent,  
@@ -45,7 +50,10 @@ import { ReportComponent } from './admin/reports/reports.component';
     StarterLeftSideComponent,
     StarterContentComponent,
     StarterFooterComponent,
-    StarterControlSidebarComponent
+    StarterControlSidebarComponent,
+   /*UsersComponent,
+    UserDetailComponent,
+    WardComponent*/
   ],
   imports: [
     BrowserModule,
@@ -60,7 +68,7 @@ import { ReportComponent } from './admin/reports/reports.component';
     HelpDrainModule
   ],
   providers: [
-    DrainsService
+    //DrainsService
   ],
   bootstrap: [AppComponent]
 })

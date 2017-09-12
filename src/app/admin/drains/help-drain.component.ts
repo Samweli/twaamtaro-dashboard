@@ -8,7 +8,7 @@ import { Drain } from './drain';
   selector: 'help-drains',
   templateUrl: './help-drain.component.html',
   styleUrls: ['./drains.component.css'],
-  providers: [],
+  providers: []
 })
 export class HelpDrainComponent implements OnInit {
   title = 'Drains In Need of Help';

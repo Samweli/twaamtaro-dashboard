@@ -25,12 +25,7 @@ export class CleanDrainComponent implements OnInit {
           resError=> this.ErrMsg = resError
         );
   }
-   /*@Output() cleanDrains = new EventEmitter();
-  
-     eventEmitClick(event) {
-         this.cleanDrains.emit(event);
-     }
-*/
+   
   ngOnInit(): void {
     this.getDrains();
   }

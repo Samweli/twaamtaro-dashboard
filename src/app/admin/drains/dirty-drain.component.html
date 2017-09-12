@@ -24,7 +24,7 @@
 						</tr>
 						</thead>
 						<tbody>
-						<tr *ngFor="let drain of (drains | helpDrains)">
+						<tr *ngFor="let drain of (drains | dirtyDrains)">
 							<td><a href="#">{{drain.gid}}</a></td>
 							<td>{{drain.name}}</td>
 							<td>{{drain.address}}</td>
