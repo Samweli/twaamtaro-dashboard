@@ -17,6 +17,8 @@ import { FilterDrainsComponent } from './drains/filter-drains.component';
 import { Directive } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormControl, } from '@angular/forms';
 
 import { AdminRoutingModule } from './admin-routing/admin-routing.module';
 import { CleanDrainModule } from './drains/clean-drain.module';
@@ -26,10 +28,10 @@ import { DrainListModule } from './drains/drains.module';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { ReportModule } from './reports/reports.module';
 import { UserModule } from "./users/users-list/users.module";
+import { FilterDrainsModule } from './drains/filter-drains.module';
 
 import { DrainsService } from './drains/drains.service';
 import { UserService } from './users/user.service';
-import { WardService } from './ward/ward.service';
 
 import { ReportComponent } from './reports/reports.component';
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -37,6 +39,7 @@ import { UsersComponent } from './users/users-list/users.component';
 
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
 import { UserDetailModule } from "./users/user-detail/user-detail.module";
+import { RanksComponent } from './ranks/ranks.component';
 
 
 @NgModule({
@@ -51,6 +54,7 @@ import { UserDetailModule } from "./users/user-detail/user-detail.module";
     ReportModule,
     UserModule,
     UserDetailModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     AdminComponent,
@@ -72,13 +76,14 @@ import { UserDetailModule } from "./users/user-detail/user-detail.module";
     UsersComponent,
     UserDetailComponent,
     NotificationBarComponent,
-    FilterDrainsComponent
+    FilterDrainsComponent,
+    RanksComponent
   ],
   exports: [AdminComponent],
   providers: [
     DrainsService,
     UserService,
-    WardService
+    ReactiveFormsModule
   ],
 })
 export class AdminModule { 

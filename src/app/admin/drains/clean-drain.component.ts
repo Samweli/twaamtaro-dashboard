@@ -17,9 +17,9 @@ export class CleanDrainComponent implements OnInit {
   ErrMsg: string;
 
   constructor(private drainService: DrainsService) { }
-  getDrains(): void {
+  getCleanDrains(): void {
     this.drainService
-        .getDrains()
+        .getCleanDrains()
         .subscribe(
           drains => this.drains = drains, 
           resError=> this.ErrMsg = resError
@@ -27,6 +27,6 @@ export class CleanDrainComponent implements OnInit {
   }
    
   ngOnInit(): void {
-    this.getDrains();
+    this.getCleanDrains();
   }
 }

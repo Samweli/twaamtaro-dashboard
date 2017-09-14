@@ -1,5 +1,5 @@
 import { AdminDashboardComponent } from './../admin/admin-dashboard/admin-dashboard.component';
-import { StarterComponent } from './../starter/starter.component';
+//import { StarterComponent } from './../starter/starter.component';
 import { AdminComponent } from './../admin/admin.component';
 import { ReportComponent } from './../admin/reports/reports.component';
 import { DrainListComponent } from './../admin/drains/drain-list.component';
@@ -19,7 +19,7 @@ import { RouterModule } from '@angular/router';
       { path: '', component: AdminDashboardComponent },
       //{ path: 'admin/dashboard', component: AdminDashboardComponent },
       { path: 'reports', component: ReportComponent },
-      { path: 'starter', component: StarterComponent },
+      //{ path: 'starter', component: StarterComponent },
       { path: 'drains', component: DrainListComponent },
       { path: 'dirty-drains', component: DirtyDrainComponent },
       { path: 'clean-drains', component: CleanDrainComponent },

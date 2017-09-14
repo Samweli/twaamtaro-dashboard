@@ -1,14 +1,8 @@
 <div class="content-wrapper"  >
+	<div class="content">
 	<div class="box w3-card-2 w3-border w3-border-teal content" >
 		<div class="box-header with-border">
-			<h3 class=" w3-center">RESULTS: {{ title }}</h3>
-	
-			<div class="box-tools pull-right">
-				<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-					</button>
-				<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-			</div>
-		</div>
+			<h3 class=" w3-center">RESULTS: {{ title }}</h3>		</div>
 		<!-- /.box-header -->
 		<div class="box-body">
 			<div class="row">
@@ -21,7 +15,7 @@
 			  <th>ID</th>
 			  <th>NAME</th>
 			  <th>ADDRESS</th>
-			  <th>STATUS</th>
+			  <th>CLAIMED</th>
 			</tr>
 		  </thead>
 		  <tbody>
@@ -29,16 +23,16 @@
 			  <td><a href="#">{{drain.gid}}</a></td>
 			  <td>{{drain.name}}</td>
 			  <td>{{drain.address}}</td>
-			  <td>{{drain.cleared}}</td>
+			  <td>{{drain.claims_count}}</td>
 			</tr>
 			
 		  </tbody>
 		</table>
 	  </div>
-</div>
+	</div>
 </div>
 </div>
 <!-- ./box-body -->
 </div>
 <!-- /.box -->
- 
+</div>

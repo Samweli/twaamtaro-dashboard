@@ -1,0 +1,13 @@
+.notification-wrapper {
+    margin-left: 230px;
+    background-color: #ecf0f5;
+    z-index: 800; 
+    /*max-height: 200px;*/
+}
+.notification-content {
+    padding: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}

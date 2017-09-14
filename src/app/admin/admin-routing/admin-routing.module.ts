@@ -9,12 +9,11 @@ import { NgModule, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
-import { StarterComponent } from './../../starter/starter.component';
 import { ReportComponent } from './../reports/reports.component';
+import { RanksComponent } from './../ranks/ranks.component';
 import { NotFoundComponent } from './../not-found/not-found.component';
 import { UsersComponent } from './../users/users-list/users.component';
 import { UserDetailComponent } from './../users/user-detail/user-detail.component';
-
 
 @NgModule({
   imports: [
@@ -38,12 +37,12 @@ import { UserDetailComponent } from './../users/user-detail/user-detail.componen
           { path: 'drain-list', component: DrainListComponent },
           { path: 'help-drains', component: HelpDrainComponent },
           { path: 'users', component: UsersComponent }, 
+          { path: 'ranks', component: RanksComponent }, 
           { path: 'user-details/:id', component: UserDetailComponent }, 
           { path: '*', component: NotFoundComponent },
           { path: 'filter-drains', component: FilterDrainsComponent }, 
         ] ,    
       }, 
-      { path: 'starter', component: StarterComponent },
     ]),
 
   ],

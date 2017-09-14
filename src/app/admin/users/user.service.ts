@@ -10,14 +10,14 @@ import 'rxjs/add/observable/throw';
 @Injectable()
 export class UserService {
 
-  private UsersUrl = 'http://localhost:3000/users';  // URL to web api
+  private UsersUrl = 'http://twaamtaro.org/api/v1/users';  // URL to web api
 
   constructor(private http: Http) { }
   users: User[];
   
   getUsers(): Observable<User[]> {
     return this.http.get(this.UsersUrl)
-           .map((response: Response) => <User[]>response.json())
+           .map((response: Response) => <User[]>response.json().users)
            .catch(this.errorHandler);
           } 
            

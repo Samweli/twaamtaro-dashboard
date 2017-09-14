@@ -24,14 +24,6 @@ export class AdminComponent implements OnInit, OnDestroy {
     this.body.classList.remove('skin-blue');
     this.body.classList.remove('sidebar-mini');
   }
-  pieChartData =  {
-  chartType: 'PieChart',
-  dataTable: [
-    ['Task', 'Cleanness Feedback'],
-    ['Clean',     121],
-    ['Dirty',    8362  ],
-  ],
-  options: {'title': 'Cleanness'},
-};
+  
 
 }

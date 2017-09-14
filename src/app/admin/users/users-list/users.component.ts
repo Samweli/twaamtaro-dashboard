@@ -8,7 +8,6 @@ import { UserService } from "./../user.service";
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-
   title = 'Citizens';
   users: User[];
 
@@ -16,11 +15,12 @@ export class UsersComponent implements OnInit {
   getUsers(): void {
     this.userService
         .getUsers()
-        .subscribe(users => this.users = users);
+        .subscribe(users => this.users = users);     
   }
 
   ngOnInit() {
     this.getUsers();
+    
   }
 
 }

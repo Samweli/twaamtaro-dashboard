@@ -9,17 +9,18 @@ import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { NgModule } from '@angular/core';
 import { Directive } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { ReactiveFormsModule } from '@angular/forms';
 import { ReportModule } from './admin/reports/reports.module';
 //import { UserDetailModule } from './admin/users/user-detail/user-detail.module';
 
 import { AppComponent } from './app.component';
-import { StarterComponent } from './starter/starter.component';
+/*import { StarterComponent } from './starter/starter.component';
 import { StarterHeaderComponent } from './starter/starter-header/starter-header.component';
 import { StarterLeftSideComponent } from './starter/starter-left-side/starter-left-side.component';
 import { StarterContentComponent } from './starter/starter-content/starter-content.component';
 import { StarterFooterComponent } from './starter/starter-footer/starter-footer.component';
 import { StarterControlSidebarComponent } from './starter/starter-control-sidebar/starter-control-sidebar.component';
-
+*/
 import { AdminComponent } from './admin/admin.component';
 import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
 import { AdminLeftSideComponent } from './admin/admin-left-side/admin-left-side.component';
@@ -45,13 +46,13 @@ import { WardComponent } from './admin/ward/ward.component';
 @NgModule({
   declarations: [
     AppComponent,  
-    StarterComponent,
+   /*StarterComponent,
     StarterHeaderComponent,
     StarterLeftSideComponent,
     StarterContentComponent,
     StarterFooterComponent,
     StarterControlSidebarComponent,
-   /*UsersComponent,
+    UsersComponent,
     UserDetailComponent,
     WardComponent*/
   ],
@@ -65,7 +66,8 @@ import { WardComponent } from './admin/ward/ward.component';
     DrainListModule,
     DirtyDrainModule,
     CleanDrainModule,
-    HelpDrainModule
+    HelpDrainModule,
+    ReactiveFormsModule
   ],
   providers: [
     //DrainsService

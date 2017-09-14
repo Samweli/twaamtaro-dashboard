@@ -18,7 +18,7 @@ export class HelpDrainComponent implements OnInit {
   constructor(private drainService: DrainsService) { }
   getDrains(): void {
     this.drainService
-        .getDrains()
+        .getHelpDrains()
         .subscribe(drains => this.drains = drains);
   }
 

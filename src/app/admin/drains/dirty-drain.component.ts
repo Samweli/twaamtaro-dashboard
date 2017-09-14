@@ -11,14 +11,14 @@ import { Drain } from './drain';
   providers: [],
 })
 export class DirtyDrainComponent implements OnInit {
-  title = 'Dirty Drains!';
+  title = 'Dirty Drains';
   drains: Drain[];
   cleared = true;
 
   constructor(private drainService: DrainsService) { }
   getDrains(): void {
     this.drainService
-        .getDrains()
+        .getDirtyDrains()
         .subscribe(drains => this.drains = drains);
   }
 
