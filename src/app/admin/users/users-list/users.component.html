@@ -18,7 +18,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let user of (users)">
+          <tr>
             <td><a routerLink="../user-details/{{user.id}}">{{user.id}}</a></td>
             <td>{{user.first_name}} {{user.last_name}} </td>
             <td>{{user.organization}}</td>

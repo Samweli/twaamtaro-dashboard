@@ -9,13 +9,13 @@ import { UserService } from "./../user.service";
 })
 export class UsersComponent implements OnInit {
   title = 'Citizens';
-  users: User[];
+  user: User[];
 
   constructor(private userService: UserService) { }
   getUsers(): void {
     this.userService
         .getUsers()
-        .subscribe(users => this.users = users);     
+        .subscribe(user => this.user = user);     
   }
 
   ngOnInit() {
