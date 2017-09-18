@@ -7,3 +7,6 @@
             </span>
     </div>
   </form>
+  <div  *ngFor="let user of users | async" (click)="gotoDetail(user)" class="w3-text-white" >
+    {{user.id}}
+  </div>

@@ -1,13 +1,13 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
-import { CleanDrainsPipe } from './drains.pipe';
-import { DrainsService } from './drains.service';
-import { Drain } from './drain';
+import { CleanDrainsPipe } from './../drains.pipe';
+import { DrainsService } from './../drains.service';
+import { Drain } from './../drain';
 
 @Component({
   selector: 'clean-drain',
   templateUrl: './clean-drain.component.html',
-  styleUrls: ['./drains.component.css'],
+  styleUrls: ['./clean-drain.component.css'],
   providers: [],
 })
 export class CleanDrainComponent implements OnInit {

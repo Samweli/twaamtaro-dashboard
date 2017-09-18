@@ -11,7 +11,7 @@ import 'rxjs/add/observable/throw';
 @Injectable()
 export class UserService {
   private headers = new Headers({'Authorization': 'Token token="gM7TM10gfRFZBlkNNcqg9A", email="example-2@twaamtaro.org"'});
-  private UsersUrl = 'http://twaamtaro.org/api/v1/users/3';  // URL to web api
+  private UsersUrl = 'http://twaamtaro.org/api/v1/users/';  // URL to web api
 
   constructor(private http: Http) { }
   users: User[];
@@ -24,7 +24,7 @@ export class UserService {
   getUsers(): Observable<User[]> {
     return this.http.get(this.UsersUrl,
       {headers: this.headers})
-           .map((response: Response) => <User[]>response.json().user)
+           .map((response: Response) => <User[]>response.json().users)
            .catch(this.errorHandler);
           } 
            

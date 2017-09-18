@@ -18,6 +18,7 @@ export class DrainsService {
   private CleanDrainsUrl = 'http://twaamtaro.org/api/v1/drains/?type=cleaned'; 
   private DirtyDrainsUrl = 'http://twaamtaro.org/api/v1/drains/?type=uncleaned';
   private HelpDrainsUrl = 'http://twaamtaro.org/api/v1/drains/?type=need_help';
+  private UnknownDrainsUrl = 'http://twaamtaro.org/api/v1/drains/?type=unknown';
   constructor(private http: Http) { }
 
   getDrains(): Observable<Drain[]> {
@@ -40,12 +41,11 @@ export class DrainsService {
            .map((response: Response) => <Drain[]>response.json().drains)
            .catch(this.errorHandler);
           } 
-          
-  getDrainAddress(address):Observable<Drain[]> {
-            return this.getDrains()
-            .map(drains => drains => drains.address === address)
-            .catch(this.errorHandler);            
-      }
+  getUnknownDrains():Observable<Drain[]> {
+    return this.http.get(this.UnknownDrainsUrl)
+          .map((response: Response) => <Drain[]>response.json().drains)
+          .catch(this.errorHandler);           
+  }
   errorHandler(error: Response) {
              console.error(error);
              return Observable.throw(error || 'Sorry, something went wrong');

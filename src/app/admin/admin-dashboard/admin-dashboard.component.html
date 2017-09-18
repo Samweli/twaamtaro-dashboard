@@ -4,12 +4,10 @@
 <section class="content">
 
 <!-- START AJAX RESONSES -->
-    <div class="w3-row " id="serverResult">
-    </div>
     <!-- END AJAX RESONSES -->
 
     <!-- /.row -->
-    <div class="w3-row ">
+    <div class="w3-row " >
         <div class="box w3-card-2 w3-border w3-border-teal" >
           <div class="box-header with-border">
             <h3 class="box-title">Graphs</h3>
@@ -22,11 +20,11 @@
           </div>
           <!-- /.box-header -->
           <div class="box-body">
-            <div class="row">
+            <div class="row" >
                 
-                <div class="chart">
+                <div class="chart w3-margin" style="width: 500px; height: auto;" >
                   <!-- Chart Canvas -->
-                  <google-chart [data]="pieChartData" style="width: auto; height: auto;"></google-chart>
+                  <google-chart [data]="pieChartData" ></google-chart>
                 </div>
                 <!-- /.chart-responsive -->
         

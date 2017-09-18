@@ -7,12 +7,12 @@ import { AdminComponent } from './admin.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { NotificationBarComponent } from "./notification-bar/notification-bar.component";
 
-import { CleanDrainComponent } from './drains/clean-drain.component';
-import { DirtyDrainComponent } from './drains/dirty-drain.component';
-import { HelpDrainComponent } from './drains/help-drain.component';
-import { DrainListComponent } from './drains/drain-list.component';
+import { CleanDrainComponent } from './drains/clean-drain/clean-drain.component';
+import { DirtyDrainComponent } from './drains/dirty-drain/dirty-drain.component';
+import { HelpDrainComponent } from './drains/help-drain/help-drain.component';
+import { DrainListComponent } from './drains/all-drains/all-drains.component';
 import { DirtyDrainsPipe, CleanDrainsPipe, HelpDrainsPipe } from './drains/drains.pipe';
-import { FilterDrainsComponent } from './drains/filter-drains.component';
+import { FilterDrainsComponent } from './drains/filter-drains/filter-drains.component';
 
 import { Directive } from '@angular/core';
 import { NgModule } from '@angular/core';
@@ -21,14 +21,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormControl, } from '@angular/forms';
 
 import { AdminRoutingModule } from './admin-routing/admin-routing.module';
-import { CleanDrainModule } from './drains/clean-drain.module';
-import { DirtyDrainModule } from './drains/dirty-drain.module';
-import { HelpDrainModule } from './drains/help-drain.module';
-import { DrainListModule } from './drains/drains.module';
+import { CleanDrainModule } from './drains/clean-drain/clean-drain.module';
+import { DirtyDrainModule } from './drains/dirty-drain/dirty-drain.module';
+import { HelpDrainModule } from './drains/help-drain/help-drain.module';
+import { DrainListModule } from './drains/all-drains/all-drains.module';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { ReportModule } from './reports/reports.module';
 import { UserModule } from "./users/users-list/users.module";
-import { FilterDrainsModule } from './drains/filter-drains.module';
+import { FilterDrainsModule } from './drains/filter-drains/filter-drains.module';
 
 import { DrainsService } from './drains/drains.service';
 import { UserService } from './users/user.service';
@@ -40,6 +40,7 @@ import { UsersComponent } from './users/users-list/users.component';
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
 import { UserDetailModule } from "./users/user-detail/user-detail.module";
 import { RanksComponent } from './ranks/ranks.component';
+import { UserSearchComponent } from './users/user-search/user-search.component';
 
 
 @NgModule({
@@ -77,7 +78,8 @@ import { RanksComponent } from './ranks/ranks.component';
     UserDetailComponent,
     NotificationBarComponent,
     FilterDrainsComponent,
-    RanksComponent
+    RanksComponent,
+    UserSearchComponent
   ],
   exports: [AdminComponent],
   providers: [

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
-import { DrainListComponent } from './drain-list.component';
+import { CleanDrainComponent } from './clean-drain.component';
 import { CommonModule } from '@angular/common';
+import { CleanDrainsPipe } from './../drains.pipe';
 
 @NgModule({
     imports: [CommonModule],
@@ -9,5 +10,5 @@ import { CommonModule } from '@angular/common';
     providers: [],
 	schemas: []
 })
-export class DrainListModule {
+export class CleanDrainModule {
 }

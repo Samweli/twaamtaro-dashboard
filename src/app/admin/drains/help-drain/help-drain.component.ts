@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
-import { HelpDrainsPipe } from './drains.pipe';
-import { DrainsService } from './drains.service';
-import { Drain } from './drain';
+import { HelpDrainsPipe } from './../drains.pipe';
+import { DrainsService } from './../drains.service';
+import { Drain } from './../drain';
 
 @Component({
   selector: 'help-drains',
   templateUrl: './help-drain.component.html',
-  styleUrls: ['./drains.component.css'],
+  styleUrls: ['./help-drain.component.css'],
   providers: []
 })
 export class HelpDrainComponent implements OnInit {

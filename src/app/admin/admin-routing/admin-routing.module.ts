@@ -1,10 +1,10 @@
 import { AdminDashboardComponent } from './../admin-dashboard/admin-dashboard.component';
 import { AdminComponent } from './../admin.component';
-import { DrainListComponent } from './../drains/drain-list.component';
-import { CleanDrainComponent } from './../drains/clean-drain.component';
-import { DirtyDrainComponent } from './../drains/dirty-drain.component';
-import { FilterDrainsComponent } from './../drains/filter-drains.component';
-import { HelpDrainComponent } from './../drains/help-drain.component';
+import { DrainListComponent } from './../drains/all-drains/all-drains.component';
+import { CleanDrainComponent } from './../drains/clean-drain/clean-drain.component';
+import { DirtyDrainComponent } from './../drains/dirty-drain/dirty-drain.component';
+import { FilterDrainsComponent } from './../drains/filter-drains/filter-drains.component';
+import { HelpDrainComponent } from './../drains/help-drain/help-drain.component';
 import { NgModule, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';

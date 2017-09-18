@@ -9,14 +9,14 @@ import { User } from './../user';
 
 @Injectable()
 export class UserSearchService {
-
+  private headers = new Headers({'Authorization': 'Token token="gM7TM10gfRFZBlkNNcqg9A", email="example-2@twaamtaro.org"'});
+  
   constructor(private http: Http) {}
   searchedUser : User[];
-  search(term: string): Observable<User[]> {
-    let headers = new Headers();
-    headers.append("Authorization","Token token='gM7TM10gfRFZBlkNNcqg9A', email='example-2@twaamtaro.org'");
+  search(searchkey: string): Observable<User[]> {
     return this.http
-               .get(`http://twaamtaro.org/api/v1/users/?first_name=${term}`)
-               .map(response => response.json().users.data as User[]);
+               .get(`http://twaamtaro.org/api/v1/users/?first_name=${searchkey}`,
+               {headers: this.headers})
+               .map(response => response.json().user.data as User[]);
   }
 }

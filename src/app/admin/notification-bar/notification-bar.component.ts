@@ -14,7 +14,8 @@ export class NotificationBarComponent implements OnInit {
   alldrains: Drain[];
   cleandrains: Drain[];
   helpdrains: Drain[];
-  dirtydrains: Drain[];
+  dirtydrains:Drain[];
+  unknowndrains:Drain[];
 
 constructor(private drainService: DrainsService, private userService: UserService) { }
  getUsers(): void {
@@ -22,26 +23,31 @@ constructor(private drainService: DrainsService, private userService: UserServic
         .getUsers()
         .subscribe(users => this.users = users);     
   }
-  getDrains(): void {
+  getDrains(): any {
     this.drainService
         .getDrains()
         .subscribe(drains => this.alldrains = drains);
   }
 
-  cleanDrains(): void {
+  cleanDrains(): any {
     this.drainService
         .getCleanDrains()
         .subscribe(cleanDrains => this.cleandrains = cleanDrains);
   }
-  dirtyDrains(): void {
+  dirtyDrains(): any {
     this.drainService
         .getDirtyDrains()
         .subscribe(dirtyDrains => this.dirtydrains = dirtyDrains);
   }
-  helpDrains(): void {
+  helpDrains(): any {
     this.drainService
         .getHelpDrains()
         .subscribe(helpDrains => this.helpdrains = helpDrains);
+  }
+  unknownDrains(): any {
+    this.drainService
+        .getUnknownDrains()
+        .subscribe(unknownDrains => this.unknowndrains = unknownDrains);
   }
   ngOnInit() {
     this.getUsers();
@@ -49,6 +55,7 @@ constructor(private drainService: DrainsService, private userService: UserServic
     this.cleanDrains();
     this.dirtyDrains();
     this.helpDrains();
+    this.unknownDrains();
   }
 
 }

@@ -30,19 +30,22 @@ export class UserSearchComponent implements OnInit {
 
   // Push a search term into the observable stream.
   searchQuery(searchkey: string): void {
-    //console.log(this.searchForm.value.q);
     searchkey = this.searchForm.value.q;
+    console.log(searchkey);
     this.searchTerms.next(searchkey);
   }
 
   ngOnInit(): void {
     this.users = this.searchTerms
-    .distinctUntilChanged()  
-    .switchMap(term => term?this.userSearchService.search(term): Observable.of<User[]>([]))
+    .switchMap(searchkey => searchkey?this.userSearchService.search(searchkey): Observable.of<User[]>([]))
     .catch(error => { 
       console.log(error);
       return Observable.of<User[]>([]);
     });
-    console.log(this.users)
+    
+  }
+  gotoDetail(user: User): void {
+    let link = ['/user-details/', user.id];
+    this.router.navigate(link);
   }
 }

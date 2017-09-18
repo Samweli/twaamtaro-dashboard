@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, } from '@angular/forms';
 
 @Component({
   selector: 'app-admin-left-side',
@@ -7,11 +6,9 @@ import { FormGroup, FormControl, } from '@angular/forms';
   styleUrls: ['./admin-left-side.component.css']
 })
 export class AdminLeftSideComponent implements OnInit {
-
-  constructor() { }
-  searchForm  = new FormGroup({
-    address: new FormControl()
-});
+  notifyCitizens() {
+    
+  }
   ngOnInit() {
   }
 
