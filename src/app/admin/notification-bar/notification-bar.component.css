@@ -1,21 +1,18 @@
-.notification-wrapper {
-    margin-left: 230px;
-    background-color: #ecf0f5;
-    z-index: 800; 
-    /*max-height: 200px;*/
+.content-wrapper {
+    min-height: auto !important;
+}
+.content {
+    min-height: auto !important;
 }
 .notificaition-wrapper #bar {
     width:20%;
 }
-.notification-content {
-    padding: 15px;
-    margin-right: auto;
-    margin-left: auto;
-    padding-left: 15px;
-    padding-right: 15px;
-}
+
 @media only screen and (max-width: 767px) {
     .notificaition-wrapper, {
+        margin-left: 0px;
+    }
+    .notification-content {
         margin-left: 0px;
     }
 }

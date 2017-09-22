@@ -11,6 +11,7 @@ import { Directive } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ReportModule } from './admin/reports/reports.module';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AdminComponent } from './admin/admin.component';
@@ -21,10 +22,12 @@ import { AdminFooterComponent } from './admin/admin-footer/admin-footer.componen
 import { AdminControlSidebarComponent } from './admin/admin-control-sidebar/admin-control-sidebar.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { NotificationBarComponent } from "./admin/notification-bar/notification-bar.component";
+import { LoginComponent } from './admin/login/login.component';
 
 @NgModule({
   declarations: [
-    AppComponent,  
+    AppComponent,
+    //LoginComponent,  
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import { NotificationBarComponent } from "./admin/notification-bar/notification-
     DirtyDrainModule,
     CleanDrainModule,
     HelpDrainModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
   ],

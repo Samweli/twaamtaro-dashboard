@@ -3,6 +3,7 @@ import { Headers, Http, Response } from '@angular/http';
 import { Observable }    from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/filter';
@@ -26,9 +27,9 @@ export class DrainsService {
            .map((response: Response) => <Drain[]>response.json().drains)
            .catch(this.errorHandler);
           } 
-  getCleanDrains(): Observable<Drain[]> {
+  getCleanDrains(): any {
     return this.http.get(this.CleanDrainsUrl)
-           .map((response: Response) => <Drain[]>response.json().drains)
+           .map((response: Response) => response.json().drains)
            .catch(this.errorHandler);
           } 
   getDirtyDrains(): Observable<Drain[]> {

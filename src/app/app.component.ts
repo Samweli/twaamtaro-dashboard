@@ -11,5 +11,7 @@ export class AppComponent {
   title = 'app';
   drains;
   
+  constructor() { }
+  
 }
 

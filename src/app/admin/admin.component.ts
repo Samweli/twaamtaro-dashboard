@@ -1,14 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Http } from '@angular/http';
-import { User } from "./users/user";
-import { UserService } from "./users/user.service";
-import { Drain } from './drains/drain';
-import { DrainsService } from './drains/drains.service';
+import { LoginComponent } from "./login/login.component";
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+  styleUrls: ['./admin.component.css'],
 })
 export class AdminComponent implements OnInit, OnDestroy {
 

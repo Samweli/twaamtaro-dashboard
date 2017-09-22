@@ -1,4 +1,6 @@
+
 <header class="main-header">
+
   <!-- Logo -->
   <a href="index2.html" class="logo w3-theme-d3">
     <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -41,7 +43,10 @@
             <!-- Menu Footer-->
             <li class="user-footer">
               <div class="pull-left">
-                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                <a  class="btn btn-default btn-flat">Profile</a>
+              </div>
+              <div class="pull-right">
+                <a (click)="loginbox()"  class="btn btn-default btn-flat">Sign in</a>
               </div>
               <div class="pull-right">
                 <a href="#" class="btn btn-default btn-flat">Sign out</a>
@@ -49,11 +54,12 @@
             </li>
           </ul>
         </li>
-        <!-- Control Sidebar Toggle Button -->
+        <!-- Control Sidebar Toggle Button routerLink="login" (click)="loginbox()" -->
         <li>
           <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
         </li>
       </ul>
     </div>
   </nav>
+  <app-login></app-login>
 </header>

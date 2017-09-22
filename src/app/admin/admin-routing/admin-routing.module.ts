@@ -1,5 +1,6 @@
 import { AdminDashboardComponent } from './../admin-dashboard/admin-dashboard.component';
 import { AdminComponent } from './../admin.component';
+import { LoginComponent } from "./../login/login.component";
 import { DrainListComponent } from './../drains/all-drains/all-drains.component';
 import { CleanDrainComponent } from './../drains/clean-drain/clean-drain.component';
 import { DirtyDrainComponent } from './../drains/dirty-drain/dirty-drain.component';
@@ -31,6 +32,8 @@ import { UserDetailComponent } from './../users/user-detail/user-detail.componen
             path: 'dashboard',
             component: AdminDashboardComponent
           },
+
+          { path: 'login', component: LoginComponent }, 
           { path: 'reports', component: ReportComponent },
           { path: 'clean-drains', component: CleanDrainComponent },
           { path: 'dirty-drains', component: DirtyDrainComponent },

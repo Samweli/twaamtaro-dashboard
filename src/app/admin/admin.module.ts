@@ -7,11 +7,11 @@ import { AdminComponent } from './admin.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { NotificationBarComponent } from "./notification-bar/notification-bar.component";
 
+import { LoginComponent } from "./login/login.component";
 import { CleanDrainComponent } from './drains/clean-drain/clean-drain.component';
 import { DirtyDrainComponent } from './drains/dirty-drain/dirty-drain.component';
 import { HelpDrainComponent } from './drains/help-drain/help-drain.component';
 import { DrainListComponent } from './drains/all-drains/all-drains.component';
-import { DirtyDrainsPipe, CleanDrainsPipe, HelpDrainsPipe } from './drains/drains.pipe';
 import { FilterDrainsComponent } from './drains/filter-drains/filter-drains.component';
 
 import { Directive } from '@angular/core';
@@ -19,6 +19,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormControl, } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { AdminRoutingModule } from './admin-routing/admin-routing.module';
 import { CleanDrainModule } from './drains/clean-drain/clean-drain.module';
@@ -29,6 +30,8 @@ import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { ReportModule } from './reports/reports.module';
 import { UserModule } from "./users/users-list/users.module";
 import { FilterDrainsModule } from './drains/filter-drains/filter-drains.module';
+import { AdminHeaderModule } from './admin-header/admin-header.module';
+import { LoginModule } from "./login/login.module";
 
 import { DrainsService } from './drains/drains.service';
 import { UserService } from './users/user.service';
@@ -56,6 +59,7 @@ import { UserSearchComponent } from './users/user-search/user-search.component';
     UserModule,
     UserDetailModule,
     ReactiveFormsModule,
+    FormsModule
   ],
   declarations: [
     AdminComponent,
@@ -64,14 +68,10 @@ import { UserSearchComponent } from './users/user-search/user-search.component';
     AdminContentComponent,
     AdminFooterComponent,
     AdminControlSidebarComponent,
-    AdminDashboardComponent,
     DrainListComponent,
     CleanDrainComponent,
     DirtyDrainComponent,
     HelpDrainComponent,
-    DirtyDrainsPipe,
-    CleanDrainsPipe,
-    HelpDrainsPipe,
     ReportComponent,
     NotFoundComponent,
     UsersComponent,
@@ -79,13 +79,16 @@ import { UserSearchComponent } from './users/user-search/user-search.component';
     NotificationBarComponent,
     FilterDrainsComponent,
     RanksComponent,
-    UserSearchComponent
+    UserSearchComponent,
+    AdminDashboardComponent,
+    LoginComponent
   ],
   exports: [AdminComponent],
   providers: [
     DrainsService,
     UserService,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LoginModule
   ],
 })
 export class AdminModule { 

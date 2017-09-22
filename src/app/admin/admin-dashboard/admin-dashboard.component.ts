@@ -22,7 +22,8 @@ constructor(private drainService: DrainsService) { }
   cleanDrains(): any {
    this.drainService
         .getCleanDrains()
-        .subscribe(clean => this.cleandrains = clean);
+        .subscribe(clean => this.cleandrains)
+        .do(this.cleandrains.length);
   }
   dirtyDrains(): void {
     this.drainService
@@ -47,10 +48,7 @@ constructor(private drainService: DrainsService) { }
     chartType: 'PieChart',
     dataTable: [
       ['Cleanness Feedback', 'Ratio'],
-      ['Clean Drains', this.cleandrains.length  ],
-      ['Dirty Drains', this.dirtydrains.length  ],
-      ['Unknown Drains', this.unknowndrains.length  ],
-      ['Help Drains', this.helpdrains.length ],
+      ['Clean Drains', 65  ],
     ],
     options: {
           'title': 'General Cleanness Report for Drains',
