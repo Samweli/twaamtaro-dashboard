@@ -1,27 +1,30 @@
-import { DashboardComponent } from './../../shared/dashboard/dashboard.component';
-import { AdminComponent } from './../admin.component';
 
-import { DrainListComponent } from './../../shared/drains/all-drains/all-drains.component';
+import { NgModule, Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+
+import { AuthGuard } from "./../../../core/auth.guard";
+import { AdminComponent } from './../admin.component';
+import { DashboardComponent } from './../../dashboard/dashboard.component';
+/*import { DrainListComponent } from './../../shared/drains/all-drains/all-drains.component';
 import { CleanDrainComponent } from './../../shared/drains/clean-drain/clean-drain.component';
 import { DirtyDrainComponent } from './../../shared/drains/dirty-drain/dirty-drain.component';
 import { FilterDrainsComponent } from './../../shared/drains/filter-drains/filter-drains.component';
 import { HelpDrainComponent } from './../../shared/drains/help-drain/help-drain.component';
-import { NgModule, Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
 
 import { ReportComponent } from './../../shared/reports/reports.component';
 import { RanksComponent } from './../../shared/ranks/ranks.component';
 import { NotFoundComponent } from './../../shared/not-found/not-found.component';
 import { UsersComponent } from './../../shared/users/users-list/users.component';
 import { UserDetailComponent } from './../../shared/users/user-detail/user-detail.component';
-
+*/
 @NgModule({
   imports: [
     RouterModule.forChild([
       {
         path: 'admin',
         component: AdminComponent,
+        canActivate: [AuthGuard],
         children: [
           {
             path: '',
@@ -33,7 +36,7 @@ import { UserDetailComponent } from './../../shared/users/user-detail/user-detai
             component: DashboardComponent
           },
  
-          { path: 'reports', component: ReportComponent },
+         /* { path: 'reports', component: ReportComponent },
           { path: 'clean-drains', component: CleanDrainComponent },
           { path: 'dirty-drains', component: DirtyDrainComponent },
           { path: 'drain-list', component: DrainListComponent },
@@ -42,7 +45,7 @@ import { UserDetailComponent } from './../../shared/users/user-detail/user-detai
           { path: 'ranks', component: RanksComponent }, 
           { path: 'user-details/:id', component: UserDetailComponent }, 
           { path: '*', component: NotFoundComponent },
-          { path: 'filter-drains', component: FilterDrainsComponent }, 
+          { path: 'filter-drains', component: FilterDrainsComponent }, */
         ] ,    
       }, 
     ]),

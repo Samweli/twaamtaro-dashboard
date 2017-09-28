@@ -27,7 +27,7 @@ import { FormGroup, FormControl, } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { SharedRoutingModule } from './../shared/shared-routing/shared-routing.module';
 
-import { AdminRoutingModule } from './../admin/admin-routing/admin-routing.module';
+import { AdminRoutingModule } from './admin/admin-routing/admin-routing.module';
 import { CleanDrainModule } from './drains/clean-drain/clean-drain.module';
 import { DirtyDrainModule } from './../shared/drains/dirty-drain/dirty-drain.module';
 import { HelpDrainModule } from './../shared/drains/help-drain/help-drain.module';

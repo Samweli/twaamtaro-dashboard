@@ -1,5 +1,5 @@
 import { AdminComponent } from "./admin.component";
-import { CleanDrainComponent } from './../shared/drains/clean-drain/clean-drain.component';
+/*import { CleanDrainComponent } from './../shared/drains/clean-drain/clean-drain.component';
 import { DashboardComponent } from './../shared/dashboard/dashboard.component';
 import { DirtyDrainComponent } from './../shared/drains/dirty-drain/dirty-drain.component';
 import { DrainListComponent } from './../shared/drains/all-drains/all-drains.component';
@@ -17,26 +17,26 @@ import { SharedComponent } from "./../shared/shared.component";
 import { UnknownDrainsComponent } from './../shared/drains/unknown-drains/unknown-drains.component';
 import { UserDetailComponent } from './../shared/users/user-detail/user-detail.component';
 import { UserSearchComponent } from './../shared/users/user-search/user-search.component';
-import { UsersComponent } from './../shared/users/users-list/users.component';
+import { UsersComponent } from './../shared/users/users-list/users.component';*/
 import { Directive } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormControl, } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 
 import { AdminRoutingModule } from './admin-routing/admin-routing.module';
-import { CleanDrainModule } from './../shared/drains/clean-drain/clean-drain.module';
+/*import { CleanDrainModule } from './../shared/drains/clean-drain/clean-drain.module';
 import { DirtyDrainModule } from './../shared/drains/dirty-drain/dirty-drain.module';
 import { HelpDrainModule } from './../shared/drains/help-drain/help-drain.module';
 import { DrainListModule } from './../shared/drains/all-drains/all-drains.module';
-import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { ReportModule } from './../shared/reports/reports.module';
 import { UserModule } from "./../shared/users/users-list/users.module";
-import { FilterDrainsModule } from './../shared/drains/filter-drains/filter-drains.module';
+import { FilterDrainsModule } from './../shared/drains/filter-drains/filter-drains.module';*/
 
-import { DrainsService } from './../shared/drains/drains.service';
-import { UserService } from './../shared/users/user.service';
+import { DrainsService } from './../drains/drains.service';
+import { UserService } from './../users/user.service';
 
 
 
@@ -46,12 +46,6 @@ import { UserService } from './../shared/users/user.service';
     CommonModule,
     AdminRoutingModule,
     Ng2GoogleChartsModule,
-    DrainListModule,
-    DirtyDrainModule,
-    CleanDrainModule,
-    HelpDrainModule,
-    ReportModule,
-    UserModule,
     ReactiveFormsModule,
     FormsModule
   ],

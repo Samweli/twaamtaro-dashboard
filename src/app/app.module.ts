@@ -1,4 +1,4 @@
-import { AdminModule } from './admin/admin.module';
+import { AdminModule } from './shared/admin/admin.module';
 import { CleanDrainModule } from './shared/drains/clean-drain/clean-drain.module';
 import { DrainListModule } from './shared/drains/all-drains/all-drains.module';
 import { HelpDrainModule } from "./shared/drains/help-drain/help-drain.module";
@@ -17,8 +17,8 @@ import { UserDetailModule } from "./shared/users/user-detail/user-detail.module"
 import { SharedModule } from "./shared/shared.module";
 
 import { AppComponent } from './app.component';
-import { AdminComponent } from './admin/admin.component';
-import { AdminContentComponent } from './admin/admin-content/admin-content.component';
+import { AdminComponent } from './shared/admin/admin.component';
+import { AdminContentComponent } from './shared/admin/admin-content/admin-content.component';
 
 //import { AdminControlSidebarComponent } from './admin-control-sidebar/admin-control-sidebar.component';
 import { CleanDrainComponent } from './shared/drains/clean-drain/clean-drain.component';
@@ -47,7 +47,8 @@ import { UnknownDrainsComponent } from './shared/drains/unknown-drains/unknown-d
 import { AuthGuard } from "./core/auth.guard";
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    //HeaderComponent,
   ],
   imports: [
     BrowserModule,

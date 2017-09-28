@@ -1,6 +1,6 @@
 import { DashboardComponent } from './../shared/dashboard/dashboard.component';
 import { AppComponent } from "./../app.component";
-import { AdminComponent } from './../admin/admin.component';
+import { AdminComponent } from './../shared/admin/admin.component';
 import { LoginComponent } from "./../shared/login/login.component";
 import { ReportComponent } from './../shared/reports/reports.component';
 import { DrainListComponent } from './../shared/drains/all-drains/all-drains.component';
@@ -24,7 +24,7 @@ import { AuthGuard } from "./../core/auth.guard";
     RouterModule.forRoot([
      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: SharedComponent },
-      { path: 'admin/', component: AdminComponent  },
+      { path: 'admin', component: AdminComponent  },
       { path: '*', component: NotFoundComponent },
     ])
   ],

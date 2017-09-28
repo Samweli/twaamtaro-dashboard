@@ -1,5 +1,6 @@
 import { DashboardComponent } from './../../shared/dashboard/dashboard.component';
 
+import { AdminComponent } from "./../../shared/admin/admin.component";
 import { DrainListComponent } from './../../shared/drains/all-drains/all-drains.component';
 import { CleanDrainComponent } from './../../shared/drains/clean-drain/clean-drain.component';
 import { DirtyDrainComponent } from './../../shared/drains/dirty-drain/dirty-drain.component';
@@ -15,6 +16,7 @@ import { NotFoundComponent } from './../../shared/not-found/not-found.component'
 import { UsersComponent } from './../../shared/users/users-list/users.component';
 import { UserDetailComponent } from './../../shared/users/user-detail/user-detail.component';
 
+import { AuthGuard } from "./../../core/auth.guard";
 @NgModule({
   imports: [
     RouterModule.forChild([
@@ -24,6 +26,7 @@ import { UserDetailComponent } from './../../shared/users/user-detail/user-detai
         children: [
           { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
           //{ path: 'dashboard', component: DashboardComponent },
+          { path: 'admin', component: AdminComponent, canActivate:[AuthGuard]  },
           { path: 'reports', component: ReportComponent },
           { path: 'clean-drains', component: CleanDrainComponent },
           { path: 'dirty-drains', component: DirtyDrainComponent },
