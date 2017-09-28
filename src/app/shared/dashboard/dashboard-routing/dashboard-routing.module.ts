@@ -1,27 +1,26 @@
-import { DashboardComponent } from './../../shared/dashboard/dashboard.component';
-import { AdminComponent } from './../admin.component';
+import { DashboardComponent } from './../../dashboard/dashboard.component';
 
-import { DrainListComponent } from './../../shared/drains/all-drains/all-drains.component';
-import { CleanDrainComponent } from './../../shared/drains/clean-drain/clean-drain.component';
-import { DirtyDrainComponent } from './../../shared/drains/dirty-drain/dirty-drain.component';
-import { FilterDrainsComponent } from './../../shared/drains/filter-drains/filter-drains.component';
-import { HelpDrainComponent } from './../../shared/drains/help-drain/help-drain.component';
+import { DrainListComponent } from './../../drains/all-drains/all-drains.component';
+import { CleanDrainComponent } from './../../drains/clean-drain/clean-drain.component';
+import { DirtyDrainComponent } from './../../drains/dirty-drain/dirty-drain.component';
+import { FilterDrainsComponent } from './../../drains/filter-drains/filter-drains.component';
+import { HelpDrainComponent } from './../../drains/help-drain/help-drain.component';
 import { NgModule, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ReportComponent } from './../../shared/reports/reports.component';
-import { RanksComponent } from './../../shared/ranks/ranks.component';
-import { NotFoundComponent } from './../../shared/not-found/not-found.component';
-import { UsersComponent } from './../../shared/users/users-list/users.component';
-import { UserDetailComponent } from './../../shared/users/user-detail/user-detail.component';
+import { ReportComponent } from './../../reports/reports.component';
+import { RanksComponent } from './../../ranks/ranks.component';
+import { NotFoundComponent } from './../../not-found/not-found.component';
+import { UsersComponent } from './../../users/users-list/users.component';
+import { UserDetailComponent } from './../../users/user-detail/user-detail.component';
 
 @NgModule({
   imports: [
     RouterModule.forChild([
       {
-        path: 'admin',
-        component: AdminComponent,
+        path: 'dashbooard',
+        component:DashboardComponent,
         children: [
           {
             path: '',
@@ -52,4 +51,4 @@ import { UserDetailComponent } from './../../shared/users/user-detail/user-detai
     RouterModule
   ]
 })
-export class AdminRoutingModule { }
+export class DashboardRoutingModule { }

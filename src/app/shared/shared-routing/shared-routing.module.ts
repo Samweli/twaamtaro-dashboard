@@ -1,5 +1,4 @@
 import { DashboardComponent } from './../../shared/dashboard/dashboard.component';
-import { AdminComponent } from './../admin.component';
 
 import { DrainListComponent } from './../../shared/drains/all-drains/all-drains.component';
 import { CleanDrainComponent } from './../../shared/drains/clean-drain/clean-drain.component';
@@ -9,7 +8,7 @@ import { HelpDrainComponent } from './../../shared/drains/help-drain/help-drain.
 import { NgModule, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-
+import { SharedComponent } from "./../../shared/shared.component";
 import { ReportComponent } from './../../shared/reports/reports.component';
 import { RanksComponent } from './../../shared/ranks/ranks.component';
 import { NotFoundComponent } from './../../shared/not-found/not-found.component';
@@ -20,19 +19,11 @@ import { UserDetailComponent } from './../../shared/users/user-detail/user-detai
   imports: [
     RouterModule.forChild([
       {
-        path: 'admin',
-        component: AdminComponent,
+        path: 'dashboard',
+        component: SharedComponent,
         children: [
-          {
-            path: '',
-            redirectTo: 'dashboard',
-            pathMatch: 'full'
-          },
-          {
-            path: '',
-            component: DashboardComponent
-          },
- 
+          { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+          //{ path: 'dashboard', component: DashboardComponent },
           { path: 'reports', component: ReportComponent },
           { path: 'clean-drains', component: CleanDrainComponent },
           { path: 'dirty-drains', component: DirtyDrainComponent },
@@ -52,4 +43,4 @@ import { UserDetailComponent } from './../../shared/users/user-detail/user-detai
     RouterModule
   ]
 })
-export class AdminRoutingModule { }
+export class SharedRoutingModule { }

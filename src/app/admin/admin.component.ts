@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Http } from '@angular/http';
-import { LoginComponent } from "./login/login.component";
+import { LoginComponent } from "./../shared/login/login.component";
 
 @Component({
   selector: 'app-admin',
