@@ -9,7 +9,7 @@ export class AuthService {
 
   private loginUrl = `http://localhost:3000/api/v1/sessions/`;
   private headers = new Headers({'Content-Type': 'application/json'});
-  
+  loggedIn: any;
 
   constructor(
         private http: Http,    
@@ -21,23 +21,32 @@ export class AuthService {
         .subscribe(res => {
             let userdata = res.json();
             if (userdata && userdata.data.auth_token) {
-
                 console.log(userdata);
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(user));
-
-        this.router.navigate(['admin']);
+        this.router.navigate(['dashboard/admin']);
             }
         return userdata;
         });
-}
-logout() {
-    // remove user from local storage to log user out
-    localStorage.removeItem('currentUser');
-}
-  private handleError(error: any): any {
-    console.error('An error occurred', error);
-  }
+    }
+    isLoggedIn() {
+    //debugger;
+        if (localStorage.getItem("currentUser") == null) {
+            this.loggedIn == false;
+            return this.loggedIn;
+            }
+        else {
+            return true;
+        }
+    }
+    logout() {
+        // remove user from local storage to log user out
+        localStorage.removeItem('currentUser');
+        this.loggedIn = false;
+    }
+    private handleError(error: any): any {
+        console.error('An error occurred', error);
+    }
 
 
 }

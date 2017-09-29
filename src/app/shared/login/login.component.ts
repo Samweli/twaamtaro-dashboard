@@ -19,10 +19,9 @@ export class LoginComponent implements OnInit {
 
   user: any = { 'sms_number': '','password': '' };
   login() {
+    console.log(this.user);
     this.authService.login(this.user)
     .subscribe(res => {
-
-      console.log(res.success);
       if(res.success){
         //this.router.navigateByUrl('admin');
         this.router.navigate(['admin']);

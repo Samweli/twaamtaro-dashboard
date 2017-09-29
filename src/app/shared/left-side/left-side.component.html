@@ -25,8 +25,8 @@
           </a>
       </li>
       <!-- *ngIf="user.admin"  -->
-      <li *ngIf="user && user.admin" (click)="notifyCitizens">
-          <a>
+      <li *ngIf="authService.isLoggedIn()" >
+          <a (click)="notifyCitizens">
             <i class="fa fa-bell-o"></i>
             <span>NOTIFY CITIZENS</span>
           </a>

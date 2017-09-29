@@ -40,19 +40,21 @@
               </div>
               <!-- /.row -->
             </li>
-            <!-- Menu Footer-->
+            <!-- Menu Footer *ngIf="authService.isLoggedIn(); else signIN" -->
             <li class="user-footer">
               <div class="pull-left">
                 <a  class="btn btn-default btn-flat">Profile</a>
               </div>
               <div class="pull-right">
-                <a (click)="loginbox()"  class="btn btn-default btn-flat">Sign in</a>
-              </div>
-              <div class="pull-right">
-                <a (click)="register()"  class="btn btn-default btn-flat">Register</a>
-              </div>
-              <div class="pull-right">
                 <a (click)="logout()" class="btn btn-default btn-flat">Sign out</a>
+              </div>
+              <div #signIN>
+                <div class="pull-right">
+                  <a (click)="register()"  class="btn btn-default btn-flat">Register</a>
+                </div>
+                <div class="pull-right" >
+                  <a (click)="loginbox() "  class="btn btn-default btn-flat">Sign in</a>
+                </div>
               </div>
             </li>
           </ul>
