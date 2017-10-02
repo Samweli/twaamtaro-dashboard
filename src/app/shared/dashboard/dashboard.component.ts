@@ -56,26 +56,5 @@ constructor(private drainService: DrainsService) { }
           'height':500 ,
           },
   };
-  public tableChartData =  {
-    chartType: 'Table',
-    dataTable: [
-      ['Department', 'Revenues', 'Another column'],
-      ['Shoes', 10700, -100],
-      ['Sports', -15400, 25],
-      ['Toys', 12500, 40],
-      ['Electronics', -2100, 889],
-      ['Food', 22600, 78],
-      ['Art', 1100, 42]
-    ],
-    formatters: [
-      {
-        columns: [1, 2],
-        type: 'NumberFormat',
-        options: {
-          prefix: '&euro;', negativeColor: '#FF0000', negativeParens: true
-        }
-      }
-    ],
-    options: {title: 'Countries', allowHtml: true}
-  };
+  
 }
