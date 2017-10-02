@@ -24,8 +24,8 @@ import { AuthGuard } from "./../../core/auth.guard";
         path: 'dashboard',
         component: SharedComponent,
         children: [
-          { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-          //{ path: 'dashboard', component: DashboardComponent },
+          //{ path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+          { path: 'home', component: DashboardComponent },
           { path: 'admin', component: AdminComponent, canActivate:[AuthGuard]  },
           { path: 'reports', component: ReportComponent },
           { path: 'clean-drains', component: CleanDrainComponent },

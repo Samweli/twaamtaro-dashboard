@@ -5,8 +5,16 @@
               <h3 class=" w3-center"> {{ title }}</h3>
           </div>
           <!-- /.box-header -->
-          <div class="box-body">    
-          <table class="w3-table-all w3-hoverable">
+
+        <div class="w3-row">
+              <div id="error"><h4>{{ErrMsg}}</h4></div>       
+        </div>
+        <div class="box-body"> 
+          <div class="w3-row">
+              <!-- Chart Canvas -->
+            <google-chart [data]="tableChartData" ></google-chart>                
+          </div>  
+          <!--table class="w3-table-all w3-hoverable">
               <thead>
                 <tr class="w3-light-grey">
                   <th>Ward</th>
@@ -29,10 +37,7 @@
                 <td></td>
                 <td></td>
               </tr>
-            </table>
-            <div class="w3-row">
-                  <div id="error"><h4>{{ErrMsg}}</h4></div>       
-            </div>
+            </table-->
           </div>
       </div>
       <!-- /.box -->

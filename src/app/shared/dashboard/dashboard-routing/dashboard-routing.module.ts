@@ -19,12 +19,12 @@ import { UserDetailComponent } from './../../users/user-detail/user-detail.compo
   imports: [
     RouterModule.forChild([
       {
-        path: 'dashbooard',
+        path: 'home',
         component:DashboardComponent,
         children: [
           {
             path: '',
-            redirectTo: 'dashboard',
+            redirectTo: 'home',
             pathMatch: 'full'
           },
           {

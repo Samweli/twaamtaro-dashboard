@@ -6,7 +6,7 @@ import { HeaderModule } from './shared/header/header.module';
 import { DirtyDrainModule } from './shared/drains/dirty-drain/dirty-drain.module';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+//import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { NgModule } from '@angular/core';
 import { Directive } from '@angular/core';
 import { HttpModule } from '@angular/http';
@@ -56,7 +56,7 @@ import { AuthGuard } from "./core/auth.guard";
     AdminModule,
     HttpModule,
     ReportModule,
-    Ng2GoogleChartsModule,
+    //Ng2GoogleChartsModule,
     DrainListModule,
     DirtyDrainModule,
     CleanDrainModule,
