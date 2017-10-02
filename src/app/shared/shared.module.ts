@@ -33,28 +33,9 @@ import { DirtyDrainModule } from './../shared/drains/dirty-drain/dirty-drain.mod
 import { HelpDrainModule } from './../shared/drains/help-drain/help-drain.module';
 import { DrainListModule } from './../shared/drains/all-drains/all-drains.module';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
-<<<<<<< HEAD:src/app/admin/admin.module.ts
-import { ReportModule } from './reports/reports.module';
-import { UserModule } from "./users/users-list/users.module";
-import { FilterDrainsModule } from './drains/filter-drains/filter-drains.module';
-
-import { DrainsService } from './drains/drains.service';
-import { UserService } from './users/user.service';
-import { AdminDashboardService } from './admin-dashboard/admin-dashboard.service';
-
-import { ReportComponent } from './reports/reports.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { UsersComponent } from './users/users-list/users.component';
-
-import { UserDetailComponent } from './users/user-detail/user-detail.component';
-import { UserDetailModule } from "./users/user-detail/user-detail.module";
-import { RanksComponent } from './ranks/ranks.component';
-import { UserSearchComponent } from './users/user-search/user-search.component';
-=======
 import { ReportModule } from './../shared/reports/reports.module';
 import { UserModule } from "./../shared/users/users-list/users.module";
 import { FilterDrainsModule } from './../shared/drains/filter-drains/filter-drains.module';
->>>>>>> f0f1b41bd874159b794f780e0d259a04bc4128cf:src/app/shared/shared.module.ts
 
 import { DrainsService } from './../shared/drains/drains.service';
 import { UserService } from './../shared/users/user.service';
@@ -76,37 +57,21 @@ import { UserService } from './../shared/users/user.service';
     SharedRoutingModule,
   ],
   declarations: [
-<<<<<<< HEAD:src/app/admin/admin.module.ts
-    AdminComponent,
-    AdminHeaderComponent,
-    AdminLeftSideComponent,
-    AdminContentComponent,
-    AdminFooterComponent,
-    AdminControlSidebarComponent,
-=======
     //AdminComponent,
     LeftSideComponent,
    // ContentComponent,
     FooterComponent,
     //ControlSidebarComponent,
->>>>>>> f0f1b41bd874159b794f780e0d259a04bc4128cf:src/app/shared/shared.module.ts
     DrainListComponent,
     CleanDrainComponent,
     DirtyDrainComponent,
     HeaderComponent,
     HelpDrainComponent,
-<<<<<<< HEAD:src/app/admin/admin.module.ts
-    DirtyDrainsPipe,
-    CleanDrainsPipe,
-    HelpDrainsPipe,
-    NotificationBarComponent,
-    AdminDashboardComponent,
-=======
->>>>>>> f0f1b41bd874159b794f780e0d259a04bc4128cf:src/app/shared/shared.module.ts
     ReportComponent,
     NotFoundComponent,
     UsersComponent,
     UserDetailComponent,
+    NotificationBarComponent,
     FilterDrainsComponent,
     FooterComponent,
     RanksComponent,
@@ -121,11 +86,7 @@ import { UserService } from './../shared/users/user.service';
     DrainsService,
     UserService,
     ReactiveFormsModule,
-<<<<<<< HEAD:src/app/admin/admin.module.ts
-    AdminDashboardService
-=======
     //LoginModule
->>>>>>> f0f1b41bd874159b794f780e0d259a04bc4128cf:src/app/shared/shared.module.ts
   ],
 })
 

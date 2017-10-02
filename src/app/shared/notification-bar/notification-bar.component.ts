@@ -3,11 +3,6 @@ import { User } from "./../users/user";
 import { UserService } from "./../users/user.service";
 import { DrainsService } from './../drains/drains.service';
 import { Drain } from './../drains/drain';
-import { AdminDashboardComponent } from '../admin-dashboard/admin-dashboard.component'
-
-import { Headers, Http, Response } from '@angular/http';
-
-import { ChartReadyEvent } from 'ng2-google-charts';
 
 @Component({
   selector: 'app-notification-bar',

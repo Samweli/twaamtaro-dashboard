@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Http } from '@angular/http';
 
-
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
