@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Drain } from "./../drains/drain";
+import { DrainsService } from './../drains/drains.service';
 
 @Component({
   selector: 'app-ranks',
@@ -8,16 +9,22 @@ import { Drain } from "./../drains/drain";
 })
 export class RanksComponent implements OnInit {
   title = 'Cleanness Ranks Based on Streets';
-  drains: Drain[];
-
-  constructor() { }
-
-  ngOnInit() {
+  //drains: Drain[];
+  draindata: any;
+  ErrMsg: string;
+  constructor(private drainService: DrainsService) { }
+  drainData(): void {
+    this.drainService
+        .getDrainData()
+        .subscribe(
+          data => this.draindata = data, 
+        );
   }
-  public tableChartData =  {
+
+   public tableChartData =  {
     chartType: 'Table',
     dataTable: [
-      ['Street', 'All','Clean', 'Dirty', 'Need Hel', 'Unknown'],
+      ['Street', 'All','Clean', 'Dirty', 'Need Help', 'Unknown'],
       ['Kisutu', 17, 52, 6, 4, 9],
       ['Hananasif', 27, 52, 16, 14, 9],
       ['Mkunguni A', 17, 52, 26, 4, 19],
@@ -26,4 +33,8 @@ export class RanksComponent implements OnInit {
     
     options: {title: 'Cleanness Ranks', allowHtml: true}
   };
+
+  ngOnInit() {
+    this.drainData;
+  }
 }

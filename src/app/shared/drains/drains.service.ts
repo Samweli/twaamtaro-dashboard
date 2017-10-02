@@ -20,6 +20,8 @@ export class DrainsService {
   private DirtyDrainsUrl = 'http://twaamtaro.org/api/v1/drains/?type=uncleaned';
   private HelpDrainsUrl = 'http://twaamtaro.org/api/v1/drains/?type=need_help';
   private UnknownDrainsUrl = 'http://twaamtaro.org/api/v1/drains/?type=unknown';
+  private drainDataUrl = 'http://localhost:3000/api/v1/drains/data';
+  
   constructor(private http: Http) { }
 
   getDrains(): Observable<Drain[]> {
@@ -46,6 +48,14 @@ export class DrainsService {
     return this.http.get(this.UnknownDrainsUrl)
           .map((response: Response) => <Drain[]>response.json().drains)
           .catch(this.errorHandler);           
+  }
+  getDrainData():Observable<any> {
+    return this.http.get(this.drainDataUrl)
+          .map((response: Response) => {<any>response.json()
+                                         console.log('inside ')
+                                        console.log(response.json() )
+                                        })
+          .catch(this.errorHandler);        
   }
   errorHandler(error: Response) {
              console.error(error);

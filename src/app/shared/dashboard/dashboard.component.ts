@@ -11,15 +11,17 @@ declare var AdminLTE: any;
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  title = 'General Cleanness Report for Drains';
   alldrains: Drain[];
   cleandrains: any[];
   helpdrains: any[];
   dirtydrains:Drain[];
   unknowndrains:Drain[];
+  draindata: any;
   //pieChartData:any;
 
 constructor(private drainService: DrainsService) { }
-  cleanDrains(): any {
+ /* cleanDrains(): any {
    this.drainService
         .getCleanDrains()
         .subscribe(clean => this.cleandrains)
@@ -39,22 +41,32 @@ constructor(private drainService: DrainsService) { }
      this.drainService
         .getUnknownDrains()
         .subscribe(unknown => this.unknowndrains = unknown);
+  }*/
+  drainData(): void {
+
+    
+    this.drainService
+        .getDrainData()
+        .subscribe(data => { console.log('Inside comoooo');console.log(data);  this.draindata = data});
+        
   }
+ 
   
-  ngOnInit() {  
-   
-  }
   pieChartData =  {
     chartType: 'PieChart',
     dataTable: [
       ['Cleanness Feedback', 'Ratio'],
-      ['Clean Drains', 65  ],
+      ['Clean Drains', 65  ],['Dirty Drains', 165  ],
     ],
     options: {
-          'title': 'General Cleanness Report for Drains',
+          'title': 'General Cleanness Report ',
           pieHole: 0.4,
           'height':500 ,
           },
   };
+
+  ngOnInit() {  
+    this.drainData();
+   }
   
 }
