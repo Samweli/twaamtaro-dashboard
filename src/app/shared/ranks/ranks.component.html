@@ -1,0 +1,45 @@
+<div class="content-wrapper"  >
+  <div class="content">
+      <div class="box w3-card-2 w3-border w3-border-teal w3-padding" >
+          <div class="box-header with-border">
+              <h3 class=" w3-center"> {{ title }}</h3>
+          </div>
+          <!-- /.box-header -->
+
+        <div class="w3-row">
+              <div id="error"><h4>{{ErrMsg}}</h4></div>       
+        </div>
+        <div class="box-body"> 
+          <div class="w3-row">
+              <!-- Chart Canvas -->
+            <google-chart [data]="tableChartData" ></google-chart>                
+          </div>  
+          <!--table class="w3-table-all w3-hoverable">
+              <thead>
+                <tr class="w3-light-grey">
+                  <th>Ward</th>
+                  <th>Clean Drains</th>
+                  <th>Dirty Drains</th>
+                </tr>
+              </thead>
+              <tr>
+                <td>Mwananyamala</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Hananasif</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Kigogo</td>
+                <td></td>
+                <td></td>
+              </tr>
+            </table-->
+          </div>
+      </div>
+      <!-- /.box -->
+  </div>
+</div>

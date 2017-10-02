@@ -1,0 +1,37 @@
+<div class="content-wrapper"  >
+    <div class="content">
+      <div class="box w3-card-2 w3-border w3-border-teal" >
+        <div class="box-header with-border">
+          <h3 class=" w3-center">RESULTS: {{ title }}</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body w3-padding">
+          <div class="row">
+            <!-- templates -->
+            <div id="error"><h4>{{ErrMsg}}</h4></div>
+            <table class="w3-table w3-hoverable w3-responsive w3-white" border="0">
+              <thead>
+              <tr class="w3-light-grey w3-border-bottom" >
+                <th>ID</th>
+                <th>NAME</th>
+                <th>ADDRESS</th>
+                <th>CLAIMED</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let drain of (drains)">
+                <td><a href="#">{{drain.gid}}</a></td>
+                <td>{{drain.name}}</td>
+                <td>{{drain.address}}</td>
+                <td>{{drain.claims_count}}</td>
+              </tr>
+              
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+    <!-- ./box-body -->
+    </div>
+  </div>
+      
