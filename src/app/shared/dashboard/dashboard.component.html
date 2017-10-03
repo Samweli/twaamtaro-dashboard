@@ -11,8 +11,14 @@
           </div>
           <div class="box-body"> 
             <div class="w3-row">
+              <div class="w3-col m6 s12">
+                <google-chart [data]="adoptedPieChart" ></google-chart>
+              </div>
+              <div class="w3-col m6 s12">
+                <google-chart [data]="pieChartData" ></google-chart>
+              </div>
                <!-- Chart Canvas -->
-              <google-chart [data]="pieChartData" ></google-chart>                
+                              
             </div>
           </div>
         </div>

@@ -10,31 +10,64 @@ import { DrainsService } from './../drains/drains.service';
 export class RanksComponent implements OnInit {
   title = 'Cleanness Ranks Based on Streets';
   //drains: Drain[];
-  draindata: any;
+  ranksdata: any;
   ErrMsg: string;
+  tableChartData: any;
+  ranksArray='';
+ // ranksArray: any;
   constructor(private drainService: DrainsService) { }
-  drainData(): void {
+
+  ranksData(): void {
     this.drainService
-        .getDrainData()
+        .getRanksData()
         .subscribe(
-          data => this.draindata = data, 
+          data => { 
+
+          this.tableChartData =  {
+            chartType: 'Table',
+            dataTable: [
+              ['Street',  'Adopted','Clean', 'Dirty', 'Need Help'],
+            ],
+            
+              options: {title: 'Cleanness Ranks', allowHtml: true}
+            };
+            this.ranksdata = this.drainService.ranksData;
+            //console.log(this.ranksdata);
+             this.ranksdata.forEach( rank => {
+              this.ranksArray ='['+ 
+              rank.street.city_name +', '+
+              rank.details.adopted+', '+
+              rank.details.cleaned+', '+
+              rank.details.uncleaned+', '+
+              rank.details.need_help+'], ';
+              this.tableChartData.dataTable.push(this.ranksArray);
+              console.log(this.ranksArray);
+            }); //console.log(this.ranksArray);
+          
+
+          } 
         );
   }
+initilizeTable() {
 
-   public tableChartData =  {
-    chartType: 'Table',
-    dataTable: [
-      ['Street', 'All','Clean', 'Dirty', 'Need Help', 'Unknown'],
-      ['Kisutu', 17, 52, 6, 4, 9],
-      ['Hananasif', 27, 52, 16, 14, 9],
-      ['Mkunguni A', 17, 52, 26, 4, 19],
-      ['Mkunguni B', 34, 5, 23, 21, 8]
-    ],
-    
-    options: {title: 'Cleanness Ranks', allowHtml: true}
-  };
+}
+
 
   ngOnInit() {
-    this.drainData;
+    this.ranksData();
   }
 }
+/*this.ranksdata.forEach( rank => {
+  this.ranksArray +='['+ 
+  rank.street.city_name +', '+
+  rank.details.adopted+', '+
+  rank.details.cleaned+', '+
+  rank.details.uncleaned+', '+
+  rank.details.need_help+'], '; 
+
+              ['Kisutu', 52, 6, 4, 9],
+              ['Kisutu', 52, 6, 4, 9],
+              ['Hananasif', 27,52, 16, 9],
+              ['Mkunguni A', 52, 26, 4, 19],
+              ['Mkunguni B',  5, 23, 21, 8]
+})*/
