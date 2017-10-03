@@ -12,59 +12,49 @@ declare var AdminLTE: any;
 })
 export class DashboardComponent implements OnInit {
   title = 'General Cleanness Report for Drains';
-  alldrains: Drain[];
-  cleandrains: any[];
-  helpdrains: any[];
-  dirtydrains:Drain[];
-  unknowndrains:Drain[];
   draindata: any;
-  //pieChartData:any;
+  pieChartData:any;
+  adoptedPieChart:any;
 
 constructor(private drainService: DrainsService) { }
- /* cleanDrains(): any {
-   this.drainService
-        .getCleanDrains()
-        .subscribe(clean => this.cleandrains)
-        .do(this.cleandrains.length);
-  }
-  dirtyDrains(): void {
-    this.drainService
-        .getDirtyDrains()
-        .subscribe(dirty => this.dirtydrains = dirty);
-  }
-  helpDrains(): void {
-    this.drainService
-        .getHelpDrains()
-        .subscribe(help => this.helpdrains = help);
-  }
-  unknownDrains(): any {
-     this.drainService
-        .getUnknownDrains()
-        .subscribe(unknown => this.unknowndrains = unknown);
-  }*/
   drainData(): void {
-
-    
     this.drainService
         .getDrainData()
-        .subscribe(data => { console.log('Inside comoooo');console.log(data);  this.draindata = data});
-        
+        .subscribe(data => {  
+          this.draindata = this.drainService.drainData
+
+          this.pieChartData =  {
+          chartType: 'PieChart',
+          dataTable: [
+            ['Cleanness Feedback', 'Ratio'],
+            ['Clean Drains', this.draindata.cleaned ],
+            ['Dirty Drains', this.draindata.uncleaned ],
+            ['Need Help', this.draindata.need_help],
+          ],
+          options: {
+                'title': 'General Cleanness Report ',
+                pieHole: 0.3,
+                height: 500,
+                },
+        };
+
+        this.adoptedPieChart =  {
+          chartType: 'PieChart',
+          dataTable: [
+            ['Drain Adoption', 'Ratio'],
+            ['Adopted', this.draindata.adopted ],
+            ['Not Adopted', this.draindata.not_adopted],
+          ],
+          options: {
+                'title': 'Drain Adoption in Dar es salaam  ',
+                pieHole: 0.3,
+                height: 500,
+                },
+        };
+      
+      });   
   }
  
-  
-  pieChartData =  {
-    chartType: 'PieChart',
-    dataTable: [
-      ['Cleanness Feedback', 'Ratio'],
-      ['Clean Drains', 65  ],['Dirty Drains', 165  ],
-    ],
-    options: {
-          'title': 'General Cleanness Report ',
-          pieHole: 0.4,
-          'height':500 ,
-          },
-  };
-
   ngOnInit() {  
     this.drainData();
    }
