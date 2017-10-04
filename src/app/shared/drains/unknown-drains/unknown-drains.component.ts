@@ -23,7 +23,7 @@ export class UnknownDrainsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.unkownDrains
+    this.unkownDrains()
   }
 
 }

@@ -16,16 +16,18 @@ export class CleanDrainComponent implements OnInit {
   ErrMsg: string;
 
   constructor(private drainService: DrainsService) { }
+
   cleanDrains(): void {
+    console.log('Comonent In');
     this.drainService
         .getCleanDrains()
         .subscribe(
-          drains => this.drains = drains, 
+          drains => this.drains = drains,
           resError=> this.ErrMsg = resError
         );
   }
    
   ngOnInit(): void {
-    this.cleanDrains;
+    this.cleanDrains();
   }
 }

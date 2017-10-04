@@ -6,6 +6,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   styleUrls: ['./reports.component.css']
 })
 export class ReportComponent{
+  title = 'Cleanness Reports';
 
   constructor() { }
 

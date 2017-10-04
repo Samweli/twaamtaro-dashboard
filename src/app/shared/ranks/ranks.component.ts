@@ -9,12 +9,11 @@ import { DrainsService } from './../drains/drains.service';
 })
 export class RanksComponent implements OnInit {
   title = 'Cleanness Ranks Based on Streets';
-  //drains: Drain[];
   ranksdata: any;
   ErrMsg: string;
   tableChartData: any;
   cssClassNames = {headerRow: 'w3-black', hoverTableRow: 'w3-grey', tableRow: 'w3-striped'};
- // ranksArray: any;
+
   constructor(private drainService: DrainsService) { }
 
   ranksData(): void {

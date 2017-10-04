@@ -33,9 +33,9 @@ export class DrainsService {
            .map((response: Response) => <Drain[]>response.json().drains)
            .catch(this.errorHandler);
           } 
-  getCleanDrains(): any {
+  getCleanDrains():Observable<Drain[]>  {
     return this.http.get(this.ApiUrl+this.CleanDrainsUrl)
-           .map((response: Response) => response.json().drains)
+           .map((response: Response) =>  <Drain[]>response.json().drains)
            .catch(this.errorHandler);
           } 
   getDirtyDrains(): Observable<Drain[]> {
