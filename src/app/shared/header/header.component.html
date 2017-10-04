@@ -20,19 +20,10 @@
         
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="assets/img/avatar.png" class="user-image" alt="User Image">
-              <span class="hidden-xs">Sign In/Up</span>
+              
+              <span class="hidden-xs">Sign In / Register</span>
             </a>
           <ul class="dropdown-menu">
-            <!-- User image -->
-            <li class="user-header">
-              <img src="assets/img/avatar.png" class="img-circle" alt="User Image">
-
-              <p>
-               
-                <small></small>
-              </p>
-            </li>
             <!-- Menu Body -->
             <li class="user-body">
               <div class="row">
@@ -42,9 +33,6 @@
             </li>
             <!-- Menu Footer *ngIf="authService.isLoggedIn(); else signIN" -->
             <li class="user-footer">
-              <div class="pull-left">
-                <a  class="btn btn-default btn-flat">Profile</a>
-              </div>
               <div class="pull-right">
                 <a (click)="logout()" class="btn btn-default btn-flat">Sign out</a>
               </div>
@@ -58,10 +46,6 @@
               </div>
             </li>
           </ul>
-        </li>
-        <!-- Control Sidebar Toggle Button routerLink="login" (click)="loginbox()" -->
-        <li>
-          <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
         </li>
       </ul>
     </div>
