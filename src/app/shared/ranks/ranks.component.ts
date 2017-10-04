@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Drain } from "./../drains/drain";
-import { DrainsService } from './../drains/drains.service';
+import {Component, OnInit} from '@angular/core';
+import {Drain} from "./../drains/drain";
+import {DrainsService} from './../drains/drains.service';
 
 @Component({
   selector: 'app-ranks',
@@ -13,57 +13,63 @@ export class RanksComponent implements OnInit {
   ranksdata: any;
   ErrMsg: string;
   tableChartData: any;
-  ranksArray='';
- // ranksArray: any;
-  constructor(private drainService: DrainsService) { }
+  ranksArray = '';
+
+  // ranksArray: any;
+  constructor(private drainService: DrainsService) {
+  }
 
   ranksData(): void {
     this.drainService
-        .getRanksData()
-        .subscribe(
-          data => { 
+      .getRanksData()
+      .subscribe(
+        data => {
 
-          this.tableChartData =  {
+          this.tableChartData = {
             chartType: 'Table',
             dataTable: [
-              ['Street',  'Adopted','Clean', 'Dirty', 'Need Help'],
+              ['Street', 'Adopted', 'Clean', 'Dirty', 'Need Help'],
             ],
-            
-              options: {title: 'Cleanness Ranks', allowHtml: true}
-            };
-            this.ranksdata = this.drainService.ranksData;
-            //console.log(this.ranksdata);
-             this.ranksdata.forEach( rank => {
-              this.ranksArray ='['+ 
-              rank.street.city_name +', '+
-              rank.details.adopted+', '+
-              rank.details.cleaned+', '+
-              rank.details.uncleaned+', '+
-              rank.details.need_help+'], ';
-              this.tableChartData.dataTable.push(this.ranksArray);
-              console.log(this.ranksArray);
-            }); //console.log(this.ranksArray);
-          
 
-          } 
-        );
+            options: {title: 'Cleanness Ranks', allowHtml: true}
+          };
+          this.ranksdata = this.drainService.ranksData;
+          this.ranksdata.forEach(rank => {
+
+            console.log('insed for each')
+            console.log(rank);
+
+            this.tableChartData.dataTable.push([rank.street.street_name,
+              rank.details.adopted,
+              rank.details.cleaned,
+              rank.details.uncleaned,
+              rank.details.need_help
+            ]);
+
+          });
+
+
+        }
+      );
   }
-initilizeTable() {
 
-}
+  initilizeTable() {
+
+  }
 
 
   ngOnInit() {
     this.ranksData();
   }
 }
+
 /*this.ranksdata.forEach( rank => {
-  this.ranksArray +='['+ 
+  this.ranksArray +='['+
   rank.street.city_name +', '+
   rank.details.adopted+', '+
   rank.details.cleaned+', '+
   rank.details.uncleaned+', '+
-  rank.details.need_help+'], '; 
+  rank.details.need_help+'], ';
 
               ['Kisutu', 52, 6, 4, 9],
               ['Kisutu', 52, 6, 4, 9],
