@@ -13,7 +13,7 @@ export class RanksComponent implements OnInit {
   ranksdata: any;
   ErrMsg: string;
   tableChartData: any;
-  ranksArray='';
+  cssClassNames = {headerRow: 'w3-black', hoverTableRow: 'w3-grey', tableRow: 'w3-striped'};
  // ranksArray: any;
   constructor(private drainService: DrainsService) { }
 
@@ -29,20 +29,28 @@ export class RanksComponent implements OnInit {
               ['Street',  'Adopted','Clean', 'Dirty', 'Need Help'],
             ],
             
-              options: {title: 'Cleanness Ranks', allowHtml: true}
+              options: {
+                title: 'Cleanness Ranks',
+                width: '100%', 
+                height: '100%',
+                allowHtml: true,
+                alternatingRowStyle: true,
+                cssClassNames: this.cssClassNames,
+                page: 'enable',
+                pageSize: 20,
+                sort: 'enable',
+                
+              }
             };
             this.ranksdata = this.drainService.ranksData;
-            //console.log(this.ranksdata);
              this.ranksdata.forEach( rank => {
-              this.ranksArray ='['+ 
-              rank.street.city_name +', '+
-              rank.details.adopted+', '+
-              rank.details.cleaned+', '+
-              rank.details.uncleaned+', '+
-              rank.details.need_help+'], ';
-              this.tableChartData.dataTable.push(this.ranksArray);
-              console.log(this.ranksArray);
-            }); //console.log(this.ranksArray);
+              this.tableChartData.dataTable.push(
+                [rank.street.city_name ,
+                rank.details.adopted,
+                rank.details.cleaned,
+                rank.details.uncleaned,
+                rank.details.need_help]);
+            }); 
           
 
           } 
@@ -57,17 +65,3 @@ initilizeTable() {
     this.ranksData();
   }
 }
-/*this.ranksdata.forEach( rank => {
-  this.ranksArray +='['+ 
-  rank.street.city_name +', '+
-  rank.details.adopted+', '+
-  rank.details.cleaned+', '+
-  rank.details.uncleaned+', '+
-  rank.details.need_help+'], '; 
-
-              ['Kisutu', 52, 6, 4, 9],
-              ['Kisutu', 52, 6, 4, 9],
-              ['Hananasif', 27,52, 16, 9],
-              ['Mkunguni A', 52, 26, 4, 19],
-              ['Mkunguni B',  5, 23, 21, 8]
-})*/
