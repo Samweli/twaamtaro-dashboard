@@ -44,7 +44,7 @@ export class RanksComponent implements OnInit {
             this.ranksdata = this.drainService.ranksData;
              this.ranksdata.forEach( rank => {
               this.tableChartData.dataTable.push(
-                [rank.street.city_name ,
+                [rank.street.street_name ,
                 rank.details.adopted,
                 rank.details.cleaned,
                 rank.details.uncleaned,
