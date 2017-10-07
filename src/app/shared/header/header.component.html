@@ -17,7 +17,7 @@
 
     <div class="navbar-custom-menu">
       <ul class="nav navbar-nav">
-        
+
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="assets/img/avatar.png" class="user-image" alt="User Image">
@@ -29,14 +29,14 @@
               <img src="assets/img/avatar.png" class="img-circle" alt="User Image">
 
               <p>
-               
+
                 <small></small>
               </p>
             </li>
             <!-- Menu Body -->
             <li class="user-body">
               <div class="row">
-                
+
               </div>
               <!-- /.row -->
             </li>
@@ -61,7 +61,21 @@
         </li>
         <!-- Control Sidebar Toggle Button routerLink="login" (click)="loginbox()" -->
         <li>
-          <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+          <a href="#" data-toggle="control-sidebar">
+            <!--&lt;!&ndash;code for transilation&ndash;&gt;-->
+            <!--<select>-->
+              <!--<option>English</option>-->
+              <!--<option>Kiswaili</option>-->
+            <!--</select>-->
+
+            <div class="btn-group">
+              <button *ngFor="let lang of supportedLangs"
+                      (click)="selectLang(lang.value)"
+                      class="btn btn-default" [class.btn-primary]="isCurrentLang(lang.value)">
+                {{ lang.display }}
+              </button>
+            </div>
+          </a>
         </li>
       </ul>
     </div>

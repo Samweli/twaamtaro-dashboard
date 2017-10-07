@@ -45,9 +45,12 @@ import { SessionService } from "./core/session.service";
 import { UnknownDrainsComponent } from './shared/drains/unknown-drains/unknown-drains.component';
 
 import { AuthGuard } from "./core/auth.guard";
+import {TranslateService} from "./transilate/translate.service";
+import {TranslatePipe} from "./transilate/translate.pipe";
+import {TRANSLATION_PROVIDERS} from "./transilate/translation/translation.component";
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
     //HeaderComponent,
   ],
   imports: [
@@ -64,13 +67,15 @@ import { AuthGuard } from "./core/auth.guard";
     ReactiveFormsModule,
     FormsModule,
     HeaderModule,
-    SharedModule  
+    SharedModule
   ],
   providers: [
     AuthService,
     SessionService,
-    AuthGuard
-  ],
+    AuthGuard,
+    TRANSLATION_PROVIDERS
+
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

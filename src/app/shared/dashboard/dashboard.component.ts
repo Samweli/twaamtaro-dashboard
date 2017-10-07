@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DrainsService } from './../drains/drains.service';
 import { Drain } from './../drains/drain';
+import {DrainsService} from "../drains/drains.service";
 
 // Variable in assets/js/scripts.js file
 declare var AdminLTE: any;
@@ -20,7 +20,7 @@ constructor(private drainService: DrainsService) { }
   drainData(): void {
     this.drainService
         .getDrainData()
-        .subscribe(data => {  
+        .subscribe(data => {
           this.draindata = this.drainService.drainData
 
           this.pieChartData =  {
@@ -51,12 +51,12 @@ constructor(private drainService: DrainsService) { }
                 height: 500,
                 },
         };
-      
-      });   
+
+      });
   }
- 
-  ngOnInit() {  
+
+  ngOnInit() {
     this.drainData();
    }
-  
+
 }
