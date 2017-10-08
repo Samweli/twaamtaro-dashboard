@@ -11,7 +11,6 @@ declare var AdminLTE: any;
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  title = 'General Cleanness Report for Drains';
   draindata: any;
   pieChartData:any;
   adoptedPieChart:any;
