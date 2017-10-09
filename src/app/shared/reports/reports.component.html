@@ -42,7 +42,7 @@
                       </select>
                     </div>
                     <div class="w3-col s12 m3">
-                      <select class="w3-select" name="street" [(ngModel)]="streetname.name" required >
+                      <select class="w3-select" name="streetname" [(ngModel)]="streetname.name" required >
                         <option value="" disabled selected>Street</option>
                         <option *ngFor="let street of (streets)" [value]="street.street.city_name">{{street.street.street_name}}</option>
                       </select>
