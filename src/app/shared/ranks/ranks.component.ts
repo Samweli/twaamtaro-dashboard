@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {Drain} from "./../drains/drain";
-import {DrainsService} from './../drains/drains.service';
+import { Component, OnInit } from '@angular/core';
+import { Drain } from "./../drains/drain";
+import { DrainsService } from './../drains/drains.service';
 
 @Component({
   selector: 'app-ranks',
@@ -9,71 +9,58 @@ import {DrainsService} from './../drains/drains.service';
 })
 export class RanksComponent implements OnInit {
   title = 'Cleanness Ranks Based on Streets';
-  //drains: Drain[];
   ranksdata: any;
   ErrMsg: string;
   tableChartData: any;
-  ranksArray = '';
+  cssClassNames = {headerRow: 'w3-black', hoverTableRow: 'w3-grey', tableRow: 'w3-striped'};
 
-  // ranksArray: any;
-  constructor(private drainService: DrainsService) {
-  }
+  constructor(private drainService: DrainsService) { }
 
   ranksData(): void {
     this.drainService
-      .getRanksData()
-      .subscribe(
-        data => {
+        .getRanksData()
+        .subscribe(
+          data => { 
 
-          this.tableChartData = {
+          this.tableChartData =  {
             chartType: 'Table',
             dataTable: [
-              ['Street', 'Adopted', 'Clean', 'Dirty', 'Need Help'],
+              ['Street',  'Adopted','Clean', 'Dirty', 'Need Help'],
             ],
+            
+              options: {
+                title: 'Cleanness Ranks',
+                width: '100%', 
+                height: '100%',
+                allowHtml: true,
+                alternatingRowStyle: true,
+                cssClassNames: this.cssClassNames,
+                page: 'enable',
+                pageSize: 20,
+                sort: 'enable',
+                
+              }
+            };
+            this.ranksdata = this.drainService.ranksData;
+             this.ranksdata.forEach( rank => {
+              this.tableChartData.dataTable.push(
+                [rank.street.street_name ,
+                rank.details.adopted,
+                rank.details.cleaned,
+                rank.details.uncleaned,
+                rank.details.need_help]);
+            }); 
+          
 
-            options: {title: 'Cleanness Ranks', allowHtml: true}
-          };
-          this.ranksdata = this.drainService.ranksData;
-          this.ranksdata.forEach(rank => {
-
-            console.log('insed for each')
-            console.log(rank);
-
-            this.tableChartData.dataTable.push([rank.street.street_name,
-              rank.details.adopted,
-              rank.details.cleaned,
-              rank.details.uncleaned,
-              rank.details.need_help
-            ]);
-
-          });
-
-
-        }
-      );
+          } 
+        );
   }
+initilizeTable() {
 
-  initilizeTable() {
-
-  }
+}
 
 
   ngOnInit() {
     this.ranksData();
   }
 }
-
-/*this.ranksdata.forEach( rank => {
-  this.ranksArray +='['+
-  rank.street.city_name +', '+
-  rank.details.adopted+', '+
-  rank.details.cleaned+', '+
-  rank.details.uncleaned+', '+
-  rank.details.need_help+'], ';
-
-              ['Kisutu', 52, 6, 4, 9],
-              ['Kisutu', 52, 6, 4, 9],
-              ['Hananasif', 27,52, 16, 9],
-              ['Mkunguni A', 52, 26, 4, 19],
-              ['Mkunguni B',  5, 23, 21, 8]
-})*/
