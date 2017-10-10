@@ -49,6 +49,7 @@ export class ReportComponent implements OnInit{
                     'title': 'General Cleanness Report in '+ street.street.street_name,
                     pieHole: 0.3,
                     height: 500,
+                    colors:['#5cb85c','#eea236','#6495ed']
                     },
             };
     
@@ -63,6 +64,7 @@ export class ReportComponent implements OnInit{
                     'title': 'Drain Adoption in '+ street.street.street_name,
                     pieHole: 0.3,
                     height: 500,
+                    colors:['#964f8e','grey']
                     },
             };
         } 

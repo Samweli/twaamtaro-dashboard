@@ -35,6 +35,7 @@ constructor(private drainService: DrainsService) { }
                 'title': 'General Cleanness Report ',
                 pieHole: 0.3,
                 height: 500,
+                colors:['#5cb85c','#eea236','#6495ed']
                 },
         };
 
@@ -49,6 +50,7 @@ constructor(private drainService: DrainsService) { }
                 'title': 'Drain Adoption in Dar es salaam  ',
                 pieHole: 0.3,
                 height: 500,
+                colors:['#964f8e','grey']
                 },
         };
       
