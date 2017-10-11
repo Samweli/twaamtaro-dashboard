@@ -19,19 +19,36 @@
 					<thead>
 					<tr class="w3-light-grey w3-border-bottom" >
 						<th>ID</th>
-						<th>NAME</th>
+						<th>CATEGORY</th>
 						<th>ADDRESS</th>
-						<th>CLAIMED</th>
+						<th>REPORT MADE</th>
+						<th  *ngIf="authService.isLoggedIn()">STREET LEADER</th>
 					</tr>
 					</thead>
 					<tbody>
 					<tr *ngFor="let drain of (drains)">
-						<td><a href="#">{{drain.gid}}</a></td>
-						<td>{{drain.name}}</td>
-						<td>{{drain.address}}</td>
-						<td>{{drain.claims_count}}</td>
+						<td><a (click)="helpmodal()" >{{drain.gid}}</a></td>
+						<td>{{drain.need_help_category.category_name}}</td>
+						<td>Street</td>
+						<td>{{drain.created_at}}</td>
+						<td  *ngIf="authService.isLoggedIn()">{{drain.user_id}}</td>
+
+						<div id="heldetails" class="w3-modal w3-margin-top">
+							<div class="w3-modal-content w3-card-4">
+							<header class="w3-container w3-theme-d3 w3-center"> 
+								<span (click)="closemodal()" 
+								class="w3-button w3-display-topright w3-padding w3-hover-teal">&times;</span>
+								<h3>Drain No. {{drain.gid}} Help Details</h3>
+							</header>
+							<div class="w3-container w3-padding">
+								<p><strong class="w3-padding-right">Help Category: </strong>{{drain.need_help_category.category_name}}</p>
+								<p><strong class="w3-padding-right">Extra Details: </strong>{{drain.help_needed}}</p>
+							</div>
+							
+							</div>
+						</div>
 					</tr>
-					
+					<!--{{drain.help_needed}}-->
 					</tbody>
 				</table>
 		</div>

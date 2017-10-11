@@ -1,5 +1,5 @@
 import { Injectable }    from '@angular/core';
-import { Headers, Http, Response } from '@angular/http';
+import { Headers, Http, Response, RequestOptions } from '@angular/http';
 import { Observable }    from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
@@ -14,13 +14,15 @@ import { Drain } from './drain';
 @Injectable()
 export class DrainsService {
   
-  private headers = new Headers({'Content-Type': 'application/json'});
+  private headers = new Headers({'Accept': 'application/json', 'charset': 'utf-8'});
+  private options: RequestOptions = new RequestOptions({ headers: this.headers });
+
   private ApiUrl = 'http://twaamtaro.org/api/v1/'; 
   private localUrl = 'http://localhost:3000/api/v1/'; 
-  private DrainsUrl = 'drains/?type=all';  // URL to web api
+  private DrainsUrl = 'drains/?type=all'; 
   private CleanDrainsUrl = 'drains/?type=cleaned'; 
   private DirtyDrainsUrl = 'drains/?type=uncleaned';
-  private HelpDrainsUrl = 'drains/?type=need_help';
+  private HelpDrainsUrl = 'need_helps';
   private UnknownDrainsUrl = 'drains/?type=unknown';
   private drainDataUrl = 'drains/data';
   private ranksDataUrl = 'drains/ranking';
@@ -28,6 +30,7 @@ export class DrainsService {
   constructor(private http: Http) { }
   drainData: any;
   ranksData: any;
+  helpDrains: any;
   getDrains(): Observable<Drain[]> {
     return this.http.get(this.ApiUrl+this.DrainsUrl)
            .map((response: Response) => <Drain[]>response.json().drains)
@@ -43,9 +46,11 @@ export class DrainsService {
            .map((response: Response) => <Drain[]>response.json().drains)
            .catch(this.errorHandler);
           } 
-  getHelpDrains(): Observable<Drain[]> {
-    return this.http.get(this.ApiUrl+this.HelpDrainsUrl)
-           .map((response: Response) => <Drain[]>response.json().drains)
+  getHelpDrains(): Observable<any[]> {
+    return this.http.get(this.localUrl+this.HelpDrainsUrl, this.options)
+           .map((response: Response) => { 
+            this.helpDrains = response.json();
+        })
            .catch(this.errorHandler);
           } 
   getUnknownDrains():Observable<Drain[]> {
