@@ -3,6 +3,7 @@ import { Headers, Http, Response } from '@angular/http';
 import { Observable }    from 'rxjs/Observable';
 import { HttpHeaders } from '@angular/common/http';
 import { User } from './../shared/users/user'; 
+import { UsersUrlService } from "./users-url.service";
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -11,9 +12,9 @@ import 'rxjs/add/observable/throw';
 @Injectable()
 export class UserService {
   private headers = new Headers({'Authorization': 'Token token="gM7TM10gfRFZBlkNNcqg9A", email="example-2@twaamtaro.org"'});
-  private UsersUrl = 'http://twaamtaro.org/api/v1/users/';  // URL to web api
 
-  constructor(private http: Http) { }
+
+  constructor(private http: Http, private urlService: UsersUrlService) { }
   users: User[];
 
  /* THis is useful for post requests
@@ -22,14 +23,13 @@ export class UserService {
   }*/
   
   getUsers(): Observable<User[]> {
-    return this.http.get(this.UsersUrl,
+    return this.http.get(this.urlService.apiUrl+this.urlService.usersUrl,
       {headers: this.headers})
            .map((response: Response) => <User[]>response.json().users)
            .catch(this.errorHandler);
           } 
            
     getUser(id):Observable<User[]> {
-        
             return this.getUsers()
             .map(users => users.find(user => user.id === id))
             .catch(this.errorHandler);
