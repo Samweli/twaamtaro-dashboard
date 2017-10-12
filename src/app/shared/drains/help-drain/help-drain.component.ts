@@ -18,17 +18,13 @@ export class HelpDrainComponent implements OnInit {
   loggedIn: any;
 
   constructor(private drainService: DrainsService, public authService: AuthService) { }
-  getDrains(): void {
+  getDrainDetails(): void {
     this.drainService
-        .getHelpDrains()
-        .subscribe(
-          drains => {
-             this.drains = this.drainService.helpDrains;
-
-  console.log(this.drains);
-  console.log('Got the Drains');
-
-            });
+      .getHelpDetails()
+      .subscribe(
+        drains => {
+          this.drains = this.drainService.helpDrains;
+      });
   }
   helpmodal()
   { 
@@ -53,7 +49,7 @@ export class HelpDrainComponent implements OnInit {
       console.log(this.loggedIn)
   }
   ngOnInit(): void {
-    this.getDrains();
+    this.getDrainDetails();
     this.closedetails();
     this.closemodal();
   }

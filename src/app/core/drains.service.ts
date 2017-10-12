@@ -22,7 +22,8 @@ export class DrainsService {
   private DrainsUrl = 'drains/?type=all'; 
   private CleanDrainsUrl = 'drains/?type=cleaned'; 
   private DirtyDrainsUrl = 'drains/?type=uncleaned';
-  private HelpDrainsUrl = 'need_helps';
+  private HelpDetailsUrl = 'need_helps';
+  private HelpDrainsUrl = 'drains/?type=need_help';
   private UnknownDrainsUrl = 'drains/?type=unknown';
   private drainDataUrl = 'drains/data';
   private ranksDataUrl = 'drains/ranking';
@@ -46,13 +47,18 @@ export class DrainsService {
            .map((response: Response) => <Drain[]>response.json().drains)
            .catch(this.errorHandler);
           } 
-  getHelpDrains(): Observable<any[]> {
-    return this.http.get(this.localUrl+this.HelpDrainsUrl, this.options)
+  getHelpDetails(): Observable<any[]> {
+    return this.http.get(this.localUrl+this.HelpDetailsUrl, this.options)
            .map((response: Response) => { 
             this.helpDrains = response.json();
         })
            .catch(this.errorHandler);
           } 
+  getHelpDrains(): Observable<any[]> {
+    return this.http.get(this.ApiUrl+this.HelpDrainsUrl, this.options)
+      .map((response: Response) => <Drain[]>response.json().drains)
+      .catch(this.errorHandler);    
+  } 
   getUnknownDrains():Observable<Drain[]> {
     return this.http.get(this.ApiUrl+this.UnknownDrainsUrl)
           .map((response: Response) => <Drain[]>response.json().drains)
