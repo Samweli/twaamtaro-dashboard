@@ -37,8 +37,8 @@ import { ReportModule } from './../shared/reports/reports.module';
 import { UserModule } from "./../shared/users/users-list/users.module";
 import { FilterDrainsModule } from './../shared/drains/filter-drains/filter-drains.module';
 
-import { DrainsService } from './../shared/drains/drains.service';
-import { UserService } from './../shared/users/user.service';
+import { DrainsService } from './../core/drains.service';
+import { UserService } from './../core/user.service';
 
 @NgModule({
   imports: [

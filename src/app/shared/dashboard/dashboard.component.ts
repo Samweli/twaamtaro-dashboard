@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DrainsService } from './../drains/drains.service';
+import { DrainsService } from './../../core/drains.service';
 import { Drain } from './../drains/drain';
 
 // Variable in assets/js/scripts.js file

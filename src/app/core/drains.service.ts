@@ -8,7 +8,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/filter';
 
-import { Drain } from './drain';
+import { Drain } from './../shared/drains/drain';
 
 
 @Injectable()

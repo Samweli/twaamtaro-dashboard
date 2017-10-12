@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { DrainsService } from './../drains/drains.service';
+import { DrainsService } from './../../core/drains.service';
 import { ChartErrorEvent } from 'ng2-google-charts';
 
 @Component({

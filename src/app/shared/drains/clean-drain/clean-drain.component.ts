@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
-import { DrainsService } from './../drains.service';
+import { DrainsService } from './../../../core/drains.service';
 import { Drain } from './../drain';
 
 @Component({

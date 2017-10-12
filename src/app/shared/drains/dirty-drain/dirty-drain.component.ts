@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { DirtyDrainsPipe } from './../drains.pipe';
-import { DrainsService } from './../drains.service';
+import { DrainsService } from './../../../core/drains.service';
 import { Drain } from './../drain';
 
 @Component({

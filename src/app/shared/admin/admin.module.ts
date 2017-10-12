@@ -35,8 +35,8 @@ import { ReportModule } from './../shared/reports/reports.module';
 import { UserModule } from "./../shared/users/users-list/users.module";
 import { FilterDrainsModule } from './../shared/drains/filter-drains/filter-drains.module';*/
 
-import { DrainsService } from './../drains/drains.service';
-import { UserService } from './../users/user.service';
+import { DrainsService } from './../../core/drains.service';
+import { UserService } from './../../core/user.service';
 
 
 

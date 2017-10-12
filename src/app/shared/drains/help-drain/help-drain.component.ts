@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from "./../../../core/auth.service";
 
 import { HelpDrainsPipe } from './../drains.pipe';
-import { DrainsService } from './../drains.service';
+import { DrainsService } from './../../../core/drains.service';
 import { Drain } from './../drain';
 
 @Component({
