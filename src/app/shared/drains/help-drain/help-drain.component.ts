@@ -24,6 +24,7 @@ export class HelpDrainComponent implements OnInit {
       .subscribe(
         drains => {
           this.drains = this.drainService.helpDrains;
+          console.log(this.drains);
       });
   }
   helpmodal()

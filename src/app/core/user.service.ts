@@ -23,7 +23,7 @@ export class UserService {
   }*/
   
   getUsers(): Observable<User[]> {
-    return this.http.get(this.urlService.apiUrl+this.urlService.usersUrl,
+    return this.http.get(this.urlService.localUrl+this.urlService.usersUrl,
       {headers: this.headers})
            .map((response: Response) => <User[]>response.json().users)
            .catch(this.errorHandler);

@@ -29,9 +29,10 @@
 					<tr *ngFor="let drain of (drains)">
 						<td><a (click)="helpmodal()" >{{drain.gid}}</a></td>
 						<td>{{drain.need_help_category.category_name}}</td>
-						<td>Street</td>
+						<td>{{drain.user.street.street_name}}</td>
 						<td>{{drain.created_at}}</td>
-						<td  *ngIf="authService.isLoggedIn()">{{drain.user_id}}</td>
+						<td  *ngIf="authService.isLoggedIn()">
+							{{drain.user.first_name}} {{drain.user.last_name}}</td>
 
 						<div id="helpdetails" class="w3-modal w3-margin-top">
 							<div class="w3-modal-content w3-card-4">
