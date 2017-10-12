@@ -32,12 +32,11 @@ export class HelpDrainComponent implements OnInit {
   }
   helpmodal()
   { 
-    document.getElementById('heldetails').style.display='block'
+    document.getElementById('helpdetails').style.display='block'
   }
   closedetails()
   { 
-    var modal = document.getElementById('heldetails');
-    
+    var modal = document.getElementById('helpdetails');
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
@@ -46,7 +45,7 @@ export class HelpDrainComponent implements OnInit {
   }
   closemodal()
   { 
-    document.getElementById('heldetails').style.display='none';
+    document.getElementById('helpdetails').style.display='none';
   }
   isLoggedIn()
   {
