@@ -40,11 +40,12 @@ import { UserDetailComponent } from './shared/users/user-detail/user-detail.comp
 import { UserSearchComponent } from './shared/users/user-search/user-search.component';
 import { UsersComponent } from './shared/users/users-list/users.component';
 
-import { AuthService } from "./core/auth.service";
-import { SessionService } from "./core/session.service";
 import { UnknownDrainsComponent } from './shared/drains/unknown-drains/unknown-drains.component';
 
+import { AuthService } from "./core/auth.service";
+import { SessionService } from "./core/session.service";
 import { AuthGuard } from "./core/auth.guard";
+import { DrainsUrlService } from "./core/drains-url.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,9 +68,11 @@ import { AuthGuard } from "./core/auth.guard";
     SharedModule  
   ],
   providers: [
+    AuthGuard,
     AuthService,
+    DrainsUrlService,
     SessionService,
-    AuthGuard
+
   ],
   bootstrap: [AppComponent]
 })
