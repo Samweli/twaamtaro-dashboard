@@ -12,7 +12,32 @@
         <div class="box-body"> 
           <div class="w3-row">
               <!-- Chart Canvas -->
-            <google-chart [data]="tableChartData" ></google-chart>                
+            <div >
+                <google-chart [data]="tableChartData"  (chartSelect)='select($event)'></google-chart>   
+            </div>
+            <div id="alert" class="w3-modal">
+                <div id="" class="w3-modal-content w3-card-4" >
+                    <header class="w3-container w3-theme-d1 w3-center"> 
+                        <span (click)="closemodal()"  class="w3-button w3-display-topright w3-padding w3-hover-teal">&times;</span>
+                        <h3>{{ street }}</h3>
+                    </header>
+                    <div class="w3-row-padding">
+                     <div class="w3-col" style="width:80%">
+                        <h5><strong>{{ street }} </strong> has</h5>
+                      <div class="w3-padding-left" >
+                        <p><strong class="w3-padding-right">{{ adopted }}</strong>Adopted Drains</p>
+                        <p><strong class="w3-padding-right">{{ clean }}</strong>Clean Drains</p>
+                        <p><strong class="w3-padding-right">{{ dirty }} </strong>Dirty Drains</p>
+                        <p><strong class="w3-padding-right">{{ help }}</strong>Drains that need help </p>
+                      </div>
+                     </div>
+
+                     <div *ngIf="authService.isLoggedIn()"  class="w3-rest w3-padding-top" >
+                         <button (click)="alertVEO(street)" >Alert VEO</button>
+                     </div>
+                        
+                </div>
+            </div>      
           </div>  
           </div>
       </div>

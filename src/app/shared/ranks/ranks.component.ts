@@ -15,6 +15,15 @@ export class RanksComponent implements OnInit {
   street: any;
   ErrMsg: string;
   tableChartData: any;
+  row: any;
+  clean: any;
+  dirty: any;
+  adopted
+  help : any;
+  message: string;
+  column: number ;
+  selectedRowValues: any[];
+
   cssClassNames = {headerCell: 'w3-teal w3-padding', hoverTableRow: 'w3-grey', tableRow: 'w3-striped'};
 
   constructor(private drainService: DrainsService, public authService: AuthService) { }
@@ -24,9 +33,28 @@ export class RanksComponent implements OnInit {
       this.loggedIn = this.authService.isLoggedIn();
   }
   public select(event: ChartSelectEvent) {
-    
-  }
+    document.getElementById('alert').style.display='block'
+    this.street = event.selectedRowValues[0];
+    this.adopted = event.selectedRowValues[1];
+    this.clean = event.selectedRowValues[2];
+    this.dirty = event.selectedRowValues[3];
+    this.help = event.selectedRowValues[4];
+    this.row = 1 + event.row;
 
+    this.column = 1 + event.column;
+  }
+  closestreet() 
+  {
+    var modal = document.getElementById('alert');
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+  }
+  closemodal() { 
+    document.getElementById('alert').style.display='none';
+  }
   ranksData(): void {
     this.drainService
         .getRanksData()
@@ -60,20 +88,21 @@ export class RanksComponent implements OnInit {
                 rank.details.cleaned,
                 rank.details.uncleaned,
                 rank.details.need_help
-              ]);
+              ]);         
             }); 
-          
 
           } 
         );
   }
-/*alertVEO(street) {
+alertVEO(street) {
   console.log(street);
-  console.log('Got the Street');
-}*/
+  alert('You alerted ' + this.street);
+
+}
 
 
   ngOnInit() {
     this.ranksData();
+    this.closestreet();
   }
 }

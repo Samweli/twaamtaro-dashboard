@@ -30,7 +30,7 @@
 						<td><a (click)="helpmodal()" >{{drain.gid}}</a></td>
 						<td>{{drain.need_help_category.category_name}}</td>
 						<td>{{drain.user.street.street_name}}</td>
-						<td>{{drain.created_at}}</td>
+						<td>{{drain.created_at | date }}</td>
 						<td  *ngIf="authService.isLoggedIn()">
 							{{drain.user.first_name}} {{drain.user.last_name}}</td>
 
