@@ -13,6 +13,7 @@ export class RanksComponent implements OnInit {
   title = 'Cleanness Ranks Based on Streets';
   ranksdata: any;
   street: any;
+  streetId: any;
   ErrMsg: string;
   tableChartData: any;
   row: any;
@@ -33,12 +34,13 @@ export class RanksComponent implements OnInit {
       this.loggedIn = this.authService.isLoggedIn();
   }
   public select(event: ChartSelectEvent) {
-    document.getElementById('alert').style.display='block'
-    this.street = event.selectedRowValues[0];
-    this.adopted = event.selectedRowValues[1];
-    this.clean = event.selectedRowValues[2];
-    this.dirty = event.selectedRowValues[3];
-    this.help = event.selectedRowValues[4];
+    document.getElementById('alert').style.display='block';
+    this.streetId = event.selectedRowValues[0];
+    this.street = event.selectedRowValues[1];
+    this.adopted = event.selectedRowValues[2];
+    this.clean = event.selectedRowValues[3];
+    this.dirty = event.selectedRowValues[4];
+    this.help = event.selectedRowValues[5];
     this.row = 1 + event.row;
 
     this.column = 1 + event.column;
@@ -64,7 +66,7 @@ export class RanksComponent implements OnInit {
           this.tableChartData =  {
             chartType: 'Table',
             dataTable: [
-              ['Street',  'Adopted','Clean', 'Dirty', 'Need Help'],
+              ['Street ID','Street',  'Adopted','Clean', 'Dirty', 'Need Help'],
             ],
             
               options: {
@@ -78,12 +80,16 @@ export class RanksComponent implements OnInit {
                 pageSize: 20,
                 sort: 'enable',
                 
+              },
+              view: {
+                'columns': [1,2,3,4,5]
               }
             };
             this.ranksdata = this.drainService.ranksData;
              this.ranksdata.forEach( rank => {
               this.tableChartData.dataTable.push(
-                [rank.street.street_name ,
+                [rank.street.id,
+                rank.street.street_name ,
                 rank.details.adopted,
                 rank.details.cleaned,
                 rank.details.uncleaned,
@@ -94,9 +100,15 @@ export class RanksComponent implements OnInit {
           } 
         );
   }
-alertVEO(street) {
-  console.log(street);
-  alert('You alerted ' + this.street);
+
+  alert: any ;
+  alertVEO(streetId): void {
+    this.drainService
+      .alertVEO(streetId)
+      .subscribe(
+        alertRes => {
+          this.alert = alertRes;
+      });
 
 }
 

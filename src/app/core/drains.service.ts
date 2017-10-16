@@ -65,12 +65,16 @@ export class DrainsService {
   getRanksData():Observable<any[]> {
     return this.http.get(this.urlService.localUrl+this.urlService.ranksDataUrl)
           .map((response: Response) => {this.ranksData = response.json().ranking;
-            console.log('Service'); 
-            console.log(this.ranksData); 
           })                           
           .catch(this.errorHandler); 
                 
   }
+  alertVEO(street): any {
+    return this.http.post(street, {headers: this.headers})
+        .subscribe(res => {
+            let alertData = res.json();
+        });
+    }
   errorHandler(error: Response) {
              console.error(error);
              return Observable.throw(error || 'Sorry, something went wrong');

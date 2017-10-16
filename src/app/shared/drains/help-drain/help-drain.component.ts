@@ -13,20 +13,43 @@ import { Drain } from './../drain';
 })
 export class HelpDrainComponent implements OnInit {
   title = 'Drains In Need of Help';
-  drains: any[];
+  drains: any;
   need_help = true;
   loggedIn: any;
+  dateCreated: any;
+  today: any;
+  created: any;
+  daysGone: any;
 
   constructor(private drainService: DrainsService, public authService: AuthService) { }
+
+  getDuration(d)
+  { 
+    var minutes = 1000 * 60;
+    var hours = minutes * 60;
+    var days = hours * 24;
+    var years = days * 365;
+
+    console.log (d);
+    this.dateCreated = new Date("d");
+
+    console.log (this.dateCreated);
+    this.daysGone = Math.floor((this.today - this.dateCreated) / days);
+    console.log (this.daysGone);
+  }
+
   getDrainDetails(): void {
     this.drainService
       .getHelpDetails()
       .subscribe(
         drains => {
           this.drains = this.drainService.helpDrains;
-          console.log(this.drains);
+          this.created = this.drains.created_at;
+    this.today = Date.now();
+    //this.getDuration(this.created);
       });
   }
+ 
   helpmodal()
   { 
     document.getElementById('helpdetails').style.display='block'
