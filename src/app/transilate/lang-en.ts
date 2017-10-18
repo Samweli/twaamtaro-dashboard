@@ -1,7 +1,9 @@
 export const LANG_EN_NAME ='en';
 
 export const LANG_EN_TRANS = {
-  'login': 'Sign Up/In',
+  'login': 'Sign In',
+  'register': 'Register',
+  'signout': 'Sign out',
   'clean':'Clean Drains',
   'all': 'All Drains',
   'dirty': 'Dirty Drains',
@@ -31,6 +33,13 @@ export const LANG_EN_TRANS = {
   'region': 'Region',
   'ward':'Ward',
   'street': 'Street',
+  'drain_filter':'Filter Drains',
+  'choose_address': 'Choose Address',
   //buttons
-  'send': 'Send'
+  'send': 'Send',
+  'submit': 'Submit',
+
+//  footer
+  'copyright': 'Copyright',
+  'all-right':'All rights reserved.'
 };

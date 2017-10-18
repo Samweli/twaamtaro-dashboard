@@ -2,26 +2,26 @@
     <div class="content">
     <div class="box w3-card-2 w3-border w3-border-teal w3-padding" >
         <div class="box-header with-border">
-            <h3 class=" w3-center"> {{ title }}</h3>
+            <h3 class=" w3-center"> {{ 'choose_address' |translate }}</h3>
         </div>
         <!-- /.box-header -->
 
         <div class="box-body">
-            <label>Filter Drains: </label>
+            <label>{{'drain_filter' | translate}}: </label>
                 <form [formGroup]="filterForm" (ngSubmit)="onSubmit()">
                     <select formControlName="address" class="w3-select">
-                        <option >Choose Address</option>
+                        <option >{{ 'choose_address' |translate }}</option>
                         <option ng-value="Kigogo">Kigogo</option>
                         <option ng-value="Tabata">Tabata</option>
                         <option ng-value="Mwananyamala" >Mwananyamala</option>
                         <option ng-value="Hananasif">Hananasif</option>
                         <!--option *ngFor="let drain of drains" ng-value="address">{{drain.address}}</option-->
-                    </select>  
-                <button type="submit">Submit</button>         
+                    </select>
+                <button type="submit">{{'submit' | translate}}</button>
                 </form>
-                      
+
             <div class="row">
-                <div id="error"><h4>{{ErrMsg}}</h4></div>       
+                <div id="error"><h4>{{ErrMsg}}</h4></div>
             </div>
         </div>
      </div>

@@ -1,7 +1,9 @@
 export const LANG_SW_NAME ='sw';
 
 export const LANG_SW_TRANS = {
-  'login': 'Ingia/Sajili',
+  'login': 'Ingia',
+  'register': 'Sajili',
+  'signout': 'Ondoka',
   'clean':'Mitaro misafi',
   'all': 'Mitaro yote',
   'dirty': 'Mitaro michafu',
@@ -31,6 +33,12 @@ export const LANG_SW_TRANS = {
   'region':'Mkoa',
   'ward': 'Kata',
   'street': 'Mtaa',
+  'drain_filter':'Mgawanyo wa Mitaro',
+  'choose_address': 'Chagua mahali/mtaa',
   /*button*/
-  'send': 'Tuma'
+  'send': 'Tuma',
+  'submit':'Wasilisha',
+//  footer
+  'copyright': 'Hatimiliki',
+  'all-right':'Haki zote zimehifadhiwa.'
 };

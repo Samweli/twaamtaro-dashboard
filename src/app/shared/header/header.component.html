@@ -20,15 +20,15 @@
 
         <li class="user user-menu">
               <div class="pull-right w3-padding" *ngIf="authService.isLoggedIn(); else signIN">
-                <a (click)="logout()" class="btn btn-default btn-flat">Sign out</a>
+                <a (click)="logout()" class="btn btn-default btn-flat">{{'signout'| translate}}</a>
               </div>
               <ng-template #signIN>
               <div class=" w3-padding">
                 <div class="pull-right">
-                  <a (click)="register()"  class="btn btn-default btn-flat">Register</a>
+                  <a (click)="register()"  class="btn btn-default btn-flat">{{'register'| translate}}</a>
                 </div>
                 <div class="pull-right w3-padding-right" >
-                  <a (click)="loginbox() "  class="btn btn-default btn-flat">Sign in</a>
+                  <a (click)="loginbox() "  class="btn btn-default btn-flat">{{'login' | translate}}</a>
                 </div>
               </div>
               </ng-template>
