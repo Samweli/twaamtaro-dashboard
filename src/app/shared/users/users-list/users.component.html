@@ -14,7 +14,6 @@
               <th>{{'id' | translate}}</th>
               <th>{{'name'| translate}}</th>
               <th>{{'address' | translate}}</th>
-              <th>{{'phone_number' | translate}}</th>
             </tr>
             </thead>
             <tbody>
@@ -22,7 +21,6 @@
               <td><a routerLink="../user-details/{{user.id}}">{{user.id}}</a></td>
               <td>{{user.first_name}} {{user.last_name}} </td>
               <td>{{user.organization}}</td>
-              <td>{{user.sms_number}}</td>
             </tr>
 
             </tbody>

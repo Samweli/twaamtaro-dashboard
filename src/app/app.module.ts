@@ -40,14 +40,17 @@ import { UserDetailComponent } from './shared/users/user-detail/user-detail.comp
 import { UserSearchComponent } from './shared/users/user-search/user-search.component';
 import { UsersComponent } from './shared/users/users-list/users.component';
 
-import { AuthService } from "./core/auth.service";
-import { SessionService } from "./core/session.service";
 import { UnknownDrainsComponent } from './shared/drains/unknown-drains/unknown-drains.component';
 
 import { AuthGuard } from "./core/auth.guard";
 import {TranslateService} from "./transilate/translate.service";
 import {TranslatePipe} from "./transilate/translate.pipe";
 import {TRANSLATION_PROVIDERS} from "./transilate/translation/translation.component";
+import { AuthService } from "./core/auth.service";
+import { DrainsUrlService } from "./core/drains-url.service";
+import { SessionService } from "./core/session.service";
+import { UsersUrlService } from "./core/users-url.service";
+
 @NgModule({
   declarations: [
     AppComponent
@@ -70,12 +73,13 @@ import {TRANSLATION_PROVIDERS} from "./transilate/translation/translation.compon
     SharedModule
   ],
   providers: [
-    AuthService,
-    SessionService,
     AuthGuard,
+    AuthService,
+    DrainsUrlService,
+    SessionService,
+    UsersUrlService,
     TRANSLATION_PROVIDERS
-
-],
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

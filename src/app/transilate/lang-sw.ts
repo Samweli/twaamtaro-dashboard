@@ -8,6 +8,7 @@ export const LANG_SW_TRANS = {
   'unknown': 'Mitaro isiyojulikana',
   'citizens': 'Wananchi',
   'need_help': 'Msaada hunahijika',
+  /*side-menu translation*/
   'dashboard': 'Dashibodi',
   'map' : 'Ona ramani',
   'ranks': 'Uwiano',
@@ -20,7 +21,16 @@ export const LANG_SW_TRANS = {
   'id': 'Namba',
   'address': 'Mtaa/Mahala',
   'name': 'Jina',
+  'report_made': 'Ripoti iliyofanyoka',
   'claimed': 'Iliyochukuliwa',
   'phone_number':'Namba ya Simu',
-  'ranks_details': 'Nafasi za usafi kulingana na mitaa'
+  'ranks_details': 'Nafasi za usafi kulingana na mitaa',
+  'location': 'Chagua Eneo/Sehemu',
+  'district': 'Wilaya',
+  'municipal': 'munispaa',
+  'region':'Mkoa',
+  'ward': 'Kata',
+  'street': 'Mtaa',
+  /*button*/
+  'send': 'Tuma'
 };

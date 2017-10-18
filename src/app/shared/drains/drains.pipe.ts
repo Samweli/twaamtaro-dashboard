@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { DrainsService } from './drains.service';
+import { DrainsService } from './../../core/drains.service';
 import { Drain, Clean, Help } from './drain';
 
 @Pipe({ name: 'dirtyDrains' })

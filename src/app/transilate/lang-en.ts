@@ -22,6 +22,15 @@ export const LANG_EN_TRANS = {
   'address': 'Address',
   'name': 'Name',
   'claimed': 'Claimed',
+  'report_made': 'Report made',
   'phone_number': 'Phone Number',
-  'ranks_details': 'Cleanness Ranks Based on Streets'
+  'ranks_details': 'Cleanness Ranks Based on Streets',
+  'location': 'Select a location',
+  'district': 'District',
+  'municipal': 'Municipal',
+  'region': 'Region',
+  'ward':'Ward',
+  'street': 'Street',
+  //buttons
+  'send': 'Send'
 };

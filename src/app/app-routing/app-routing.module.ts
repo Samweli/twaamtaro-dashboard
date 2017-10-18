@@ -25,7 +25,7 @@ import { AuthGuard } from "./../core/auth.guard";
       { path: '', redirectTo: 'dashboard/home', pathMatch: 'full' },
       { path: 'dashboard', component: SharedComponent },
       { path: '*', component: NotFoundComponent },
-    ])
+    ],{ useHash: true })
   ],
   declarations: [],
   exports: [ RouterModule]

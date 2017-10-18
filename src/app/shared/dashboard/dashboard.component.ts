@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Drain } from './../drains/drain';
-import {DrainsService} from "../drains/drains.service";
+import {DrainsService} from "../../core/drains.service";
 
 // Variable in assets/js/scripts.js file
 declare var AdminLTE: any;
@@ -34,6 +34,7 @@ constructor(private drainService: DrainsService) { }
                 'title': 'General Cleanness Report ',
                 pieHole: 0.3,
                 height: 500,
+                colors:['#5cb85c','#eea236','#6495ed']
                 },
         };
 
@@ -48,6 +49,7 @@ constructor(private drainService: DrainsService) { }
                 'title': 'Drain Adoption in Dar es salaam  ',
                 pieHole: 0.3,
                 height: 500,
+                colors:['#964f8e','grey']
                 },
         };
 

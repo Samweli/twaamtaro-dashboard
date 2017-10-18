@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from "./../users/user";
-import { UserService } from "./../users/user.service";
-import { DrainsService } from './../drains/drains.service';
+import { UserService } from "./../../core/user.service";
+import { DrainsService } from './../../core/drains.service';
 import { Drain } from './../drains/drain';
 
 @Component({

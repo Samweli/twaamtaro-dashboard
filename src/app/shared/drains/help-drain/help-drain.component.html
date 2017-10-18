@@ -21,17 +21,35 @@
             <th>{{'id' | translate}}</th>
             <th>{{'name'| translate}}</th>
             <th>{{'address' | translate}}</th>
-            <th>{{'claimed' | translate}}</th>
-					</tr>
-					</thead>
-					<tbody>
-					<tr *ngFor="let drain of (drains)">
-						<td><a href="#">{{drain.gid}}</a></td>
-						<td>{{drain.name}}</td>
-						<td>{{drain.address}}</td>
-						<td>{{drain.claims_count}}</td>
-					</tr>
+            <!--<th>{{'claimed' | translate}}</th>-->
+						<th>{{'report_made' | translate}}</th>
+            <th  *ngIf="authService.isLoggedIn()">STREET LEADER</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let drain of (drains)">
+            <td><a (click)="helpmodal()" >{{drain.gid}}</a></td>
+            <td>{{drain.need_help_category.category_name}}</td>
+            <td>{{drain.user.street.street_name}}</td>
+            <td>{{drain.created_at | date }}</td>
+            <td  *ngIf="authService.isLoggedIn()">
+              {{drain.user.first_name}} {{drain.user.last_name}}</td>
 
+            <div id="helpdetails" class="w3-modal w3-margin-top">
+              <div class="w3-modal-content w3-card-4">
+                <header class="w3-container w3-theme-d3 w3-center">
+								<span (click)="closemodal()"
+                      class="w3-button w3-display-topright w3-padding w3-hover-teal">&times;</span>
+                  <h3>Drain No. {{drain.gid}} Help Details</h3>
+                </header>
+                <div class="w3-container w3-padding">
+                  <p><strong class="w3-padding-right">Help Category: </strong>{{drain.need_help_category.category_name}}</p>
+                  <p><strong class="w3-padding-right">Extra Details: </strong>{{drain.help_needed}}</p>
+                </div>
+
+              </div>
+            </div>
+          </tr>
 					</tbody>
 				</table>
 		</div>

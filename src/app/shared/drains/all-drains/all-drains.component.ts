@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Directive } from '@angular/core';
-import { DrainsService } from './../drains.service';
+import { DrainsService } from './../../../core/drains.service';
 import { Drain } from './../drain';
 
 @Component({

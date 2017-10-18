@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DrainsService } from './../drains.service';
+import { DrainsService } from './../../../core/drains.service';
 import { Drain } from './../drain';
 
 @Component({
@@ -23,7 +23,7 @@ export class UnknownDrainsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.unkownDrains
+    this.unkownDrains()
   }
 
 }

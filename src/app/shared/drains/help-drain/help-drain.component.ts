@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from "./../../../core/auth.service";
 
 import { HelpDrainsPipe } from './../drains.pipe';
-import { DrainsService } from './../drains.service';
+import { DrainsService } from './../../../core/drains.service';
 import { Drain } from './../drain';
 
 @Component({
@@ -12,17 +13,45 @@ import { Drain } from './../drain';
 })
 export class HelpDrainComponent implements OnInit {
   title = 'Drains In Need of Help';
-  drains: Drain[];
+  drains: any[];
   need_help = true;
+  loggedIn: any;
 
-  constructor(private drainService: DrainsService) { }
-  getDrains(): void {
+  constructor(private drainService: DrainsService, public authService: AuthService) { }
+  getDrainDetails(): void {
     this.drainService
-        .getHelpDrains()
-        .subscribe(drains => this.drains = drains);
+      .getHelpDetails()
+      .subscribe(
+        drains => {
+          this.drains = this.drainService.helpDrains;
+          console.log(this.drains);
+      });
   }
-
+  helpmodal()
+  { 
+    document.getElementById('helpdetails').style.display='block'
+  }
+  closedetails()
+  { 
+    var modal = document.getElementById('helpdetails');
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+  }
+  closemodal()
+  { 
+    document.getElementById('helpdetails').style.display='none';
+  }
+  isLoggedIn()
+  {
+      this.loggedIn = this.authService.isLoggedIn();
+      console.log(this.loggedIn)
+  }
   ngOnInit(): void {
-    this.getDrains();
+    this.getDrainDetails();
+    this.closedetails();
+    this.closemodal();
   }
 }
