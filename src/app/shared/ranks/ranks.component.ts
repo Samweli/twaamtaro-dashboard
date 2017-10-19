@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Drain } from "./../drains/drain";
 import { DrainsService } from './../../core/drains.service';
-import {AuthService} from "./../../core/auth.service";
+import { AuthService} from "./../../core/auth.service";
 import { ChartSelectEvent } from 'ng2-google-charts';
+import { UserService } from "./../../core/user.service";
 
 @Component({
   selector: 'app-ranks',
@@ -12,7 +13,7 @@ import { ChartSelectEvent } from 'ng2-google-charts';
 export class RanksComponent implements OnInit {
   title = 'Cleanness Ranks Based on Streets';
   ranksdata: any;
-  street: any;
+  streetName: any;
   streetId: any;
   ErrMsg: string;
   tableChartData: any;
@@ -24,10 +25,15 @@ export class RanksComponent implements OnInit {
   message: string;
   column: number ;
   selectedRowValues: any[];
+  //street: any = {'street_id': ''};
 
   cssClassNames = {headerCell: 'w3-teal w3-padding', hoverTableRow: 'w3-grey', tableRow: 'w3-striped'};
 
-  constructor(private drainService: DrainsService, public authService: AuthService) { }
+  constructor(
+    private drainService: DrainsService, 
+    public authService: AuthService,
+    private userService: UserService,
+  ) { }
   loggedIn: any;
   isLoggedIn()
   {
@@ -36,7 +42,7 @@ export class RanksComponent implements OnInit {
   public select(event: ChartSelectEvent) {
     document.getElementById('alert').style.display='block';
     this.streetId = event.selectedRowValues[0];
-    this.street = event.selectedRowValues[1];
+    this.streetName = event.selectedRowValues[1];
     this.adopted = event.selectedRowValues[2];
     this.clean = event.selectedRowValues[3];
     this.dirty = event.selectedRowValues[4];
@@ -101,13 +107,20 @@ export class RanksComponent implements OnInit {
         );
   }
 
-  alert: any ;
-  alertVEO(streetId): void {
-    this.drainService
-      .alertVEO(streetId)
+  alertRes: any;
+  alertMsg: any;
+  alertVEO() {
+    this.userService.alertLeader(this.streetId)
       .subscribe(
-        alertRes => {
-          this.alert = alertRes;
+        res => {
+          this.alertRes = res;
+          console.log(this.alertRes );
+          if (this.alertRes.success) {
+            this.alertMsg = 'A message has been sent';
+          } else {
+            this.alertMsg = 'Message sending failed';
+          }
+          console.log(this.alertMsg );
       });
 
 }
