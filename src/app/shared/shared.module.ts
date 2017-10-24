@@ -40,6 +40,8 @@ import { FilterDrainsModule } from './../shared/drains/filter-drains/filter-drai
 import { DrainsService } from './../core/drains.service';
 import { UserService } from './../core/user.service';
 
+import { StreetVEOPipe, UserStreetPipe } from "./../core/user.pipe";
+
 @NgModule({
   imports: [
     CommonModule,
@@ -79,7 +81,7 @@ import { UserService } from './../core/user.service';
     DashboardComponent,
     LoginComponent,
     UnknownDrainsComponent,
-    SharedComponent,
+    SharedComponent,StreetVEOPipe, UserStreetPipe
   ],
   exports: [SharedComponent],
   providers: [

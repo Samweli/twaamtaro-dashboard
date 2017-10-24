@@ -120,7 +120,6 @@ export class RanksComponent implements OnInit {
           } else {
             this.alertMsg = 'Message sending failed';
           }
-          console.log(this.alertMsg );
       });
 
 }

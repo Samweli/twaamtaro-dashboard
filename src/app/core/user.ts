@@ -1,4 +1,6 @@
 export interface IsAdmin { admin: boolean; }
+export interface Street { street_id: number; }
+export interface Role { role: number; }
 
 export class User{
     constructor(
@@ -8,5 +10,7 @@ export class User{
         public admin: boolean,
         public first_name: string,
         public last_name: string,
+        public street_id: number,
+        public role: number
     ) {};
 }
