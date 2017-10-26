@@ -8,9 +8,6 @@ import { Http } from '@angular/http';
 })
 export class AdminComponent implements OnInit, OnDestroy {
 
-  bodyClasses = 'skin-blue sidebar-mini';
-  body: HTMLBodyElement = document.getElementsByTagName('body')[0];
-
   closelogin(){ 
     document.getElementById('loginmodal').style.display='none';
   }
