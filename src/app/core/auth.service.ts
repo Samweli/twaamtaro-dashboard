@@ -27,9 +27,12 @@ export class AuthService {
 
             if (this.userdata && this.userdata.data.auth_token) {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('currentUser', JSON.stringify(this.userdata.data));
-                localStorage.setItem('user', JSON.parse(this.userName));
+                localStorage.setItem('currentUser', JSON.stringify(this.userdata.data.auth_token));
+                localStorage.setItem('user', this.userName);
+        
+        location.reload();
         this.router.navigate(['dashboard/admin']);
+        
             }
         });
     }
@@ -43,8 +46,8 @@ export class AuthService {
     }
     logout() {
         // remove user from local storage to log user out
-        localStorage.removeItem('currentUser');
-        localStorage.removeItem('user');
+        location.reload();
+        localStorage.clear();
         this.loggedIn = false;
     }
     private handleError(error: any): any {

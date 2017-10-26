@@ -4,7 +4,7 @@
     <!-- search form -->
     <app-user-search></app-user-search>
     <!-- /.search form -->
-    <div *ngIf="authService.isLoggedIn() else noUser" class="w3-padding w3-text-white">
+    <div *ngIf="authService.isLoggedIn(); else noUser" class="w3-padding w3-text-white">
       <h4>Welcome <strong>{{ loggedUser }} </strong></h4>
     </div>
     <ng-template #noUser>

@@ -9,17 +9,10 @@ import {AuthService} from "./../../core/auth.service";
 export class LeftSideComponent implements OnInit {
   constructor(public authService: AuthService) { }
   notifyCitizens() {
-    
   }
-  loggedIn: any;
-  loggedUser: any;
   
-  isLoggedIn()
-  {
-    this.authService.isLoggedIn();
-    this.loggedUser = localStorage.getItem("user");
-  }
-
+  loggedUser = localStorage.getItem("user");
+  
   ngOnInit() {
   }
 

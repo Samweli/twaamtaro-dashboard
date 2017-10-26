@@ -15,14 +15,14 @@ export class HeaderComponent implements OnInit {
   }
   logout() {
     // remove user from local storage to log user out
-    localStorage.removeItem('currentUser');
+    this.authService.logout();
     this.router.navigateByUrl('/');
   }
   loggedIn: any;
   isLoggedIn()
   {
       this.loggedIn = this.authService.isLoggedIn();
-      console.log(this.loggedIn)
+      return this.loggedIn;
   }
   ngOnInit() {
     this.isLoggedIn;
