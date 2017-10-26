@@ -4,6 +4,7 @@
     <!-- search form -->
     <app-user-search></app-user-search>
     <!-- /.search form -->
+    
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
       <!--li class="header">MAIN NAVIGATION</li-->
@@ -15,7 +16,7 @@
             <i class="fa fa-globe"></i> <span>VIEW MAP</span>
           </a>
       </li>
-      <!-- *ngIf="user.admin"  -->
+      <!-- If user is logged in   -->
       <li *ngIf="authService.isLoggedIn()" >
           <a (click)="notifyCitizens">
             <i class="fa fa-bell-o"></i>

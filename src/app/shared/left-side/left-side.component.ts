@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {AuthService} from "./../../core/auth.service";
 
 @Component({
@@ -12,10 +12,10 @@ export class LeftSideComponent implements OnInit {
     
   }
   loggedIn: any;
+  
   isLoggedIn()
   {
-      this.loggedIn = this.authService.isLoggedIn();
-      console.log(this.loggedIn)
+    this.authService.isLoggedIn();
   }
 
   ngOnInit() {
