@@ -12,10 +12,12 @@ export class LeftSideComponent implements OnInit {
     
   }
   loggedIn: any;
+  loggedUser: any;
   
   isLoggedIn()
   {
     this.authService.isLoggedIn();
+    this.loggedUser = localStorage.getItem("user");
   }
 
   ngOnInit() {

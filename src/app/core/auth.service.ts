@@ -28,7 +28,7 @@ export class AuthService {
             if (this.userdata && this.userdata.data.auth_token) {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(this.userdata.data));
-                
+                localStorage.setItem('user', JSON.parse(this.userName));
         this.router.navigate(['dashboard/admin']);
             }
         });
