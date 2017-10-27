@@ -38,6 +38,7 @@ import { UserModule } from "./../shared/users/users-list/users.module";
 import { FilterDrainsModule } from './../shared/drains/filter-drains/filter-drains.module';
 
 import { DrainsService } from './../core/drains.service';
+import { PagerService } from './../core/paging.service';
 import { UserService } from './../core/user.service';
 
 import { StreetVEOPipe, UserStreetPipe } from "./../core/user.pipe";
@@ -88,6 +89,7 @@ import { StreetVEOPipe, UserStreetPipe } from "./../core/user.pipe";
     DrainsService,
     UserService,
     ReactiveFormsModule,
+    PagerService,
     //LoginModule
   ],
 })

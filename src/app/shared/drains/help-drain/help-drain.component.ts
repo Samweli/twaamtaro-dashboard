@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from "./../../../core/auth.service";
-
 import { HelpDrainsPipe } from './../drains.pipe';
+
+import {AuthService} from "./../../../core/auth.service";
 import { DrainsService } from './../../../core/drains.service';
+import { PagerService } from './../../../core/paging.service';
+
+import * as _ from 'underscore';
 import { Drain } from './../drain';
 
 @Component({
@@ -20,8 +23,10 @@ export class HelpDrainComponent implements OnInit {
   today: any;
   created: any;
   daysGone: any;
+  pager: any = {}; // pager object
+  pagedItems: any[]; // paged items
 
-  constructor(private drainService: DrainsService, public authService: AuthService) { }
+  constructor(private drainService: DrainsService, public authService: AuthService, private pagerService: PagerService) { }
 
   getDuration(d)
   { 
@@ -46,9 +51,21 @@ export class HelpDrainComponent implements OnInit {
           this.drains = this.drainService.helpDrains;
           this.created = this.drains.created_at;
     this.today = Date.now();
+    this.setPage(1);
     //this.getDuration(this.created);
       });
   }
+  setPage(page: number) {
+    if (page < 1 || page > this.pager.totalPages) {
+        return;
+    }
+
+    // get pager object from service
+    this.pager = this.pagerService.getPager(this.drains.length, page, 10);
+
+    // get current page of items
+    this.pagedItems = this.drains.slice(this.pager.startIndex, this.pager.endIndex + 1);
+  } 
  
   helpmodal()
   { 
