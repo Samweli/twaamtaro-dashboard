@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AuthService {
 
-  private loginUrl = `http://localhost:3000/api/v1/sessions/`;
+  private loginUrl = `http://twaamtaro.org/api/v1/sessions/`;
   private headers = new Headers({'Content-Type': 'application/json'});
   loggedIn: any;
   userdata: any;
