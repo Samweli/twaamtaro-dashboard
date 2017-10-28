@@ -18,7 +18,7 @@ export class DirtyDrainComponent implements OnInit {
   drains: any[];
   cleared = true;
   pager: any = {}; // pager object
-  pagedItems: any[]; // paged items
+  pagedDrains: any[]; // paged drains
 
   constructor(private drainService: DrainsService, private pagerService: PagerService) { }
   getDrains(): void {
@@ -27,7 +27,6 @@ export class DirtyDrainComponent implements OnInit {
         .subscribe(drains => 
           { 
             this.drains = drains
-            //this.allItems = data;
             this.setPage(1);
           }
         );
@@ -38,10 +37,10 @@ export class DirtyDrainComponent implements OnInit {
     }
 
     // get pager object from service
-    this.pager = this.pagerService.getPager(this.drains.length, page, 20);
+    this.pager = this.pagerService.getPager(this.drains.length, page, 50);
 
-    // get current page of items
-    this.pagedItems = this.drains.slice(this.pager.startIndex, this.pager.endIndex + 1);
+    // get current page of drains
+    this.pagedDrains = this.drains.slice(this.pager.startIndex, this.pager.endIndex + 1);
   } 
   ngOnInit(): void {
     this.getDrains();

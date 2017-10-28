@@ -29,12 +29,12 @@ export class DrainsService {
           } 
   getCleanDrains():Observable<any[]>  {
     return this.http.get(this.urlService.apiUrl+this.urlService.cleanDrainsUrl)
-           .map((response: Response) =>  <Drain[]>response.json().drains)
+           .map((response: Response) =>  response.json().drains)
            .catch(this.errorHandler);
           } 
   getDirtyDrains(): Observable<any[]> {
     return this.http.get(this.urlService.apiUrl+this.urlService.dirtyDrainsUrl)
-           .map((response: Response) => <Drain[]>response.json().drains)
+           .map((response: Response) => response.json().drains)
            .catch(this.errorHandler);
           } 
   getHelpDetails(): Observable<any[]> {
@@ -46,12 +46,12 @@ export class DrainsService {
           } 
   getHelpDrains(): Observable<any[]> {
     return this.http.get(this.urlService.apiUrl+this.urlService.helpDrainsUrl, this.options)
-      .map((response: Response) => <Drain[]>response.json().drains)
+      .map((response: Response) => response.json().drains)
       .catch(this.errorHandler);    
   } 
   getUnknownDrains():Observable<any[]> {
     return this.http.get(this.urlService.apiUrl+this.urlService.unknownDrainsUrl)
-          .map((response: Response) => <Drain[]>response.json().drains)
+          .map((response: Response) => response.json().drains)
           .catch(this.errorHandler);           
   }
   getDrainData():Observable<any> {
@@ -64,7 +64,8 @@ export class DrainsService {
   }
   getRanksData():Observable<any[]> {
     return this.http.get(this.urlService.apiUrl +this.urlService.ranksDataUrl)
-          .map((response: Response) => {this.ranksData = response.json().ranking;
+          .map((response: Response) => {
+            this.ranksData = response.json().ranking;
           })                           
           .catch(this.errorHandler); 
                 

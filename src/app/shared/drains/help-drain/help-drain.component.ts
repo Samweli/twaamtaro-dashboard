@@ -24,7 +24,7 @@ export class HelpDrainComponent implements OnInit {
   created: any;
   daysGone: any;
   pager: any = {}; // pager object
-  pagedItems: any[]; // paged items
+  pagedDrains: any[]; // paged drains
 
   constructor(private drainService: DrainsService, public authService: AuthService, private pagerService: PagerService) { }
 
@@ -61,10 +61,10 @@ export class HelpDrainComponent implements OnInit {
     }
 
     // get pager object from service
-    this.pager = this.pagerService.getPager(this.drains.length, page, 10);
+    this.pager = this.pagerService.getPager(this.drains.length, page, 50);
 
     // get current page of items
-    this.pagedItems = this.drains.slice(this.pager.startIndex, this.pager.endIndex + 1);
+    this.pagedDrains = this.drains.slice(this.pager.startIndex, this.pager.endIndex + 1);
   } 
  
   helpmodal()

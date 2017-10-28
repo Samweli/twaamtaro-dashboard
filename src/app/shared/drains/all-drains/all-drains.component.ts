@@ -15,8 +15,7 @@ export class DrainListComponent implements OnInit {
   title = 'All Drains';
   private drains: any[];
   pager: any = {}; // pager object
-  pagedItems: any[]; // paged items
-  private allItems: any[];
+  pagedDrains: any[]; // paged drains
 
   constructor(private drainService: DrainsService, private pagerService: PagerService) { }
 
@@ -37,7 +36,7 @@ export class DrainListComponent implements OnInit {
       this.pager = this.pagerService.getPager(this.drains.length, page, 100);
       
       // get current page of items
-      this.pagedItems = this.drains.slice(this.pager.startIndex, this.pager.endIndex + 1);
+      this.pagedDrains = this.drains.slice(this.pager.startIndex, this.pager.endIndex + 1);
   } 
 
   ngOnInit(): void {
