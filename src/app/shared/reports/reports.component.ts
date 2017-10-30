@@ -1,3 +1,4 @@
+
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DrainsService } from './../../core/drains.service';
 import { ChartErrorEvent } from 'ng2-google-charts';
@@ -26,53 +27,52 @@ export class ReportComponent implements OnInit{
 
   streetData(): void {
     this.drainService
-        .getRanksData()
-        .subscribe( data => { 
-          this.streets = this.drainService.ranksData;
-          });
+      .getRanksData()
+      .subscribe( data => {
+        this.streets = this.drainService.ranksData;
+      });
 
-      }
+  }
 
   buildReport() {
     this.streets.forEach( street => {
-      
+
       if(street.street.street_name == this.streetname.name) {
-            this.reportChart =  {
-              chartType: 'PieChart',
-              dataTable: [
-                ['Cleanness Feedback', 'Ratio'],
-                ['Clean Drains', street.details.cleaned ],
-                ['Dirty Drains', street.details.uncleaned ],
-                ['Need Help', street.details.need_help],
-              ],
-              options: {
-                    'title': 'General Cleanness Report in '+ street.street.street_name,
-                    pieHole: 0.3,
-                    height: 500,
-                    colors:['#5cb85c','#eea236','#6495ed']
-                    },
-            };
-    
-            this.adoptedReportChart =  {
-              chartType: 'PieChart',
-              dataTable: [
-                ['Drain Adoption', 'Ratio'],
-                ['Adopted', street.details.adopted ],
-                ['Not Adopted', street.details.not_adopted],
-              ],
-              options: {
-                    'title': 'Drain Adoption in '+ street.street.street_name,
-                    pieHole: 0.3,
-                    height: 500,
-                    colors:['#964f8e','grey']
-                    },
-            };
-        } 
-    });  
+        this.reportChart =  {
+          chartType: 'PieChart',
+          dataTable: [
+            ['Cleanness Feedback', 'Ratio'],
+            ['Clean Drains', street.details.cleaned ],
+            ['Dirty Drains', street.details.uncleaned ],
+            ['Need Help', street.details.need_help],
+          ],
+          options: {
+            'title': 'General Cleanness Report in '+ street.street.street_name,
+            pieHole: 0.3,
+            height: 500,
+            colors:['#5cb85c','#eea236','#6495ed']
+          },
+        };
+
+        this.adoptedReportChart =  {
+          chartType: 'PieChart',
+          dataTable: [
+            ['Drain Adoption', 'Ratio'],
+            ['Adopted', street.details.adopted ],
+            ['Not Adopted', street.details.not_adopted],
+          ],
+          options: {
+            'title': 'Drain Adoption in '+ street.street.street_name,
+            pieHole: 0.3,
+            height: 500,
+            colors:['#964f8e','grey']
+          },
+        };
+      }
+    });
   }
   ngOnInit() {
     this.streetData();
   }
 
 }
-
