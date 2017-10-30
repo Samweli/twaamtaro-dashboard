@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DrainsService } from './../../core/drains.service';
 import { Drain } from './../drains/drain';
+import {DrainsService} from "../../core/drains.service";
 
 // Variable in assets/js/scripts.js file
 declare var AdminLTE: any;
@@ -11,7 +11,6 @@ declare var AdminLTE: any;
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  title = 'General Cleanness Report for Drains';
   draindata: any;
   pieChartData:any;
   adoptedPieChart:any;
@@ -20,7 +19,7 @@ constructor(private drainService: DrainsService) { }
   drainData(): void {
     this.drainService
         .getDrainData()
-        .subscribe(data => {  
+        .subscribe(data => {
           this.draindata = this.drainService.drainData
 
           this.pieChartData =  {
@@ -53,12 +52,12 @@ constructor(private drainService: DrainsService) { }
                 colors:['#964f8e','grey']
                 },
         };
-      
-      });   
+
+      });
   }
- 
-  ngOnInit() {  
+
+  ngOnInit() {
     this.drainData();
    }
-  
+
 }
