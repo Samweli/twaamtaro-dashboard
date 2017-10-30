@@ -1,77 +1,78 @@
 <div class="content-wrapper" >
   <section class="content">
-  
-          <div class="box w3-card-2 w3-border w3-border-teal" >
-            <div class="box-header with-border">
-              <section class="content-header">
-                <h3 class=" w3-center">{{ title }} </h3>
-            </section>
-  
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                  </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <div class="w3-row-padding" >
-                <form id="reportForm">
-                  <label><b>Select a location</b></label>
-                  <div class="w3-row-padding">
-                    <div class="w3-col s12 m3">
-                      <select class="w3-select" name="region" [(ngModel)]="region.name" required>
-                        <option value="" disabled>Region</option>
-                        <option value="dsm" selected>Dar es Salaam</option>
-                      </select>
-                    </div>
-                    <div class="w3-col s12 m3">
-                      <select class="w3-select" name="district" [(ngModel)]="district.name" required>
-                        <option value="" disabled>District / Municipal</option>
-                        <option value="kinondoni">Kinondoni</option>
-                        <option value="ilala"disabled>Ilala</option>
-                        <option value="temeke" disabled>Temeke</option>
-                        <option value="kigamboni" disabled>Kigamboni</option>
-                        <option value="ubungo" disabled>Ubungo</option>
-                      </select>
-                    </div>
-                    <div class="w3-col s12 m3">
-                      <select class="w3-select" name="ward" [(ngModel)]="ward.name" required >
-                        <option value="" disabled>Ward</option>
-                        <option value="hananasif" selected>Hananasif</option>
-                      </select>
-                    </div>
-                    <div class="w3-col s12 m3">
-                      <select class="w3-select" name="streetname" [(ngModel)]="streetname.name" required >
-                        <option value="" disabled selected>Street</option>
-                        <option *ngFor="let street of (streets)" [value]="street.street.city_name">{{street.street.street_name}}</option>
-                      </select>
-                    </div>
-                  </div>
-                  <button (click)="buildReport()" class="w3-btn w3-right w3-block w3-blue w3-section w3-padding" [disabled]="reportForm.invalid">Generate Report</button> 
-              </form>
-              <div class="w3-row">
-                <div class="w3-col m6 s12">
-                  <google-chart [data]="reportChart" (chartError)='error($event)'></google-chart>
-                </div>
-                <div class="w3-col m6 s12">
-                  <google-chart [data]="adoptedChart" (chartError)='error($event)'  ></google-chart>
-                </div>
-                 <!-- Chart Canvas -->
-                                
-              </div>
-          
-              </div>
-              <!-- /.row -->
-            </div>
-            <!-- ./box-body -->
-            <div class="box-footer">
-              <div class="w3-row">
-                
-              </div>
-              <!-- /.row -->
-            </div>
+
+    <div class="box w3-card-2 w3-border w3-border-teal" >
+      <div class="box-header with-border">
+        <section class="content-header">
+          <h3 class="w3-center">{{'report' | translate}} </h3>
+
+        </section>
+
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
       </div>
-    </section>
-    <!-- /.content -->
+      <!-- /.box-header -->
+      <div class="box-body">
+        <div class="w3-row-padding" >
+          <form id="reportForm">
+            <label><b>{{'location' | translate }}</b></label>
+            <div class="w3-row-padding">
+              <div class="w3-col s12 m3">
+                <select class="w3-select" name="region" [(ngModel)]="region.name" required>
+                  <option value="" disabled>{{'region'| translate}}</option>
+                  <option value="dsm" selected>Dar es Salaam</option>
+                </select>
+              </div>
+              <div class="w3-col s12 m3">
+                <select class="w3-select" name="district" [(ngModel)]="district.name" required>
+                  <option value="" disabled>{{'district' | translate}}/{{'municipal' | translate}} </option>
+                  <option value="kinondoni">Kinondoni</option>
+                  <option value="ilala"disabled>Ilala</option>
+                  <option value="temeke" disabled>Temeke</option>
+                  <option value="kigamboni" disabled>Kigamboni</option>
+                  <option value="ubungo" disabled>Ubungo</option>
+                </select>
+            </div>
+              <div class="w3-col s12 m3">
+                <select class="w3-select" name="ward" [(ngModel)]="ward.name" required >
+                  <option value="" disabled>{{'ward'| translate}}</option>
+                  <option value="hananasif" selected>Hananasif</option>
+                </select>
+              </div>
+              <div class="w3-col s12 m3">
+                <select class="w3-select" name="streetname" [(ngModel)]="streetname.name" required >
+                  <option value="" disabled selected>{{ 'street' | translate}}</option>
+                  <option *ngFor="let street of (streets)" [value]="street.street.city_name">{{street.street.street_name}}</option>
+                </select>
+              </div>
+            </div>
+            <button (click)="buildReport()" class="w3-btn w3-right w3-block w3-blue w3-section w3-padding">{{'send'| translate}}</button>
+
+          </form>
+          <div class="w3-row">
+            <div class="w3-col m6 s12">
+              <google-chart [data]="reportChart" (chartError)='error($event)'></google-chart>
+            </div>
+            <div class="w3-col m6 s12">
+              <google-chart [data]="adoptedChart" (chartError)='error($event)'  ></google-chart>
+            </div>
+            <!-- Chart Canvas -->
+
+          </div>
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- ./box-body -->
+      <div class="box-footer">
+        <div class="w3-row">
+
+        </div>
+        <!-- /.row -->
+      </div>
+    </div>
+  </section>
+  <!-- /.content -->
 </div>

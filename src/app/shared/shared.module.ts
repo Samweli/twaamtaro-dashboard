@@ -37,6 +37,13 @@ import { ReportModule } from './../shared/reports/reports.module';
 import { UserModule } from "./../shared/users/users-list/users.module";
 import { FilterDrainsModule } from './../shared/drains/filter-drains/filter-drains.module';
 
+
+import {NotificationBarModule} from "./notification-bar/notification-bar.module";
+import {TranslateService} from "../transilate/translate.service";
+import {HeaderModule} from "./header/header.module";
+import {TransilateModule} from "../transilate/transilate.module";
+import {TranslatePipe} from "../transilate/translate.pipe";
+import {TRANSLATION_PROVIDERS} from "../transilate/translation/translation.component";
 import { DrainsService } from './../core/drains.service';
 import { PagerService } from './../core/paging.service';
 import { UserService } from './../core/user.service';
@@ -57,6 +64,9 @@ import { StreetVEOPipe, UserStreetPipe } from "./../core/user.pipe";
   //UserDetailModule,
     ReactiveFormsModule,
     FormsModule,
+    NotificationBarModule,
+    HeaderModule,
+    TransilateModule,
     SharedRoutingModule,
   ],
   declarations: [
@@ -82,12 +92,18 @@ import { StreetVEOPipe, UserStreetPipe } from "./../core/user.pipe";
     DashboardComponent,
     LoginComponent,
     UnknownDrainsComponent,
-    SharedComponent,StreetVEOPipe, UserStreetPipe
+    SharedComponent,
+    TranslatePipe,
+    SharedComponent,
+    StreetVEOPipe,
+    UserStreetPipe
   ],
   exports: [SharedComponent],
   providers: [
     DrainsService,
     UserService,
+    TRANSLATION_PROVIDERS,
+    TranslateService,
     ReactiveFormsModule,
     PagerService,
     //LoginModule

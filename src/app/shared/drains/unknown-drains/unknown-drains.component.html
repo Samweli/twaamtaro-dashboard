@@ -23,7 +23,12 @@
                 <td><a href="#">{{drain.gid}}</a></td>
                 <td>{{drain.name}}</td>
                 <td>{{drain.address}}</td>
-                <td>{{drain.claims_count}}</td>
+                <td>
+                  <span *ngIf="drain.claims_count === 0; else claimedYes">No</span>
+                  <ng-template #claimedYes>
+                    <span>Yes</span>
+                  </ng-template>
+                </td>
               </tr>
 
               </tbody>

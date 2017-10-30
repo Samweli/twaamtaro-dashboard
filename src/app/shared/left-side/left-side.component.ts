@@ -10,9 +10,9 @@ export class LeftSideComponent implements OnInit {
   constructor(public authService: AuthService) { }
   notifyCitizens() {
   }
-  
+
   loggedUser = localStorage.getItem("user");
-  
+
   ngOnInit() {
   }
 
