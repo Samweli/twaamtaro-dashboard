@@ -45,7 +45,10 @@ import {TransilateModule} from "../transilate/transilate.module";
 import {TranslatePipe} from "../transilate/translate.pipe";
 import {TRANSLATION_PROVIDERS} from "../transilate/translation/translation.component";
 import { DrainsService } from './../core/drains.service';
+import { PagerService } from './../core/paging.service';
 import { UserService } from './../core/user.service';
+
+import { StreetVEOPipe, UserStreetPipe } from "./../core/user.pipe";
 
 @NgModule({
   imports: [
@@ -91,6 +94,9 @@ import { UserService } from './../core/user.service';
     UnknownDrainsComponent,
     SharedComponent,
     TranslatePipe,
+    SharedComponent,
+    StreetVEOPipe,
+    UserStreetPipe
   ],
   exports: [SharedComponent],
   providers: [
@@ -99,6 +105,7 @@ import { UserService } from './../core/user.service';
     TRANSLATION_PROVIDERS,
     TranslateService,
     ReactiveFormsModule,
+    PagerService,
     //LoginModule
   ],
 })

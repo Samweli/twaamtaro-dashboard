@@ -17,15 +17,14 @@ export class LoginComponent implements OnInit {
     document.getElementById('loginmodal').style.display='none';
   }
 
+  userData: any;
+  loginStatus: any;
+  theUser: any;
   user: any = { 'sms_number': '','password': '' };
   login() {
-    console.log(this.user);
     this.authService.login(this.user)
     .subscribe(res => {
-      if(res.success){
-        //this.router.navigateByUrl('admin');
-        this.router.navigate(['admin']);
-      }
+      this.userData = this.authService.userdata;           
      });
 
     }

@@ -23,7 +23,7 @@
                     </header>
                     <div class="w3-row-padding">
                      <div class="w3-col" style="width:80%">
-                        <h5><strong>{{ 'street'| translate}} </strong> has</h5>
+                        <h5><strong>{{ streetName }} </strong> has</h5>
                       <div class="w3-padding-left" >
                         <p><strong class="w3-padding-right">{{ 'adopted'|translate }}</strong>Adopted Drains</p>
                         <p><strong class="w3-padding-right">{{ 'clean' | translate }}</strong>Clean Drains</p>
@@ -33,7 +33,10 @@
                      </div>
 
                      <div *ngIf="authService.isLoggedIn()"  class="w3-rest w3-padding-top" >
-                         <button (click)="alertVEO(street)" >Alert VEO</button>
+                        <button (click)="alertVEO()" >Alert VEO</button>
+                            <div class="pull-right w3-border-grey w3-padding-top">
+                                <p>{{alertMsg}}</p>
+                            </div>
                      </div>
 
                 </div>

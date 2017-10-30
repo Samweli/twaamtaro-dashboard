@@ -19,15 +19,39 @@
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let drain of (drains)">
+              <tr *ngFor="let drain of pagedDrains">
                 <td><a href="#">{{drain.gid}}</a></td>
                 <td>{{drain.name}}</td>
                 <td>{{drain.address}}</td>
-                <td>{{drain.claims_count}}</td>
+                <td>
+                  <span *ngIf="drain.claims_count === 0; else claimedYes">No</span>
+                  <ng-template #claimedYes>
+                    <span>Yes</span>
+                  </ng-template>
+                </td>
               </tr>
 
               </tbody>
             </table>
+            <div class="w3-center">
+              <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+                <li [ngClass]="{disabled:pager.currentPage === 1}">
+                  <a (click)="setPage(1)">First</a>
+                </li>
+                <li [ngClass]="{disabled:pager.currentPage === 1}">
+                  <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+                </li>
+                <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                  <a (click)="setPage(page)">{{page}}</a>
+                </li>
+                <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                  <a (click)="setPage(pager.currentPage + 1)">Next</a>
+                </li>
+                <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                  <a (click)="setPage(pager.totalPages)">Last</a>
+                </li>
+              </ul>
+            </div>
         </div>
       </div>
     </div>
