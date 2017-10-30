@@ -27,13 +27,14 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let drain of (drains)">
+          <tr *ngFor="let drain of pagedDrains">
             <td><a (click)="helpmodal()" >{{drain.gid}}</a></td>
             <td>{{drain.need_help_category.category_name}}</td>
             <td>{{drain.user.street.street_name}}</td>
             <td>{{drain.created_at | date }}</td>
             <td  *ngIf="authService.isLoggedIn()">
               {{drain.user.first_name}} {{drain.user.last_name}}</td>
+          </tr>
 
             <div id="helpdetails" class="w3-modal w3-margin-top">
               <div class="w3-modal-content w3-card-4">
@@ -46,12 +47,29 @@
                   <p><strong class="w3-padding-right">Help Category: </strong>{{drain.need_help_category.category_name}}</p>
                   <p><strong class="w3-padding-right">Extra Details: </strong>{{drain.help_needed}}</p>
                 </div>
-
               </div>
             </div>
-          </tr>
 					</tbody>
 				</table>
+				<div class="w3-center">
+					<ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+					  <li [ngClass]="{disabled:pager.currentPage === 1}">
+						<a (click)="setPage(1)">First</a>
+					  </li>
+					  <li [ngClass]="{disabled:pager.currentPage === 1}">
+						<a (click)="setPage(pager.currentPage - 1)">Previous</a>
+					  </li>
+					  <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+						<a (click)="setPage(page)">{{page}}</a>
+					  </li>
+					  <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+						<a (click)="setPage(pager.currentPage + 1)">Next</a>
+					  </li>
+					  <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+						<a (click)="setPage(pager.totalPages)">Last</a>
+					  </li>
+					</ul>
+				</div>
 		</div>
 	</div>
 </div>

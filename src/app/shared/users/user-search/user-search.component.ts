@@ -5,7 +5,7 @@ import { Router }            from '@angular/router';
 import { Observable }        from 'rxjs/Observable';
 import { Subject }           from 'rxjs/Subject';
 import { UserSearchService } from './../../../core/user-search.service';
-import { User } from './../user';
+import { User } from './../../../core/user';
 
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/distinctUntilChanged';

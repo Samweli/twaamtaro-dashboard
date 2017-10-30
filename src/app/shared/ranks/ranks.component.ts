@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Drain } from "./../drains/drain";
 import { DrainsService } from './../../core/drains.service';
-import {AuthService} from "./../../core/auth.service";
+import { AuthService} from "./../../core/auth.service";
 import { ChartSelectEvent } from 'ng2-google-charts';
+import { UserService } from "./../../core/user.service";
 
 @Component({
   selector: 'app-ranks',
@@ -12,7 +13,8 @@ import { ChartSelectEvent } from 'ng2-google-charts';
 export class RanksComponent implements OnInit {
   title = 'Cleanness Ranks Based on Streets';
   ranksdata: any;
-  street: any;
+  streetName: any;
+  streetId: any;
   ErrMsg: string;
   tableChartData: any;
   row: any;
@@ -23,22 +25,28 @@ export class RanksComponent implements OnInit {
   message: string;
   column: number ;
   selectedRowValues: any[];
+  //street: any = {'street_id': ''};
 
   cssClassNames = {headerCell: 'w3-teal w3-padding', hoverTableRow: 'w3-grey', tableRow: 'w3-striped'};
 
-  constructor(private drainService: DrainsService, public authService: AuthService) { }
+  constructor(
+    private drainService: DrainsService, 
+    public authService: AuthService,
+    private userService: UserService,
+  ) { }
   loggedIn: any;
   isLoggedIn()
   {
       this.loggedIn = this.authService.isLoggedIn();
   }
   public select(event: ChartSelectEvent) {
-    document.getElementById('alert').style.display='block'
-    this.street = event.selectedRowValues[0];
-    this.adopted = event.selectedRowValues[1];
-    this.clean = event.selectedRowValues[2];
-    this.dirty = event.selectedRowValues[3];
-    this.help = event.selectedRowValues[4];
+    document.getElementById('alert').style.display='block';
+    this.streetId = event.selectedRowValues[0];
+    this.streetName = event.selectedRowValues[1];
+    this.adopted = event.selectedRowValues[2];
+    this.clean = event.selectedRowValues[3];
+    this.dirty = event.selectedRowValues[4];
+    this.help = event.selectedRowValues[5];
     this.row = 1 + event.row;
 
     this.column = 1 + event.column;
@@ -64,7 +72,7 @@ export class RanksComponent implements OnInit {
           this.tableChartData =  {
             chartType: 'Table',
             dataTable: [
-              ['Street',  'Adopted','Clean', 'Dirty', 'Need Help'],
+              ['Street ID','Street',  'Adopted','Clean', 'Dirty', 'Need Help'],
             ],
             
               options: {
@@ -78,12 +86,16 @@ export class RanksComponent implements OnInit {
                 pageSize: 20,
                 sort: 'enable',
                 
+              },
+              view: {
+                'columns': [1,2,3,4,5]
               }
             };
             this.ranksdata = this.drainService.ranksData;
              this.ranksdata.forEach( rank => {
               this.tableChartData.dataTable.push(
-                [rank.street.street_name ,
+                [rank.street.id,
+                rank.street.street_name ,
                 rank.details.adopted,
                 rank.details.cleaned,
                 rank.details.uncleaned,
@@ -94,9 +106,21 @@ export class RanksComponent implements OnInit {
           } 
         );
   }
-alertVEO(street) {
-  console.log(street);
-  alert('You alerted ' + this.street);
+
+  alertRes: any;
+  alertMsg: any;
+  alertVEO() {
+    this.userService.alertLeader(this.streetId)
+      .subscribe(
+        res => {
+          this.alertRes = res;
+          console.log(this.alertRes );
+          if (this.alertRes.success) {
+            this.alertMsg = 'A message has been sent';
+          } else {
+            this.alertMsg = 'Message sending failed';
+          }
+      });
 
 }
 

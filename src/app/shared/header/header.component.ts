@@ -16,15 +16,15 @@ export class HeaderComponent implements OnInit {
   }
   logout() {
     // remove user from local storage to log user out
-    localStorage.removeItem('currentUser');
-    console.log(localStorage.currentUser);
+    this.authService.logout();
     this.router.navigateByUrl('/');
   }
   loggedIn: any;
   isLoggedIn()
   {
-    this.loggedIn = this.authService.isLoggedIn();
-    console.log(this.loggedIn)
+
+      this.loggedIn = this.authService.isLoggedIn();
+      return this.loggedIn;
   }
   public translatedText: string;
   public supportedLanguages: any[];
