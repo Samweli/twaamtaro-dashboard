@@ -10,6 +10,7 @@ export const LANG_EN_TRANS = {
   'unknown': 'Unknown Drains',
   'citizens': 'Citizens',
   'need': 'Need Help',
+  'adopted': "Adopted drains",
   /*side-menu translation*/
   'dashboard': 'Dashboard',
   'map' : 'View map',

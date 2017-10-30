@@ -10,6 +10,7 @@ export const LANG_SW_TRANS = {
   'unknown': 'Mitaro isiyojulikana',
   'citizens': 'Wananchi',
   'need_help': 'Msaada hunahijika',
+  'adopted': "Mitaro iliyochukuliwa",
   /*side-menu translation*/
   'dashboard': 'Dashibodi',
   'map' : 'Ona ramani',
