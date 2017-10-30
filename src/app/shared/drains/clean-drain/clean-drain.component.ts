@@ -23,7 +23,6 @@ export class CleanDrainComponent implements OnInit {
   constructor(private drainService: DrainsService, private pagerService: PagerService) { }
 
   cleanDrains(): void {
-    console.log('Comonent In');
     this.drainService
         .getCleanDrains()
         .subscribe(
