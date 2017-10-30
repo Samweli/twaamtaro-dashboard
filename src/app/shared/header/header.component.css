@@ -1,0 +1,10 @@
+.btn-default {
+    background-color: transparent;
+    color: #ffffff;
+}
+@media (min-width: 768px) {
+  .navbar-nav > li > a {
+     padding-top: 10px;
+    padding-bottom: 15px;
+  }
+}

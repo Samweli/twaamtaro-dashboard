@@ -4,7 +4,7 @@ import { Router }            from '@angular/router';
 
 import { Observable }        from 'rxjs/Observable';
 import { Subject }           from 'rxjs/Subject';
-import { UserSearchService } from './user-search.service';
+import { UserSearchService } from './../../../core/user-search.service';
 import { User } from './../user';
 
 import 'rxjs/add/observable/of';

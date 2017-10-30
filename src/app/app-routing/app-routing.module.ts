@@ -22,11 +22,10 @@ import { AuthGuard } from "./../core/auth.guard";
 @NgModule({
   imports: [
     RouterModule.forRoot([
-     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: '', redirectTo: 'dashboard/home', pathMatch: 'full' },
       { path: 'dashboard', component: SharedComponent },
-      { path: 'admin', component: AdminComponent  },
       { path: '*', component: NotFoundComponent },
-    ])
+    ],{ useHash: true })
   ],
   declarations: [],
   exports: [ RouterModule]

@@ -9,7 +9,7 @@ import {AuthService} from "./../../core/auth.service";
 export class LeftSideComponent implements OnInit {
   constructor(public authService: AuthService) { }
   notifyCitizens() {
-    
+
   }
   loggedIn: any;
   isLoggedIn()
@@ -19,6 +19,7 @@ export class LeftSideComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.isLoggedIn()
   }
 
 }

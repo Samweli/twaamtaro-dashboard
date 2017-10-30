@@ -37,8 +37,15 @@ import { ReportModule } from './../shared/reports/reports.module';
 import { UserModule } from "./../shared/users/users-list/users.module";
 import { FilterDrainsModule } from './../shared/drains/filter-drains/filter-drains.module';
 
-import { DrainsService } from './../shared/drains/drains.service';
-import { UserService } from './../shared/users/user.service';
+
+import {NotificationBarModule} from "./notification-bar/notification-bar.module";
+import {TranslateService} from "../transilate/translate.service";
+import {HeaderModule} from "./header/header.module";
+import {TransilateModule} from "../transilate/transilate.module";
+import {TranslatePipe} from "../transilate/translate.pipe";
+import {TRANSLATION_PROVIDERS} from "../transilate/translation/translation.component";
+import { DrainsService } from './../core/drains.service';
+import { UserService } from './../core/user.service';
 
 @NgModule({
   imports: [
@@ -54,6 +61,9 @@ import { UserService } from './../shared/users/user.service';
   //UserDetailModule,
     ReactiveFormsModule,
     FormsModule,
+    NotificationBarModule,
+    HeaderModule,
+    TransilateModule,
     SharedRoutingModule,
   ],
   declarations: [
@@ -80,11 +90,14 @@ import { UserService } from './../shared/users/user.service';
     LoginComponent,
     UnknownDrainsComponent,
     SharedComponent,
+    TranslatePipe,
   ],
   exports: [SharedComponent],
   providers: [
     DrainsService,
     UserService,
+    TRANSLATION_PROVIDERS,
+    TranslateService,
     ReactiveFormsModule,
     //LoginModule
   ],

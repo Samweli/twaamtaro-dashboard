@@ -2,7 +2,7 @@
 <header class="main-header">
 
   <!-- Logo -->
-  <a href="index2.html" class="logo w3-theme-d3">
+  <a routerLink="home" class="logo w3-theme-d3">
     <!-- mini logo for sidebar mini 50x50 pixels -->
     <span class="logo-mini"><b>T</b>M</span>
     <!-- logo for regular state and mobile devices -->
@@ -17,51 +17,34 @@
 
     <div class="navbar-custom-menu">
       <ul class="nav navbar-nav">
-        
-        <li class="dropdown user user-menu">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="assets/img/avatar.png" class="user-image" alt="User Image">
-              <span class="hidden-xs">Sign In/Up</span>
-            </a>
-          <ul class="dropdown-menu">
-            <!-- User image -->
-            <li class="user-header">
-              <img src="assets/img/avatar.png" class="img-circle" alt="User Image">
 
-              <p>
-               
-                <small></small>
-              </p>
-            </li>
-            <!-- Menu Body -->
-            <li class="user-body">
-              <div class="row">
-                
+        <li class="user user-menu">
+              <div class="pull-right w3-padding" *ngIf="authService.isLoggedIn(); else signIN">
+                <a (click)="logout()" class="btn btn-default btn-flat">{{'signout'| translate}}</a>
               </div>
-              <!-- /.row -->
-            </li>
-            <!-- Menu Footer *ngIf="authService.isLoggedIn(); else signIN" -->
-            <li class="user-footer">
-              <div class="pull-left">
-                <a  class="btn btn-default btn-flat">Profile</a>
-              </div>
-              <div class="pull-right">
-                <a (click)="logout()" class="btn btn-default btn-flat">Sign out</a>
-              </div>
-              <div #signIN>
+              <ng-template #signIN>
+              <div class=" w3-padding">
                 <div class="pull-right">
-                  <a (click)="register()"  class="btn btn-default btn-flat">Register</a>
+                  <a (click)="register()"  class="btn btn-default btn-flat">{{'register'| translate}}</a>
                 </div>
-                <div class="pull-right" >
-                  <a (click)="loginbox() "  class="btn btn-default btn-flat">Sign in</a>
+                <div class="pull-right w3-padding-right" >
+                  <a (click)="loginbox() "  class="btn btn-default btn-flat">{{'login' | translate}}</a>
                 </div>
               </div>
-            </li>
-          </ul>
+              </ng-template>
         </li>
-        <!-- Control Sidebar Toggle Button routerLink="login" (click)="loginbox()" -->
         <li>
-          <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+          <a href="#" data-toggle="control-sidebar">
+
+
+            <div class="btn-group">
+              <button *ngFor="let lang of supportedLangs"
+                      (click)="selectLang(lang.value)"
+                      class="btn btn-default" [class.btn-primary]="isCurrentLang(lang.value)">
+                {{ lang.display }}
+              </button>
+            </div>
+          </a>
         </li>
       </ul>
     </div>

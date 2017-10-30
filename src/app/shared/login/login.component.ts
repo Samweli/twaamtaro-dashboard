@@ -38,9 +38,3 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 }
-/*if(res.user.role === 2){
-           this.router.navigateByUrl('admin');
-         }
-         else if(res.user.role === 1) {
-           this.router.navigateByUrl('/dashboard/ranks');
-         }*/

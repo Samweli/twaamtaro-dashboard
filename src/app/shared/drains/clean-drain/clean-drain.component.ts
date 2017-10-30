@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
-import { DrainsService } from './../drains.service';
+import { DrainsService } from './../../../core/drains.service';
 import { Drain } from './../drain';
 
 @Component({
@@ -16,16 +16,18 @@ export class CleanDrainComponent implements OnInit {
   ErrMsg: string;
 
   constructor(private drainService: DrainsService) { }
+
   cleanDrains(): void {
+    console.log('Comonent In');
     this.drainService
         .getCleanDrains()
         .subscribe(
-          drains => this.drains = drains, 
+          drains => this.drains = drains,
           resError=> this.ErrMsg = resError
         );
   }
    
   ngOnInit(): void {
-    this.cleanDrains;
+    this.cleanDrains();
   }
 }

@@ -1,18 +1,28 @@
-<div class="content-wrapper" >
-    <!-- Content Header (Page header)-->
-    
-    <!-- Main content -->
-    <section class="content">
-      <!-- Info boxes -->
-      <div class="w3-row">
-        <div class="chart w3-margin" style="width: 500px; height: auto;" >
-          <!-- Chart Canvas -->
-          <google-chart [data]="pieChartData" ></google-chart>
-        </div>
-        <div class="w3-margin" style="width: 500px; height: auto;" id="chartdiv" ></div>
-        <!-- /.col -->
-      </div>
+<div class="content-wrapper"  >
+    <div class="content">
+        <div class="box w3-card-2 w3-border w3-border-teal w3-padding" >
+            <div class="box-header with-border">
+                <h3 class=" w3-center"> {{ 'title' | translate }}</h3>
+            </div>
+            <!-- /.box-header -->
 
-      <!-- /.row -->
-    </section>
- 
+          <div class="w3-row">
+                <div id="error"><h4>{{ErrMsg}}</h4></div>
+          </div>
+          <div class="box-body">
+            <div class="w3-row">
+              <div class="w3-col m6 s12">
+                <google-chart [data]="adoptedPieChart" ></google-chart>
+              </div>
+              <div class="w3-col m6 s12">
+                <google-chart [data]="pieChartData" ></google-chart>
+              </div>
+               <!-- Chart Canvas -->
+
+            </div>
+          </div>
+        </div>
+        <!-- /.box -->
+    </div>
+  </div>
+

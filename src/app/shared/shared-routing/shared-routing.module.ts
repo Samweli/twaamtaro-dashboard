@@ -13,6 +13,7 @@ import { SharedComponent } from "./../../shared/shared.component";
 import { ReportComponent } from './../../shared/reports/reports.component';
 import { RanksComponent } from './../../shared/ranks/ranks.component';
 import { NotFoundComponent } from './../../shared/not-found/not-found.component';
+import { UnknownDrainsComponent } from './../../shared/drains/unknown-drains/unknown-drains.component';
 import { UsersComponent } from './../../shared/users/users-list/users.component';
 import { UserDetailComponent } from './../../shared/users/user-detail/user-detail.component';
 
@@ -30,6 +31,7 @@ import { AuthGuard } from "./../../core/auth.guard";
           { path: 'reports', component: ReportComponent },
           { path: 'clean-drains', component: CleanDrainComponent },
           { path: 'dirty-drains', component: DirtyDrainComponent },
+          { path: 'unknown-drains', component: UnknownDrainsComponent },
           { path: 'drain-list', component: DrainListComponent },
           { path: 'help-drains', component: HelpDrainComponent },
           { path: 'users', component: UsersComponent }, 

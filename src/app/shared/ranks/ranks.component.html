@@ -2,44 +2,46 @@
   <div class="content">
       <div class="box w3-card-2 w3-border w3-border-teal w3-padding" >
           <div class="box-header with-border">
-              <h3 class=" w3-center"> {{ title }}</h3>
+              <h3 class=" w3-center"> {{ 'ranks_details'| translate }}</h3>
           </div>
           <!-- /.box-header -->
 
         <div class="w3-row">
-              <div id="error"><h4>{{ErrMsg}}</h4></div>       
+              <div id="error"><h4>{{ErrMsg}}</h4></div>
         </div>
-        <div class="box-body"> 
+        <div class="box-body">
           <div class="w3-row">
               <!-- Chart Canvas -->
-            <google-chart [data]="tableChartData" ></google-chart>                
-          </div>  
-          <!--table class="w3-table-all w3-hoverable">
-              <thead>
-                <tr class="w3-light-grey">
-                  <th>Ward</th>
-                  <th>Clean Drains</th>
-                  <th>Dirty Drains</th>
-                </tr>
-              </thead>
-              <tr>
-                <td>Mwananyamala</td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Hananasif</td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Kigogo</td>
-                <td></td>
-                <td></td>
-              </tr>
-            </table-->
+            <div >
+                <google-chart [data]="tableChartData"  (chartSelect)='select($event)'></google-chart>
+            </div>
+            <div id="alert" class="w3-modal">
+                <div id="" class="w3-modal-content w3-card-4" >
+                    <header class="w3-container w3-theme-d1 w3-center">
+                        <span (click)="closemodal()"  class="w3-button w3-display-topright w3-padding w3-hover-teal">&times;</span>
+                        <h3>{{'street'| translate}}</h3>
+                    </header>
+                    <div class="w3-row-padding">
+                     <div class="w3-col" style="width:80%">
+                        <h5><strong>{{ 'street'| translate}} </strong> has</h5>
+                      <div class="w3-padding-left" >
+                        <p><strong class="w3-padding-right">{{ 'adopted'|translate }}</strong>Adopted Drains</p>
+                        <p><strong class="w3-padding-right">{{ 'clean' | translate }}</strong>Clean Drains</p>
+                        <p><strong class="w3-padding-right">{{ 'dirty' | translate }} </strong>Dirty Drains</p>
+                        <p><strong class="w3-padding-right">{{ 'need' | translate }}</strong>Drains that need help </p>
+                      </div>
+                     </div>
+
+                     <div *ngIf="authService.isLoggedIn()"  class="w3-rest w3-padding-top" >
+                         <button (click)="alertVEO(street)" >Alert VEO</button>
+                     </div>
+
+                </div>
+            </div>
+          </div>
           </div>
       </div>
       <!-- /.box -->
   </div>
+</div>
 </div>

@@ -2,8 +2,8 @@
 	<div class="content">
 	<div class="box w3-card-2 w3-border w3-border-teal content" >
 		<div class="box-header with-border">
-			<h3 class=" w3-center">RESULTS: {{ title }}</h3>
-	
+			<h3 class=" w3-center">{{'results'|translate}}: {{ 'need_help' |translate }}</h3>
+
 			<div class="box-tools pull-right">
 				<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
 					</button>
@@ -18,20 +18,38 @@
 				<table class="w3-table w3-hoverable w3-responsive w3-white" border="0">
 					<thead>
 					<tr class="w3-light-grey w3-border-bottom" >
-						<th>ID</th>
-						<th>NAME</th>
-						<th>ADDRESS</th>
-						<th>CLAIMED</th>
-					</tr>
-					</thead>
-					<tbody>
-					<tr *ngFor="let drain of (drains)">
-						<td><a href="#">{{drain.gid}}</a></td>
-						<td>{{drain.name}}</td>
-						<td>{{drain.address}}</td>
-						<td>{{drain.claims_count}}</td>
-					</tr>
-					
+            <th>{{'id' | translate}}</th>
+            <th>{{'name'| translate}}</th>
+            <th>{{'address' | translate}}</th>
+            <!--<th>{{'claimed' | translate}}</th>-->
+						<th>{{'report_made' | translate}}</th>
+            <th  *ngIf="authService.isLoggedIn()">STREET LEADER</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let drain of (drains)">
+            <td><a (click)="helpmodal()" >{{drain.gid}}</a></td>
+            <td>{{drain.need_help_category.category_name}}</td>
+            <td>{{drain.user.street.street_name}}</td>
+            <td>{{drain.created_at | date }}</td>
+            <td  *ngIf="authService.isLoggedIn()">
+              {{drain.user.first_name}} {{drain.user.last_name}}</td>
+
+            <div id="helpdetails" class="w3-modal w3-margin-top">
+              <div class="w3-modal-content w3-card-4">
+                <header class="w3-container w3-theme-d3 w3-center">
+								<span (click)="closemodal()"
+                      class="w3-button w3-display-topright w3-padding w3-hover-teal">&times;</span>
+                  <h3>Drain No. {{drain.gid}} Help Details</h3>
+                </header>
+                <div class="w3-container w3-padding">
+                  <p><strong class="w3-padding-right">Help Category: </strong>{{drain.need_help_category.category_name}}</p>
+                  <p><strong class="w3-padding-right">Extra Details: </strong>{{drain.help_needed}}</p>
+                </div>
+
+              </div>
+            </div>
+          </tr>
 					</tbody>
 				</table>
 		</div>
@@ -40,4 +58,4 @@
 <!-- ./box-body -->
 </div>
 <!-- /.box -->
-</div>	
+</div>

@@ -6,6 +6,7 @@ export class User{
         public address: string,
         public name: string,
         public admin: boolean,
-        
+        public first_name: string,
+        public last_name: string,
     ) {};
 }

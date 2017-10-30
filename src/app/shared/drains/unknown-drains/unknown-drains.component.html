@@ -2,7 +2,7 @@
     <div class="content">
       <div class="box w3-card-2 w3-border w3-border-teal" >
         <div class="box-header with-border">
-          <h3 class=" w3-center">RESULTS: {{ title }}</h3>
+          <h3 class=" w3-center">{{'results'| translate}}: {{ 'unknown'| translate }}</h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body w3-padding">
@@ -12,10 +12,10 @@
             <table class="w3-table w3-hoverable w3-responsive w3-white" border="0">
               <thead>
               <tr class="w3-light-grey w3-border-bottom" >
-                <th>ID</th>
-                <th>NAME</th>
-                <th>ADDRESS</th>
-                <th>CLAIMED</th>
+                <th>{{'id' | translate}}</th>
+                <th>{{'name'| translate}}</th>
+                <th>{{'address' | translate}}</th>
+                <th>{{'claimed' | translate}}</th>
               </tr>
               </thead>
               <tbody>
@@ -25,7 +25,7 @@
                 <td>{{drain.address}}</td>
                 <td>{{drain.claims_count}}</td>
               </tr>
-              
+
               </tbody>
             </table>
         </div>
@@ -34,4 +34,3 @@
     <!-- ./box-body -->
     </div>
   </div>
-      
