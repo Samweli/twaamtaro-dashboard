@@ -49,6 +49,7 @@ import { PagerService } from './../core/paging.service';
 import { UserService } from './../core/user.service';
 
 import { StreetVEOPipe, UserStreetPipe } from "./../core/user.pipe";
+import { ProgressBarComponent } from './progressbar/progressbar.component';
 
 @NgModule({
   imports: [
@@ -94,6 +95,7 @@ import { StreetVEOPipe, UserStreetPipe } from "./../core/user.pipe";
     UnknownDrainsComponent,
     SharedComponent,StreetVEOPipe, UserStreetPipe,
     TranslatePipe,
+    ProgressBarComponent,
   ],
   exports: [SharedComponent],
   providers: [

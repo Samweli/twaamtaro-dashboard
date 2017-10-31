@@ -9,7 +9,7 @@ export const LANG_EN_TRANS = {
   'dirty': 'Dirty Drains',
   'unknown': 'Unknown Drains',
   'citizens': 'Citizens',
-  'need': 'Need Help',
+  'need_help': 'Need Help',
   'adopted': "Adopted drains",
   /*side-menu translation*/
   'dashboard': 'Dashboard',
@@ -37,7 +37,7 @@ export const LANG_EN_TRANS = {
   'drain_filter':'Filter Drains',
   'choose_address': 'Choose Address',
   //buttons
-  'send': 'Send',
+  'send': 'Generate Report',
   'submit': 'Submit',
 
 //  footer

@@ -31,7 +31,7 @@ constructor(private drainService: DrainsService) { }
             ['Need Help', this.draindata.need_help],
           ],
           options: {
-                'title': 'General Cleanness Report ',
+                'title': 'General Cleanness Report For Adopted Drains',
                 pieHole: 0.3,
                 height: 500,
                 colors:['#5cb85c','#eea236','#6495ed']
