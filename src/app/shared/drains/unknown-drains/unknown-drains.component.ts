@@ -4,6 +4,7 @@ import { Drain } from './../drain';
 
 import { PagerService } from './../../../core/paging.service';
 import * as _ from 'underscore';
+import { NgProgress } from 'ngx-progressbar';
 
 @Component({
   selector: 'app-unknown-drains',
@@ -18,14 +19,16 @@ export class UnknownDrainsComponent implements OnInit {
   pager: any = {}; // pager object
   pagedDrains: any[]; // paged drains
 
-  constructor(private drainService: DrainsService, private pagerService: PagerService) { }
+  constructor(private drainService: DrainsService, private pagerService: PagerService, public ngProgress: NgProgress) { }
   unkownDrains(): void {
+    this.ngProgress.start(); 
     this.drainService
         .getUnknownDrains()
         .subscribe(
           drains => { 
             this.drains = drains;
           this.setPage(1);
+          this.ngProgress.done(); 
         });
   }
   setPage(page: number) {

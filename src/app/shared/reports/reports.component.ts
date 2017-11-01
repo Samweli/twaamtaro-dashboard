@@ -2,6 +2,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DrainsService } from './../../core/drains.service';
 import { ChartErrorEvent } from 'ng2-google-charts';
+import { NgProgress } from 'ngx-progressbar';
 
 @Component({
   selector: 'reports',
@@ -17,7 +18,10 @@ export class ReportComponent implements OnInit{
   streetname: any = {'name': '' };
   reportChart: any;
   adoptedReportChart: any;
-  constructor(private drainService: DrainsService) { }
+  constructor(
+    private drainService: DrainsService, 
+    public ngProgress: NgProgress
+  ) { }
 
   public error(event: ChartErrorEvent) {
     event.id = 'PieChartError';
@@ -26,10 +30,12 @@ export class ReportComponent implements OnInit{
   }
 
   streetData(): void {
+    this.ngProgress.start(); 
     this.drainService
       .getRanksData()
       .subscribe( data => {
         this.streets = this.drainService.ranksData;
+        this.ngProgress.done(); 
       });
 
   }

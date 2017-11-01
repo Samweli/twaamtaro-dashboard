@@ -1,6 +1,11 @@
 .btn-default {
-    background-color: transparent;
-    color: #ffffff;
+  background-color: transparent;
+  color: #ffffff;
+}
+#langlink {
+  color: #060505;
+  text-decoration: underline;
+  bottom: 0px;
 }
 @media (min-width: 768px) {
   .navbar-nav > li > a {

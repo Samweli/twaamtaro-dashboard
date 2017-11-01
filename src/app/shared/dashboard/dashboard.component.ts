@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Drain } from './../drains/drain';
 import {DrainsService} from "../../core/drains.service";
 
+import { NgProgress } from 'ngx-progressbar';
 // Variable in assets/js/scripts.js file
 declare var AdminLTE: any;
 
@@ -15,8 +16,12 @@ export class DashboardComponent implements OnInit {
   pieChartData:any;
   adoptedPieChart:any;
 
-constructor(private drainService: DrainsService) { }
+constructor(
+  private drainService: DrainsService,
+  public ngProgress: NgProgress,
+) { }
   drainData(): void {
+    this.ngProgress.start(); 
     this.drainService
         .getDrainData()
         .subscribe(data => {
@@ -52,8 +57,8 @@ constructor(private drainService: DrainsService) { }
                 colors:['#964f8e','grey']
                 },
         };
-
       });
+    this.ngProgress.done(); 
   }
 
   ngOnInit() {
