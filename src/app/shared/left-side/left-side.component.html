@@ -25,7 +25,7 @@
       </li>
       <!-- If user is logged in   -->
       <li *ngIf="authService.isLoggedIn()" >
-          <a (click)="notifyCitizens">
+          <a routerLink="notify-citizens">
             <i class="fa fa-bell-o"></i>
             <span>{{ 'notification' | translate}}</span>
           </a>
@@ -42,7 +42,8 @@
       </li>
       <li>
         <a routerLink="filter-drains">
-            <i class=""></i> <span>{{'view_drain' | translate}}</span>
+          <img src="assets/img/whitedrain.png" width="25" height="25">  
+          <i class=""></i> <span>{{'view_drain' | translate}}</span>
           </a>
       </li>
       <li>

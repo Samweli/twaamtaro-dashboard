@@ -1,0 +1,80 @@
+<div class="content-wrapper"  >
+  <div class="content">
+    <h2 class=" w3-center"> {{ title }}</h2>
+    <h4 class=" w3-center"> Choose the kind of messages you want to send</h4>
+    
+    <div class=" w3-padding">
+      <div class="w3-row">
+          <div class="w3-padding w3-col m6 s12">
+            <div class="w3-card-2 w3-container w3-padding w3-white w3-hover-shadow w3-border w3-border-teal">
+                <h3 class="w3-center">ALERT MESSAGE</h3>
+                <p>
+                  Notify your citizens that the rain season is coming and they have make sure that their drains are clean.
+                </p>
+
+                <button class="w3-right w3-padding w3-btn w3-teal" (click)="checkBoxes('alertMsg','awarenessMsg')">Send Alert Messages</button>
+            </div><!--End Card -->
+          </div>
+          <div class="w3-padding w3-col m6 s12">
+            <div class="w3-card-2 w3-container w3-padding w3-white w3-hover-shadow w3-border w3-border-teal">
+              <h3 class="w3-center">AWARENESS MESSAGE</h3>
+                <p>
+                  Send awareness messages to your citizens. You can tell them about the importance of cleanness in their environment, or randomly inform them about something concerning cleanness in their areas.
+                </p>
+
+                <button class="w3-right w3-padding w3-btn w3-teal" (click)="checkBoxes('awarenessMsg','alertMsg') ">Send Awareness Messages</button>
+            </div><!--End Card -->
+          </div>
+      </div>
+<!--End Notification Rows -->
+
+<!-- Begin Message Boxes  -->
+      <div class="w3-row  w3-padding" id="alertMsg"> 
+        <div class="w3-card-2 w3-padding w3-container w3-white w3-hover-shadow w3-border w3-border-white">
+        <div class="w3-col  m3 s12 w3-center">
+          <h3><i class="fa fa-edit" style="color:#009688!important"></i> Modify</h3>
+            <h4>OR </h4>
+            <h3><i class="fa fa-envelope" style="color:#009688!important"></i> Send 
+            </h3>
+            <h4>the message in the message box </h4>
+        </div>  
+        <div class="w3-col m9 s12">
+          <form class="w3-container" id="alertForm">
+              <h4>Alert Message </h4>
+            <textarea class="w3-input w3-border w3-border-teal" maxlength="100" rows="4" cols="50" wrap="soft" [(ngModel)]="theMsg.msg" name="msg">The rain season is here pleasure ensure that your drains are clean.
+            </textarea>
+            <br>
+            <button class="w3-right w3-padding w3-btn w3-teal" (click)="sendMessages() ">Send Messages</button>
+          </form>
+        </div>  
+        </div>
+      </div> 
+      <!-- Alert Message  -->
+
+      <!-- Awareness Message -->
+      <div class="w3-row  w3-padding" id="awarenessMsg"> 
+        <div class="w3-card-2 w3-padding w3-container w3-white w3-hover-shadow w3-border w3-border-white">
+          <div class="w3-col  m3 s12 w3-center">
+            <h3><i class="fa fa-edit" style="color:#009688!important"></i> Modify</h3>
+              <h4>OR </h4>
+              <h3><i class="fa fa-envelope" style="color:#009688!important"></i> Send 
+              </h3>
+              <h4>the message in the message box </h4>
+          </div>   
+        <div class="w3-col m9 s12">
+          <form class="w3-container" id="awarenessForm">
+              <h4> Awareness Message </h4>
+            <textarea class="w3-input w3-border w3-border-teal" maxlength="100" rows="4" cols="50" wrap="soft" [(ngModel)]="theMsg.msg" name="msg">From time to time drains are filled with dirt and overgrowth of grass please clean out your drains from time to time.
+            </textarea>
+            <br>
+            <button class="w3-right w3-padding w3-btn w3-teal" (click)="sendMessages() ">Send Messages</button>
+          </form>
+        </div>  
+        </div>
+      </div> <!-- End Awareness Box -->
+<!-- End Message Boxes -->
+    </div>
+  </div>
+</div> 
+
+  
