@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Drain } from './../drains/drain';
 import {DrainsService} from "../../core/drains.service";
+import {TranslateService} from "../../transilate/translate.service";
 
 // Variable in assets/js/scripts.js file
 declare var AdminLTE: any;
@@ -14,8 +14,10 @@ export class DashboardComponent implements OnInit {
   draindata: any;
   pieChartData:any;
   adoptedPieChart:any;
+  public translatedText: string;
+  chartTitle: string;
 
-constructor(private drainService: DrainsService) { }
+constructor(private drainService: DrainsService, private _translate: TranslateService) { }
   drainData(): void {
     this.drainService
         .getDrainData()
@@ -26,12 +28,12 @@ constructor(private drainService: DrainsService) { }
           chartType: 'PieChart',
           dataTable: [
             ['Cleanness Feedback', 'Ratio'],
-            ['Clean Drains', this.draindata.cleaned ],
-            ['Dirty Drains', this.draindata.uncleaned ],
-            ['Need Help', this.draindata.need_help],
+            [this._translate.instant('clean'), this.draindata.cleaned ],
+            [this._translate.instant('dirty'), this.draindata.uncleaned ],
+            [this._translate.instant('need_help'), this.draindata.need_help],
           ],
           options: {
-                'title': 'General Cleanness Report ',
+                'title': this._translate.instant('title_dashboard'),
                 pieHole: 0.3,
                 height: 500,
                 colors:['#5cb85c','#eea236','#6495ed']
@@ -42,11 +44,11 @@ constructor(private drainService: DrainsService) { }
           chartType: 'PieChart',
           dataTable: [
             ['Drain Adoption', 'Ratio'],
-            ['Adopted', this.draindata.adopted ],
-            ['Not Adopted', this.draindata.not_adopted],
+            [this._translate.instant('adopted'), this.draindata.adopted ],
+            [this._translate.instant('not_adopted'), this.draindata.not_adopted],
           ],
           options: {
-                'title': 'Drain Adoption in Dar es salaam  ',
+                'title': this._translate.instant('title_drains'),
                 pieHole: 0.3,
                 height: 500,
                 colors:['#964f8e','grey']
@@ -56,8 +58,19 @@ constructor(private drainService: DrainsService) { }
       });
   }
 
+  refreshText() {
+    this.drainData();
+
+  }
+
+  subscribeToLangChanged() {
+    return this._translate.onLangChanged.subscribe(x => this.refreshText());
+  }
+
   ngOnInit() {
+    this.subscribeToLangChanged();
     this.drainData();
    }
+
 
 }

@@ -3,6 +3,7 @@ import { User } from "./../../../core/user";
 import { UserService } from "./../../../core/user.service";
 import { StreetVEOPipe, UserStreetPipe } from "./../../../core/user.pipe";
 import { Ng2GoogleChartsModule, ChartSelectEvent } from 'ng2-google-charts';
+import {TranslateService} from "../../../transilate/translate.service";
 
 
 @Component({
@@ -16,8 +17,8 @@ export class UsersComponent  {
   usercount: any;
   treeChart: any;
 
-  constructor(private userService: UserService) { }
-  
+  constructor(private userService: UserService,private _translate: TranslateService) { }
+
   getUsers(): void {
     this.userService
         .getUsers()
@@ -28,8 +29,8 @@ export class UsersComponent  {
           this.treeChart =  {
             chartType: 'TreeMap',
              dataTable: [
-              ['Street', 'Ward', 'Citizens'],
-              ['Hananasif Street', null, this.usercount], 
+              [this._translate.instant('street'), this._translate.instant('ward'), this._translate.instant('citizens')],
+              ['Hananasif Street', null, this.usercount],
               ['Kawawa', 'Hananasif Street', 2],
               ['Hananasif', 'Hananasif Street', 6],
               ['Mkunguni A', 'Hananasif Street', 5],
@@ -45,11 +46,20 @@ export class UsersComponent  {
               }
             };
 
-        });     
+        });
   }
+
+  refreshText(){
+    this.getUsers()
+  }
+  subscribeToLangChanged() {
+    return this._translate.onLangChanged.subscribe(x => this.refreshText());
+  }
+
 
   ngOnInit() {
     this.getUsers();
+    this.subscribeToLangChanged();
   }
 
 }
