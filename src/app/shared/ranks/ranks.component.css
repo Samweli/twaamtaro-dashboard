@@ -14,5 +14,12 @@
         width: 200px;
         height: auto;
     }
-        
+
+}
+.btn-success {
+  background-color: #5aa281;
+   border-color: #5aa281;
+}
+.btn{
+  padding: 2px 2px;
 }

@@ -128,7 +128,7 @@ export class RanksComponent implements OnInit {
           this.alertRes = res;
           console.log(this.alertRes );
           if (this.alertRes.success) {
-            this.alertMsg = 'A message has been sent';
+            this.alertMsg = this._translate.instant('message');
           } else {
             this.alertMsg = 'Message sending failed';
           }

@@ -53,6 +53,9 @@ export const LANG_SW_TRANS = {
   'previous': 'nyuma',
   'next': 'mbele',
   'last': 'mwisho',
+  'alert': 'Mtarifu VEO',
+  /*notification*/
+  'message':'Ujumbe umetumwa ',
 
 //  footer
   'copyright': 'Hatimiliki',

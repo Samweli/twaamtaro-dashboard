@@ -55,6 +55,10 @@ export const LANG_EN_TRANS = {
   'previous': 'Previous',
   'next': 'Next',
   'last': 'Last',
+  'alert': 'Alert VEO',
+
+  /*notification*/
+  'message':'A message has been sent',
 
 //  footer
   'copyright': 'Copyright',
