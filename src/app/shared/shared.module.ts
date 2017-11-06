@@ -50,6 +50,7 @@ import { UserService } from './../core/user.service';
 
 import { StreetVEOPipe, UserStreetPipe } from "./../core/user.pipe";
 import { NotifyComponent } from './notify/notify.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   imports: [
@@ -96,6 +97,7 @@ import { NotifyComponent } from './notify/notify.component';
     SharedComponent,StreetVEOPipe, UserStreetPipe,
     TranslatePipe,
     NotifyComponent,
+    RegisterComponent,
   ],
   exports: [SharedComponent],
   providers: [

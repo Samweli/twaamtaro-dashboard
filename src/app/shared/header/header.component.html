@@ -24,9 +24,9 @@
               </div>
               <ng-template #signIN>
               <div class=" w3-padding">
-                <!--div class="pull-right">
-                  <a (click)="register()"  class="btn btn-default btn-flat">{{'register'| translate}}</a>
-                </div-->
+                <div class="pull-right w3-padding">
+                  <a (click)="registerbox()"  class="btn btn-default btn-flat">{{'register'| translate}}</a>
+                </div>
                 <div class="pull-right w3-padding" >
                   <a (click)="loginbox() "  class="btn btn-default btn-flat">{{'login' | translate}}</a>
                 </div>
@@ -45,4 +45,5 @@
     </div>
   </nav>
   <app-login></app-login>
+  <app-register></app-register>
 </header>

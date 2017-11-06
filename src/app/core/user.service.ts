@@ -35,6 +35,13 @@ export class UserService {
             .catch(this.errorHandler);
                        
       }
+
+      createUser(user: User) {
+        return this.http.post(this.urlService.localUrl+this.urlService.usersUrl, user)
+        .map((response: Response) => <User[]>response.json().users)
+        .catch(this.errorHandler);
+    }
+ 
     alertLeader(street_id): any {
         return this.http.post(this.urlService.localUrl+this.urlService.alertUrl, {street_id}, {headers: this.headers})
             .map(res =>  res.json())

@@ -63,7 +63,7 @@ export class DrainsService {
                 
   }
   getRanksData():Observable<any[]> {
-    return this.http.get(this.urlService.apiUrl +this.urlService.ranksDataUrl)
+    return this.http.get(this.urlService.localUrl +this.urlService.ranksDataUrl)
           .map((response: Response) => {
             this.ranksData = response.json().ranking;
           })                           
