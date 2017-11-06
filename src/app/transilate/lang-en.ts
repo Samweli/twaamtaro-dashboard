@@ -1,6 +1,7 @@
 export const LANG_EN_NAME ='en';
 
 export const LANG_EN_TRANS = {
+
   'login': 'Sign In',
   'register': 'Register',
   'signout': 'Sign out',
@@ -9,8 +10,11 @@ export const LANG_EN_TRANS = {
   'dirty': 'Dirty Drains',
   'unknown': 'Unknown Drains',
   'citizens': 'Citizens',
-  'need': 'Need Help',
+  'need_help': 'Need Help',
   'adopted': "Adopted drains",
+  'not_adopted': 'Not adopted',
+  'others': 'Others',
+  'need': 'Drains that need help',
   /*side-menu translation*/
   'dashboard': 'Dashboard',
   'map' : 'View map',
@@ -20,6 +24,8 @@ export const LANG_EN_TRANS = {
   'notification': 'Notify citizens',
   /*content translations*/
   'title' :'General Cleanness Report for Drains',
+  'title_dashboard': 'General Cleanness Report ',
+  'title_drains': 'Drain Adoption in Dar es salaam',
   'results':'Results',
   'id': 'Id',
   'address': 'Address',
@@ -29,6 +35,7 @@ export const LANG_EN_TRANS = {
   'phone_number': 'Phone Number',
   'ranks_details': 'Cleanness Ranks Based on Streets',
   'location': 'Select a location',
+  'has': 'Has',
   'district': 'District',
   'municipal': 'Municipal',
   'region': 'Region',
@@ -36,9 +43,22 @@ export const LANG_EN_TRANS = {
   'street': 'Street',
   'drain_filter':'Filter Drains',
   'choose_address': 'Choose Address',
+  'leader': 'Street leaders',
+  'ward_leader':'Ward Leaders',
+  'citizen_population': 'Citizen population distribution',
+  'registered': 'Registered Users',
+
   //buttons
   'send': 'Send',
   'submit': 'Submit',
+  'first':'First',
+  'previous': 'Previous',
+  'next': 'Next',
+  'last': 'Last',
+  'alert': 'Alert VEO',
+
+  /*notification*/
+  'message':'A message has been sent',
 
 //  footer
   'copyright': 'Copyright',

@@ -31,13 +31,13 @@ export class DrainListComponent implements OnInit {
       if (page < 1 || page > this.pager.totalPages) {
           return;
       }
-  
+
       // get pager object from service
-      this.pager = this.pagerService.getPager(this.drains.length, page, 100);
-      
+      this.pager = this.pagerService.getPager(this.drains.length, page, 20);
+
       // get current page of items
       this.pagedDrains = this.drains.slice(this.pager.startIndex, this.pager.endIndex + 1);
-  } 
+  }
 
   ngOnInit(): void {
     this.getDrains();

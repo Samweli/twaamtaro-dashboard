@@ -4,6 +4,7 @@ import { DrainsService } from './../../core/drains.service';
 import { AuthService} from "./../../core/auth.service";
 import { ChartSelectEvent } from 'ng2-google-charts';
 import { UserService } from "./../../core/user.service";
+import {TranslateService} from "../../transilate/translate.service";
 
 @Component({
   selector: 'app-ranks',
@@ -30,9 +31,10 @@ export class RanksComponent implements OnInit {
   cssClassNames = {headerCell: 'w3-teal w3-padding', hoverTableRow: 'w3-grey', tableRow: 'w3-striped'};
 
   constructor(
-    private drainService: DrainsService, 
+    private drainService: DrainsService,
     public authService: AuthService,
     private userService: UserService,
+    private _translate: TranslateService
   ) { }
   loggedIn: any;
   isLoggedIn()
@@ -51,7 +53,7 @@ export class RanksComponent implements OnInit {
 
     this.column = 1 + event.column;
   }
-  closestreet() 
+  closestreet()
   {
     var modal = document.getElementById('alert');
     window.onclick = function(event) {
@@ -60,24 +62,29 @@ export class RanksComponent implements OnInit {
         }
     }
   }
-  closemodal() { 
+  closemodal() {
     document.getElementById('alert').style.display='none';
   }
   ranksData(): void {
     this.drainService
         .getRanksData()
         .subscribe(
-          data => { 
+          data => {
 
           this.tableChartData =  {
             chartType: 'Table',
             dataTable: [
-              ['Street ID','Street',  'Adopted','Clean', 'Dirty', 'Need Help'],
+              ['Street ID',
+                this._translate.instant('street'),
+                this._translate.instant('adopted'),
+                this._translate.instant('clean'),
+                this._translate.instant('dirty'),
+                this._translate.instant('need_help')],
             ],
-            
+
               options: {
                 title: 'Cleanness Ranks',
-                width: '100%', 
+                width: '100%',
                 height: '100%',
                 allowHtml: true,
                 alternatingRowStyle: true,
@@ -85,7 +92,7 @@ export class RanksComponent implements OnInit {
                 page: 'enable',
                 pageSize: 20,
                 sort: 'enable',
-                
+
               },
               view: {
                 'columns': [1,2,3,4,5]
@@ -100,13 +107,18 @@ export class RanksComponent implements OnInit {
                 rank.details.cleaned,
                 rank.details.uncleaned,
                 rank.details.need_help
-              ]);         
-            }); 
+              ]);
+            });
 
-          } 
+          }
         );
   }
-
+  refreshText (){
+    this.ranksData();
+  }
+  subscribeToLangChanged() {
+    return this._translate.onLangChanged.subscribe(x => this.refreshText());
+  }
   alertRes: any;
   alertMsg: any;
   alertVEO() {
@@ -116,7 +128,7 @@ export class RanksComponent implements OnInit {
           this.alertRes = res;
           console.log(this.alertRes );
           if (this.alertRes.success) {
-            this.alertMsg = 'A message has been sent';
+            this.alertMsg = this._translate.instant('message');
           } else {
             this.alertMsg = 'Message sending failed';
           }
@@ -126,7 +138,8 @@ export class RanksComponent implements OnInit {
 
 
   ngOnInit() {
-    this.ranksData();
+    this.subscribeToLangChanged();
     this.closestreet();
+    this.refreshText();
   }
 }

@@ -23,7 +23,7 @@ export class UnknownDrainsComponent implements OnInit {
     this.drainService
         .getUnknownDrains()
         .subscribe(
-          drains => { 
+          drains => {
             this.drains = drains;
           this.setPage(1);
         });
@@ -34,11 +34,11 @@ export class UnknownDrainsComponent implements OnInit {
     }
 
     // get pager object from service
-    this.pager = this.pagerService.getPager(this.drains.length, page, 100);
+    this.pager = this.pagerService.getPager(this.drains.length, page, 20);
 
     // get current page of items
     this.pagedDrains = this.drains.slice(this.pager.startIndex, this.pager.endIndex + 1);
-  } 
+  }
   ngOnInit() {
     this.unkownDrains()
   }
