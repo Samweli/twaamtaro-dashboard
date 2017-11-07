@@ -4,6 +4,8 @@ import { UserService } from "./../../../core/user.service";
 import { StreetVEOPipe, UserStreetPipe } from "./../../../core/user.pipe";
 import { Ng2GoogleChartsModule, ChartSelectEvent } from 'ng2-google-charts';
 import { NgProgress } from 'ngx-progressbar';
+import {TranslateService} from "../../../transilate/translate.service";
+
 
 @Component({
   selector: 'app-users',
@@ -18,7 +20,8 @@ export class UsersComponent  {
 
   constructor(
     private userService: UserService,
-    public ngProgress: NgProgress
+    public ngProgress: NgProgress,
+    private _translate: TranslateService
   ) { }
   
   getUsers(): void {
@@ -32,7 +35,7 @@ export class UsersComponent  {
           this.treeChart =  {
             chartType: 'TreeMap',
              dataTable: [
-              ['Street', 'Ward', 'Citizens'],
+              [this._translate.instant('street'), this._translate.instant('ward'), this._translate.instant('citizens')],
               ['Hananasif Ward', null, this.usercount], 
               ['Kawawa', 'Hananasif Ward', 2],
               ['Hananasif', 'Hananasif Ward', 6],
@@ -49,12 +52,22 @@ export class UsersComponent  {
               }
             };
 
-        });     
+        });
     this.ngProgress.done(); 
   }
 
+  refreshText(){
+    this.getUsers()
+  }
+  subscribeToLangChanged() {
+    return this._translate.onLangChanged.subscribe(x => this.refreshText());
+  }
+
+
   ngOnInit() {
     this.getUsers();
+    this.subscribeToLangChanged();
   }
 
 }
+
