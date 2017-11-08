@@ -7,6 +7,7 @@ import { UserService } from "./../../core/user.service";
 import {TranslateService} from "../../transilate/translate.service";
 import { NgProgress } from 'ngx-progressbar';
 
+
 @Component({
   selector: 'app-ranks',
   templateUrl: './ranks.component.html',
@@ -38,6 +39,8 @@ export class RanksComponent implements OnInit {
     private _translate: TranslateService,
     public ngProgress: NgProgress
  ) { }
+
+
   loggedIn: any;
   isLoggedIn()
   {

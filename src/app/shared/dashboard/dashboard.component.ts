@@ -18,8 +18,13 @@ export class DashboardComponent implements OnInit {
   public translatedText: string;
   chartTitle: string;
 
-constructor(private drainService: DrainsService, private _translate: TranslateService,
-  public ngProgress: NgProgress) { }
+
+constructor(
+  private drainService: DrainsService,
+  public ngProgress: NgProgress,
+  private _translate: TranslateService
+) { }
+
   drainData(): void {
     this.ngProgress.start();
     this.drainService

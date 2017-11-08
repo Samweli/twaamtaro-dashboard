@@ -3,9 +3,10 @@ import { User } from "./../../../core/user";
 import { UserService } from "./../../../core/user.service";
 import { StreetVEOPipe, UserStreetPipe } from "./../../../core/user.pipe";
 import { Ng2GoogleChartsModule, ChartSelectEvent } from 'ng2-google-charts';
-import {TranslateService} from "../../../transilate/translate.service";
 
 import { NgProgress } from 'ngx-progressbar';
+import {TranslateService} from "../../../transilate/translate.service";
+
 
 @Component({
   selector: 'app-users',
@@ -18,7 +19,12 @@ export class UsersComponent  {
   usercount: any;
   treeChart: any;
 
-  constructor(private userService: UserService,private _translate: TranslateService,public ngProgress: NgProgress) { }
+
+  constructor(
+    private userService: UserService,
+    public ngProgress: NgProgress,
+    private _translate: TranslateService
+  ) { }
 
   getUsers(): void {
     this.ngProgress.start();
@@ -49,8 +55,9 @@ export class UsersComponent  {
             };
 
         });
-    this.ngProgress.done();
 
+
+    this.ngProgress.done();
   }
 
   refreshText() {
@@ -67,3 +74,4 @@ export class UsersComponent  {
   }
 
 }
+
