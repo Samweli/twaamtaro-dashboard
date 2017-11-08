@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { NgProgress } from 'ngx-progressbar';
 
 import { DrainsService } from './../../../core/drains.service';
 import { PagerService } from './../../../core/paging.service';
@@ -20,9 +21,10 @@ export class CleanDrainComponent implements OnInit {
   pager: any = {}; // pager object
   pagedDrains: any[]; // paged drains
 
-  constructor(private drainService: DrainsService, private pagerService: PagerService) { }
+  constructor(private drainService: DrainsService, private pagerService: PagerService, public ngProgress: NgProgress) { }
 
   cleanDrains(): void {
+    this.ngProgress.start();
     this.drainService
         .getCleanDrains()
         .subscribe(
@@ -30,6 +32,7 @@ export class CleanDrainComponent implements OnInit {
             this.drains = drains
             this.setPage(1);
             resError=> this.ErrMsg = resError
+          this.ngProgress.done();
           }  
         );
   }
@@ -46,5 +49,6 @@ export class CleanDrainComponent implements OnInit {
   } 
   ngOnInit(): void {
     this.cleanDrains();
+    
   }
 }

@@ -6,6 +6,7 @@ import { PagerService } from './../../../core/paging.service';
 import * as _ from 'underscore';
 
 import { Drain } from './../drain';
+import { NgProgress } from 'ngx-progressbar';
 
 @Component({
   selector: 'dirty-drain',
@@ -20,14 +21,17 @@ export class DirtyDrainComponent implements OnInit {
   pager: any = {}; // pager object
   pagedDrains: any[]; // paged drains
 
-  constructor(private drainService: DrainsService, private pagerService: PagerService) { }
+  constructor(private drainService: DrainsService, private pagerService: PagerService, public ngProgress: NgProgress) { }
+  
   getDrains(): void {
+    this.ngProgress.start();    
     this.drainService
         .getDirtyDrains()
         .subscribe(drains => 
           { 
             this.drains = drains
             this.setPage(1);
+            this.ngProgress.done();            
           }
         );
   }

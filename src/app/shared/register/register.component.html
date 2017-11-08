@@ -1,0 +1,43 @@
+<div id="registermodal" class="w3-modal">
+  <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+    <div class="w3-center"><br>
+      <span (click)="closeregister()" class="w3-button w3-xlarge w3-hover-red w3-display-topright w3-padding" title="Close Modal">&times;</span>
+      
+    </div>
+    <form id="registerForm">
+        <div class="w3-section w3-padding">
+        
+    <label class="w3-margin-bottom"><b>First Name</b><input class="w3-input w3-border" [(ngModel)]="user.first_name" name="first_name" type="text" placeholder="Enter Fisrt Name(s)" required>
+    </label>
+    <label><b>Last Name</b><input class="w3-input w3-border w3-margin-bottom" [(ngModel)]="user.last_name" name="last_name" type="text" placeholder="Enter Last Name" required>
+    </label>
+    <label><b>Email</b>
+      <input class="w3-input w3-border w3-margin-bottom" [(ngModel)]="user.email" name="email" type="text" placeholder="Enter Email" required>
+    </label>
+    <label><b> My Street</b>
+      <select class="w3-select" name="street" [(ngModel)]="user.street" required #streetControl="ngModel">
+          <option value="" disabled selected>--My Street--</option>
+          <option *ngFor="let street of (streets)" [value]="street.street.id">{{street.street.street_name}}</option>
+        </select>
+    </label>
+    <label><b>Mobile Phone Number</b>
+      <input class="w3-input w3-border" [(ngModel)]="user.sms_number" type="text" name="sms_number" placeholder="Enter Phone Number" required>
+    </label>
+    <label><b>Password</b>
+      <input class="w3-input w3-border" [(ngModel)]="user.password" type="password" name="password" placeholder="Enter Password" required>
+    </label>
+    <label><b>Confirm Password</b>
+      <input class="w3-input w3-border" [(ngModel)]="user.confirmpassword" type="password" name="confirmpassword" placeholder="Confirm Password" required>
+    </label>  
+      
+        </div>
+    </form>
+    <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+      <section class="w3-right">
+      <button (click)="register()" class="w3-btn w3-green " type="submit">Register</button>
+      <button (click)="closeregister()" class="w3-btn w3-red">Cancel</button>
+      </section>
+    </div>
+
+  </div>

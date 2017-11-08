@@ -8,6 +8,8 @@ import { PagerService } from './../../../core/paging.service';
 import * as _ from 'underscore';
 import { Drain } from './../drain';
 
+import { NgProgress } from 'ngx-progressbar';
+
 @Component({
   selector: 'help-drains',
   templateUrl: './help-drain.component.html',
@@ -26,7 +28,12 @@ export class HelpDrainComponent implements OnInit {
   pager: any = {}; // pager object
   pagedDrains: any[]; // paged drains
 
-  constructor(private drainService: DrainsService, public authService: AuthService, private pagerService: PagerService) { }
+  constructor(
+    private drainService: DrainsService, 
+    public authService: AuthService, 
+    private pagerService: PagerService,
+    public ngProgress: NgProgress,
+  ) { }
 
   getDuration(d)
   { 
@@ -44,14 +51,16 @@ export class HelpDrainComponent implements OnInit {
   }
 
   getDrainDetails(): void {
+    this.ngProgress.start();    
     this.drainService
       .getHelpDetails()
       .subscribe(
         drains => {
           this.drains = this.drainService.helpDrains;
           this.created = this.drains.created_at;
-    this.today = Date.now();
     this.setPage(1);
+    this.ngProgress.done();
+    this.today = Date.now();
     //this.getDuration(this.created);
       });
   }

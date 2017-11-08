@@ -24,30 +24,26 @@
               </div>
               <ng-template #signIN>
               <div class=" w3-padding">
-                <div class="pull-right">
-                  <a (click)="register()"  class="btn btn-default btn-flat">{{'register'| translate}}</a>
+                <div class="pull-right w3-padding">
+                  <a (click)="registerbox()"  class="btn btn-default btn-flat">{{'register'| translate}}</a>
                 </div>
-                <div class="pull-right w3-padding-right" >
-                  <a (click)="loginbox() "  class="btn btn-default btn-flat">{{'login' | translate}}</a>
+                <div class="pull-right w3-padding" >
+                  <a (click)="loginbox() "  class="btn btn-default btn-flat">{{'signin' | translate}}</a>
                 </div>
               </div>
               </ng-template>
         </li>
+
+        <div class="pull-right w3-padding">
+            <a id="langlink" *ngFor="let lang of supportedLangs" (click)="selectLang(lang.value)" class="w3-padding-right" [class.w3-text-white]="isCurrentLang(lang.value)">
+             {{ lang.display }}
+            </a>
+          </div>
         <li>
-          <a href="#" data-toggle="control-sidebar">
-
-
-            <div class="btn-group">
-              <button *ngFor="let lang of supportedLangs"
-                      (click)="selectLang(lang.value)"
-                      class="btn btn-default" [class.btn-primary]="isCurrentLang(lang.value)">
-                {{ lang.display }}
-              </button>
-            </div>
-          </a>
         </li>
       </ul>
     </div>
   </nav>
   <app-login></app-login>
+  <app-register></app-register>
 </header>

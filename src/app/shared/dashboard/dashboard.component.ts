@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {DrainsService} from "../../core/drains.service";
 import {TranslateService} from "../../transilate/translate.service";
 
+import { NgProgress } from 'ngx-progressbar';
 // Variable in assets/js/scripts.js file
 declare var AdminLTE: any;
 
@@ -17,8 +18,10 @@ export class DashboardComponent implements OnInit {
   public translatedText: string;
   chartTitle: string;
 
-constructor(private drainService: DrainsService, private _translate: TranslateService) { }
+constructor(private drainService: DrainsService, private _translate: TranslateService,
+  public ngProgress: NgProgress) { }
   drainData(): void {
+    this.ngProgress.start();
     this.drainService
         .getDrainData()
         .subscribe(data => {
@@ -54,8 +57,8 @@ constructor(private drainService: DrainsService, private _translate: TranslateSe
                 colors:['#964f8e','grey']
                 },
         };
-
       });
+    this.ngProgress.done();
   }
 
   refreshText() {

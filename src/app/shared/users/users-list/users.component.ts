@@ -5,6 +5,7 @@ import { StreetVEOPipe, UserStreetPipe } from "./../../../core/user.pipe";
 import { Ng2GoogleChartsModule, ChartSelectEvent } from 'ng2-google-charts';
 import {TranslateService} from "../../../transilate/translate.service";
 
+import { NgProgress } from 'ngx-progressbar';
 
 @Component({
   selector: 'app-users',
@@ -17,9 +18,10 @@ export class UsersComponent  {
   usercount: any;
   treeChart: any;
 
-  constructor(private userService: UserService,private _translate: TranslateService) { }
+  constructor(private userService: UserService,private _translate: TranslateService,public ngProgress: NgProgress) { }
 
   getUsers(): void {
+    this.ngProgress.start();
     this.userService
         .getUsers()
         .subscribe(user => {
@@ -47,9 +49,11 @@ export class UsersComponent  {
             };
 
         });
+    this.ngProgress.done();
+
   }
 
-  refreshText(){
+  refreshText() {
     this.getUsers()
   }
   subscribeToLangChanged() {

@@ -13,14 +13,13 @@
 				<table class="w3-table w3-hoverable w3-responsive w3-white" border="0">
 					<thead>
 						<tr class="w3-light-grey w3-border-bottom" >
-              <th>{{'id' | translate}}</th>
+							<th>{{'id' | translate}}</th>
               <th>{{'name'| translate}}</th>
               <th>{{'address' | translate}}</th>
               <th>{{'claimed' | translate}}</th>
 						</tr>
-
-					</thead>
-					<tbody>
+						</thead>
+						<tbody>
 						<tr *ngFor="let drain of pagedDrains">
 							<td><a href="">{{drain.gid}}</a></td>
 							<td>{{drain.name}}</td>

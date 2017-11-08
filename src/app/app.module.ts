@@ -50,6 +50,9 @@ import { AuthService } from "./core/auth.service";
 import { DrainsUrlService } from "./core/drains-url.service";
 import { SessionService } from "./core/session.service";
 import { UsersUrlService } from "./core/users-url.service";
+import { SmsService } from "./core/sms.service";
+import { NgProgressModule } from 'ngx-progressbar';
+
 
 @NgModule({
   declarations: [
@@ -66,6 +69,7 @@ import { UsersUrlService } from "./core/users-url.service";
     DrainListModule,
     DirtyDrainModule,
     CleanDrainModule,
+    NgProgressModule,
     HelpDrainModule,
     ReactiveFormsModule,
     FormsModule,
@@ -77,6 +81,7 @@ import { UsersUrlService } from "./core/users-url.service";
     AuthService,
     DrainsUrlService,
     SessionService,
+    SmsService,
     UsersUrlService,
     TRANSLATION_PROVIDERS
   ],

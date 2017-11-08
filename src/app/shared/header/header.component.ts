@@ -14,6 +14,9 @@ export class HeaderComponent implements OnInit {
   loginbox() {
     document.getElementById('loginmodal').style.display='block';
   }
+  registerbox() {
+    document.getElementById('registermodal').style.display='block';
+  }
   logout() {
     // remove user from local storage to log user out
     this.authService.logout();

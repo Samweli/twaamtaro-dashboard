@@ -49,6 +49,8 @@ import { PagerService } from './../core/paging.service';
 import { UserService } from './../core/user.service';
 
 import { StreetVEOPipe, UserStreetPipe } from "./../core/user.pipe";
+import { NotifyComponent } from './notify/notify.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   imports: [
@@ -92,11 +94,10 @@ import { StreetVEOPipe, UserStreetPipe } from "./../core/user.pipe";
     DashboardComponent,
     LoginComponent,
     UnknownDrainsComponent,
-    SharedComponent,
+    SharedComponent,StreetVEOPipe, UserStreetPipe,
     TranslatePipe,
-    SharedComponent,
-    StreetVEOPipe,
-    UserStreetPipe
+    NotifyComponent,
+    RegisterComponent,
   ],
   exports: [SharedComponent],
   providers: [

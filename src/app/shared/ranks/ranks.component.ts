@@ -5,6 +5,7 @@ import { AuthService} from "./../../core/auth.service";
 import { ChartSelectEvent } from 'ng2-google-charts';
 import { UserService } from "./../../core/user.service";
 import {TranslateService} from "../../transilate/translate.service";
+import { NgProgress } from 'ngx-progressbar';
 
 @Component({
   selector: 'app-ranks',
@@ -34,8 +35,9 @@ export class RanksComponent implements OnInit {
     private drainService: DrainsService,
     public authService: AuthService,
     private userService: UserService,
-    private _translate: TranslateService
-  ) { }
+    private _translate: TranslateService,
+    public ngProgress: NgProgress
+ ) { }
   loggedIn: any;
   isLoggedIn()
   {
@@ -66,6 +68,7 @@ export class RanksComponent implements OnInit {
     document.getElementById('alert').style.display='none';
   }
   ranksData(): void {
+    this.ngProgress.start();
     this.drainService
         .getRanksData()
         .subscribe(
@@ -112,6 +115,7 @@ export class RanksComponent implements OnInit {
 
           }
         );
+    this.ngProgress.done();
   }
   refreshText (){
     this.ranksData();
