@@ -10,6 +10,34 @@
 				<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
 			</div>
 		</div>
+		
+	<!--Desktop Filters -->	
+		<button class="w3-btn w3-black w3-left" (click)="showFilters()">Filters</button>
+    <div class="w3-center">
+      <ul class="w3-hide-small w3-left">
+          <li class="w3-btn w3-white w3-border w3-border-blue" (click)="getFilteredDrains()">All</li>
+          <li class="w3-btn w3-white w3-border w3-border-red" (click)="getFilteredDrains('submitted')">Submitted</li>
+          <li class="w3-btn w3-white w3-border w3-border-orange" (click)="getFilteredDrains('processing')">Processing</li>
+          <li class="w3-btn w3-white w3-border w3-border-green" (click)="getFilteredDrains('done')">Done</li>
+          <li class="w3-btn w3-white w3-border w3-border-grey" (click)="getFilteredDrains('archived')">Archived</li>
+      </ul>
+		</div>
+	<!-- End Desktop Filters -->
+		
+		<!-- Mobile Filters -->
+			<div>
+				<div id="mobileFilters" class="w3-dropdown-content w3-white w3-card-4 w3-center">
+					<ul class="w3-ul w3-hide-large w3-hide-medium">
+						<li class="w3-border w3-border-blue">All</li>
+						<li class="w3-border w3-border-red">Submitted</li>
+						<li class="w3-border w3-border-orange">Processing</li>
+						<li class="w3-border w3-border-green">Done</li>
+						<li class="w3-border w3-border-grey">Archived</li>
+					</ul>
+				</div>
+			</div>
+		<!-- End Mobile Filters-->
+		
 		<!-- /.box-header -->
 		<div class="box-body w3-padding">
 			<div class="row">
@@ -28,7 +56,7 @@
           </thead>
           <tbody>
           <tr *ngFor="let drain of pagedDrains">
-            <td><a (click)="helpmodal()" >{{drain.gid}}</a></td>
+            <td><a (click)="helpmodal(drain.gid, drain.need_help_category.category_name, drain.help_needed)" >{{drain.gid}}</a></td>
             <td>{{drain.need_help_category.category_name}}</td>
             <td>{{drain.user.street.street_name}}</td>
             <td>{{drain.created_at | date }}</td>
@@ -41,11 +69,11 @@
                 <header class="w3-container w3-theme-d3 w3-center">
 								<span (click)="closemodal()"
                       class="w3-button w3-display-topright w3-padding w3-hover-teal">&times;</span>
-                  <h3>Drain No. {{drain.gid}} Help Details</h3>
+                  <h3>Drain No. {{ thedrain	}} Help Details</h3>
                 </header>
                 <div class="w3-container w3-padding">
-                  <p><strong class="w3-padding-right">Help Category: </strong>{{drain.need_help_category.category_name}}</p>
-                  <p><strong class="w3-padding-right">Extra Details: </strong>{{drain.help_needed}}</p>
+                  <p><strong class="w3-padding-right">Help Category: </strong>{{ helpCategory }}</p>
+                  <p><strong class="w3-padding-right">Extra Details: </strong>{{ helpNeeded }}</p>
                 </div>
               </div>
             </div>

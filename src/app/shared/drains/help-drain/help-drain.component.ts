@@ -18,15 +18,18 @@ import { NgProgress } from 'ngx-progressbar';
 })
 export class HelpDrainComponent implements OnInit {
   title = 'Drains In Need of Help';
-  drains: any;
-  need_help = true;
-  loggedIn: any;
-  dateCreated: any;
-  today: any;
   created: any;
   daysGone: any;
+  dateCreated: any;
+  drains: any;
+  helpCategory : any;
+  helpNeeded : any;
+  loggedIn: any;
+  need_help = true;
   pager: any = {}; // pager object
   pagedDrains: any[]; // paged drains
+  thedrain: any;
+  today: any;
 
   constructor(
     private drainService: DrainsService, 
@@ -49,37 +52,43 @@ export class HelpDrainComponent implements OnInit {
     this.daysGone = Math.floor((this.today - this.dateCreated) / days);
     console.log (this.daysGone);
   }
-
-  getDrainDetails(): void {
+//Fetches all drains in need of help and their details
+  getFilteredDrains(status?): any {
     this.ngProgress.start();    
     this.drainService
-      .getHelpDetails()
+      .getFilteredHelp(status)
       .subscribe(
         drains => {
           this.drains = this.drainService.helpDrains;
-          this.created = this.drains.created_at;
     this.setPage(1);
     this.ngProgress.done();
-    this.today = Date.now();
-    //this.getDuration(this.created);
-      });
+    });
   }
+
   setPage(page: number) {
     if (page < 1 || page > this.pager.totalPages) {
         return;
     }
 
-    // get pager object from service
+    // Get pager object from service
     this.pager = this.pagerService.getPager(this.drains.length, page, 50);
 
-    // get current page of items
+    // Get current page of items
     this.pagedDrains = this.drains.slice(this.pager.startIndex, this.pager.endIndex + 1);
   } 
  
-  helpmodal()
+  //Get extra details of the requested help
+
+
+  helpmodal(gid,category,help)
   { 
+    this.thedrain = gid;
+    this.helpCategory = category;
+    this.helpNeeded = help;
     document.getElementById('helpdetails').style.display='block'
   }
+
+  //Close the helpmodal by clicking anywhere else in the page
   closedetails()
   { 
     var modal = document.getElementById('helpdetails');
@@ -89,17 +98,29 @@ export class HelpDrainComponent implements OnInit {
         }
     }
   }
+
+  //Close helpmodal by clicking the close button
   closemodal()
   { 
     document.getElementById('helpdetails').style.display='none';
   }
+  showFilters()
+  { 
+    var x = document.getElementById("mobileFilters");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+    }
+  }
+  
   isLoggedIn()
   {
       this.loggedIn = this.authService.isLoggedIn();
       console.log(this.loggedIn)
   }
   ngOnInit(): void {
-    this.getDrainDetails();
+    this.getFilteredDrains();
     this.closedetails();
     this.closemodal();
   }

@@ -38,12 +38,12 @@ import { UserModule } from "./../shared/users/users-list/users.module";
 import { FilterDrainsModule } from './../shared/drains/filter-drains/filter-drains.module';
 
 
-import {NotificationBarModule} from "./notification-bar/notification-bar.module";
-import {TranslateService} from "../transilate/translate.service";
-import {HeaderModule} from "./header/header.module";
-import {TransilateModule} from "../transilate/transilate.module";
-import {TranslatePipe} from "../transilate/translate.pipe";
-import {TRANSLATION_PROVIDERS} from "../transilate/translation/translation.component";
+import { NotificationBarModule } from "./notification-bar/notification-bar.module";
+import { TranslateService } from "../transilate/translate.service";
+import { HeaderModule } from "./header/header.module";
+import { TransilateModule } from "../transilate/transilate.module";
+import { TranslatePipe } from "../transilate/translate.pipe";
+import { TRANSLATION_PROVIDERS } from "../transilate/translation/translation.component";
 import { DrainsService } from './../core/drains.service';
 import { PagerService } from './../core/paging.service';
 import { UserService } from './../core/user.service';
