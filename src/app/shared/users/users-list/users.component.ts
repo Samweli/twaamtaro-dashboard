@@ -16,6 +16,9 @@ export class UsersComponent  {
   title = 'Citizens';
   users: User[];
   usercount: any;
+  usersCount: any = 0;
+  wardLeadersCount: any = 0;
+  streetLeadersCount: any = 0;
   treeChart: any;
 
   constructor(
@@ -24,13 +27,27 @@ export class UsersComponent  {
     private _translate: TranslateService
   ) { }
   
-  getUsers(): void {
+  getUsers(): any {
     this.ngProgress.start(); 
     this.userService
         .getUsers()
         .subscribe(user => {
           this.users = user;
           this.usercount = user.length;
+
+    //Get Number of registered users based on roles
+          for (var i = 0; i < this.users.length; i++) {
+            if (this.users[i].role === 1) {
+              this.usersCount++;
+            }
+            else if (this.users[i].role === 2){
+              this.streetLeadersCount++;
+            }
+            else if(this.users[i].role === 3)
+              {
+                this.wardLeadersCount++;
+              }
+          }
 
           this.treeChart =  {
             chartType: 'TreeMap',
@@ -40,8 +57,8 @@ export class UsersComponent  {
               ['Kawawa', 'Hananasif Ward', 2],
               ['Hananasif', 'Hananasif Ward', 6],
               ['Mkunguni A', 'Hananasif Ward', 5],
-              ['Mkunguni B', 'Hananasif Ward', 3],
-              ['Kisutu', 'Hananasif Ward', 4],
+              ['Mkunguni B', 'Hananasif Ward', 0],
+              ['Kisutu', 'Hananasif Ward', 0],
               ],
               options: {
                 'title': '',
@@ -57,7 +74,7 @@ export class UsersComponent  {
   }
 
   refreshText(){
-    this.getUsers()
+    //this.getUsers()
   }
   subscribeToLangChanged() {
     return this._translate.onLangChanged.subscribe(x => this.refreshText());
