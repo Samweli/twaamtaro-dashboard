@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Drain } from "./../drains/drain";
 import { DrainsService } from './../../core/drains.service';
 import { AuthService} from "./../../core/auth.service";
@@ -12,7 +12,7 @@ import {TranslateService} from "../../transilate/translate.service";
   templateUrl: './ranks.component.html',
   styleUrls: ['./ranks.component.css']
 })
-export class RanksComponent implements OnInit {
+export class RanksComponent implements OnInit, AfterViewInit {
   title = 'Cleanness Ranks Based on Streets';
   ranksdata: any;
   streetName: any;
@@ -40,10 +40,14 @@ export class RanksComponent implements OnInit {
   ) { }
   
   loggedIn: any;
+
+  //Checks if a user is loggen in
   isLoggedIn()
   {
       this.loggedIn = this.authService.isLoggedIn();
   }
+
+  //Get data from selected table row 
   public select(event: ChartSelectEvent) {
     document.getElementById('alert').style.display='block';
     this.streetId = event.selectedRowValues[0];
@@ -56,6 +60,8 @@ export class RanksComponent implements OnInit {
 
     this.column = 1 + event.column;
   }
+
+  //Close the modal box by clicking anywhere in the document
   closestreet()
   {
     var modal = document.getElementById('alert');
@@ -65,9 +71,18 @@ export class RanksComponent implements OnInit {
         }
     }
   }
-  closemodal() {
-    document.getElementById('alert').style.display='none';
+
+  //Open the Message Box
+  openMsgBox() {
+    document.getElementById('msgBox').style.display='block';
   }
+
+  //Close any open div
+  close(id) {
+    document.getElementById(id).style.display='none';
+  }
+
+  //Fetch Ranking Data and generate ranking table.
   ranksData(): void {
     this.ngProgress.start(); 
     this.drainService
@@ -124,27 +139,36 @@ export class RanksComponent implements OnInit {
   subscribeToLangChanged() {
     return this._translate.onLangChanged.subscribe(x => this.refreshText());
   }
+
+  //Send The Alert Message
+  alert: any = {
+    'message':'',
+    'street':'',
+  };
   alertRes: any;
-  alertMsg: any;
+  alertErrMsg: any;
   alertVEO() {
-    this.userService.alertLeader(this.streetId)
+    this.alert.street = this.streetId;
+    console.log(this.alert);
+    this.userService.alertLeader(this.alert)
       .subscribe(
         res => {
           this.alertRes = res;
           console.log(this.alertRes );
           if (this.alertRes.success) {
-            this.alertMsg = this._translate.instant('message');
+            this.alertErrMsg = this._translate.instant('message');
           } else {
-            this.alertMsg = 'Message sending failed';
+            this.alertErrMsg = 'Message sending failed';
           }
       });
 
 }
-
-
+  ngAfterViewInit() {
+    document.getElementById('msgBox').style.display='none';
+  }
   ngOnInit() {
     this.subscribeToLangChanged();
     this.closestreet();
     this.refreshText();
-  }
+    }
 }

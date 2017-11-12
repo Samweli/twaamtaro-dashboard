@@ -1,7 +1,7 @@
 
 .w3-modal-content {
-    margin-left: 35%;
-    width: 400px;
+    margin-left: 25%;
+    width: 70%;
     top: 180px;
     height: auto;
 }
@@ -10,8 +10,8 @@
 @media(max-width: 768px){
     .w3-modal-content {
         padding-top: 0px;
-        margin: 0% 15% 0% 15%;
-        width: 200px;
+        margin: 0% 10% 0% 10%;
+        width: 80%;
         height: auto;
     }
 

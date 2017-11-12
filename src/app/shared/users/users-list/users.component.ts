@@ -47,8 +47,10 @@ export class UsersComponent  {
               {
                 this.wardLeadersCount++;
               }
-          }
+            }
 
+  //Get the number of citizens in each street
+            
           this.treeChart =  {
             chartType: 'TreeMap',
              dataTable: [

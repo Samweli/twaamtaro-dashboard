@@ -18,26 +18,34 @@
             <div id="alert" class="w3-modal">
                 <div id="" class="w3-modal-content w3-card-4" >
                     <header class="w3-container w3-theme-d1 w3-center">
-                        <span (click)="closemodal()"  class="w3-button w3-display-topright w3-padding w3-hover-teal">&times;</span>
+                        <span (click)="close('alert')"  class="w3-button w3-display-topright w3-padding w3-hover-teal">&times;</span>
                         <h3>{{'street'| translate}}</h3>
                     </header>
                     <div class="w3-row-padding">
-                     <div class="w3-col" style="width:80%">
+                     <div class="w3-col s12 m6" >
 
-                        <h5><strong>{{ streetName }} </strong> {{'has'|translate}}</h5>
+                        <h5><strong>{{ streetName }} {{ streetId }}</strong> {{'has'|translate}}</h5>
                       <div class="w3-padding-left" >
-                        <p><strong class="w3-padding-right">{{ 'adopted'|translate }}</strong>{{'adopted' | translate}}</p>
-                        <p><strong class="w3-padding-right">{{ 'clean' | translate }}</strong>{{'clean' | translate}}</p>
-                        <p><strong class="w3-padding-right">{{ 'dirty' | translate }} </strong>{{'dirty'| translate}}</p>
-                        <p><strong class="w3-padding-right">{{ 'need_help' | translate }}</strong>{{'need' | translate}}</p>
+                        <p><strong class="w3-padding-right">{{ adopted }}</strong>{{ 'adopted' | translate}}</p>
+                        <p><strong class="w3-padding-right">{{ clean }}</strong>{{'clean' | translate}}</p>
+                        <p><strong class="w3-padding-right">{{ dirty }} </strong>{{'dirty'| translate}}</p>
+                        <p><strong class="w3-padding-right">{{ help }}</strong>{{'need' | translate}}</p>
                       </div>
                      </div>
 
-                     <div *ngIf="authService.isLoggedIn()"  class="w3-rest w3-padding-top" >
-                        <button (click)="alertVEO()" class="btn btn-success">{{'alert'| translate}}</button>
-                            <div class="pull-right w3-border-grey w3-padding-top">
-                                <p>{{alertMsg}}</p>
-                            </div>
+                     <div *ngIf="authService.isLoggedIn()"  class="w3-col s12 m6 w3-padding" >
+                        <button (click)="openMsgBox('msgBox')" class="w3-btn w3-border w3-border-teal w3-white w3-padding">Send Message to VEO</button>
+
+                        <div id="msgBox" class="w3-padding-top">
+                            <input class="w3-input w3-border" [(ngModel)]="alert.message" type="text" name="message" placeholder="Enter Message" required>
+                            <button (click)="close('msgBox')" class="w3-btn w3-block w3-red w3-section w3-padding" type="submit">Cancel</button>
+
+                            <button (click)="alertVEO()" class="w3-right w3-btn w3-block w3-green w3-section w3-padding" type="submit">{{'alert'| translate}}</button>
+                        </div>
+                            
+                                <div class="pull-right w3-border-grey w3-padding-top">
+                                    <p>{{alertErrMsg}}</p>
+                                </div>
                      </div>
 
                 </div>
