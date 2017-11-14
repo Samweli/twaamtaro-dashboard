@@ -7,6 +7,10 @@
   text-decoration: underline;
   bottom: 0px;
 }
+.notifications {
+  position: absolute;
+  top: 5px;
+}
 @media (min-width: 768px) {
   .navbar-nav > li > a {
      padding-top: 10px;

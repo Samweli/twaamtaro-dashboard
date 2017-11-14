@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HelpDrainsPipe } from './../drains.pipe';
 
 import {AuthService} from "./../../../core/auth.service";
 import { DrainsService } from './../../../core/drains.service';
@@ -22,6 +21,7 @@ export class HelpDrainComponent implements OnInit {
   daysGone: any;
   dateCreated: any;
   drains: any;
+  errMsg: any; // Error Message
   helpCategory : any;
   helpNeeded : any;
   loggedIn: any;

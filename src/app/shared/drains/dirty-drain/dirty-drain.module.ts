@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { DirtyDrainComponent } from './dirty-drain.component';
 import { CommonModule } from '@angular/common';
-import { DirtyDrainsPipe } from './../drains.pipe';
 
 @NgModule({
     imports: [CommonModule],

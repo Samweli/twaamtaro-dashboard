@@ -15,6 +15,7 @@ import { NgProgress } from 'ngx-progressbar';
 export class DrainListComponent implements OnInit {
   title = 'All Drains';
   private drains: any[];
+  errMsg: any; // pager object
   pager: any = {}; // pager object
   pagedDrains: any[]; // paged drains
 

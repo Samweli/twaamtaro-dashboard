@@ -17,6 +17,7 @@ export class DashboardComponent implements OnInit {
   adoptedPieChart:any;
   public translatedText: string;
   chartTitle: string;
+  errMsg: any; // Error Message
 
 constructor(
   private drainService: DrainsService,

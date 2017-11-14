@@ -14,6 +14,8 @@ import {TranslateService} from "../../../transilate/translate.service";
 })
 export class UsersComponent  {
   title = 'Citizens';
+  errMsg: any;
+  error: any;
   users: User[];
   usercount: any;
   usersCount: any = 0;

@@ -1,4 +1,4 @@
-<form class="sidebar-form" [formGroup]="searchForm" (ngSubmit)="searchQuery()">
+<form class="sidebar-form" [formGroup]="searchForm" (ngSubmit)="searchQuery('q')">
     <div class="input-group">
       <input type="text" formControlName="q" class="w3-input" placeholder="Search...">
       <span class="input-group-btn">

@@ -80,6 +80,7 @@ import { RegisterComponent } from './register/register.component';
     DrainListComponent,
     CleanDrainComponent,
     DirtyDrainComponent,
+    FilterDrainsComponent,
     HeaderComponent,
     HelpDrainComponent,
     ReportComponent,
