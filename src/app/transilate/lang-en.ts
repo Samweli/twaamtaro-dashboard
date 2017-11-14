@@ -10,6 +10,7 @@ export const LANG_EN_TRANS = {
   'dirty': 'Dirty Drains',
   'unknown': 'Unknown Drains',
   'citizens': 'Citizens',
+  'need_help_report': 'Status Report of drains that need help',
   'need_help': 'Need Help',
   'adopted': "Adopted drains",
   'not_adopted': 'Not adopted',
