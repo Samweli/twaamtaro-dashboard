@@ -1,6 +1,6 @@
 <div class="content-wrapper"  >
 	<div class="content">
-	<div class="box w3-card-2 w3-border w3-border-teal content" >
+	<div class="box w3-card-2 w3-border" >
 		<div class="box-header with-border">
 			<h3 class=" w3-center">{{'results'|translate}}: {{ 'need_help' |translate }}</h3>
 
@@ -12,8 +12,8 @@
 		</div>
 		
 	<!--Desktop Filters -->	
+	<div class="w3-center w3-padding">
 		<button class="w3-btn w3-black w3-left" (click)="showFilters()">Filters</button>
-    <div class="w3-center">
       <ul class="w3-hide-small w3-left">
           <li class="w3-btn w3-white w3-border w3-border-blue" (click)="getFilteredDrains()">All</li>
           <li class="w3-btn w3-white w3-border w3-border-red" (click)="getFilteredDrains('submitted')">Submitted</li>
