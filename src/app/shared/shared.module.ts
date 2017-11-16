@@ -37,15 +37,16 @@ import { ReportModule } from './../shared/reports/reports.module';
 import { UserModule } from "./../shared/users/users-list/users.module";
 import { FilterDrainsModule } from './../shared/drains/filter-drains/filter-drains.module';
 
-
 import { NotificationBarModule } from "./notification-bar/notification-bar.module";
-import { TranslateService } from "../transilate/translate.service";
+
+import { DrainsService } from './../core/drains.service';
 import { HeaderModule } from "./header/header.module";
+import { PagerService } from './../core/paging.service';
+import { StreetService } from "./../core/streets.service";
+import { TranslateService } from "../transilate/translate.service";
 import { TransilateModule } from "../transilate/transilate.module";
 import { TranslatePipe } from "../transilate/translate.pipe";
 import { TRANSLATION_PROVIDERS } from "../transilate/translation/translation.component";
-import { DrainsService } from './../core/drains.service';
-import { PagerService } from './../core/paging.service';
 import { UserService } from './../core/user.service';
 
 import { StreetVEOPipe, UserStreetPipe } from "./../core/user.pipe";
@@ -72,11 +73,8 @@ import { RegisterComponent } from './register/register.component';
     SharedRoutingModule,
   ],
   declarations: [
-    //AdminComponent,
     LeftSideComponent,
-   // ContentComponent,
     FooterComponent,
-    //ControlSidebarComponent,
     DrainListComponent,
     CleanDrainComponent,
     DirtyDrainComponent,
@@ -103,12 +101,12 @@ import { RegisterComponent } from './register/register.component';
   exports: [SharedComponent],
   providers: [
     DrainsService,
-    UserService,
+    PagerService,
+    ReactiveFormsModule,
+    StreetService,
     TRANSLATION_PROVIDERS,
     TranslateService,
-    ReactiveFormsModule,
-    PagerService,
-    //LoginModule
+    UserService,
   ],
 })
 

@@ -17,28 +17,27 @@ export class UserService {
   constructor(private http: Http, private urlService: UsersUrlService) { }
   users: User[];
 
- /* THis is useful for post requests
+ /* This is useful for post requests
   authHeader(headers: Headers) {
     headers.append("Authorization", "Token token='gM7TM10gfRFZBlkNNcqg9A', email='example-2@twaamtaro.org'");
   }*/
   
-  getUsers(): Observable<User[]> {
+  getUsers(): any {
     return this.http.get(this.urlService.apiUrl+this.urlService.usersUrl,
       {headers: this.headers})
-           .map((response: Response) => <User[]>response.json().users)
+           .map((response: Response) => response.json().users)
            .catch(this.errorHandler);
           } 
            
-    getUser(id):Observable<User[]> {
-            return this.getUsers()
-            .map(users => users.find(user => user.id === id))
-            .catch(this.errorHandler);
-                       
+    getUser(id): any {
+          return this.getUsers()
+          .map(users => users.find(user => user.id === id))
+          .catch(this.errorHandler);          
       }
 
       createUser(user: User) {
         return this.http.post(this.urlService.localUrl+this.urlService.usersUrl, user)
-        .map((response: Response) => <User[]>response.json().users)
+        .map((response: Response) => response.json().users)
         .catch(this.errorHandler);
     }
  

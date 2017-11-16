@@ -4,15 +4,15 @@ import { UserService } from "./../../../core/user.service";
 import { StreetVEOPipe, UserStreetPipe } from "./../../../core/user.pipe";
 import { Ng2GoogleChartsModule, ChartSelectEvent } from 'ng2-google-charts';
 import { NgProgress } from 'ngx-progressbar';
-import {TranslateService} from "../../../transilate/translate.service";
-
+import { TranslateService } from "../../../transilate/translate.service";
+import { StreetService } from "./../../../core/streets.service";
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
-export class UsersComponent  {
+export class UsersComponent implements OnInit, AfterViewInit {
   title = 'Citizens';
   errMsg: any;
   error: any;
@@ -21,11 +21,13 @@ export class UsersComponent  {
   usersCount: any = 0;
   wardLeadersCount: any = 0;
   streetLeadersCount: any = 0;
+  streetId: any;streetName: any;
   treeChart: any;
 
   constructor(
     private userService: UserService,
     public ngProgress: NgProgress,
+    public streetService: StreetService,
     private _translate: TranslateService
   ) { }
   
@@ -35,10 +37,10 @@ export class UsersComponent  {
         .getUsers()
         .subscribe(user => {
           this.users = user;
-          this.usercount = user.length;
-
+          
     //Get Number of registered users based on roles
           for (var i = 0; i < this.users.length; i++) {
+            this.getStreetName(user[i].street_id);
             if (this.users[i].role === 1) {
               this.usersCount++;
             }
@@ -49,10 +51,10 @@ export class UsersComponent  {
               {
                 this.wardLeadersCount++;
               }
-            }
+          }
 
-  //Get the number of citizens in each street
-            
+
+    //Get the number of citizens in each street       
           this.treeChart =  {
             chartType: 'TreeMap',
              dataTable: [
@@ -76,15 +78,23 @@ export class UsersComponent  {
         });
     this.ngProgress.done(); 
   }
-
+    //Get Street Name
+    getStreetName(street) {
+      this.streetService.getStreetName(street)
+      .subscribe(street => {
+        this.streetName = this.streetService.streetName;
+      })
+  
+    }
   refreshText(){
     //this.getUsers()
   }
   subscribeToLangChanged() {
     return this._translate.onLangChanged.subscribe(x => this.refreshText());
   }
-
-
+  ngAfterViewInit() {
+    
+  }
   ngOnInit() {
     this.getUsers();
     this.subscribeToLangChanged();

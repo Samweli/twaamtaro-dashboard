@@ -13,7 +13,7 @@ import 'rxjs/add/operator/switchMap';
 })
 export class UserDetailComponent implements OnInit {
   title = 'User Details';
-  user: User[];
+  user: any;
   errMsg: any;
   
     constructor(

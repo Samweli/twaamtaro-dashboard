@@ -43,21 +43,21 @@ import { UsersComponent } from './shared/users/users-list/users.component';
 import { UnknownDrainsComponent } from './shared/drains/unknown-drains/unknown-drains.component';
 
 import { AuthGuard } from "./core/auth.guard";
-import {TranslateService} from "./transilate/translate.service";
-import {TranslatePipe} from "./transilate/translate.pipe";
-import {TRANSLATION_PROVIDERS} from "./transilate/translation/translation.component";
+import { TranslateService } from "./transilate/translate.service";
+import { TranslatePipe } from "./transilate/translate.pipe";
+import { TRANSLATION_PROVIDERS } from "./transilate/translation/translation.component";
 import { AuthService } from "./core/auth.service";
 import { DrainsUrlService } from "./core/drains-url.service";
 import { SessionService } from "./core/session.service";
 import { UsersUrlService } from "./core/users-url.service";
 import { SmsService } from "./core/sms.service";
 import { NgProgressModule } from 'ngx-progressbar';
+import { StreetsUrlService } from "./core/streets-url.service";
 
 
 @NgModule({
   declarations: [
     AppComponent
-    //HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,7 +65,6 @@ import { NgProgressModule } from 'ngx-progressbar';
     AdminModule,
     HttpModule,
     ReportModule,
-    //Ng2GoogleChartsModule,
     DrainListModule,
     DirtyDrainModule,
     CleanDrainModule,
@@ -82,6 +81,7 @@ import { NgProgressModule } from 'ngx-progressbar';
     DrainsUrlService,
     SessionService,
     SmsService,
+    StreetsUrlService,
     UsersUrlService,
     TRANSLATION_PROVIDERS
   ],
