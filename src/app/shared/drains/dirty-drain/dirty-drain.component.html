@@ -1,14 +1,14 @@
 <div class="content-wrapper"  >
 	<div class="content">
-		<div class="box w3-card-2 w3-border w3-border-teal" >
+		<div class="box w3-card-2 w3-border" >
 			<div class="box-header with-border">
-				<h3 class=" w3-center">{{'results' | translate}}: {{ 'dirty'|translate }}</h3>
+				<h3 class=" w3-center">{{ 'dirty'|translate }}</h3>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body w3-padding">
 				<div class="row">
 					<!-- templates -->
-					<div id="error"><h4>{{ErrMsg}}</h4></div>
+					<div id="error"><h4></h4></div>
 					<table class="w3-table w3-hoverable w3-responsive w3-white" border="0">
 						<thead>
 						<tr class="w3-light-grey w3-border-bottom" >
@@ -24,9 +24,9 @@
 							<td>{{drain.name}}</td>
 							<td>{{drain.address}}</td>
 							<td>
-								<span *ngIf="drain.claims_count === 0; else claimedYes">No</span>
+								<span *ngIf="drain.claims_count === 0; else claimedYes">{{'no_status'| translate}}</span>
 								<ng-template #claimedYes>
-									<span>Yes</span>
+									<span>{{'yes_status'| translate}}</span>
 								</ng-template>
 							</td>
 						</tr>

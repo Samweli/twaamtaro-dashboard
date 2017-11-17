@@ -13,6 +13,7 @@ export const LANG_EN_TRANS = {
   'dirty': 'Dirty Drains',
   'unknown': 'Unknown Drains',
   'citizens': 'Citizens',
+  'need_help_report': 'Status Report of drains that need help',
   'need_help': 'Need Help',
   'adopted': "Adopted drains",
   'not_adopted': 'Not adopted',
@@ -62,6 +63,13 @@ export const LANG_EN_TRANS = {
   'alert': 'Alert VEO',
   'send_alert': 'Send Alert Messages',
   'send_awareness': 'Send Awareness Messages',
+  'filter': 'Filters',
+  'submitted': 'Submitted',
+  'progress': 'Processing',
+  'done': 'Done',
+  'archive': 'Archived',
+  'all_button': 'All',
+
 
   /*notification*/
   'message':'A message has been sent',
@@ -75,6 +83,8 @@ export const LANG_EN_TRANS = {
   'send_msg': 'Send',
   'box-msg': 'the message in the message box ',
   'or': 'Or',
+  'no_status': 'No',
+  'yes_status': 'Yes',
 
 //  footer
   'copyright': 'Copyright',

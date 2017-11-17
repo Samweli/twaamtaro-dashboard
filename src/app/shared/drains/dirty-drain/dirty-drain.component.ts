@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { DirtyDrainsPipe } from './../drains.pipe';
 import { DrainsService } from './../../../core/drains.service';
 import { PagerService } from './../../../core/paging.service';
 import * as _ from 'underscore';
@@ -20,6 +19,7 @@ export class DirtyDrainComponent implements OnInit {
   cleared = true;
   pager: any = {}; // pager object
   pagedDrains: any[]; // paged drains
+  errMsg: any; // Error Message
 
   constructor(private drainService: DrainsService, private pagerService: PagerService, public ngProgress: NgProgress) { }
   

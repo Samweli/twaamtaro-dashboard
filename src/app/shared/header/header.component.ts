@@ -1,15 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 
-import {AuthService} from "./../../core/auth.service";
-import {TranslateService} from "../../transilate/translate.service";
+import { AuthService } from "./../../core/auth.service";
+import { UserService } from "./../../core/user.service";
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(private router: Router,public authService: AuthService, private _translate: TranslateService) { }
+  constructor(
+    private router: Router,
+    public authService: AuthService,
+    public userService: UserService,
+
+  ) { }
 
   loginbox() {
     document.getElementById('loginmodal').style.display='block';
@@ -25,49 +30,22 @@ export class HeaderComponent implements OnInit {
   loggedIn: any;
   isLoggedIn()
   {
-
       this.loggedIn = this.authService.isLoggedIn();
       return this.loggedIn;
   }
-  public translatedText: string;
-  public supportedLanguages: any[];
-  supportedLangs: any;
+
+  //Get total number of leader requests for notifications
+  requests: any;
+  leaderReq() {
+    this.userService.getLeaderRequests()
+    .subscribe(res => {
+      this.requests = this.userService.totalRequests
+    })
+  }
 
   ngOnInit() {
-    // standing data
-    this.supportedLangs = [
-      {display: 'English', value: 'en'},
-      {display: 'Swahili', value: 'sw'},
-    ];
     this.isLoggedIn();
-    this.selectLang('sw');
-
-
-    this.subscribeToLangChanged();
-
-    // set language
-    this._translate.setDefaultLang('en');
-    this._translate.enableFallback(true);
-    this.selectLang('sw');
-
-  }
-
-  isCurrentLang(lang: string) {
-    return lang === this._translate.currentLang;
-  }
-
-  selectLang(lang: string) {
-    // set default;
-    this._translate.use(lang);
-    // this.refreshText(); // remove
-  }
-
-  refreshText() {
-    this.translatedText = this._translate.instant('all');
-  }
-
-  subscribeToLangChanged() {
-    return this._translate.onLangChanged.subscribe(x => this.refreshText());
+    this.leaderReq()
   }
 
 

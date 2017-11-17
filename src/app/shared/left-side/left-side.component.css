@@ -2,3 +2,9 @@ li a > span{
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+.skin-blue .sidebar a {
+  color: white;
+}
+.pull-right.w3-padding{
+  cursor: pointer;
+}

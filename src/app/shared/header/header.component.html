@@ -19,9 +19,10 @@
       <ul class="nav navbar-nav">
 
         <li class="user user-menu">
-              <div class="pull-right w3-padding" *ngIf="authService.isLoggedIn(); else signIN">
-                <a (click)="logout()" class="btn btn-default btn-flat">{{'signout'| translate}}</a>
-              </div>
+              <div class=" w3-padding" *ngIf="authService.isLoggedIn(); else signIN">
+                <a (click)="logout()" class="w3-right btn btn-default btn-flat">{{'signout'| translate}}</a>
+                <a routerLink="verify" class="w3-right w3-padding-right"><span class="w3-badge w3-red notifications">{{requests}}</span><i class="w3-text-white fa fa-bell fa-2x" aria-hidden="true"></i></a>
+             </div>
               <ng-template #signIN>
               <div class=" w3-padding">
                 <div class="pull-right w3-padding">
@@ -34,11 +35,7 @@
               </ng-template>
         </li>
 
-        <div class="pull-right w3-padding">
-            <a id="langlink" *ngFor="let lang of supportedLangs" (click)="selectLang(lang.value)" class="w3-padding-right" [class.w3-text-white]="isCurrentLang(lang.value)">
-             {{ lang.display }}
-            </a>
-          </div>
+
         <li>
         </li>
       </ul>

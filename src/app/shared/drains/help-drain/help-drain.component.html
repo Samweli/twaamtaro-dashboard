@@ -1,8 +1,8 @@
 <div class="content-wrapper"  >
 	<div class="content">
-	<div class="box w3-card-2 w3-border w3-border-teal content" >
+	<div class="box w3-card-2 w3-border" >
 		<div class="box-header with-border">
-			<h3 class=" w3-center">{{'results'|translate}}: {{ 'need_help' |translate }}</h3>
+			<h3 class=" w3-center">{{ 'need_help_report' |translate }}</h3>
 
 			<div class="box-tools pull-right">
 				<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -10,11 +10,39 @@
 				<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
 			</div>
 		</div>
+
+	<!--Desktop Filters -->
+	<div class="w3-center w3-padding">
+		<button class="w3-btn w3-black w3-left" (click)="showFilters()">{{'filter' | translate}}</button>
+      <ul class="w3-hide-small w3-left">
+          <li class="w3-btn w3-white w3-border w3-border-blue" (click)="getFilteredDrains()">{{'all_button'| translate}}</li>
+          <li class="w3-btn w3-white w3-border w3-border-red" (click)="getFilteredDrains('submitted')">{{'submitted'| translate}}</li>
+          <li class="w3-btn w3-white w3-border w3-border-orange" (click)="getFilteredDrains('processing')">{{'progress' | translate}}</li>
+          <li class="w3-btn w3-white w3-border w3-border-green" (click)="getFilteredDrains('done')">{{'done'| translate}}</li>
+          <li class="w3-btn w3-white w3-border w3-border-grey" (click)="getFilteredDrains('archived')">{{'archive'| translate}}</li>
+      </ul>
+		</div>
+	<!-- End Desktop Filters -->
+
+		<!-- Mobile Filters -->
+			<div>
+				<div id="mobileFilters" class="w3-dropdown-content w3-white w3-card-4 w3-center">
+					<ul class="w3-ul w3-hide-large w3-hide-medium">
+						<li class="w3-border w3-border-blue">{{'all_button'| translate}}</li>
+						<li class="w3-border w3-border-red">{{'submitted'| translate}}</li>
+						<li class="w3-border w3-border-orange">{{'progress' | translate}}</li>
+						<li class="w3-border w3-border-green">{{'done'| translate}}</li>
+						<li class="w3-border w3-border-grey">{{'archive'| translate}}</li>
+					</ul>
+				</div>
+			</div>
+		<!-- End Mobile Filters-->
+
 		<!-- /.box-header -->
 		<div class="box-body w3-padding">
 			<div class="row">
 				<!-- templates -->
-				<div id="error"><h4>{{ErrMsg}}</h4></div>
+				<div id="error"><h4></h4></div>
 				<table class="w3-table w3-hoverable w3-responsive w3-white" border="0">
 					<thead>
 					<tr class="w3-light-grey w3-border-bottom" >
@@ -23,12 +51,12 @@
             <th>{{'address' | translate}}</th>
             <!--<th>{{'claimed' | translate}}</th>-->
 						<th>{{'report_made' | translate}}</th>
-            <th  *ngIf="authService.isLoggedIn()">STREET LEADER</th>
+            <th  *ngIf="authService.isLoggedIn()">{{'leader'| translate}}</th>
           </tr>
           </thead>
           <tbody>
           <tr *ngFor="let drain of pagedDrains">
-            <td><a (click)="helpmodal()" >{{drain.gid}}</a></td>
+            <td><a (click)="helpmodal(drain.gid, drain.need_help_category.category_name, drain.help_needed)" >{{drain.gid}}</a></td>
             <td>{{drain.need_help_category.category_name}}</td>
             <td>{{drain.user.street.street_name}}</td>
             <td>{{drain.created_at | date }}</td>
@@ -41,11 +69,11 @@
                 <header class="w3-container w3-theme-d3 w3-center">
 								<span (click)="closemodal()"
                       class="w3-button w3-display-topright w3-padding w3-hover-teal">&times;</span>
-                  <h3>Drain No. {{drain.gid}} Help Details</h3>
+                  <h3>Drain No. {{ thedrain	}} Help Details</h3>
                 </header>
                 <div class="w3-container w3-padding">
-                  <p><strong class="w3-padding-right">Help Category: </strong>{{drain.need_help_category.category_name}}</p>
-                  <p><strong class="w3-padding-right">Extra Details: </strong>{{drain.help_needed}}</p>
+                  <p><strong class="w3-padding-right">Help Category: </strong>{{ helpCategory }}</p>
+                  <p><strong class="w3-padding-right">Extra Details: </strong>{{ helpNeeded }}</p>
                 </div>
               </div>
             </div>
@@ -63,7 +91,7 @@
 						<a (click)="setPage(page)">{{page}}</a>
 					  </li>
 					  <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-						<a (click)="setPage(pager.currentPage + 1)">{{'next'| translate}}t</a>
+						<a (click)="setPage(pager.currentPage + 1)">{{'next'| translate}}</a>
 					  </li>
 					  <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
 						<a (click)="setPage(pager.totalPages)">{{'last'| translate}}</a>

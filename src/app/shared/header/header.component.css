@@ -8,6 +8,10 @@
   bottom: 0px;
   cursor: pointer;
 }
+.notifications {
+  position: absolute;
+  top: 5px;
+}
 @media (min-width: 768px) {
   .navbar-nav > li > a {
      padding-top: 10px;

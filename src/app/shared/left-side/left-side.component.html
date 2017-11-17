@@ -4,6 +4,11 @@
     <!-- search form -->
     <app-user-search></app-user-search>
     <!-- /.search form -->
+    <div class="pull-right w3-padding">
+      <a id="langlink" *ngFor="let lang of supportedLangs" (click)="selectLang(lang.value)" class="w3-padding-right" [class.w3-text-white]="isCurrentLang(lang.value)">
+       {{ lang.display }} 
+      </a>
+    </div>
     <div *ngIf="authService.isLoggedIn(); else noUser" class="w3-padding w3-text-white">
       <h4>Welcome <strong>{{ loggedUser }} </strong></h4>
     </div>
@@ -26,7 +31,7 @@
       <!-- If user is logged in   -->
       <li *ngIf="authService.isLoggedIn()" >
           <a routerLink="notify-citizens">
-            <i class="fa fa-bell-o"></i>
+            <i class="fa fa-envelope-o"></i>
             <span>{{ 'notification' | translate}}</span>
           </a>
       </li>

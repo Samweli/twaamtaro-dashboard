@@ -5,45 +5,69 @@ import { StreetVEOPipe, UserStreetPipe } from "./../../../core/user.pipe";
 import { Ng2GoogleChartsModule, ChartSelectEvent } from 'ng2-google-charts';
 
 import { NgProgress } from 'ngx-progressbar';
-import {TranslateService} from "../../../transilate/translate.service";
-
+import { TranslateService } from "../../../transilate/translate.service";
+import { StreetService } from "./../../../core/streets.service";
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
-export class UsersComponent  {
+export class UsersComponent implements OnInit, AfterViewInit {
   title = 'Citizens';
+  errMsg: any;
+  error: any;
   users: User[];
   usercount: any;
+  usersCount: any = 0;
+  wardLeadersCount: any = 0;
+  streetLeadersCount: any = 0;
+  streetId: any;streetName: any;
   treeChart: any;
 
 
   constructor(
     private userService: UserService,
     public ngProgress: NgProgress,
+    public streetService: StreetService,
     private _translate: TranslateService
   ) { }
 
-  getUsers(): void {
+
+  getUsers(): any {
     this.ngProgress.start();
     this.userService
         .getUsers()
         .subscribe(user => {
           this.users = user;
-          this.usercount = user.length;
 
+    //Get Number of registered users based on roles
+          for (var i = 0; i < this.users.length; i++) {
+            this.getStreetName(user[i].street_id);
+            if (this.users[i].role === 1) {
+              this.usersCount++;
+            }
+            else if (this.users[i].role === 2){
+              this.streetLeadersCount++;
+            }
+            else if(this.users[i].role === 3)
+              {
+                this.wardLeadersCount++;
+              }
+          }
+
+
+    //Get the number of citizens in each street
           this.treeChart =  {
             chartType: 'TreeMap',
              dataTable: [
               [this._translate.instant('street'), this._translate.instant('ward'), this._translate.instant('citizens')],
-              ['Hananasif Street', null, this.usercount],
-              ['Kawawa', 'Hananasif Street', 2],
-              ['Hananasif', 'Hananasif Street', 6],
-              ['Mkunguni A', 'Hananasif Street', 5],
-              ['Mkunguni B', 'Hananasif Street', 3],
-              ['Kisutu', 'Hananasif Street', 4],
+              ['Hananasif Ward', null, this.usercount],
+              ['Kawawa', 'Hananasif Ward', 2],
+              ['Hananasif', 'Hananasif Ward', 6],
+              ['Mkunguni A', 'Hananasif Ward', 5],
+              ['Mkunguni B', 'Hananasif Ward', 0],
+              ['Kisutu', 'Hananasif Ward', 0],
               ],
               options: {
                 'title': '',
@@ -60,14 +84,23 @@ export class UsersComponent  {
     this.ngProgress.done();
   }
 
-  refreshText() {
-    this.getUsers()
+    //Get Street Name
+    getStreetName(street) {
+      this.streetService.getStreetName(street)
+      .subscribe(street => {
+        this.streetName = this.streetService.streetName;
+      })
+
+    }
+  refreshText(){
+    this.getUsers();
   }
   subscribeToLangChanged() {
     return this._translate.onLangChanged.subscribe(x => this.refreshText());
   }
+  ngAfterViewInit() {
 
-
+  }
   ngOnInit() {
     this.getUsers();
     this.subscribeToLangChanged();

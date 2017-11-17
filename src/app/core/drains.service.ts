@@ -37,7 +37,7 @@ export class DrainsService {
            .map((response: Response) => response.json().drains)
            .catch(this.errorHandler);
           } 
-  getHelpDetails(): Observable<any[]> {
+  getHelpDetails(): any {
     return this.http.get(this.urlService.apiUrl+this.urlService.helpDetailsUrl, this.options)
            .map((response: Response) => { 
             this.helpDrains = response.json();
@@ -48,7 +48,21 @@ export class DrainsService {
     return this.http.get(this.urlService.apiUrl+this.urlService.helpDrainsUrl, this.options)
       .map((response: Response) => response.json().drains)
       .catch(this.errorHandler);    
-  } 
+  }
+  
+  getFilteredHelp(status?) {
+    if (status == null ) {
+      console.log("Null Service")
+      return this.getHelpDetails();
+    } 
+    else {
+      console.log("Non-Null Service")
+      return this.getHelpDetails()
+      .map(drains => drains.find(drain => drain.status === status))
+      .catch(this.errorHandler);
+    }
+      
+  }
   getUnknownDrains():Observable<any[]> {
     return this.http.get(this.urlService.apiUrl+this.urlService.unknownDrainsUrl)
           .map((response: Response) => response.json().drains)
@@ -63,7 +77,7 @@ export class DrainsService {
                 
   }
   getRanksData():Observable<any[]> {
-    return this.http.get(this.urlService.localUrl +this.urlService.ranksDataUrl)
+    return this.http.get(this.urlService.apiUrl +this.urlService.ranksDataUrl)
           .map((response: Response) => {
             this.ranksData = response.json().ranking;
           })                           
