@@ -17,6 +17,7 @@ import { SharedComponent } from "./../../shared/shared.component";
 import { UnknownDrainsComponent } from './../../shared/drains/unknown-drains/unknown-drains.component';
 import { UsersComponent } from './../../shared/users/users-list/users.component';
 import { UserDetailComponent } from './../../shared/users/user-detail/user-detail.component';
+import { VerifyLeaderComponent } from "./../../shared/verify-leader/verify-leader.component";
 
 import { AuthGuard } from "./../../core/auth.guard";
 @NgModule({
@@ -39,7 +40,8 @@ import { AuthGuard } from "./../../core/auth.guard";
           { path: 'reports', component: ReportComponent },
           { path: 'unknown-drains', component: UnknownDrainsComponent },
           { path: 'user-details/:id', component: UserDetailComponent },
-          { path: 'users', component: UsersComponent }, 
+          { path: 'users', component: UsersComponent },
+          { path: 'verify', component: VerifyLeaderComponent }, 
           { path: '*', component: NotFoundComponent },
         ] ,    
       }, 

@@ -21,7 +21,7 @@
         <li class="user user-menu">
               <div class=" w3-padding" *ngIf="authService.isLoggedIn(); else signIN">
                 <a (click)="logout()" class="w3-right btn btn-default btn-flat">{{'signout'| translate}}</a>
-                <a routerLink="verify" class="w3-right w3-padding-right"><span class="w3-badge w3-red notifications">2</span><i class="w3-text-white fa fa-bell fa-2x" aria-hidden="true"></i></a>
+                <a routerLink="verify" class="w3-right w3-padding-right"><span class="w3-badge w3-red notifications">{{requests}}</span><i class="w3-text-white fa fa-bell fa-2x" aria-hidden="true"></i></a>
              </div>
               <ng-template #signIN>
               <div class=" w3-padding">
