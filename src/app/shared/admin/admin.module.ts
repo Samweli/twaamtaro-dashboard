@@ -10,6 +10,8 @@ import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { AdminRoutingModule } from './admin-routing/admin-routing.module';
 import { DrainsService } from './../../core/drains.service';
 import { UserService } from './../../core/user.service';
+import {TranslateService} from "../../transilate/translate.service";
+import {TRANSLATION_PROVIDERS} from "../../transilate/translation/translation.component";
 
 
 
@@ -26,15 +28,17 @@ import { UserService } from './../../core/user.service';
     AdminComponent,
     //AdminContentComponent,
     //AdminComponent,
-   
+
   ],
   exports: [],
   providers: [
     DrainsService,
     UserService,
+    TRANSLATION_PROVIDERS,
+    TranslateService,
     ReactiveFormsModule,
   ],
 })
-export class AdminModule { 
-  
+export class AdminModule {
+
 }

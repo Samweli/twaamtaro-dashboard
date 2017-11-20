@@ -6,6 +6,7 @@
   color: #060505;
   text-decoration: underline;
   bottom: 0px;
+  cursor: pointer;
 }
 .notifications {
   position: absolute;

@@ -24,9 +24,9 @@
                 <td>{{drain.name}}</td>
                 <td>{{drain.address}}</td>
                 <td>
-                  <span *ngIf="drain.claims_count === 0; else claimedYes">No</span>
+                  <span *ngIf="drain.claims_count === 0; else claimedYes">{{'no_status' | translate}}</span>
                   <ng-template #claimedYes>
-                    <span>Yes</span>
+                    <span>{{'yes_status'| translate}}</span>
                   </ng-template>
                 </td>
               </tr>

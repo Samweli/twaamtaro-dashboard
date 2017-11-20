@@ -1,12 +1,12 @@
 <div class="content-wrapper" >
   <section class="content">
-  
-          <div class="box w3-card-2 w3-border" >
+
+          <div class="box w3-card-2 w3-border w3-border-teal" >
             <div class="box-header with-border">
               <section class="content-header">
                 <h3 class=" w3-center">{{'report' | translate}} </h3>
             </section>
-  
+
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                   </button>
@@ -48,7 +48,7 @@
                       </select>
                     </div>
                   </div>
-                  <button (click)="buildReport()" class="w3-btn w3-right w3-block w3-blue w3-section w3-padding" [disabled]="streetControl.invalid">Generate Report</button> 
+                  <button (click)="buildReport()" class="w3-btn w3-right w3-block w3-blue w3-section w3-padding" [disabled]="streetControl.invalid">{{'send'| translate}}</button>
               </form>
               <div class="w3-row">
                 <div class="w3-col m6 s12">
@@ -58,16 +58,16 @@
                   <google-chart [data]="adoptedReportChart" (chartError)='error($event)'  ></google-chart>
                 </div>
                  <!-- Chart Canvas -->
-                                
+
               </div>
-          
+
               </div>
               <!-- /.row -->
             </div>
             <!-- ./box-body -->
             <div class="box-footer">
               <div class="w3-row">
-                
+
               </div>
               <!-- /.row -->
             </div>

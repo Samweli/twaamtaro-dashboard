@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Http } from '@angular/http';
+import {TranslateService} from "../../transilate/translate.service";
 
 @Component({
   selector: 'app-admin',
@@ -7,12 +8,13 @@ import { Http } from '@angular/http';
   styleUrls: ['./admin.component.css'],
 })
 export class AdminComponent implements OnInit, OnDestroy {
-
-  closelogin(){ 
+ constructor(private _translate: TranslateService){}
+ admin = this._translate.instant('admin');
+  closelogin(){
     document.getElementById('loginmodal').style.display='none';
   }
 
-  ngOnInit() { 
+  ngOnInit() {
     this.closelogin();
 
   }
