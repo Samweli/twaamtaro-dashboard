@@ -60,7 +60,7 @@ constructor(
                 'title': this._translate.instant('title_drains'),
                 pieHole: 0.3,
                 height: 500,
-                colors:['#964f8e','grey']
+                colors:['#964f8f','grey']
                 },
         };
       });
