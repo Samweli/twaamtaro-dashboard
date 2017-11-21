@@ -64,6 +64,7 @@ export const LANG_SW_TRANS = {
   'alert': 'Mtaarifu VEO',
   'send_alert': 'Ujumbe wa taahadhari',
   'send_awareness': 'Ujumbe wakuwa makini',
+  'veo': 'Tuma ujumbe kwa VEO',
   'message_send': 'Tuma ujumbe',
   'filter': 'Mgawanyiko',
   'submitted': 'Iliyokusanywa',

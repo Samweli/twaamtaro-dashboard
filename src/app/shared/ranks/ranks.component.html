@@ -34,7 +34,7 @@
                      </div>
 
                      <div *ngIf="authService.isLoggedIn()"  class="w3-col s12 m6 w3-padding" >
-                        <button (click)="openMsgBox('msgBox')" class="w3-btn w3-border w3-border-teal w3-white w3-padding">Send Message to VEO</button>
+                        <button (click)="openMsgBox('msgBox')" class="w3-btn w3-border w3-border-teal w3-white w3-padding">{{'veo' | translate}}</button>
 
                         <div id="msgBox" class="w3-padding-top">
                             <input class="w3-input w3-border" [(ngModel)]="alert.message" type="text" name="message" placeholder="Enter Message" required>
