@@ -33,19 +33,19 @@ export class UserService {
   }
 
   createUser(user: User) {
-    return this.http.post(this.urlService.localUrl+this.urlService.usersUrl, user)
+    return this.http.post(this.urlService.apiUrl+this.urlService.usersUrl, user)
     .map((response: Response) => response.json().users)
     .catch(this.errorHandler);
   }
     
   alertLeader(street_id): any {
-    return this.http.post(this.urlService.localUrl+this.urlService.alertUrl, {street_id}, {headers: this.headers})
+    return this.http.post(this.urlService.apiUrl+this.urlService.alertUrl, {street_id}, {headers: this.headers})
     .map(res =>  res.json())
     .catch(this.errorHandler);
   }
 
   getLeaderRequests(): any {
-    return this.http.get(this.urlService.localUrl+this.urlService.leaderRequestsUrl,
+    return this.http.get(this.urlService.apiUrl+this.urlService.leaderRequestsUrl,
       {headers: this.headers})
     .map(res =>  {
       this.leaderRequests = res.json().leaders
@@ -54,8 +54,8 @@ export class UserService {
     .catch(this.errorHandler);
   }
 
-  verifyLeader(user_id): any {
-    return this.http.post(this.urlService.localUrl+this.urlService.verifyUrl, {user_id}, {headers: this.headers})
+  verifyLeader(theRequest): any {
+    return this.http.post(this.urlService.apiUrl+this.urlService.verifyUrl, {theRequest}, {headers: this.headers})
     .map(res => { 
       this.verifyResponse = res.json()
     })
