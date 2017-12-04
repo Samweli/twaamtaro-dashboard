@@ -29,14 +29,13 @@ export class VerifyLeaderComponent implements OnInit {
 
   verifyLeader(userId,roleId): any {
     this.theRequest = {
-      "user_id": userId, 
-      "role_id": roleId
+      'user_id': userId, 
+      'role_id': roleId
     }
-    this.userService.verifyLeader(this.theRequest)
+    this.userService.verifyLeader(JSON.parse(this.theRequest))
     .subscribe(res => {
       this.verifyRes = this.userService.verifyResponse;         
-     }
-    )
+     })
   }
 
   ngOnInit() {
