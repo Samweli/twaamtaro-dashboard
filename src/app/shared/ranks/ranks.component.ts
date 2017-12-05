@@ -14,7 +14,6 @@ import { NgProgress } from 'ngx-progressbar';
   styleUrls: ['./ranks.component.css']
 })
 export class RanksComponent implements OnInit, AfterViewInit {
-  title = 'Cleanness Ranks Based on Streets';
   ranksdata: any;
   streetName: any;
   streetId: any;
@@ -49,7 +48,7 @@ export class RanksComponent implements OnInit, AfterViewInit {
       this.loggedIn = this.authService.isLoggedIn();
   }
 
-  //Get data from selected table row 
+  //Get data from selected table row
   public select(event: ChartSelectEvent) {
     document.getElementById('alert').style.display='block';
     this.streetId = event.selectedRowValues[0];

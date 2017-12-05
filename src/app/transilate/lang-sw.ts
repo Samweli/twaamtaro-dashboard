@@ -25,6 +25,7 @@ export const LANG_SW_TRANS = {
   'report': 'Ripoti',
   'view_drain': 'Ona mitaro',
   'notification': 'Tuma Taarifa',
+  'welcome': 'Karibu',
 
   /*content translations*/
   'title_dashboard': 'Ripoti ya usafi wa mitaro ',
@@ -34,6 +35,7 @@ export const LANG_SW_TRANS = {
   'id': 'Namba',
   'address': 'Mtaa/Mahala',
   'name': 'Jina',
+  'full_name': 'Jina kamili',
   'report_made': 'Iliripotiwa',
   'claimed': 'Iliyotwaliwa',
   'phone_number':'Namba ya Simu',
@@ -85,9 +87,14 @@ export const LANG_SW_TRANS = {
   'modify': 'Badilisha',
   'send_msg': 'Tuma',
   'box-msg': 'ujumbe katika sanduku la ujumbe ',
+  'verify_title': 'Maombi ya Uongozi',
+  'no_verify': 'Hakuna maombi yoyote ya uongozi',
+  'action': 'Hatua',
   'or': 'Au',
   'no_status': 'hapana',
   'yes_status': 'Ndio',
+
+
 //  footer
   'copyright': 'Hatimiliki',
   'all-right':'Haki zote zimehifadhiwa.'
