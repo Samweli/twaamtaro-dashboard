@@ -10,7 +10,7 @@
 				<!-- templates -->
 				<div id="error"><h4>{{ErrMsg}}</h4></div>
 
-					<table class="w3-table w3-hoverable w3-responsive w3-white" border="0">
+					<table class="w3-table w3-hoverable w3-responsive w3-white" border="0" *ngIf="allRequests > 0; else noRequests">
 						<thead>
 							<tr class="w3-light-grey w3-border-bottom" >
 								<th>Full Name</th>
@@ -25,13 +25,19 @@
 								<td>{{ request.sms_number }}</td>
 								<td>{{ request.street_id }}</td>
 								<td>
-                  <button (click)="verifyLeader(request.id)" class="w3-btn w3-red" title="Disapprove"> <i class="fa fa-remove"></i> </button>
-                  <button (click)="verifyLeader(request.id)" class="w3-btn w3-green" title="Approve"> <i class="fa fa-check"></i> </button>
+                  			<button (click)="verifyLeader(request.id,'1')" class="w3-btn w3-red" title="Disapprove"> <i class="fa fa-remove"></i> </button>
+                  			<button (click)="verifyLeader(request.id,'2')" class="w3-btn w3-green" title="Approve"> <i class="fa fa-check"></i> </button>
 								</td>
 							</tr>
 
-							</tbody>
-						</table>
+						</tbody>
+					</table>
+					<ng-template #noRequests>
+						  <div class="w3-center w3-padding">
+							<h4>There are no any leader requests</h4>
+						  </div>
+						  
+					</ng-template>
 				</div>
 			</div>
 		<!-- ./box-body -->

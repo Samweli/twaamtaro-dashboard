@@ -9,7 +9,7 @@ export class UsersUrlService {
   public alertUrl = 'users/remind';
   public verifyUrl = 'users/verify';
   public leaderRequestsUrl = 'users/new_leaders';
-  public registerUserUrl = 'users/';
+  public registerUserUrl = 'registrations/';
   public massMessagingUrl = '';
   
   constructor() { }
