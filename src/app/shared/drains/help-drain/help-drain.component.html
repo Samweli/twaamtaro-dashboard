@@ -69,11 +69,11 @@
                 <header class="w3-container w3-theme-d3 w3-center">
 								<span (click)="closemodal()"
                       class="w3-button w3-display-topright w3-padding w3-hover-teal">&times;</span>
-                  <h3>Drain No. {{ thedrain	}} Help Details</h3>
+                  <h3>{{'drain_no'| translate}} {{ thedrain	}} {{'help'| translate}}</h3>
                 </header>
                 <div class="w3-container w3-padding">
-                  <p><strong class="w3-padding-right">Help Category: </strong>{{ helpCategory }}</p>
-                  <p><strong class="w3-padding-right">Extra Details: </strong>{{ helpNeeded }}</p>
+                  <p><strong class="w3-padding-right">{{'help_category'| translate}}: </strong>{{ helpCategory }}</p>
+                  <p><strong class="w3-padding-right">{{'extra'| translate}}: </strong>{{ helpNeeded }}</p>
                 </div>
               </div>
             </div>

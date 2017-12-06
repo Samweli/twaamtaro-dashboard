@@ -5,7 +5,7 @@ import { StreetVEOPipe, UserStreetPipe } from "./../../../core/user.pipe";
 import { Ng2GoogleChartsModule, ChartSelectEvent } from 'ng2-google-charts';
 
 import { NgProgress } from 'ngx-progressbar';
-import { TranslateService } from "../../../transilate/translate.service";
+import { TranslateService } from "../../../translate/translate.service";
 import { StreetService } from "./../../../core/streets.service";
 import { DrainsService } from "./../../../core/drains.service";
 
