@@ -11,7 +11,7 @@ import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class UserService {
-  private headers = new Headers({'Authorization': 'Token token="gM7TM10gfRFZBlkNNcqg9A", email="example-2@twaamtaro.org"', 'Content-Type': ' ' });
+  private headers = new Headers({'Authorization': 'Token token="CP7ZOb0OBoeLePlKDbzCzg", email="example-1@twaamtaro.org"', 'Content-Type': ' ' });
 
   constructor(private http: Http, private urlService: UsersUrlService) { }
   users: User[];
@@ -50,7 +50,7 @@ export class UserService {
   }
 
   getLeaderRequests(): any {
-    return this.http.get(this.urlService.apiUrl+this.urlService.leaderRequestsUrl,
+    return this.http.post(this.urlService.apiUrl+this.urlService.leaderRequestsUrl,
       {headers: this.headers})
     .map(res =>  {
       this.leaderRequests = res.json().leaders
@@ -59,8 +59,10 @@ export class UserService {
     .catch(this.errorHandler);
   }
 
-  verifyLeader(theRequest): any {
-    return this.http.post(this.urlService.apiUrl+this.urlService.verifyUrl, {theRequest}, {headers: this.headers})
+  verifyLeader(roleRequest): any {
+    console.log("Service");
+    console.log(roleRequest);
+    return this.http.post(this.urlService.apiUrl+this.urlService.verifyUrl, roleRequest, {headers: this.headers})
     .map(res => { 
       this.verifyResponse = res.json()
     })
