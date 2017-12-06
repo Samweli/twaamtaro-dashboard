@@ -14,12 +14,14 @@
 	<!--Desktop Filters -->
 	<div class="w3-center w3-padding">
 		<button class="w3-btn w3-black w3-left" (click)="showFilters()">{{'filter' | translate}}</button>
-      <ul class="w3-hide-small w3-left">
-          <li class="w3-btn w3-white w3-border w3-border-blue" (click)="getFilteredDrains()">{{'all_button'| translate}}</li>
+      <ul class="filters-list">
+        <li><app-regional-filters></app-regional-filters></li>
+        <li><app-status-filters></app-status-filters></li>
+         <!-- <li class="w3-btn w3-white w3-border w3-border-blue" (click)="getFilteredDrains()">{{'all_button'| translate}}</li>
           <li class="w3-btn w3-white w3-border w3-border-red" (click)="getFilteredDrains('submitted')">{{'submitted'| translate}}</li>
           <li class="w3-btn w3-white w3-border w3-border-orange" (click)="getFilteredDrains('processing')">{{'progress' | translate}}</li>
           <li class="w3-btn w3-white w3-border w3-border-green" (click)="getFilteredDrains('done')">{{'done'| translate}}</li>
-          <li class="w3-btn w3-white w3-border w3-border-grey" (click)="getFilteredDrains('archived')">{{'archive'| translate}}</li>
+          <li class="w3-btn w3-white w3-border w3-border-grey" (click)="getFilteredDrains('archived')">{{'archive'| translate}}</li>-->
       </ul>
 		</div>
 	<!-- End Desktop Filters -->

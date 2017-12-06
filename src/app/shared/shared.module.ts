@@ -53,6 +53,8 @@ import { StreetVEOPipe, UserStreetPipe } from "./../core/user.pipe";
 import { NotifyComponent } from './notify/notify.component';
 import { RegisterComponent } from './register/register.component';
 import { VerifyLeaderComponent } from './verify-leader/verify-leader.component';
+import { RegionalFiltersComponent } from './regional-filters/regional-filters.component';
+import { StatusFiltersComponent } from './status-filters/status-filters.component';
 
 @NgModule({
   imports: [
@@ -99,6 +101,8 @@ import { VerifyLeaderComponent } from './verify-leader/verify-leader.component';
     NotifyComponent,
     RegisterComponent,
     VerifyLeaderComponent,
+    RegionalFiltersComponent,
+    StatusFiltersComponent,
   ],
   exports: [SharedComponent],
   providers: [

@@ -8,6 +8,10 @@
     top: 180px;
 }
 
+.filters-list {
+  display: inline;
+}
+
 
 @media(max-width: 768px){
     .w3-modal-content {
