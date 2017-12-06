@@ -11,13 +11,15 @@ import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class UserService {
-  private headers = new Headers({'Authorization': 'Token token="gM7TM10gfRFZBlkNNcqg9A", email="example-2@twaamtaro.org"', 'Content-Type': ' ' });
+  private headers = new Headers({'Authorization': 'Token token="CP7ZOb0OBoeLePlKDbzCzg", email="example-1@twaamtaro.org"', 'Content-Type': ' ' });
 
   constructor(private http: Http, private urlService: UsersUrlService) { }
   users: User[];
   verifyResponse: any;
   totalRequests: any;
   leaderRequests: any;
+  regRes: any;
+  regStatus: any;
 
   getUsers(): any {
     return this.http.get(this.urlService.apiUrl+this.urlService.usersUrl,
@@ -32,20 +34,23 @@ export class UserService {
     .catch(this.errorHandler);          
   }
 
-  createUser(user: User) {
-    return this.http.post(this.urlService.localUrl+this.urlService.usersUrl, user)
-    .map((response: Response) => response.json().users)
+  createUser(user) {
+    return this.http.post(this.urlService.apiUrl+this.urlService.registerUserUrl, {user})
+    .map((response: Response) =>
+      {
+       this.regRes = response.json();
+      })
     .catch(this.errorHandler);
   }
-    
+  
   alertLeader(street_id): any {
-    return this.http.post(this.urlService.localUrl+this.urlService.alertUrl, {street_id}, {headers: this.headers})
+    return this.http.post(this.urlService.apiUrl+this.urlService.alertUrl, {street_id}, {headers: this.headers})
     .map(res =>  res.json())
     .catch(this.errorHandler);
   }
 
   getLeaderRequests(): any {
-    return this.http.get(this.urlService.localUrl+this.urlService.leaderRequestsUrl,
+    return this.http.post(this.urlService.apiUrl+this.urlService.leaderRequestsUrl,
       {headers: this.headers})
     .map(res =>  {
       this.leaderRequests = res.json().leaders
@@ -54,8 +59,10 @@ export class UserService {
     .catch(this.errorHandler);
   }
 
-  verifyLeader(user_id): any {
-    return this.http.post(this.urlService.localUrl+this.urlService.verifyUrl, {user_id}, {headers: this.headers})
+  verifyLeader(roleRequest): any {
+    console.log("Service");
+    console.log(roleRequest);
+    return this.http.post(this.urlService.apiUrl+this.urlService.verifyUrl, roleRequest, {headers: this.headers})
     .map(res => { 
       this.verifyResponse = res.json()
     })

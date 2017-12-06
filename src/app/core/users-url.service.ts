@@ -8,8 +8,8 @@ export class UsersUrlService {
   public usersUrl = 'users/'; 
   public alertUrl = 'users/remind';
   public verifyUrl = 'users/verify';
-  public leaderRequestsUrl = 'users/new_leaders';
-  public registerUserUrl = 'users/';
+  public leaderRequestsUrl = 'users/role_requests';
+  public registerUserUrl = 'registrations/';
   public massMessagingUrl = '';
   
   constructor() { }

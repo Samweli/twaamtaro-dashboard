@@ -18,7 +18,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^4.0.0",
-    "@angular/cli": "1.2.1",
+    "@angular/cli": "^1.5.5",
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",
     "@angular/compiler-cli": "^4.0.0",
@@ -80,5 +80,16 @@
     "underscore": "^1.8.3",
     "zone.js": "^0.8.4"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "description": "Introduction ============ Twaa Mtaro dashboard is a tool to view Twaa Mtaro ([Twaa Mtaro](https://github.com/WorldBank-Transport/twaa-mtaro)) infographics.",
+  "main": "karma.conf.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/navish/twaamtaro-dashboard.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/navish/twaamtaro-dashboard/issues"
+  },
+  "homepage": "https://github.com/navish/twaamtaro-dashboard#readme"
 }
