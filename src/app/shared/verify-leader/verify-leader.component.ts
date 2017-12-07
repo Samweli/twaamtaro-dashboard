@@ -12,7 +12,7 @@ export class VerifyLeaderComponent implements OnInit {
   ) { }
 
   title = 'Citizens Leadership Requests';
-  errMsg: any;
+  errMsg: any = "";
   verifyRes: any;
   leaderRequests : any;
   allRequests : any;
