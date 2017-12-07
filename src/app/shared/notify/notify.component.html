@@ -8,7 +8,8 @@
           <div class="w3-padding w3-col m6 s12">
             <div class="w3-card-2 w3-container w3-padding w3-white w3-hover-shadow w3-border w3-border-teal">
                 <h3 class="w3-center">{{'alert_user' | translate}}</h3>
-                <p>{{'alert_message'| translate}}
+                <p class="w3-large">
+                  {{'alert_message'| translate}}
                 </p>
 
                 <button class="w3-right w3-padding w3-btn w3-teal" (click)="checkBoxes('alertMsg','awarenessMsg')">{{'send_alert' | translate}}</button>
@@ -17,7 +18,7 @@
           <div class="w3-padding w3-col m6 s12">
             <div class="w3-card-2 w3-container w3-padding w3-white w3-hover-shadow w3-border w3-border-teal">
               <h3 class="w3-center">{{'aware_user'| translate}}</h3>
-                <p>
+                <p class="w3-large">
                   {{'awareness_message' | translate }}
                 </p>
 
@@ -28,6 +29,7 @@
 <!--End Notification Rows -->
 
 <!-- Begin Message Boxes  -->
+      <!-- Alert Message  -->
       <div class="w3-row  w3-padding" id="alertMsg">
         <div class="w3-card-2 w3-padding w3-container w3-white w3-hover-shadow w3-border w3-border-white">
         <div class="w3-col  m3 s12 w3-center">
@@ -54,7 +56,7 @@
       <div class="w3-row  w3-padding" id="awarenessMsg">
         <div class="w3-card-2 w3-padding w3-container w3-white w3-hover-shadow w3-border w3-border-white">
           <div class="w3-col  m3 s12 w3-center">
-            <h3><i class="fa fa-edit" style="color:#009688!important"></i>{{'modify' | translate}}</h3>
+            <h3><i class="fa fa-edit" style="color:#009688!important"></i> {{'modify' | translate}}</h3>
             <h4>{{'or'| translate}}</h4>
               <h3><i class="fa fa-envelope" style="color:#009688!important"></i> {{ 'send_msg'| translate}}
               </h3>

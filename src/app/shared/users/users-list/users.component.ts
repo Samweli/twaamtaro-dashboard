@@ -46,7 +46,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
         this.streetCount++
       }
     }   
-    console.log(this.streetCount)
+    //console.log(this.streetCount)
     return this.streetCount
   }
   getStreetsPopulation(users) {
