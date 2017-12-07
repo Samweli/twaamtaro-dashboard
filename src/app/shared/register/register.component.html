@@ -2,65 +2,83 @@
   <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
 
     <div class="w3-center"><br>
-      <span (click)="closeregister()" class="w3-button w3-xlarge w3-hover-red w3-display-topright w3-padding" title="Close Modal">&times;</span>
-      
+      <span (click)="closeregister()" class="w3-button w3-xlarge w3-hover-red w3-display-topright w3-padding" title="Close Modal">&times;</span> 
     </div>
-    <form id="registerForm" name="regForm" (ngSubmit)="f.regForm.valid && register()" #f="ngForm" novalidate>
-        <div class="w3-section w3-padding">
-        
-    <label class="w3-margin-bottom"><b>First Name</b><input class="w3-input w3-border" [(ngModel)]="user.first_name" name="first_name" type="text" placeholder="Enter Fisrt Name(s)" #firstName="ngModel" required>
-    </label>
-    <div *ngIf="f.form.submitted && firstName.prisitne">First Name is required</div>
-    <label><b>Last Name</b><input class="w3-input w3-border w3-margin-bottom" [(ngModel)]="user.last_name" name="last_name" type="text" placeholder="Enter Last Name" #lastName="ngModel" required>
-    </label>
-    <div *ngIf="f.submitted && !lastName.valid">Last Name is required</div>
-    <label><b>Email</b>
-      <input class="w3-input w3-border w3-margin-bottom" [(ngModel)]="user.email" name="email" type="email" placeholder="Enter Email" required #email="ngModel">
-    </label>
-    <div *ngIf="f.form.submitted && !email.pristine">Email is required</div>
-    <label><b> My Street</b>
-      <select class="w3-select" name="street_id" [(ngModel)]="user.street_id" required #street="ngModel">
-          <option value="" disabled selected>--My Street--</option>
-          <option *ngFor="let street of (streets)" [value]="street.street.id">{{street.street.street_name}}</option>
-        </select>
-    </label>
+      <div *ngIf="!regStatus && isCalled" class="w3-margin">
+        <div class="w3-panel w3-padding w3-border w3-border-red w3-pale-red">
+          <p class="w3-center w3-large w3-text-red">Registration failed.</p>
+        </div>
+      </div>
+      <div *ngIf="regStatus && isCalled" class="w3-margin">
+        <div class="w3-panel w3-padding w3-border w3-border-green w3-pale-green">
+          <p class="w3-center w3-large w3-text-green">Registration successful.<p>
+        </div>
+      </div>
+    <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
+      <div class="w3-container w3-section w3-padding">
+        <div class="w3-row>">
+      <div class="form-group w3-half w3-padding" [ngClass]="{ 'has-error': f.submitted && !firstName.valid }">
+        <label for="firstName">First Name</label>
+        <input type="text" class="w3-input w3-border" name="firstName" [(ngModel)]="user.first_name" #firstName="ngModel" required />
+        <div *ngIf="f.submitted && !firstName.valid" class="w3-text-red">First Name is required</div>
+      </div>
 
-    <label><b>Mobile Phone Number</b>
-      <input class="w3-input w3-border" [(ngModel)]="user.sms_number" type="text" name="sms_number" placeholder="Enter Phone Number" #smsNumber="ngModel" required>
-    </label>
-
-    <label><b>Password</b>
-      <input class="w3-input w3-border" [(ngModel)]="user.password" type="password" name="password" placeholder="Enter Password" #userPass="ngModel" required>
-    </label>
-
-    <label><b>Confirm Password</b>
-      <input class="w3-input w3-border" [(ngModel)]="user.confirmpassword" type="password" name="confirmpassword" placeholder="Confirm Password" #confirmPass="ngModel" required>
-    </label>  
-    <div *ngIf="(userPass.dirty && confirmPass.dirty && (userPass.value != confirmPass.value))" class="w3-margin">
-      <div class="w3-panel w3-padding w3-border w3-border-red">
-        <label>Passwords don't match.</label>
+      <div class="form-group w3-half w3-padding" [ngClass]="{ 'has-error': f.submitted && !lastName.valid }">
+        <label for="lastName">Last Name</label>
+        <input type="text" class="w3-input w3-border" name="lastName" [(ngModel)]="user.last_name" #lastName="ngModel" required />
+        <div *ngIf="f.submitted && !lastName.valid" class="w3-text-red">Last Name is required</div>
+      </div>
+            </div>
+      <div class="form-group w3-padding" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+        <label><b>Email</b></label>
+          <input class="w3-input w3-border" [(ngModel)]="user.email" name="email" type="email" placeholder="Enter Email" required #email="ngModel">
+        <div *ngIf="f.submitted && !email.valid" class="w3-text-red">Email is required</div>
+      </div>
+            <div class="w3-row">
+      <div class="form-group w3-half w3-padding" [ngClass]="{ 'has-error': f.submitted && !smsNumber.valid }">
+        <label><b>Mobile Phone Number</b></label>
+        <input class="w3-input w3-border" [(ngModel)]="user.sms_number" type="text" name="smsNumber" placeholder="Enter Phone Number" #smsNumber="ngModel" required>
+        <div *ngIf="f.submitted && !smsNumber.valid" class="w3-text-red">Phone number is required</div>
+      </div>
+            
+      <div class="form-group w3-half w3-padding" [ngClass]="{ 'has-error': f.submitted && !street.valid }">
+        <label><b> My Street</b></label>
+          <select class="w3-select" name="street" [(ngModel)]="user.street_id" required #street="ngModel">
+              <option value="" disabled selected>--My Street--</option>
+              <option *ngFor="let street of (streets)" [value]="street.street.id">{{street.street.street_name}}</option>
+            </select>
+        <div *ngIf="f.submitted && !street.valid" class="w3-text-red">Street is required</div>
+      </div>
+            </div>
+            <div class="w3-row">
+      <div class="form-group w3-half w3-padding" [ngClass]="{ 'has-error': f.submitted && !userPass.valid }">
+        <label><b>Password</b></label>
+          <input class="w3-input w3-border" [(ngModel)]="user.password" type="password" name="userPass" placeholder="Enter Password" #userPass="ngModel" required>
+        <div *ngIf="f.submitted && !userPass.valid" class="w3-text-red"> Password is required</div>
       </div>
       
-    </div>
-    <div *ngIf="userPass.dirty && confirmPass.dirty && userPass.valid && confirmPass.valid && (userPass.value == confirmPass.value)" class="w3-margin">
-      <div class="w3-panel w3-padding w3-border w3-border-green">
-        <label>Passwords match.</label>
+      <div class="form-group w3-half w3-padding" [ngClass]="{ 'has-error': f.submitted && !confirmPass.valid }">
+        <label><b>Confirm Password</b></label>
+          <input class="w3-input w3-border" [(ngModel)]="userpass.password" type="password" name="confirmPass" placeholder="Confirm Password" #confirmPass="ngModel" required>
+        <div *ngIf="f.submitted && !confirmPass.valid" class="w3-text-red">Enter your password again</div>
       </div>
-    </div>
-      
-    </div>
+            </div>
+      <div *ngIf="(userPass.dirty && confirmPass.dirty && (userPass.value != confirmPass.value))" class="w3-margin">
+          <p class="w3-center w3-text-red w3-large">Passwords don't match.</p>
+      </div>
+
+      <div *ngIf="userPass.dirty && confirmPass.dirty && userPass.valid && confirmPass.valid && (userPass.value == confirmPass.value)" class="w3-margin">
+          <p class="w3-center w3-text-green w3-large">Passwords match.<p>
+      </div>
+    </div>   
+      <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+          <section class="w3-right">
+          <button class="w3-btn w3-green " type="submit" >Register</button>
+          <button (click)="closeregister()" class="w3-btn w3-red">Cancel</button>
+          </section>
+      </div>
+     
     </form>
-    <div *ngIf="!regStatus && isCalled" class="w3-margin">
-      <div class="w3-panel w3-padding w3-border w3-border-red">
-        <label>Registration failed.</label>
-      </div>
-    </div>
-  
-    <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-      <section class="w3-right">
-      <button type="submit" (click)="register()" class="w3-btn w3-green " type="submit" [disabled]="!f.form.valid">Register</button>
-      <button (click)="closeregister()" class="w3-btn w3-red">Cancel</button>
-      </section>
-    </div>
-
   </div>
+
+</div>
