@@ -27,6 +27,7 @@ export const LANG_SW_TRANS = {
   'report': 'Ripoti',
   'view_drain': 'Ona mitaro',
   'notification': 'Tuma Taarifa',
+  'welcome': 'Karibu',
 
   /*content translations*/
   'title_dashboard': 'Ripoti ya usafi wa mitaro ',
@@ -36,9 +37,14 @@ export const LANG_SW_TRANS = {
   'id': 'Namba',
   'address': 'Mtaa/Mahala',
   'name': 'Jina',
+  'full_name': 'Jina kamili',
   'report_made': 'Iliripotiwa',
   'claimed': 'Iliyotwaliwa',
   'phone_number':'Namba ya Simu',
+  'drain_no': 'Namba ya mtaro',
+  'help': 'Maelezo kwaundani',
+  'help_category': 'Aina ya msaada',
+  'extra': 'Maelezo zaidi',
   'ranks_details': 'Nafasi za usafi kulingana na mitaa',
   'location': 'Chagua Eneo/Sehemu',
   'has': 'ina',
@@ -87,9 +93,14 @@ export const LANG_SW_TRANS = {
   'modify': 'Badilisha',
   'send_msg': 'Tuma',
   'box-msg': 'ujumbe katika sanduku la ujumbe ',
+  'verify_title': 'Maombi ya Uongozi',
+  'no_verify': 'Hakuna maombi yoyote ya uongozi',
+  'action': 'Hatua',
   'or': 'Au',
   'no_status': 'Hapana',
   'yes_status': 'Ndio',
+
+
 //  footer
   'copyright': 'Hatimiliki',
   'all-right':'Haki zote zimehifadhiwa.'

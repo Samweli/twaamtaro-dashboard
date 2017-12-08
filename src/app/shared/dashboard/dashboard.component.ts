@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {DrainsService} from "../../core/drains.service";
-import {TranslateService} from "../../transilate/translate.service";
+import {TranslateService} from "../../translate/translate.service";
 
 import { NgProgress } from 'ngx-progressbar';
 // Variable in assets/js/scripts.js file

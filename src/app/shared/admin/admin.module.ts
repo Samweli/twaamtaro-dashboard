@@ -10,8 +10,8 @@ import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { AdminRoutingModule } from './admin-routing/admin-routing.module';
 import { DrainsService } from './../../core/drains.service';
 import { UserService } from './../../core/user.service';
-import {TranslateService} from "../../transilate/translate.service";
-import {TRANSLATION_PROVIDERS} from "../../transilate/translation/translation.component";
+import {TranslateService} from "../../translate/translate.service";
+import {TRANSLATION_PROVIDERS} from "../../translate/translation/translation.component";
 
 
 

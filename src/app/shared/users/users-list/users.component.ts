@@ -5,7 +5,7 @@ import { StreetVEOPipe, UserStreetPipe } from "./../../../core/user.pipe";
 import { Ng2GoogleChartsModule, ChartSelectEvent } from 'ng2-google-charts';
 
 import { NgProgress } from 'ngx-progressbar';
-import { TranslateService } from "../../../transilate/translate.service";
+import { TranslateService } from "../../../translate/translate.service";
 import { StreetService } from "./../../../core/streets.service";
 import { DrainsService } from "./../../../core/drains.service";
 
@@ -58,7 +58,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
         console.log('Street Id '+ street.id)
         this.countStreetUsers(street.id,users)
       });*/
-     
+
     })
   }
   getUsers(): any {
@@ -67,10 +67,10 @@ export class UsersComponent implements OnInit, AfterViewInit {
         .getUsers()
         .subscribe(user => {
           this.users = user;
-     //this.countStreetUsers(1,this.users) ; 
-     this.getStreetsPopulation(this.users) 
 
-    //Get Number of registered users based on roles
+     //this.countStreetUsers(1,this.users) ;
+     this.getStreetsPopulation(this.users);
+         //Get Number of registered users based on roles
           for (var i = 0; i < this.users.length; i++) {
             this.getStreetName(user[i].street_id);
             if (this.users[i].role === 1) {

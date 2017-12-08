@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Http } from '@angular/http';
-import {TranslateService} from "../../transilate/translate.service";
+import {TranslateService} from "../../translate/translate.service";
 
 @Component({
   selector: 'app-admin',
