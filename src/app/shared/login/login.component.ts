@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   loginStatus: any;
   theUser: any;
   userName: any;
-  userRole: any;
+  userRoles: any;
   user: any = { 'sms_number': '','password': '' };
   err: any;
   loginCalled = false;
@@ -51,24 +51,27 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(this.user)
     .subscribe(res => {
-      this.userData = this.authService.userdata.data;
-      this.userName = this.userData.user.first_name +" "+ this.userData.user.last_name;
-      this.userRole = this.userData.user.role;
+
+      this.userData = JSON.parse(this.authService.userdata);
+      this.userName = this.userData.users.first_name +" "+ this.userData.users.last_name;
+      this.userName = this.userData.users.email;
+      this.userRoles = this.userData.roles;
       
       this.loginCalled = true;
-      if (this.userData && this.userData.auth_token) {
-          sessionStorage.setItem('currentUser', JSON.stringify(this.userData.auth_token));
-          sessionStorage.setItem('user', this.userName);
-          sessionStorage.setItem('role', this.userRole);
+      if (this.userData && this.userData.users.authentication_token) {
+          localStorage.setItem('currentUser', JSON.stringify(this.userData.users.authentication_token));
+          localStorage.setItem('user', this.userName);
+          localStorage.setItem('role', this.userRoles);
   
         this.router.navigate(['dashboard/admin']);
+        
         
         /*if ((localStorage.getItem("role")) == "3") {
             this.router.navigate(['dashboard/weo']);
             
         } else if (localStorage.getItem("role") == "4") {
-            this.router.navigate(['dashboard/meo']);  
-        }*/
+            this.router.navigate(['dashboard/meo']);  */
+        
       }
     }, error => {
       this.loginCalled = true;
