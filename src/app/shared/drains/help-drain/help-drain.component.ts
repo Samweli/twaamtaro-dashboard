@@ -63,6 +63,7 @@ export class HelpDrainComponent implements OnInit {
     });
   }
 
+// filters need help drains based on their regions(stree,ward, municipal)
   drainFilter(data:any,key?):any{
 
     console.log("inside parent component");
@@ -72,6 +73,23 @@ export class HelpDrainComponent implements OnInit {
      this.pagedDrains = this.drains.filter(drain => drain.user.street[key.level] == key.event);
     console.log(this.drains);
   }
+
+
+// filters need help drains based on their status
+  statusFilter(pagedDrains,key):any{
+    
+        console.log("inside parent component, status filter");
+    
+        console.log(key);
+    
+        // this.pagedDrains = this.drains.filter(drain => drain.status[key.level] == key.event);
+        //console.log(this.drains);
+      }
+
+  updateStatus(data){
+console.log("update status button clicked");
+console.log(data);
+  }    
 
   setPage(page: number) {
     if (page < 1 || page > this.pager.totalPages) {

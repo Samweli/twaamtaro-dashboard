@@ -16,7 +16,7 @@
 		<button class="w3-btn w3-black w3-left" (click)="showFilters()">{{'filter' | translate}}</button>
       <ul class="filters-list">
         <li><app-regional-filters (selectValueChaged)="drainFilter(pagedDrains,$event)"></app-regional-filters></li>
-        <li><app-status-filters></app-status-filters></li>
+        <li><app-status-filters (statusValueChaged)="statusFilter(pagedDrains,$event)"></app-status-filters></li>
       </ul>
 		</div>
 	<!-- End Desktop Filters -->
@@ -48,7 +48,8 @@
             <th>{{'address' | translate}}</th>
             <!--<th>{{'claimed' | translate}}</th>-->
 						<th>{{'report_made' | translate}}</th>
-            <th  *ngIf="authService.isLoggedIn()">{{'leader'| translate}}</th>
+						<th  *ngIf="authService.isLoggedIn()">{{'leader'| translate}}</th>
+						<th>Badili Hali ya Msaada</th>
           </tr>
           </thead>
           <tbody>
@@ -58,7 +59,8 @@
             <td>{{drain.user.street.street_name}}</td>
             <td>{{drain.created_at | date }}</td>
             <td  *ngIf="authService.isLoggedIn()">
-              {{drain.user.first_name}} {{drain.user.last_name}}</td>
+							{{drain.user.first_name}} {{drain.user.last_name}}</td>
+							<th><button (click)="updateStatus(drain)">VIMEFANYIKA</button></th>
           </tr>
 
             <div id="helpdetails" class="w3-modal w3-margin-top">
