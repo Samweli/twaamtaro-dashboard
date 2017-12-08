@@ -19,20 +19,39 @@ export class LoginComponent implements OnInit {
   userData: any;
   loginStatus: any;
   theUser: any;
+  userName: any;
+  userRole: any;
   user: any = { 'sms_number': '','password': '' };
+  err: any;
+  loginCalled = false;
+
   login() {
+    this.loginCalled = true;
     this.authService.login(this.user)
     .subscribe(res => {
       this.userData = this.authService.userdata;
-      console.log(this.userData)           
-     },
-     error => {
-         this.formErrorsService.error(error);
-         this.loading = false;
-     });
-
-    }
-
+      this.userName = this.userData.data.user.first_name +" "+ this.userData.data.user.last_name;
+      this.userRole = this.userData.data.user.role;
+      
+      if (this.userData && this.userData.data.auth_token) {
+          localStorage.setItem('currentUser', JSON.stringify(this.userData.data.auth_token));
+          localStorage.setItem('user', this.userName);
+          localStorage.setItem('role', this.userRole);
+  
+        this.router.navigate(['dashboard/admin']);
+        
+        /*if ((localStorage.getItem("role")) == "3") {
+            this.router.navigate(['dashboard/weo']);
+            
+        } else if (localStorage.getItem("role") == "4") {
+            this.router.navigate(['dashboard/meo']);  
+        }*/
+      }
+    }, error => {
+      this.formErrorsService.error(error);
+    });
+  };
+    
   logout() { 
    this.authService.logout();
    this.router.navigateByUrl('/');
