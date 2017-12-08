@@ -69,9 +69,8 @@ export class UsersComponent implements OnInit, AfterViewInit {
           this.users = user;
 
      //this.countStreetUsers(1,this.users) ;
-     this.getStreetsPopulation(this.users)
-
-    //Get Number of registered users based on roles
+     this.getStreetsPopulation(this.users);
+         //Get Number of registered users based on roles
           for (var i = 0; i < this.users.length; i++) {
             this.getStreetName(user[i].street_id);
             if (this.users[i].role === 1) {
