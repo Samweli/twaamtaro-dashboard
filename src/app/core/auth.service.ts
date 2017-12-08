@@ -30,7 +30,7 @@ export class AuthService {
     }
 
     isLoggedIn() {
-        if (localStorage.getItem("currentUser") == null) {
+        if (sessionStorage.getItem("currentUser") == null) {
             this.loggedIn == false;
             return this.loggedIn;            }
         else {
@@ -39,8 +39,7 @@ export class AuthService {
     }
     logout() {
         // remove user from local storage to log user out
-        location.reload();
-        localStorage.clear();
+        sessionStorage.clear();
         this.loggedIn = false;
     }
     handleError(error: any): any {

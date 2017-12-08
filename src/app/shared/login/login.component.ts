@@ -51,15 +51,15 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(this.user)
     .subscribe(res => {
-      this.userData = this.authService.userdata;
-      this.userName = this.userData.data.user.first_name +" "+ this.userData.data.user.last_name;
-      this.userRole = this.userData.data.user.role;
+      this.userData = this.authService.userdata.data;
+      this.userName = this.userData.user.first_name +" "+ this.userData.user.last_name;
+      this.userRole = this.userData.user.role;
       
       this.loginCalled = true;
-      if (this.userData && this.userData.data.auth_token) {
-          localStorage.setItem('currentUser', JSON.stringify(this.userData.data.auth_token));
-          localStorage.setItem('user', this.userName);
-          localStorage.setItem('role', this.userRole);
+      if (this.userData && this.userData.auth_token) {
+          sessionStorage.setItem('currentUser', JSON.stringify(this.userData.auth_token));
+          sessionStorage.setItem('user', this.userName);
+          sessionStorage.setItem('role', this.userRole);
   
         this.router.navigate(['dashboard/admin']);
         
