@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
-import {AuthService} from "./../../core/auth.service";
-import {TranslateService} from "../../translate/translate.service";
+import { AuthService } from "./../../core/auth.service";
+import { SessionService } from "./../../core/session.service";
+import { TranslateService } from "../../translate/translate.service";
 
 @Component({
   selector: 'app-left-side',
@@ -10,12 +11,14 @@ import {TranslateService} from "../../translate/translate.service";
 export class LeftSideComponent implements OnInit {
   constructor(
     public authService: AuthService,
+    public sessionService: SessionService,
     private _translate: TranslateService
   ) { }
   notifyCitizens() {
   }
-
-  loggedUser = localStorage.getItem("user");
+  theUser = JSON.parse(this.sessionService.getLoggedUser());
+  loggedUser = this.theUser.first_name + " " +this.theUser.last_name ;
+  
   public translatedText: string;
   public supportedLanguages: any[];
   supportedLangs: any;

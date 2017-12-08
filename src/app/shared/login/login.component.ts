@@ -17,18 +17,20 @@ export class LoginComponent implements OnInit {
         private sessionService: SessionService,
         private ngProgress: NgProgress
       ) { }
-  
+
+  countryCode = "255";  
+  err: any;
   loading = false;
   userData: any;
   loginStatus: any;
   theUser: any;
+  userEmail: any;
   userName: any;
   userRoles: any;
+  userStreet: any;
   user: any = { 'sms_number': '','password': '' };
-  err: any;
   loginCalled = false;
   inputsToFormat = {'phone':''};
-  countryCode = "255";
   
   formatPhoneNumber(phoneNumber) {
     var formattedNumber: any;
@@ -51,26 +53,19 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(this.user)
     .subscribe(res => {
-
-      this.userData = JSON.parse(this.authService.userdata);
-      this.userName = this.userData.users.first_name +" "+ this.userData.users.last_name;
-      this.userName = this.userData.users.email;
-      this.userRoles = this.userData.roles;
       
       this.loginCalled = true;
+      this.userData = this.authService.userdata;
+
       if (this.userData && this.userData.users.authentication_token) {
           localStorage.setItem('currentUser', JSON.stringify(this.userData.users.authentication_token));
-          localStorage.setItem('user', this.userName);
-          localStorage.setItem('role', this.userRoles);
-  
-        this.router.navigate(['dashboard/admin']);
-        
-        
-        /*if ((localStorage.getItem("role")) == "3") {
-            this.router.navigate(['dashboard/weo']);
-            
-        } else if (localStorage.getItem("role") == "4") {
-            this.router.navigate(['dashboard/meo']);  */
+          
+          /* New localStorage Data */
+          localStorage.setItem('loggedUser', JSON.stringify(this.userData.users));
+          localStorage.setItem('roles', JSON.stringify(this.userData.users.roles));
+          localStorage.setItem('street', JSON.stringify(this.userData.users.street));
+
+          this.router.navigate(['dashboard/admin']);
         
       }
     }, error => {
