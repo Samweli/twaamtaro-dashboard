@@ -37,7 +37,7 @@
             <div class="w3-row">
       <div class="form-group w3-half w3-padding" [ngClass]="{ 'has-error': f.submitted && !smsNumber.valid }">
         <label><b>Mobile Phone Number</b></label>
-        <input class="w3-input w3-border" [(ngModel)]="user.sms_number" type="text" name="smsNumber" placeholder="Enter Phone Number" #smsNumber="ngModel" required>
+        <input class="w3-input w3-border" [(ngModel)]="inputsToFormat.phone" type="text" name="smsNumber" placeholder="Enter Phone Number" #smsNumber="ngModel" required>
         <div *ngIf="f.submitted && !smsNumber.valid" class="w3-text-red">Phone number is required</div>
       </div>
             
@@ -59,7 +59,7 @@
       
       <div class="form-group w3-half w3-padding" [ngClass]="{ 'has-error': f.submitted && !confirmPass.valid }">
         <label><b>Confirm Password</b></label>
-          <input class="w3-input w3-border" [(ngModel)]="userpass.password" type="password" name="confirmPass" placeholder="Confirm Password" #confirmPass="ngModel" required>
+          <input class="w3-input w3-border" [(ngModel)]="inputsToFormat.password" type="password" name="confirmPass" placeholder="Confirm Password" #confirmPass="ngModel" required>
         <div *ngIf="f.submitted && !confirmPass.valid" class="w3-text-red">Enter your password again</div>
       </div>
             </div>

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from "./../../core/auth.service";
 import { Router } from "@angular/router";
-import { SessionService } from "./../../core/session.service";
+import { AuthService } from "./../../core/auth.service";
 import { FormErrorsService } from "./../../core/form-errors.service";
+import { NgProgress } from 'ngx-progressbar';
+import { SessionService } from "./../../core/session.service";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,9 +12,11 @@ import { FormErrorsService } from "./../../core/form-errors.service";
 export class LoginComponent implements OnInit {
   constructor (
         private authService: AuthService,
+        private formErrorsService: FormErrorsService,
         private router: Router,
         private sessionService: SessionService,
-        private formErrorsService: FormErrorsService) { }
+        private ngProgress: NgProgress
+      ) { }
   
   loading = false;
   userData: any;
@@ -24,15 +27,35 @@ export class LoginComponent implements OnInit {
   user: any = { 'sms_number': '','password': '' };
   err: any;
   loginCalled = false;
+  inputsToFormat = {'phone':''};
+  countryCode = "255";
+  
+  formatPhoneNumber(phoneNumber) {
+    var formattedNumber: any;
+    if(phoneNumber.startsWith("0")) {
+      formattedNumber = this.countryCode.concat(phoneNumber.slice(1))
+      return formattedNumber;
+    }
+    else if(phoneNumber.startsWith("+")) {
+      formattedNumber = phoneNumber.replace("+","");
+      return formattedNumber;
+    }
+    else {
+        return phoneNumber;
+    }
+  }
 
   login() {
-    this.loginCalled = true;
+    this.ngProgress.start();
+    this.user.sms_number = this.formatPhoneNumber(this.inputsToFormat.phone);
+
     this.authService.login(this.user)
     .subscribe(res => {
       this.userData = this.authService.userdata;
       this.userName = this.userData.data.user.first_name +" "+ this.userData.data.user.last_name;
       this.userRole = this.userData.data.user.role;
       
+      this.loginCalled = true;
       if (this.userData && this.userData.data.auth_token) {
           localStorage.setItem('currentUser', JSON.stringify(this.userData.data.auth_token));
           localStorage.setItem('user', this.userName);
@@ -48,8 +71,10 @@ export class LoginComponent implements OnInit {
         }*/
       }
     }, error => {
+      this.loginCalled = true;
       this.formErrorsService.error(error);
     });
+    this.ngProgress.done();
   };
     
   logout() { 

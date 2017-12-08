@@ -44,7 +44,6 @@ export class AuthService {
         this.loggedIn = false;
     }
     handleError(error: any): any {
-        console.error('An error occurred', error);
         this.loginRes = false;
     }
 
