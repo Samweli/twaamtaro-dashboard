@@ -35,9 +35,7 @@ export class VerifyLeaderComponent implements OnInit {
     this.userService.verifyLeader({role_id: data.role_requested, user_id: data.id})
       .subscribe(
         res => {
-         // location.reload();
           this.leaderRequests = this.leaderRequests.filter(d => d !== data);
-
         },
         err => {
           console.log('error in verify')
@@ -45,6 +43,13 @@ export class VerifyLeaderComponent implements OnInit {
       )
   }
 
+  denyRequest(data: any): void {
+    this.verifyRes.user_id = data.id;
+    this.userService.denyLeader({user_id: data.id})
+      .subscribe(() => {
+        this.leaderRequests = this.leaderRequests.filter(u => u !== data);
+      });
+  }
 
 
   ngOnInit() {

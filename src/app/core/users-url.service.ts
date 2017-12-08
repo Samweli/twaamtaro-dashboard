@@ -8,6 +8,7 @@ export class UsersUrlService {
   public usersUrl = 'users/';
   public alertUrl = 'users/remind';
   public verifyUrl = 'users/verify';
+  public denyUrl = 'users/deny';
   public leaderRequestsUrl = 'users/role_requests';
   public registerUserUrl = 'registrations/';
   public massMessagingUrl = '';

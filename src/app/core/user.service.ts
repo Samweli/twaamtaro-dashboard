@@ -56,7 +56,6 @@ export class UserService {
     .map(res =>  {
       this.leaderRequests = res.json().leaders ;
       this.totalRequests = this.leaderRequests.length
-      this.totalRequests = this.totalRequests.filter(d => d );
 
     })
     .catch(this.errorHandler);
@@ -65,13 +64,16 @@ export class UserService {
   return this.http.post(this.urlService.localUrl + this.urlService.verifyUrl, JSON.stringify(data), {headers: this.headers})
     .map(res => {
       res.json().data as any
-      // const index: number = this.leaderRequests.indexOf(data);
-      // if (index !== -1) {
-      //   this.leaderRequests.splice(index, 1);
-      // }
       }
     )
     .catch(this.errorHandler)
+}
+denyLeader(denyRequest: any) : Observable <void> {
+    return this.http.post(this.urlService.localUrl + this.urlService.denyUrl,JSON.stringify(denyRequest), {headers: this.headers})
+      .map(res => { res.json().data as any
+      })
+      .catch(this.errorHandler);
+
 }
   errorHandler(error: Response) {
     console.error(error);
