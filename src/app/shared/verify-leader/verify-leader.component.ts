@@ -22,9 +22,10 @@ export class VerifyLeaderComponent implements OnInit {
   getRequests() {
     this.userService.getLeaderRequests()
       .subscribe(res => {
-        this.leaderRequests = this.userService.leaderRequests;
+        this.leaderRequests = this.userService.leaderRequests.filter(rq => this.filterCondition(rq));
         this.allRequests = this.userService.totalRequests
-        console.log(this.allRequests);
+        console.log(this.leaderRequests);
+        console.log(this.userService.leaderRequests)
         }
       )
 
@@ -43,12 +44,20 @@ export class VerifyLeaderComponent implements OnInit {
       )
   }
 
+
+
   denyRequest(data: any): void {
     this.verifyRes.user_id = data.id;
     this.userService.denyLeader({user_id: data.id})
       .subscribe(() => {
         this.leaderRequests = this.leaderRequests.filter(u => u !== data);
       });
+  }
+
+  filterCondition(data):boolean{
+    let bool = data.street.street_name == "Kisutu" && data.role_requested == 2;
+    return bool;
+
   }
 
 
