@@ -8,14 +8,19 @@ export class SessionService {
 
   constructor() { }
 
-  setCurrentUser(data:any){
-    localStorage.setItem('currentUser',JSON.stringify(this.currentUser))
-
+  getLoggedUser() {
+    var loggedInUser = localStorage.getItem("loggedUser");
+    return loggedInUser;
   }
 
-/*  destroySession(){
-    this.loggedIn = false;
-    localStorage.removeItem('currentUser');
-  }*/
+  getUserRole() {
+    var userRoles = localStorage.getItem("roles");
+    return userRoles;
+  }
+  
+  getUserStreet() {
+    var userStreet = localStorage.getItem("street");
+    return userStreet;
+  }    
 
 }

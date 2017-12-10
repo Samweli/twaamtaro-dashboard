@@ -13,7 +13,6 @@ import { NgProgress } from 'ngx-progressbar';
   providers: []
 })
 export class HelpDrainComponent implements OnInit {
-  title = 'Drains In Need of Help';
   created: any;
   daysGone: any;
   dateCreated: any;
