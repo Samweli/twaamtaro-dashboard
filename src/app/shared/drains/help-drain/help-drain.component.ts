@@ -82,11 +82,20 @@ export class HelpDrainComponent implements OnInit {
     
         console.log(key);
     
-        // this.pagedDrains = this.drains.filter(drain => drain.status[key.level] == key.event);
-        //console.log(this.drains);
+        this.pagedDrains = this.drains.filter(drain => drain.status == key);
+        console.log(this.drains);
       }
 
-  updateStatus(data){
+  updateStatus(data: any, statusValue: string){
+
+    this.drainService.update_status({need_help_id: data.id, status: statusValue})
+    .subscribe( res => {
+      console.log('it worked');
+      console.log(res);
+    }, err => {
+      console.log('error occured');
+      console.log(err);
+    })
 console.log("update status button clicked");
 console.log(data);
   }    

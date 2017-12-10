@@ -16,6 +16,7 @@ import { Drain } from './../shared/drains/drain';
 export class DrainsService {
   
   private headers = new Headers({'Accept': 'application/json', 'charset': 'utf-8'});
+  private headersCustom = new Headers({'Content-Type': 'application/json'});
   private options: RequestOptions = new RequestOptions({ headers: this.headers });
   
   constructor(private http: Http, private urlService: DrainsUrlService) { }
@@ -90,6 +91,27 @@ export class DrainsService {
             let alertData = res.json();
         });
     }
+
+    status(roleRequest): any {
+      
+      return this.http.post(this.urlService.apiUrl+this.urlService.verifyUrl, roleRequest, {headers: this.headers})
+      .map(res => { 
+        
+      })
+      .catch(this.errorHandler);
+    }
+
+    update_status(data): any {
+      
+      return this.http.post(this.urlService.apiUrl+this.urlService.status, JSON.stringify(data), {headers: this.headersCustom})
+      .map(res => { res.json();
+        
+      })
+      .catch(this.errorHandler);
+    }
+
+
+    
   errorHandler(error: Response) {
              console.error(error);
              return Observable.throw(error || 'Sorry, something went wrong');

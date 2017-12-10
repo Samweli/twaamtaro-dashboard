@@ -13,6 +13,8 @@ export class DrainsUrlService {
   public unknownDrainsUrl = 'drains/?type=unknown';
   public drainDataUrl = 'drains/data';
   public ranksDataUrl = 'drains/ranking';
+  public verifyUrl = 'users/verify';
+  public status = 'need_helps/status';
 
   constructor() { }
 

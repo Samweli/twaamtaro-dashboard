@@ -60,7 +60,7 @@
             <td>{{drain.created_at | date }}</td>
             <td  *ngIf="authService.isLoggedIn()">
 							{{drain.user.first_name}} {{drain.user.last_name}}</td>
-							<th><button (click)="updateStatus(drain)">VIMEFANYIKA</button></th>
+							<th><button (click)="updateStatus(drain, 'MUENDELEZO')">VIMEFANYIKA</button></th>
           </tr>
 
             <div id="helpdetails" class="w3-modal w3-margin-top">
