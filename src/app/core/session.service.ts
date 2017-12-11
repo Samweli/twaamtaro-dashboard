@@ -21,6 +21,23 @@ export class SessionService {
   getUserStreet() {
     var userStreet = localStorage.getItem("street");
     return userStreet;
-  }    
+  }
+  
+  hasRole(roleName: string): boolean{
+    let boolValue: boolean;
+    if(this.getUserRole()){
+      console.log('the roles');
+      
+      let roleArray: any = JSON.parse(this.getUserRole());
+      boolValue = roleArray.some((data) => data.name == roleName ); 
+      console.log(roleArray);
+    }
+    else{
+      boolValue = false;
+    }
+
+    return boolValue;
+
+  }
 
 }

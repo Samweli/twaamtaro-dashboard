@@ -49,7 +49,8 @@
             <!--<th>{{'claimed' | translate}}</th>-->
 						<th>{{'report_made' | translate}}</th>
 						<th  *ngIf="authService.isLoggedIn()">{{'leader'| translate}}</th>
-						<th>Badili Hali ya Msaada</th>
+						<th *ngIf="veoStatusColumn">Badili Hali ya Msaada kuwa MUENDELEZO</th>
+						<th *ngIf="weoStatusColumn">Badili Hali ya Msaada Kuwa VIMEFANYIKA</th>
           </tr>
           </thead>
           <tbody>
@@ -60,7 +61,10 @@
             <td>{{drain.created_at | date }}</td>
             <td  *ngIf="authService.isLoggedIn()">
 							{{drain.user.first_name}} {{drain.user.last_name}}</td>
-							<th><button (click)="updateStatus(drain, 'MUENDELEZO')">VIMEFANYIKA</button></th>
+						<td *ngIf="veoStatusColumn">
+							<button (click)="updateStatus(drain, 'MUENDELEZO')">MUENDELEZO</button></td>
+						<td *ngIf="weoStatusColumn">
+								<button (click)="updateStatus(drain, 'VIMEFANYIKA')">VIMEFANYIKA</button></td>
           </tr>
 
             <div id="helpdetails" class="w3-modal w3-margin-top">

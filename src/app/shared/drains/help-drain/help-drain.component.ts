@@ -3,6 +3,7 @@ import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@an
 import {AuthService} from "./../../../core/auth.service";
 import { DrainsService } from './../../../core/drains.service';
 import { PagerService } from './../../../core/paging.service';
+import { SessionService } from '../../../core/session.service'
 
 import { NgProgress } from 'ngx-progressbar';
 
@@ -27,12 +28,15 @@ export class HelpDrainComponent implements OnInit {
   thedrain: any;
   today: any;
   searchKey: any;
+  weoStatusColumn: boolean = false;
+  veoStatusColumn: boolean = false;
 
   constructor(
     private drainService: DrainsService,
     public authService: AuthService,
     private pagerService: PagerService,
     public ngProgress: NgProgress,
+    private sessionService: SessionService
   ) { }
 
   getDuration(d)
@@ -153,9 +157,23 @@ console.log(data);
       this.loggedIn = this.authService.isLoggedIn();
       console.log(this.loggedIn)
   }
+
+  conditionalInitializer(){
+    if(this.sessionService.hasRole("weo")){
+      console.log('weo column initalize')
+      this.weoStatusColumn = this.sessionService.hasRole("weo")
+    }
+    else if(this.sessionService.hasRole("veo")){
+      console.log('veo column initailized')
+      this.veoStatusColumn = this.sessionService.hasRole("veo")
+    }
+
+  }
+
   ngOnInit(): void {
     this.getFilteredDrains();
     this.closedetails();
     this.closemodal();
+    this.conditionalInitializer();
   }
 }
