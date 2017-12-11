@@ -16,7 +16,6 @@ import { NgProgress } from 'ngx-progressbar';
   providers: []
 })
 export class HelpDrainComponent implements OnInit {
-  title = 'Drains In Need of Help';
   created: any;
   daysGone: any;
   dateCreated: any;
@@ -32,14 +31,14 @@ export class HelpDrainComponent implements OnInit {
   today: any;
 
   constructor(
-    private drainService: DrainsService, 
-    public authService: AuthService, 
+    private drainService: DrainsService,
+    public authService: AuthService,
     private pagerService: PagerService,
     public ngProgress: NgProgress,
   ) { }
 
   getDuration(d)
-  { 
+  {
     var minutes = 1000 * 60;
     var hours = minutes * 60;
     var days = hours * 24;
@@ -54,7 +53,7 @@ export class HelpDrainComponent implements OnInit {
   }
 //Fetches all drains in need of help and their details
   getFilteredDrains(status?): any {
-    this.ngProgress.start();    
+    this.ngProgress.start();
     this.drainService
       .getFilteredHelp(status)
       .subscribe(
@@ -75,13 +74,13 @@ export class HelpDrainComponent implements OnInit {
 
     // Get current page of items
     this.pagedDrains = this.drains.slice(this.pager.startIndex, this.pager.endIndex + 1);
-  } 
- 
+  }
+
   //Get extra details of the requested help
 
 
   helpmodal(gid,category,help)
-  { 
+  {
     this.thedrain = gid;
     this.helpCategory = category;
     this.helpNeeded = help;
@@ -90,7 +89,7 @@ export class HelpDrainComponent implements OnInit {
 
   //Close the helpmodal by clicking anywhere else in the page
   closedetails()
-  { 
+  {
     var modal = document.getElementById('helpdetails');
     window.onclick = function(event) {
         if (event.target == modal) {
@@ -101,19 +100,19 @@ export class HelpDrainComponent implements OnInit {
 
   //Close helpmodal by clicking the close button
   closemodal()
-  { 
+  {
     document.getElementById('helpdetails').style.display='none';
   }
   showFilters()
-  { 
+  {
     var x = document.getElementById("mobileFilters");
     if (x.className.indexOf("w3-show") == -1) {
         x.className += " w3-show";
-    } else { 
+    } else {
         x.className = x.className.replace(" w3-show", "");
     }
   }
-  
+
   isLoggedIn()
   {
       this.loggedIn = this.authService.isLoggedIn();

@@ -13,4 +13,5 @@ export class User{
         public street_id: number,
         public role: number
     ) {};
+
 }
