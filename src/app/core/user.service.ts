@@ -49,8 +49,8 @@ export class UserService {
     .catch(this.errorHandler);
   }
 
-  getLeaderRequests(): any {
-    return this.http.post(this.urlService.localUrl+this.urlService.leaderRequestsUrl,
+  getLeaderRequests(data: any): any {
+    return this.http.post(this.urlService.localUrl+this.urlService.leaderRequestsUrl,JSON.stringify(data),
       {headers: this.headers})
     .map(res =>  {
       this.leaderRequests = res.json().leaders ;

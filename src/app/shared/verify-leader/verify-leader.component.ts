@@ -21,8 +21,8 @@ export class VerifyLeaderComponent implements OnInit {
   allRequests : any;
 
   //Getting Street leader requests
-  getRequests() {
-    this.userService.getLeaderRequests()
+  getRequests(data) {
+    this.userService.getLeaderRequests(data)
       .subscribe(res => {
         this.leaderRequests = this.userService.leaderRequests.filter(rq => this.filterCondition(rq));
         this.allRequests = this.userService.totalRequests
@@ -58,14 +58,24 @@ export class VerifyLeaderComponent implements OnInit {
 
   filterCondition(data):boolean{
     let street = JSON.parse(this.sessionService.getUserStreet());
-    let bool = data.street.street_name == street.street_name;
+    let bool = data.street.street_name == street.street_name ;
     return bool;
 
   }
+checkLoggedInUser(){
 
+    if(this.sessionService.hasRole('weo')){
+      console.log('weo');
+      this.getRequests({role_name:'veo'});
+    }
+    else if(this.sessionService.hasRole('community_member')){
+      console.log('community_member');
+      this.getRequests({role_name:'weo'});
+    }
+}
 
   ngOnInit() {
-    this.getRequests()
+  this.checkLoggedInUser();
   }
 
 }
