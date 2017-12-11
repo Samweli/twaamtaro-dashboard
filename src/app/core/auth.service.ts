@@ -13,7 +13,9 @@ export class AuthService {
   userdata: any;
   loggedUser: any;
   userName: any;
-
+  userRole: any;
+  errStatus: any;
+  loginRes = false ;
   constructor(
         private http: Http,    
         private router: Router,
@@ -21,21 +23,12 @@ export class AuthService {
 
   login(user): any {
     return this.http.post(this.loginUrl, {user}, {headers: this.headers})
-        .subscribe(res => {
+        .map(res => {
             this.userdata = res.json();
-            this.userName = this.userdata.data.user.first_name +" "+ this.userdata.data.user.last_name;
-
-            if (this.userdata && this.userdata.data.auth_token) {
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('currentUser', JSON.stringify(this.userdata.data.auth_token));
-                localStorage.setItem('user', this.userName);
-        
-        location.reload();
-        this.router.navigate(['dashboard/admin']);
-        
-            }
-        });
+           })
+        .catch(this.handleError);
     }
+
     isLoggedIn() {
         if (localStorage.getItem("currentUser") == null) {
             this.loggedIn == false;
@@ -46,12 +39,11 @@ export class AuthService {
     }
     logout() {
         // remove user from local storage to log user out
-        location.reload();
         localStorage.clear();
         this.loggedIn = false;
     }
-    private handleError(error: any): any {
-        console.error('An error occurred', error);
+    handleError(error: any): any {
+        this.loginRes = false;
     }
 
 

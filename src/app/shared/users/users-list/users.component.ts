@@ -45,8 +45,8 @@ export class UsersComponent implements OnInit, AfterViewInit {
       if(street == users[index].street_id) {
         this.streetCount++
       }
-    }
-    console.log(this.streetCount)
+    }   
+    //console.log(this.streetCount)
     return this.streetCount
   }
   getStreetsPopulation(users) {

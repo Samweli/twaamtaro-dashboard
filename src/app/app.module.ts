@@ -53,6 +53,7 @@ import { UsersUrlService } from "./core/users-url.service";
 import { SmsService } from "./core/sms.service";
 import { NgProgressModule } from 'ngx-progressbar';
 import { StreetsUrlService } from "./core/streets-url.service";
+import { FormErrorsService } from "./core/form-errors.service";
 
 
 @NgModule({
@@ -79,6 +80,7 @@ import { StreetsUrlService } from "./core/streets-url.service";
     AuthGuard,
     AuthService,
     DrainsUrlService,
+    FormErrorsService,
     SessionService,
     SmsService,
     StreetsUrlService,
