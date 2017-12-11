@@ -35,9 +35,14 @@ export class RegisterComponent implements OnInit {
   countryCode = "255";
   
   formatPhoneNumber(phoneNumber) {
+    var formattedNumber: any;
     if(phoneNumber.startsWith("0")) {
-        var formattedNumber = this.countryCode.concat(phoneNumber.slice(1))
-        return formattedNumber;
+      formattedNumber = this.countryCode.concat(phoneNumber.slice(1))
+      return formattedNumber;
+    }
+    else if(phoneNumber.startsWith("+")) {
+      formattedNumber = phoneNumber.replace("+","");
+      return formattedNumber;
     }
     else {
         return phoneNumber;
