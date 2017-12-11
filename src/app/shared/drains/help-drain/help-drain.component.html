@@ -44,7 +44,8 @@
 					<thead>
 					<tr class="w3-light-grey w3-border-bottom" >
             <th>{{'id' | translate}}</th>
-            <th>{{'name'| translate}}</th>
+						<th>{{'name'| translate}}</th>
+						<th>Hali ya Msaada</th>
             <th>{{'address' | translate}}</th>
             <!--<th>{{'claimed' | translate}}</th>-->
 						<th>{{'report_made' | translate}}</th>
@@ -56,15 +57,16 @@
           <tbody>
           <tr *ngFor="let drain of pagedDrains">
             <td><a (click)="helpmodal(drain.gid, drain.need_help_category.category_name, drain.help_needed)" >{{drain.gid}}</a></td>
-            <td>{{drain.need_help_category.category_name}}</td>
+						<td>{{drain.need_help_category.category_name}}</td>
+						<td>{{drain.status}}</td>
             <td>{{drain.user.street.street_name}}</td>
             <td>{{drain.created_at | date }}</td>
             <td  *ngIf="authService.isLoggedIn()">
 							{{drain.user.first_name}} {{drain.user.last_name}}</td>
 						<td *ngIf="veoStatusColumn">
-							<button (click)="updateStatus(drain, 'MUENDELEZO')">MUENDELEZO</button></td>
+							<button [disabled] = "drain.status == 'MUENDELEZO'" (click)="updateStatus(drain, 'MUENDELEZO')">MUENDELEZO</button></td>
 						<td *ngIf="weoStatusColumn">
-								<button (click)="updateStatus(drain, 'VIMEFANYIKA')">VIMEFANYIKA</button></td>
+								<button [disabled] = "drain.status == 'VIMEFANYIKA'" (click)="updateStatus(drain, 'VIMEFANYIKA')">VIMEFANYIKA</button></td>
           </tr>
 
             <div id="helpdetails" class="w3-modal w3-margin-top">
