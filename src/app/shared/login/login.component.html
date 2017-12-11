@@ -4,11 +4,11 @@
     <div class="w3-center"><br>
       <span (click)="closelogin()" class="w3-button w3-xlarge w3-hover-red w3-display-topright w3-padding" title="Close Modal">&times;</span>
     </div>
-    <div class="w3-center" *ngIf="loginCalled && !authService.loginRes">
+    <div id="errors" class="w3-center" *ngIf="loginCalled && !authService.loginRes">
       <p class="w3-text-red w3-large">Wrong phone number or password. Login failed</p>
     </div>
     
-    <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+    <form id="loginForm" name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
       <div class="w3-section w3-padding">
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
           <label><b>{{'username'| translate}}</b></label>

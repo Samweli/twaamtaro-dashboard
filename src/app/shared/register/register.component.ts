@@ -75,6 +75,9 @@ export class RegisterComponent implements OnInit {
   
     closemodal() 
     {
+      document.getElementById("errors").innerHTML = " ";
+      var theForm = <HTMLFormElement>document.getElementById("regForm");
+      theForm.reset();
       var modal = document.getElementById('registermodal');
       window.onclick = function(event) {
           if (event.target == modal) {
@@ -82,7 +85,10 @@ export class RegisterComponent implements OnInit {
           }
       }
     }
-    closeregister(){ 
+    closeregister(){
+      document.getElementById("errors").innerHTML = " ";
+      var theForm = <HTMLFormElement>document.getElementById("regForm");
+      theForm.reset();
       document.getElementById('registermodal').style.display='none';
     }
   ngOnInit() {

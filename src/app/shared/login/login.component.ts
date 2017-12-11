@@ -82,6 +82,9 @@ export class LoginComponent implements OnInit {
   
   closemodal() 
   {
+    document.getElementById("errors").innerHTML = " ";
+    var theForm = <HTMLFormElement>document.getElementById("loginForm");
+    theForm.reset();
     var modal = document.getElementById('loginmodal');
     window.onclick = function(event) {
       if (event.target == modal) {
@@ -90,7 +93,10 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  closelogin(){ 
+  closelogin(){
+    document.getElementById("errors").innerHTML = " ";
+    var theForm = <HTMLFormElement>document.getElementById("loginForm");
+    theForm.reset();
     document.getElementById('loginmodal').style.display='none';
   }
 

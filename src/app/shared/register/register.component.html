@@ -4,7 +4,7 @@
     <div class="w3-center"><br>
       <span (click)="closeregister()" class="w3-button w3-xlarge w3-hover-red w3-display-topright w3-padding" title="Close Modal">&times;</span> 
     </div>
-      <div *ngIf="!regStatus && isCalled" class="w3-margin">
+      <div id="errors" *ngIf="!regStatus && isCalled" class="w3-margin">
         <div class="w3-panel w3-padding w3-border w3-border-red w3-pale-red">
           <p class="w3-center w3-large w3-text-red">Registration failed.</p>
         </div>
@@ -14,7 +14,7 @@
           <p class="w3-center w3-large w3-text-green">Registration successful.<p>
         </div>
       </div>
-    <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
+    <form id="regForm" name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
       <div class="w3-container w3-section w3-padding">
         <div class="w3-row>">
       <div class="form-group w3-half w3-padding" [ngClass]="{ 'has-error': f.submitted && !firstName.valid }">
