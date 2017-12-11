@@ -53,7 +53,7 @@ export class UserService {
     return this.http.post(this.urlService.localUrl+this.urlService.leaderRequestsUrl,JSON.stringify(data),
       {headers: this.headers})
     .map(res =>  {
-      this.leaderRequests = res.json().leaders ;
+      this.leaderRequests = res.json().leaders;
       this.totalRequests = this.leaderRequests.length
 
     })

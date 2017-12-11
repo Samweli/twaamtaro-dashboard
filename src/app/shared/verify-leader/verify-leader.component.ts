@@ -57,19 +57,24 @@ export class VerifyLeaderComponent implements OnInit {
   }
 
   filterCondition(data):boolean{
-    let street = JSON.parse(this.sessionService.getUserStreet());
-    let bool = data.street.street_name == street.street_name ;
-    return bool;
+    if(this.sessionService.hasRole('weo')) {
+      let street = JSON.parse(this.sessionService.getUserStreet());
+      let bool = data.street.ward_name == street.ward_name;
+      return bool;
+    }
+    else if(this.sessionService.hasRole('community_member')){
+      let street = JSON.parse(this.sessionService.getUserStreet());
+      let munc = data.street.municipal_name == street.municipal_name;
+      return munc;
+    }
 
   }
 checkLoggedInUser(){
 
-    if(this.sessionService.hasRole('weo')){
-      console.log('weo');
+    if(this.sessionService.hasRole('weo' )){
       this.getRequests({role_name:'veo'});
     }
     else if(this.sessionService.hasRole('community_member')){
-      console.log('community_member');
       this.getRequests({role_name:'weo'});
     }
 }
