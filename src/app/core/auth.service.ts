@@ -7,8 +7,9 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AuthService {
 
-  // private loginUrl = `http://twaamtaro.org/api/v1/sessions/`;
-  private loginUrl = `http://localhost:3000/api/v1/sessions/`
+  private loginUrl = `http://twaamtaro.org/api/v1/sessions/`;
+  private localLoginUrl = `http://localhost:3000/api/v1/sessions/`;
+
   private headers = new Headers({'Content-Type': 'application/json'});
   loggedIn: any;
   userdata: any;
@@ -23,7 +24,7 @@ export class AuthService {
     ) { }
 
   login(user): any {
-    return this.http.post(this.loginUrl, {user}, {headers: this.headers})
+    return this.http.post(this.localLoginUrl, {user}, {headers: this.headers})
         .map(res => {
             this.userdata = res.json();
            })

@@ -1,0 +1,22 @@
+<form id="reportForm" >
+  <label><b>{{'location' | translate }}</b></label>
+  <div class="w3-row-padding">
+  <div class="w3-col s12 m3">
+    <select class="w3-select" [ngModel] = "selectedStreet" (ngModelChange)= "onChange($event, 'municipal_name' ) " name="street" placeholder="Mtaa">
+      <option  *ngFor=" let s of streets" [ngValue] = "s.municipal_name">{{s.municipal_name}}</option>
+    </select>
+  </div>
+
+  <div class="w3-col s12 m3">
+    <select class="w3-select" [ngModel] = "selectedStreet" (ngModelChange)= "onChange($event, 'ward_name')" name="street" placeholder="Mtaa">
+      <option  *ngFor=" let s of streets" [ngValue] = "s.ward_name">{{s.ward_name}}</option>
+    </select>
+  </div>
+
+  <div class="w3-col s12 m3">
+    <select class="w3-select" [ngModel] = "selectedStreet" (ngModelChange)= "onChange($event, 'street_name')" name="street" placeholder="Mtaa">
+      <option  *ngFor=" let s of streets" [ngValue] = "s.street_name">{{s.street_name}}</option>
+    </select>
+  </div>
+  </div>
+</form>

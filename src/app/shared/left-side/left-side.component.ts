@@ -9,6 +9,7 @@ import { TranslateService } from "../../translate/translate.service";
   styleUrls: ['./left-side.component.css']
 })
 export class LeftSideComponent implements OnInit {
+
   constructor(
     public authService: AuthService,
     public sessionService: SessionService,
@@ -16,8 +17,14 @@ export class LeftSideComponent implements OnInit {
   ) { }
   notifyCitizens() {
   }
+
   theUser = JSON.parse(this.sessionService.getLoggedUser());
-  // loggedUser = this.theUser.first_name + " " +this.theUser.last_name ;
+
+  loggedUser: any = {};
+  if (theUser) {
+    this.loggedUser = this.theUser.first_name + " " +this.theUser.last_name ;
+  }
+
 
   public translatedText: string;
   public supportedLanguages: any[];
