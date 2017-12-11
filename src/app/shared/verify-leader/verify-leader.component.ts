@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from "./../../core/user.service";
 import {Router} from "@angular/router";
+import {SessionService} from "../../core/session.service";
 
 @Component({
   selector: 'app-verify-leader',
@@ -10,7 +11,8 @@ import {Router} from "@angular/router";
 export class VerifyLeaderComponent implements OnInit {
   constructor(
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private sessionService: SessionService
   ) { }
 
   errMsg: any;
@@ -55,7 +57,8 @@ export class VerifyLeaderComponent implements OnInit {
   }
 
   filterCondition(data):boolean{
-    let bool = data.street.street_name == "Kisutu" && data.role_requested == 2;
+    let street = JSON.parse(this.sessionService.getUserStreet());
+    let bool = data.street.street_name == street.street_name;
     return bool;
 
   }

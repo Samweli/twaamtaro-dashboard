@@ -17,8 +17,8 @@ export class LeftSideComponent implements OnInit {
   notifyCitizens() {
   }
   theUser = JSON.parse(this.sessionService.getLoggedUser());
-  loggedUser = this.theUser.first_name + " " +this.theUser.last_name ;
-  
+  // loggedUser = this.theUser.first_name + " " +this.theUser.last_name ;
+
   public translatedText: string;
   public supportedLanguages: any[];
   supportedLangs: any;
