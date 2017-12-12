@@ -30,6 +30,8 @@ export class HelpDrainComponent implements OnInit {
   searchKey: any;
   weoStatusColumn: boolean = false;
   veoStatusColumn: boolean = false;
+  disableWardSelect: boolean = true;
+  disableStreetSelect: boolean = true;
 
   constructor(
     private drainService: DrainsService,
@@ -46,12 +48,10 @@ export class HelpDrainComponent implements OnInit {
     var days = hours * 24;
     var years = days * 365;
 
-    console.log (d);
     this.dateCreated = new Date("d");
 
-    console.log (this.dateCreated);
     this.daysGone = Math.floor((this.today - this.dateCreated) / days);
-    console.log (this.daysGone);
+    
   }
 //Fetches all drains in need of help and their details
   getFilteredDrains(status?): any {
@@ -68,39 +68,32 @@ export class HelpDrainComponent implements OnInit {
 
 // filters need help drains based on their regions(stree,ward, municipal)
   drainFilter(data:any,key?):any{
-
-    console.log("inside parent component");
-
-    console.log(key);
-
-     this.pagedDrains = this.drains.filter(drain => drain.user.street[key.level] == key.event);
-    console.log(this.drains);
+    if(key.level == "municipal_name"){
+      console.log('inside municipal level')
+      this.pagedDrains = this.drains.filter(drain => drain.user.street[key.level] == key.event);
+      this.disableWardSelect = false;
+    }
+    else if(key.level == "ward_name"){
+      this.pagedDrains = this.pagedDrains.filter(drain => drain.user.street[key.level] == key.event);
+      this.disableStreetSelect = false; 
+      
+    }
+    else if(key.level == "street_name"){
+      this.pagedDrains = this.pagedDrains.filter(drain => drain.user.street[key.level] == key.event); 
+    }
   }
 
 
 // filters need help drains based on their status
   statusFilter(pagedDrains,key):any{
-    
-        console.log("inside parent component, status filter");
-    
-        console.log(key);
-    
         this.pagedDrains = this.drains.filter(drain => drain.status == key);
-        console.log(this.drains);
       }
 
   updateStatus(data: any, statusValue: string){
-
     this.drainService.update_status({need_help_id: data.id, status: statusValue})
     .subscribe( res => {
-      console.log('it worked');
-      console.log(res);
     }, err => {
-      console.log('error occured');
-      console.log(err);
     })
-console.log("update status button clicked");
-console.log(data);
   }    
 
   setPage(page: number) {
@@ -155,19 +148,21 @@ console.log(data);
   isLoggedIn()
   {
       this.loggedIn = this.authService.isLoggedIn();
-      console.log(this.loggedIn)
   }
 
   conditionalInitializer(){
     if(this.sessionService.hasRole("weo")){
-      console.log('weo column initalize')
       this.weoStatusColumn = this.sessionService.hasRole("weo")
     }
     else if(this.sessionService.hasRole("veo")){
-      console.log('veo column initailized')
       this.veoStatusColumn = this.sessionService.hasRole("veo")
     }
 
+  }
+
+  onChange(data){
+    console.log('on change called');
+    console.log(data);
   }
 
   ngOnInit(): void {

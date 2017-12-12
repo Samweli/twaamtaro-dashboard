@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Input, Output} from '@angular/core';
 import {StreetService} from "../../core/streets.service";
 
 @Component({
@@ -8,16 +8,22 @@ import {StreetService} from "../../core/streets.service";
 })
 export class RegionalFiltersComponent implements OnInit {
 
+  @Input()
+  disableWardSelect: boolean = true;
+
+  @Input()
+  disableStreetSelect: boolean = true;
+
   @Output()
     selectValueChaged: EventEmitter<any> = new EventEmitter();
   streets: any = [];
   selectedStreet: any ={};
+  selectedWard: any ={};
+  selectedMunicipal: any ={};
 
   constructor(private streetService: StreetService) { }
 
   onChange($event,level?){
-    console.log("inside child component");
-    console.log($event);
     this.selectValueChaged.emit({event: $event, level: level});
 
   }
@@ -25,8 +31,6 @@ export class RegionalFiltersComponent implements OnInit {
     this.streetService.getStreets()
       .subscribe(res => {
         this.streets = res;
-        console.log('streets');
-        console.log(res);
       })
   }
 
