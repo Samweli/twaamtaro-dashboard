@@ -31,11 +31,17 @@ export class VerifyLeaderComponent implements OnInit {
     this.theRequest = {
       "user_id": userId, 
       "role_id": roleId
+<<<<<<< HEAD
     };
     this.userService.verifyLeader(JSON.stringify(this.theRequest))
+=======
+    }
+    this.userService.verifyLeader(this.theRequest)
+>>>>>>> parent of 7a55478... new setup
     .subscribe(res => {
       this.verifyRes = this.userService.verifyResponse;         
-     })
+     }
+    )
   }
 
   ngOnInit() {
