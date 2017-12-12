@@ -66,7 +66,7 @@ constructor(private drainService: DrainsService, private userService: UserServic
 // import { UserService } from "./../users/user.service";
 // import { DrainsService } from './../drains/drains.service';
 // import { Drain } from './../drains/drain';
-// import {TranslateService} from "../../transilate/translate.service";
+// import {TranslateService} from "../../translate/translate.service";
 //
 // @Component({
 //   selector: 'app-notification-bar',

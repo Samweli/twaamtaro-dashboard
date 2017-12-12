@@ -43,10 +43,10 @@ import { DrainsService } from './../core/drains.service';
 import { HeaderModule } from "./header/header.module";
 import { PagerService } from './../core/paging.service';
 import { StreetService } from "./../core/streets.service";
-import { TranslateService } from "../transilate/translate.service";
-import { TransilateModule } from "../transilate/transilate.module";
-import { TranslatePipe } from "../transilate/translate.pipe";
-import { TRANSLATION_PROVIDERS } from "../transilate/translation/translation.component";
+import { TranslateService } from "../translate/translate.service";
+import { TranslateModule } from "../translate/translate.module";
+import { TranslatePipe } from "../translate/translate.pipe";
+import { TRANSLATION_PROVIDERS } from "../translate/translation/translation.component";
 import { UserService } from './../core/user.service';
 
 import { StreetVEOPipe, UserStreetPipe } from "./../core/user.pipe";
@@ -70,7 +70,7 @@ import { VerifyLeaderComponent } from './verify-leader/verify-leader.component';
     FormsModule,
     NotificationBarModule,
     HeaderModule,
-    TransilateModule,
+    TranslateModule,
     SharedRoutingModule,
   ],
   declarations: [

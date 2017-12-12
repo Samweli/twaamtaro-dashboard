@@ -6,6 +6,9 @@ import { AuthService } from "./../../core/auth.service";
 import { DrainsService } from './../../core/drains.service';
 import { SessionService } from "../../core/session.service";
 import { UserService } from "./../../core/user.service";
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { FormErrorsService } from "./../../core/form-errors.service";
+import { Input } from '@angular/core/src/metadata/directives';
 
 @Component({
   selector: 'app-register',
@@ -20,17 +23,43 @@ export class RegisterComponent implements OnInit {
     public ngProgress: NgProgress,
     private router: Router,
     private userService: UserService,
+    private formErrorsService: FormErrorsService
   ) { }
+
+  regStatus: any;
   regUser: any;
   streets: any;
+  isCalled: any = false;
+  inputsToFormat: any = {'password':'','phone':''};
+  user: any = {'first_name': '','last_name': '','email': '','street_id': '','sms_number': 'userPho', 'password': '' };
+  countryCode = "255";
+  
+  formatPhoneNumber(phoneNumber) {
+    var formattedNumber: any;
+    if(phoneNumber.startsWith("0")) {
+      formattedNumber = this.countryCode.concat(phoneNumber.slice(1))
+      return formattedNumber;
+    }
+    else if(phoneNumber.startsWith("+")) {
+      formattedNumber = phoneNumber.replace("+","");
+      return formattedNumber;
+    }
+    else {
+        return phoneNumber;
+    }
+  }
 
-  user: any = { 'first_name': '','last_name': '','email': '','street_id': '','sms_number': '','password': '' };
+  
   register() {
+    this.isCalled = true;
     this.ngProgress.start();
-    console.log(this.user)
+    this.user.sms_number = this.formatPhoneNumber(this.inputsToFormat.phone);
+
     this.userService.createUser(this.user)
     .subscribe(res => {
-      this.regUser = this.authService.userdata;           
+       this.regStatus  = this.userService.regRes.success;
+     }, error => {
+      this.formErrorsService.error(error);
      });
      this.ngProgress.done();
     }
@@ -44,18 +73,24 @@ export class RegisterComponent implements OnInit {
   
     }
   
-  closemodal() 
-  {
-    var modal = document.getElementById('registermodal');
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
+    closemodal() 
+    {
+      document.getElementById("errors").innerHTML = " ";
+      var theForm = <HTMLFormElement>document.getElementById("regForm");
+      theForm.reset();
+      var modal = document.getElementById('registermodal');
+      window.onclick = function(event) {
+          if (event.target == modal) {
+              modal.style.display = "none";
+          }
+      }
     }
-  }
-  closeregister(){ 
-    document.getElementById('registermodal').style.display='none';
-  }
+    closeregister(){
+      document.getElementById("errors").innerHTML = " ";
+      var theForm = <HTMLFormElement>document.getElementById("regForm");
+      theForm.reset();
+      document.getElementById('registermodal').style.display='none';
+    }
   ngOnInit() {
     this.closemodal();
     this.getStreet();

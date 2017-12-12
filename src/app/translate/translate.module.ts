@@ -9,4 +9,4 @@ import {TranslationComponent} from "./translation/translation.component";
   declarations: [
   TranslationComponent]
 })
-export class TransilateModule { }
+export class TranslateModule { }
