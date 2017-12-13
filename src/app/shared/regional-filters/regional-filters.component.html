@@ -3,19 +3,19 @@
   <div class="w3-row-padding">
   <div class="w3-col s12 m3">
     <select  class="w3-select" [ngModel] = "selectedMunicipal" (ngModelChange)= "onChange($event, 'municipal_name' ) " name="municipal">
-      <option  *ngFor=" let s of streets" [ngValue] = "s.municipal_name">{{s.municipal_name}}</option>
+      <option  *ngFor=" let m of municipals" [ngValue] = "m">{{m.municipal_name}}</option>
     </select>
   </div>
 
   <div class="w3-col s12 m3">
     <select [disabled] = "disableWardSelect" class="w3-select" [ngModel] = "selectedWard" (ngModelChange)= "onChange($event, 'ward_name')" name="ward" >
-      <option  *ngFor=" let s of streets" [ngValue] = "s.ward_name">{{s.ward_name}}</option>
+      <option  *ngFor=" let w of wards" [ngValue] = "w">{{w.ward_name}}</option>
     </select>
   </div>
 
   <div class="w3-col s12 m3">
     <select [disabled] = "disableStreetSelect" class="w3-select" [ngModel] = "selectedStreet" (ngModelChange)= "onChange($event, 'street_name')" name="street" >
-      <option  *ngFor=" let s of streets" [ngValue] = "s.street_name">{{s.street_name}}</option>
+      <option  *ngFor=" let s of streets" [ngValue] = "s">{{s.street_name}}</option>
     </select>
   </div>
   </div>

@@ -17,6 +17,9 @@ export class RegionalFiltersComponent implements OnInit {
   @Output()
     selectValueChaged: EventEmitter<any> = new EventEmitter();
   streets: any = [];
+  wards: any = []
+  municipals: any = [];
+
   selectedStreet: any ={};
   selectedWard: any ={};
   selectedMunicipal: any ={};
@@ -24,6 +27,14 @@ export class RegionalFiltersComponent implements OnInit {
   constructor(private streetService: StreetService) { }
 
   onChange($event,level?){
+    if($event.municipal_name){
+      console.log($event)
+      this.getMunicipalsWards($event.id);
+    }
+    else if($event.ward_name){
+      this.getWardStreets($event.id);
+    }
+
     this.selectValueChaged.emit({event: $event, level: level});
 
   }
@@ -34,8 +45,40 @@ export class RegionalFiltersComponent implements OnInit {
       })
   }
 
+  // gets all municipals from a service
+  getMunicipals(){
+    this.streetService.getMunicipals()
+    .subscribe(res => {
+      this.municipals = res;
+    }, err => {
+    })
+  }
+
+  // gets all wards by municipal id from a service
+  getMunicipalsWards(id){
+    this.streetService.getMunicipalWards(id)
+    .subscribe(res => {
+      this.wards = res;
+    }, err => {
+    })
+  }
+
+  // gets all wards by municipal id from a service
+  getWardStreets(id){
+    this.streetService.getWardStreets(id)
+    .subscribe(res => {
+      this.streets = res;
+    }, err => {
+    })
+  }
+
+
+
+  
+
   ngOnInit() {
-    this.getStreets()
+    this.getMunicipals()
+    
   }
 
 }
