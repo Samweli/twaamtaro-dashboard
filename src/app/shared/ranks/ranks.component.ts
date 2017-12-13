@@ -4,8 +4,9 @@ import { DrainsService } from './../../core/drains.service';
 import { AuthService} from "./../../core/auth.service";
 import { ChartSelectEvent } from 'ng2-google-charts';
 import { UserService } from "./../../core/user.service";
-import { NgProgress } from 'ngx-progressbar';
 import {TranslateService} from "../../transilate/translate.service";
+import { NgProgress } from 'ngx-progressbar';
+
 
 @Component({
   selector: 'app-ranks',
@@ -35,10 +36,11 @@ export class RanksComponent implements OnInit, AfterViewInit {
     private drainService: DrainsService,
     public authService: AuthService,
     private userService: UserService,
-    public ngProgress: NgProgress,
-    private _translate: TranslateService
-  ) { }
-  
+    private _translate: TranslateService,
+    public ngProgress: NgProgress
+ ) { }
+
+
   loggedIn: any;
 
   //Checks if a user is loggen in
@@ -84,7 +86,7 @@ export class RanksComponent implements OnInit, AfterViewInit {
 
   //Fetch Ranking Data and generate ranking table.
   ranksData(): void {
-    this.ngProgress.start(); 
+    this.ngProgress.start();
     this.drainService
         .getRanksData()
         .subscribe(
@@ -131,7 +133,7 @@ export class RanksComponent implements OnInit, AfterViewInit {
 
           }
         );
-    this.ngProgress.done(); 
+    this.ngProgress.done();
   }
   refreshText (){
     this.ranksData();
