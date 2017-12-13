@@ -11,7 +11,7 @@ import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class UserService {
-  private headers = new Headers({'Authorization': 'Token token="gM7TM10gfRFZBlkNNcqg9A", email="example-2@twaamtaro.org"', 'Content-Type': ' ' });
+  private headers = new Headers({'Authorization': '', 'Content-Type': '' });
 
   constructor(private http: Http, private urlService: UsersUrlService) { }
   users: User[];

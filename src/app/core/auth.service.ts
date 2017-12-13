@@ -23,23 +23,9 @@ export class AuthService {
     login(user): any {
         return this.http.post(this.loginUrl, { user }, { headers: this.headers })
             .map(res => {
-                this.userdata = res.json();
-
-                if (this.userdata && this.userdata.users.authentication_token) {
-                    localStorage.setItem('currentUser', JSON.stringify(this.userdata.users.authentication_token));
-
-                    /* New localStorage Data */
-                    localStorage.setItem('loggedUser', JSON.stringify(this.userdata.users));
-                    localStorage.setItem('roles', JSON.stringify(this.userdata.users.roles));
-                    localStorage.setItem('street', JSON.stringify(this.userdata.users.street));
-
-                    location.reload();
-                    this.router.navigate(['dashboard/admin']);
-
-                }
-
-            })
-            .catch(this.handleError);
+            this.userdata = res.json();
+        })
+        .catch(this.handleError);
     }
 
     isLoggedIn() {
