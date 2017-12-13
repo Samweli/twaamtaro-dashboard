@@ -5,3 +5,6 @@ li a > span{
 .skin-blue .sidebar a {
   color: white;
 }
+.pull-right.w3-padding{
+  cursor: pointer;
+}

@@ -2,9 +2,12 @@ export const LANG_EN_NAME ='en';
 
 export const LANG_EN_TRANS = {
 
-  'login': 'Sign In',
+  'login': 'Login',
+  'signin': 'Sign In',
   'register': 'Register',
   'signout': 'Sign out',
+  'username': 'Username',
+  'password': 'Password',
   'clean':'Clean Drains',
   'all': 'All Drains',
   'dirty': 'Dirty Drains',
@@ -52,14 +55,37 @@ export const LANG_EN_TRANS = {
   //buttons
   'send': 'Generate Report',
   'submit': 'Submit',
+  'cancel': 'Cancel',
   'first':'First',
   'previous': 'Previous',
   'next': 'Next',
   'last': 'Last',
   'alert': 'Alert VEO',
+  'send_alert': 'Send Alert Messages',
+  'send_awareness': 'Send Awareness Messages',
+  'veo': 'Send message to VEO',
+  'filter': 'Filters',
+  'submitted': 'Submitted',
+  'progress': 'Processing',
+  'done': 'Done',
+  'archive': 'Archived',
+  'all_button': 'All',
+
 
   /*notification*/
   'message':'A message has been sent',
+  'admin': 'Admin Dashboard Space',
+  'alert_user': 'Alert message',
+  'alert_message': 'Notify your citizens that the rain season is coming and they have make sure that their drains are clean.',
+  'send_message': 'Choose the kind of messages you want to send ',
+  'aware_user': 'Awareness message',
+  'awareness_message':'Send awareness messages to your citizens. You can tell them about the importance of cleanness in their environment, or randomly inform them about something concerning cleanness in their areas.',
+  'modify': 'Modify',
+  'send_msg': 'Send',
+  'box-msg': 'the message in the message box ',
+  'or': 'Or',
+  'no_status': 'No',
+  'yes_status': 'Yes',
 
 //  footer
   'copyright': 'Copyright',
