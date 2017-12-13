@@ -18,6 +18,7 @@ export class UserService {
   verifyResponse: any;
   totalRequests: any;
   leaderRequests: any;
+  regRes: any;
 
   getUsers(): any {
     return this.http.get(this.urlService.apiUrl+this.urlService.usersUrl,
@@ -34,7 +35,9 @@ export class UserService {
 
   createUser(user: User) {
     return this.http.post(this.urlService.apiUrl+this.urlService.usersUrl, user)
-    .map((response: Response) => response.json().users)
+    .map((response: Response) => {
+      this.regRes = response.json();
+    })
     .catch(this.errorHandler);
   }
     
