@@ -18,27 +18,42 @@ export class LoginComponent implements OnInit {
         public router: Router,
         public sessionService: SessionService ) { }
   
-  userData: any;
-  loginStatus: any;
-  theUser: any;
-  user: any = { 'sms_number': '','password': '' };
+  countryCode = "255";
+  inputsToFormat = { 'phone': '' };
   loginCalled: any = false;
+  loginStatus: any;
+  user: any = { 'sms_number': '','password': '' };
+  userData: any;
+  theUser: any;
+  
+  formatPhoneNumber(phoneNumber) {
+    var formattedNumber: any;
+    if (phoneNumber.startsWith("0")) {
+      formattedNumber = this.countryCode.concat(phoneNumber.slice(1))
+      return formattedNumber;
+    }
+    else if (phoneNumber.startsWith("+")) {
+      formattedNumber = phoneNumber.replace("+", "");
+      return formattedNumber;
+    }
+    else {
+      return phoneNumber;
+    }
+  }
 
   login() {
     this.ngProgress.start();
-    
+    this.user.sms_number = this.formatPhoneNumber(this.inputsToFormat.phone);
     this.authService.login(this.user)
       .subscribe(res => {
-
         this.loginCalled = true;
         this.userData = this.authService.userdata;
-
-        
+        this.ngProgress.done();        
       }, error => {
         this.loginCalled = true;
         this.formErrorsService.error(error);
+        this.ngProgress.done();
       });
-    this.ngProgress.done();
   };
 
   logout() { 
