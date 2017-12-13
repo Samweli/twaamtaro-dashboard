@@ -1,22 +1,42 @@
 <div id="loginmodal" class="w3-modal">
   <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
 
-    <div class="w3-center"><br>
+    <div class="w3-center">
+      <br>
       <span (click)="closelogin()" class="w3-button w3-xlarge w3-hover-red w3-display-topright w3-padding" title="Close Modal">&times;</span>
-
     </div>
-    <form id="loginForm">
-        <div class="w3-section w3-padding">
-        <label><b>{{'username'| translate}}</b></label>
-        <input class="w3-input w3-border w3-margin-bottom" [(ngModel)]="user.sms_number" name="username" type="text" placeholder="Enter Username" required>
-        <label><b>{{'password'| translate}}</b></label>
-        <input class="w3-input w3-border" [(ngModel)]="user.password" type="password" name="password" placeholder="Enter Password" required>
-        <button (click)="login()" class="w3-button w3-block w3-green w3-section w3-padding" type="submit">{{'login'| translate}}</button>
+    <div class="w3-center" *ngIf="loginCalled && !authService.loginRes">
+      <p class="w3-text-red w3-large">Wrong phone number or password. Login failed</p>
+    </div>
+
+    <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+      <div class="w3-section w3-padding">
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+          <label>
+            <b>Phone Number</b>
+          </label>
+          <input id="smsNumber" class="w3-input w3-border w3-margin-bottom" [(ngModel)]="user.sms_number" name="username" type="text"
+            placeholder="Enter Phone Number" #username=ngModel required>
+          <span *ngIf="f.submitted && !username.valid" class="help-block">Phone Number</span>
         </div>
-    </form>
-    <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-      <button (click)="closelogin()" class="w3-right w3-btn w3-red">{{'cancel'| translate}}</button>
-      <!--span class="w3-right w3-padding w3-hide-small">Forgot <a href="#">password?</a></span-->
-    </div>
 
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+          <label>
+            <b>Password</b>
+          </label>
+          <input class="w3-input w3-border" [(ngModel)]="user.password" type="password" name="password" placeholder="Enter Password"
+            #password="ngModel" required>
+          <span *ngIf="f.submitted && !password.valid" class="help-block">Password</span>
+        </div>
+      </div>
+
+      <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+        <section class="w3-right form-group">
+          <button [disabled]="loading" class="w3-btn w3-green w3-padding" type="submit">Login</button>
+          <button (click)="closelogin()" class=" w3-btn w3-red w3-padding">Cancel</button>
+          <!--span class="w3-right w3-padding w3-hide-small">Forgot <a href="#">password?</a></span-->
+        </section>
+      </div>
+    </form>
   </div>
+</div>

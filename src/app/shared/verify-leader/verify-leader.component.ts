@@ -11,21 +11,28 @@ export class VerifyLeaderComponent implements OnInit {
     private userService: UserService,
   ) { }
 
-  title = 'Citizens';
+  title = 'Citizens Leadership Requests';
   errMsg: any;
   verifyRes: any;
   leaderRequests : any;
+  allRequests : any;
+  theRequest : any;
 
   //Getting Street leader requests 
   getRequests() {
     this.userService.getLeaderRequests()
       .subscribe(res => { 
         this.leaderRequests = this.userService.leaderRequests; 
+        this.allRequests = this.userService.totalRequests
       })
   }
 
-  verifyLeader(userId): any {
-    this. userService.verifyLeader(userId)
+  verifyLeader(userId,roleId): any {
+    this.theRequest = {
+      "user_id": userId, 
+      "role_id": roleId
+    }
+    this.userService.verifyLeader(this.theRequest)
     .subscribe(res => {
       this.verifyRes = this.userService.verifyResponse;         
      }
