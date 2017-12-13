@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit {
     private formErrorsService: FormErrorsService
   ) { }
 
+  countryCode = "255";
   regStatus: any;
   regUser: any;
   streets: any;
@@ -32,9 +33,25 @@ export class RegisterComponent implements OnInit {
   inputsToFormat: any = { 'password': '' };
   user: any = { 'first_name': '', 'last_name': '', 'email': '', 'street_id': '', 'sms_number': '', 'password': '' };
 
+  formatPhoneNumber(phoneNumber) {
+    var formattedNumber: any;
+    if (phoneNumber.startsWith("0")) {
+      formattedNumber = this.countryCode.concat(phoneNumber.slice(1))
+      return formattedNumber;
+    }
+    else if (phoneNumber.startsWith("+")) {
+      formattedNumber = phoneNumber.replace("+", "");
+      return formattedNumber;
+    }
+    else {
+      return phoneNumber;
+    }
+  }
+
   register() {
-    
     this.ngProgress.start();
+    this.user.sms_number = this.formatPhoneNumber(this.inputsToFormat.phone);
+    
     this.userService.createUser(this.user)
       .subscribe(res => {
         this.regUser = this.userService.regRes; 

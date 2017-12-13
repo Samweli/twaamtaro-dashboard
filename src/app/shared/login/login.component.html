@@ -15,7 +15,7 @@
           <label>
             <b>Phone Number</b>
           </label>
-          <input id="smsNumber" class="w3-input w3-border w3-margin-bottom" [(ngModel)]="user.sms_number" name="username" type="text"
+          <input id="smsNumber" class="w3-input w3-border w3-margin-bottom" [(ngModel)]="inputsToFormat.phone" name="username" type="text"
             placeholder="Enter Phone Number" #username=ngModel required>
           <span *ngIf="f.submitted && !username.valid" class="help-block">Phone Number</span>
         </div>
