@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from "./../../core/auth.service";
-import {Router} from "@angular/router";
-import {SessionService} from "../../core/session.service";
+import { Router } from "@angular/router";
+import { AuthService } from "./../../core/auth.service";
+import { FormErrorsService } from "./../../core/form-errors.service";
+import { SessionService } from "../../core/session.service";
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,23 +11,24 @@ import {SessionService} from "../../core/session.service";
 })
 export class LoginComponent implements OnInit {
   constructor (
-        private authService: AuthService,
-        private router: Router,
-        private sessionService: SessionService ) { }
+        public authService: AuthService,
+        public formErrorsService: FormErrorsService,
+        public router: Router,
+        public sessionService: SessionService ) { }
   
-  closelogin(){ 
-    document.getElementById('loginmodal').style.display='none';
-  }
-
   userData: any;
   loginStatus: any;
   theUser: any;
   user: any = { 'sms_number': '','password': '' };
+  
   login() {
     this.authService.login(this.user)
     .subscribe(res => {
-      this.userData = this.authService.userdata;           
-     });
+      this.userData = this.authService.userdata;
+      },
+      error => {
+         this.formErrorsService.error(error);
+      });
 
     }
 
@@ -33,7 +36,19 @@ export class LoginComponent implements OnInit {
    this.authService.logout();
    this.router.navigateByUrl('/');
   }
-  
+
+  closelogin() {
+    document.getElementById('loginmodal').style.display = 'none';
+  }
+
+  closemodal() {
+    var modal = document.getElementById('loginmodal');
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  }
   ngOnInit() {
   }
 }
