@@ -19,6 +19,7 @@ export class DashboardComponent implements OnInit {
   chartTitle: string;
   errMsg: any; // Error Message
 
+
 constructor(
   private drainService: DrainsService,
   public ngProgress: NgProgress,
@@ -26,7 +27,7 @@ constructor(
 ) { }
 
   drainData(): void {
-    this.ngProgress.start(); 
+    this.ngProgress.start();
     this.drainService
         .getDrainData()
         .subscribe(data => {
@@ -59,11 +60,11 @@ constructor(
                 'title': this._translate.instant('title_drains'),
                 pieHole: 0.3,
                 height: 500,
-                colors:['#964f8e','grey']
+                colors:['#964f8f','grey']
                 },
         };
       });
-    this.ngProgress.done(); 
+    this.ngProgress.done();
   }
 
   refreshText() {
