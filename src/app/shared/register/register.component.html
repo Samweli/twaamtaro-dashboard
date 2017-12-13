@@ -60,25 +60,26 @@
             <div *ngIf="f.submitted && !street.valid" class="w3-text-red">Street is required</div>
           </div>
         </div>
-        <div class="w3-row">
+        <div class="w3-row"><!-- Passwords Row -->
           <div class="form-group w3-half w3-padding" [ngClass]="{ 'has-error': f.submitted && !userPass.valid }">
-            <label>
-              <b>Password</b>
-            </label>
-            <input class="w3-input w3-border" [(ngModel)]="user.password" type="password" name="userPass" placeholder="Enter Password"
+            <label><b>Password</b></label>
+            <input class="w3-input w3-border" [(ngModel)]="user.password" type="password" minlength="6" name="userPass" placeholder="Enter Password"
               #userPass="ngModel" required>
-            <div *ngIf="f.submitted && !userPass.valid" class="w3-text-red"> Password is required</div>
+            <div *ngIf="f.submitted && !userPass.valid" class="w3-text-red w3-large">
+              <p *ngIf="userPass.pristine">Password is required </p>
+            </div>
           </div>
-
+        
           <div class="form-group w3-half w3-padding" [ngClass]="{ 'has-error': f.submitted && !confirmPass.valid }">
-            <label>
-              <b>Confirm Password</b>
-            </label>
-            <input class="w3-input w3-border" [(ngModel)]="userpass.password" type="password" name="confirmPass" placeholder="Confirm Password"
+            <label><b>Confirm Password</b></label>
+            <input class="w3-input w3-border" [(ngModel)]="inputsToFormat.password" type="password" name="confirmPass" placeholder="Confirm Password"
               #confirmPass="ngModel" required>
             <div *ngIf="f.submitted && !confirmPass.valid" class="w3-text-red">Enter your password again</div>
           </div>
-        </div>
+          <div *ngIf="f.submitted && !userPass.valid" class="w3-center w3-margin w3-text-red w3-large">
+            <p *ngIf="userPass.errors.minlength">Password must be at least 6 characters long. </p>
+          </div>
+        </div><!-- End Passwords Row -->
         <div *ngIf="(userPass.dirty && confirmPass.dirty && (userPass.value != confirmPass.value))" class="w3-margin">
           <p class="w3-center w3-text-red w3-large">Passwords don't match.</p>
         </div>

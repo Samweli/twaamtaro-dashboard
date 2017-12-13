@@ -29,18 +29,21 @@ export class RegisterComponent implements OnInit {
   regUser: any;
   streets: any;
   isCalled: any = false;
-  userpass: any = { 'password': '' }
+  inputsToFormat: any = { 'password': '' };
   user: any = { 'first_name': '', 'last_name': '', 'email': '', 'street_id': '', 'sms_number': '', 'password': '' };
 
   register() {
-    this.isCalled = true;
+    
     this.ngProgress.start();
     this.userService.createUser(this.user)
       .subscribe(res => {
-        this.regStatus = this.userService.regRes.success;
+        this.regUser = this.userService.regRes; 
+        this.regStatus = true;
+        this.isCalled = true;
         this.ngProgress.done();
       }, error => {
         this.formErrorsService.error(error);
+        this.ngProgress.done();
       });
   }
 
