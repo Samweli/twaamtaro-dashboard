@@ -11,13 +11,14 @@ import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class UserService {
-  private headers = new Headers({'Authorization': 'Token token="gM7TM10gfRFZBlkNNcqg9A", email="example-2@twaamtaro.org"', 'Content-Type': ' ' });
+  private headers = new Headers({'Authorization': '', 'Content-Type': '' });
 
   constructor(private http: Http, private urlService: UsersUrlService) { }
   users: User[];
   verifyResponse: any;
   totalRequests: any;
   leaderRequests: any;
+  regRes: any;
 
   getUsers(): any {
     return this.http.get(this.urlService.apiUrl+this.urlService.usersUrl,
@@ -32,9 +33,11 @@ export class UserService {
     .catch(this.errorHandler);          
   }
 
-  createUser(user: User) {
-    return this.http.post(this.urlService.localUrl+this.urlService.registerUserUrl, user)
-    .map((response: Response) => response.json().users)
+  createUser(user) {
+    return this.http.post(this.urlService.apiUrl+this.urlService.registerUserUrl, {user})
+    .map((response: Response) => {
+      this.regRes = response.json();
+    })
     .catch(this.errorHandler);
   }
     
