@@ -19,7 +19,6 @@ export class UserService {
   totalRequests: any;
   leaderRequests: any;
   regRes: any;
-  regStatus: any;
 
   getUsers(): any {
     return this.http.get(this.urlService.localUrl+this.urlService.usersUrl,

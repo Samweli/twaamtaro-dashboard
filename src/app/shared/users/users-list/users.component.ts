@@ -45,8 +45,8 @@ export class UsersComponent implements OnInit, AfterViewInit {
       if(street == users[index].street_id) {
         this.streetCount++
       }
-    }   
-    //console.log(this.streetCount)
+    }
+
     return this.streetCount
   }
   getStreetsPopulation(users) {
@@ -67,6 +67,8 @@ export class UsersComponent implements OnInit, AfterViewInit {
         .getUsers()
         .subscribe(user => {
           this.users = user;
+     //this.countStreetUsers(1,this.users) ;
+     this.getStreetsPopulation(this.users)
 
      //this.countStreetUsers(1,this.users) ;
      this.getStreetsPopulation(this.users);
