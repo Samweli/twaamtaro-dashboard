@@ -33,7 +33,7 @@ export class UserService {
   }
 
   createUser(user: User) {
-    return this.http.post(this.urlService.apiUrl+this.urlService.usersUrl, user)
+    return this.http.post(this.urlService.localUrl+this.urlService.registerUserUrl, user)
     .map((response: Response) => response.json().users)
     .catch(this.errorHandler);
   }
