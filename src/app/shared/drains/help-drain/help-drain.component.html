@@ -64,9 +64,9 @@
             <td  *ngIf="authService.isLoggedIn()">
 							{{drain.user.first_name}} {{drain.user.last_name}}</td>
 						<td *ngIf="veoStatusColumn">
-							<button [disabled] = "drain.status == 'MUENDELEZO'" (click)="updateStatus(drain, 'MUENDELEZO')">MUENDELEZO</button></td>
+							<button [disabled] = "drain.status == 'umethibitishwa'" (click)="updateStatus(drain, 'umethibitishwa')">umethibitishwa</button></td>
 						<td *ngIf="weoStatusColumn">
-								<button [disabled] = "drain.status == 'VIMEFANYIKA'" (click)="updateStatus(drain, 'VIMEFANYIKA')">VIMEFANYIKA</button></td>
+								<button [disabled] = "drain.status == 'umeshugulikiwa'" (click)="updateStatus(drain, 'umeshugulikiwa')">umeshugulikiwa</button></td>
           </tr>
 
             <div id="helpdetails" class="w3-modal w3-margin-top">

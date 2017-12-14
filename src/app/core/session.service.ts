@@ -9,15 +9,18 @@ export class SessionService {
   constructor() { }
 
   getLoggedUser() {
-
-    var loggedInUser = JSON.parse(localStorage.getItem("loggedUser"));
+    var loggedInUser = localStorage.getItem("loggedUser");
     return loggedInUser;
   }
 
   getUserRole() {
-
-    var userRoles = JSON.parse(localStorage.getItem("roles"));
+    var userRoles = localStorage.getItem("roles");
     return userRoles;
+  }
+
+  getUserStreet() {
+    var userStreet = localStorage.getItem("street");
+    return userStreet;
   }
 
   hasRole(roleName: string): boolean{
@@ -32,11 +35,6 @@ export class SessionService {
 
     return boolValue;
 
-  }
-
-  getUserStreet() {
-    var userStreet = JSON.parse(localStorage.getItem("street"));
-    return userStreet;
   }
 
 }

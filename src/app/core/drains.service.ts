@@ -9,6 +9,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/filter';
 
+import { Drain } from './../shared/drains/drain';
 
 
 @Injectable()
@@ -24,29 +25,28 @@ export class DrainsService {
   helpDrains: any;
   getDrains(): Observable<any[]> {
     return this.http.get(this.urlService.apiUrl+this.urlService.drainsUrl)
-           .map((response: Response) => response.json().drains)
-           .catch(this.errorHandler);
-          }
+      .map((response: Response) => response.json().drains)
+      .catch(this.errorHandler);
+  }
   getCleanDrains():Observable<any[]>  {
     return this.http.get(this.urlService.apiUrl+this.urlService.cleanDrainsUrl)
-           .map((response: Response) =>  response.json().drains)
-           .catch(this.errorHandler);
-          }
+      .map((response: Response) =>  response.json().drains)
+      .catch(this.errorHandler);
+  }
   getDirtyDrains(): Observable<any[]> {
     return this.http.get(this.urlService.apiUrl+this.urlService.dirtyDrainsUrl)
-           .map((response: Response) => response.json().drains)
-           .catch(this.errorHandler);
-          }
+      .map((response: Response) => response.json().drains)
+      .catch(this.errorHandler);
+  }
   getHelpDetails(): any {
-
-    return this.http.get(this.urlService.apiUrl+this.urlService.helpDetailsUrl)
-           .map((response: Response) => {
-            this.helpDrains = response.json();
-        })
-           .catch(this.errorHandler);
-          }
+    return this.http.get(this.urlService.apiUrl+this.urlService.helpDetailsUrl, this.options)
+      .map((response: Response) => {
+        this.helpDrains = response.json();
+      })
+      .catch(this.errorHandler);
+  }
   getHelpDrains(): Observable<any[]> {
-    return this.http.get(this.urlService.apiUrl+this.urlService.helpDrainsUrl)
+    return this.http.get(this.urlService.apiUrl+this.urlService.helpDrainsUrl, this.options)
       .map((response: Response) => response.json().drains)
       .catch(this.errorHandler);
   }
@@ -59,30 +59,30 @@ export class DrainsService {
     else {
       console.log("Non-Null Service")
       return this.getHelpDetails()
-      .map(drains => drains.find(drain => drain.status === status))
-      .catch(this.errorHandler);
+        .map(drains => drains.find(drain => drain.status === status))
+        .catch(this.errorHandler);
     }
 
   }
   getUnknownDrains():Observable<any[]> {
     return this.http.get(this.urlService.apiUrl+this.urlService.unknownDrainsUrl)
-          .map((response: Response) => response.json().drains)
-          .catch(this.errorHandler);
+      .map((response: Response) => response.json().drains)
+      .catch(this.errorHandler);
   }
   getDrainData():Observable<any> {
     return this.http.get(this.urlService.apiUrl + this.urlService.drainDataUrl)
-          .map((response: Response) => {
-              this.drainData = response.json();
-          })
-          .catch(this.errorHandler);
+      .map((response: Response) => {
+        this.drainData = response.json();
+      })
+      .catch(this.errorHandler);
 
   }
   getRanksData():Observable<any[]> {
     return this.http.get(this.urlService.apiUrl +this.urlService.ranksDataUrl)
-          .map((response: Response) => {
-            this.ranksData = response.json().ranking;
-          })
-          .catch(this.errorHandler);
+      .map((response: Response) => {
+        this.ranksData = response.json().ranking;
+      })
+      .catch(this.errorHandler);
 
   }
   alertVEO(street): any {
@@ -93,23 +93,23 @@ export class DrainsService {
   }
 
 
-    status(roleRequest): any {
+  status(roleRequest): any {
 
-      return this.http.post(this.urlService.apiUrl+this.urlService.verifyUrl, roleRequest, {headers: this.headers})
+    return this.http.post(this.urlService.apiUrl+this.urlService.verifyUrl, roleRequest, {headers: this.headers})
       .map(res => {
 
       })
       .catch(this.errorHandler);
-    }
+  }
 
-    update_status(data): any {
+  update_status(data): any {
 
-      return this.http.post(this.urlService.apiUrl+this.urlService.status, JSON.stringify(data), {headers: this.headersCustom})
+    return this.http.post(this.urlService.apiUrl+this.urlService.status, JSON.stringify(data), {headers: this.headersCustom})
       .map(res => { res.json();
 
       })
       .catch(this.errorHandler);
-    }
+  }
 
   searchNeedHelps(data): Observable<any[]>{
 
@@ -121,8 +121,8 @@ export class DrainsService {
 
 
   errorHandler(error: Response) {
-             console.error(error);
-             return Observable.throw(error || 'Sorry, something went wrong');
+    console.error(error);
+    return Observable.throw(error || 'Sorry, something went wrong');
 
   }
 
