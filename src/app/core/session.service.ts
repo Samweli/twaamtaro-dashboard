@@ -9,25 +9,22 @@ export class SessionService {
   constructor() { }
 
   getLoggedUser() {
-    var loggedInUser = localStorage.getItem("loggedUser");
+
+    var loggedInUser = JSON.parse(localStorage.getItem("loggedUser"));
     return loggedInUser;
   }
 
   getUserRole() {
-    var userRoles = localStorage.getItem("roles");
+
+    var userRoles = JSON.parse(localStorage.getItem("roles"));
     return userRoles;
   }
-  
-  getUserStreet() {
-    var userStreet = localStorage.getItem("street");
-    return userStreet;
-  }
-  
+
   hasRole(roleName: string): boolean{
     let boolValue: boolean;
     if(this.getUserRole()){
       let roleArray: any = JSON.parse(this.getUserRole());
-      boolValue = roleArray.some((data) => data.name == roleName ); 
+      boolValue = roleArray.some((data) => data.name == roleName );
     }
     else{
       boolValue = false;
@@ -35,6 +32,11 @@ export class SessionService {
 
     return boolValue;
 
+  }
+
+  getUserStreet() {
+    var userStreet = JSON.parse(localStorage.getItem("street"));
+    return userStreet;
   }
 
 }

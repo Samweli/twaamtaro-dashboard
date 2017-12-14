@@ -9,7 +9,6 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/filter';
 
-import { Drain } from './../shared/drains/drain';
 
 
 @Injectable()
@@ -39,14 +38,15 @@ export class DrainsService {
            .catch(this.errorHandler);
           }
   getHelpDetails(): any {
-    return this.http.get(this.urlService.apiUrl+this.urlService.helpDetailsUrl, this.options)
+
+    return this.http.get(this.urlService.apiUrl+this.urlService.helpDetailsUrl)
            .map((response: Response) => {
             this.helpDrains = response.json();
         })
            .catch(this.errorHandler);
           }
   getHelpDrains(): Observable<any[]> {
-    return this.http.get(this.urlService.apiUrl+this.urlService.helpDrainsUrl, this.options)
+    return this.http.get(this.urlService.apiUrl+this.urlService.helpDrainsUrl)
       .map((response: Response) => response.json().drains)
       .catch(this.errorHandler);
   }

@@ -1,7 +1,6 @@
 import { Injectable }    from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import { Observable }    from 'rxjs/Observable';
-import { HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
 import { User } from './user';
 import { UsersUrlService } from "./users-url.service";
@@ -12,7 +11,9 @@ import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class UserService {
+
   private headers = new Headers({'Content-Type': 'application/json'});
+
   constructor(private http: Http, private urlService: UsersUrlService) { }
   users: User[];
   verifyResponse: any;
@@ -35,11 +36,9 @@ export class UserService {
   }
 
   createUser(user) {
-    return this.http.post(this.urlService.localUrl+this.urlService.registerUserUrl, {user})
-    .map((response: Response) =>
-      {
-       this.regRes = response.json();
-      })
+    return this.http.post(this.urlService.apiUrl+this.urlService.registerUserUrl, {user})
+
+    .map((response: Response) => this.regRes = response.json())
     .catch(this.errorHandler);
   }
 
@@ -55,7 +54,6 @@ export class UserService {
     .map(res =>  {
       this.leaderRequests = res.json().leaders ;
       this.totalRequests = this.leaderRequests.length
-
     })
     .catch(this.errorHandler);
   }
