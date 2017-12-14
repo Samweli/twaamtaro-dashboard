@@ -32,6 +32,7 @@ export class HelpDrainComponent implements OnInit {
   veoStatusColumn: boolean = false;
   disableWardSelect: boolean = true;
   disableStreetSelect: boolean = true;
+  filterObject: any = {};
 
   constructor(
     private drainService: DrainsService,
@@ -51,7 +52,7 @@ export class HelpDrainComponent implements OnInit {
     this.dateCreated = new Date("d");
 
     this.daysGone = Math.floor((this.today - this.dateCreated) / days);
-    
+
   }
 //Fetches all drains in need of help and their details
   getFilteredDrains(status?): any {
@@ -66,35 +67,41 @@ export class HelpDrainComponent implements OnInit {
     });
   }
 
-// filters need help drains based on their regions(stree,ward, municipal)
-  drainFilter(data:any,key?):any{
-    if(key.level == "municipal_name"){
-      console.log('inside municipal level')
-      this.pagedDrains = this.drains.filter(drain => drain.user.street[key.level] == key.event);
-      this.disableWardSelect = false;
+  // filters need help drains based on their regions(stree,ward, municipal)
+  // and Status
+  needHelpFilter(data: any){
+    if(data.from == 'regional-filters'){
+      if(data.municipal_name) this.disableWardSelect = false;
+      if(data.ward_name) this.disableStreetSelect = false;
+
+      this.filterObject.street_name = data.street_name;
+      this.filterObject.ward_name = data.ward_name;
+      this.filterObject.municipal_name = data.municipal_name;
     }
-    else if(key.level == "ward_name"){
-      this.pagedDrains = this.pagedDrains.filter(drain => drain.user.street[key.level] == key.event);
-      this.disableStreetSelect = false; 
-      
+    if(data.from == 'status-filters'){
+      this.filterObject.status = data.status;
     }
-    else if(key.level == "street_name"){
-      this.pagedDrains = this.pagedDrains.filter(drain => drain.user.street[key.level] == key.event); 
-    }
+
+    this.searchNeedHelp(data)
+
   }
-
-
-// filters need help drains based on their status
-  statusFilter(pagedDrains,key):any{
-        this.pagedDrains = this.drains.filter(drain => drain.status == key);
-      }
 
   updateStatus(data: any, statusValue: string){
     this.drainService.update_status({need_help_id: data.id, status: statusValue})
     .subscribe( res => {
     }, err => {
     })
-  }    
+  }
+
+  // searches needhelps using either
+  // street_name, ward_name, municipal_name or status
+  //of the need help
+  searchNeedHelp(data){
+    this.drainService.searchNeedHelps(data)
+      .subscribe(res => {
+        this.pagedDrains = res
+      });
+  }
 
   setPage(page: number) {
     if (page < 1 || page > this.pager.totalPages) {
@@ -150,6 +157,9 @@ export class HelpDrainComponent implements OnInit {
       this.loggedIn = this.authService.isLoggedIn();
   }
 
+
+  // initilizes varible which hides or shows status column
+  // in the html template
   conditionalInitializer(){
     if(this.sessionService.hasRole("weo")){
       this.weoStatusColumn = this.sessionService.hasRole("weo")
@@ -160,10 +170,6 @@ export class HelpDrainComponent implements OnInit {
 
   }
 
-  onChange(data){
-    console.log('on change called');
-    console.log(data);
-  }
 
   ngOnInit(): void {
     this.getFilteredDrains();

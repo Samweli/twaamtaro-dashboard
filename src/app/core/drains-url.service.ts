@@ -15,6 +15,7 @@ export class DrainsUrlService {
   public ranksDataUrl = 'drains/ranking';
   public verifyUrl = 'users/verify';
   public status = 'need_helps/status';
+  public search = 'need_helps/search';
 
   constructor() { }
 

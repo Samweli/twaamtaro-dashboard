@@ -15,8 +15,8 @@
 	<div class="w3-center w3-padding">
 		<button class="w3-btn w3-black w3-left" (click)="showFilters()">{{'filter' | translate}}</button>
       <ul class="filters-list">
-        <li><app-regional-filters [disableWardSelect] ="disableWardSelect" [disableStreetSelect] ="disableStreetSelect" (selectValueChaged)="drainFilter(pagedDrains,$event)"></app-regional-filters></li>
-        <li><app-status-filters (statusValueChaged)="statusFilter(pagedDrains,$event)"></app-status-filters></li>
+        <li><app-regional-filters [disableWardSelect] ="disableWardSelect" [disableStreetSelect] ="disableStreetSelect" (selectValueChaged)="needHelpFilter($event)"></app-regional-filters></li>
+        <li><app-status-filters (statusValueChaged)="needHelpFilter($event)"></app-status-filters></li>
       </ul>
 		</div>
 	<!-- End Desktop Filters -->
