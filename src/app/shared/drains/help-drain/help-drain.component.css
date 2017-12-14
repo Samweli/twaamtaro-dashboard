@@ -12,7 +12,9 @@
   display: inline;
 }
 
-
+.filters-list li{
+  list-style-type: none;
+}
 @media(max-width: 768px){
     .w3-modal-content {
         width: 500px;

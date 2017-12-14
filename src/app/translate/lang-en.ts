@@ -74,7 +74,7 @@ export const LANG_EN_TRANS = {
   'send_alert': 'Send alert messages',
   'send_awareness': 'Send awareness messages',
   'veo': 'Send message to VEO',
-  'filter': 'Filters',
+  'filter': 'Status Filters',
   'submitted': 'Submitted',
   'progress': 'Processing',
   'done': 'Done',
