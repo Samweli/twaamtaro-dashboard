@@ -2,7 +2,7 @@ import { Injectable }    from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import { Observable }    from 'rxjs/Observable';
 import { HttpHeaders } from '@angular/common/http';
-import { User } from './user'; 
+import { User } from './user';
 import { UsersUrlService } from "./users-url.service";
 
 import 'rxjs/add/operator/map';
@@ -11,7 +11,8 @@ import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class UserService {
-  private headers = new Headers({'Authorization': 'Token token="CP7ZOb0OBoeLePlKDbzCzg", email="example-1@twaamtaro.org"', 'Content-Type': ' ' });
+
+  private headers = new Headers({'Authorization': '', 'Content-Type': '' });
 
   constructor(private http: Http, private urlService: UsersUrlService) { }
   users: User[];
@@ -26,23 +27,21 @@ export class UserService {
       {headers: this.headers})
     .map((response: Response) => response.json().users)
     .catch(this.errorHandler);
-  } 
-           
+  }
+
   getUser(id): any {
     return this.getUsers()
     .map(users => users.find(user => user.id === id))
-    .catch(this.errorHandler);          
+    .catch(this.errorHandler);
   }
 
   createUser(user) {
     return this.http.post(this.urlService.apiUrl+this.urlService.registerUserUrl, {user})
-    .map((response: Response) =>
-      {
-       this.regRes = response.json();
-      })
+
+    .map((response: Response) => this.regRes = response.json())
     .catch(this.errorHandler);
   }
-  
+
   alertLeader(street_id): any {
     return this.http.post(this.urlService.apiUrl+this.urlService.alertUrl, {street_id}, {headers: this.headers})
     .map(res =>  res.json())
@@ -63,7 +62,7 @@ export class UserService {
     console.log("Service");
     console.log(roleRequest);
     return this.http.post(this.urlService.apiUrl+this.urlService.verifyUrl, roleRequest, {headers: this.headers})
-    .map(res => { 
+    .map(res => {
       this.verifyResponse = res.json()
     })
     .catch(this.errorHandler);
@@ -72,6 +71,6 @@ export class UserService {
   errorHandler(error: Response) {
     console.error(error);
     return Observable.throw(error || 'Sorry, something went wrong');
-          
+
  }
 }

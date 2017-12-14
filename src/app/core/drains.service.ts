@@ -15,7 +15,7 @@ import { Drain } from './../shared/drains/drain';
 @Injectable()
 export class DrainsService {
   
-  private headers = new Headers({'Accept': 'application/json', 'charset': 'utf-8'});
+  private headers = new Headers({ 'Content-Type': '', 'charset': 'utf-8'});
   private options: RequestOptions = new RequestOptions({ headers: this.headers });
   
   constructor(private http: Http, private urlService: DrainsUrlService) { }
@@ -38,14 +38,14 @@ export class DrainsService {
            .catch(this.errorHandler);
           } 
   getHelpDetails(): any {
-    return this.http.get(this.urlService.apiUrl+this.urlService.helpDetailsUrl, this.options)
+    return this.http.get(this.urlService.apiUrl+this.urlService.helpDetailsUrl)
            .map((response: Response) => { 
             this.helpDrains = response.json();
         })
            .catch(this.errorHandler);
           } 
   getHelpDrains(): Observable<any[]> {
-    return this.http.get(this.urlService.apiUrl+this.urlService.helpDrainsUrl, this.options)
+    return this.http.get(this.urlService.apiUrl+this.urlService.helpDrainsUrl)
       .map((response: Response) => response.json().drains)
       .catch(this.errorHandler);    
   }
