@@ -1,8 +1,7 @@
 import { Component, OnInit} from '@angular/core';
-import { AuthService } from "./../../core/auth.service";
-import { SessionService } from "./../../core/session.service";
+import {AuthService} from "./../../core/auth.service";
 import {TranslateService} from "../../translate/translate.service";
-
+import {SessionService} from "../../core/session.service";
 
 @Component({
   selector: 'app-left-side',
@@ -12,23 +11,18 @@ import {TranslateService} from "../../translate/translate.service";
 export class LeftSideComponent implements OnInit {
   constructor(
     public authService: AuthService,
-    public sessionService: SessionService,
-    private _translate: TranslateService
+    private _translate: TranslateService,
+    private  sessionService: SessionService
   ) { }
 
 
-
-    public translatedText: string;
-    public supportedLanguages: any[];
-    supportedLangs: any;
-    loggedUser: any;
+  public translatedText: string;
+  public supportedLanguages: any[];
+  supportedLangs: any;
+  loggedUser: any;
 
   ngOnInit() {
-    //Get user's name from session
-    if (this.authService.isLoggedIn()) {
-        var theUser = JSON.parse(this.sessionService.getLoggedUser());
-        this.loggedUser = theUser.first_name + " " + theUser.last_name;
-      }
+
     // standing data
     this.supportedLangs = [
       {display: 'English', value: 'en'},
@@ -38,31 +32,28 @@ export class LeftSideComponent implements OnInit {
     this.selectLang('sw');
 
     this.subscribeToLangChanged();
+
     // set language
     this._translate.setDefaultLang('en');
     this._translate.enableFallback(true);
     this.selectLang('sw');
   }
 
-    isCurrentLang(lang: string) {
-      return lang === this._translate.currentLang;
-    }
+  isCurrentLang(lang: string) {
+    return lang === this._translate.currentLang;
+  }
 
-    selectLang(lang: string) {
-
-      // set default;
+  selectLang(lang: string) {
+    // set default;
     this._translate.use(lang);
-      // this.refreshText(); // remove
-    }
+    // this.refreshText(); // remove
+  }
 
-    refreshText() {
-      this.translatedText = this._translate.instant('all');
-    }
+  refreshText() {
+    this.translatedText = this._translate.instant('all');
+  }
 
-    subscribeToLangChanged() {
-      return this._translate.onLangChanged.subscribe(x => this.refreshText());
-      }
-
+  subscribeToLangChanged() {
+    return this._translate.onLangChanged.subscribe(x => this.refreshText());
+  }
 }
-
-

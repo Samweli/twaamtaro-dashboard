@@ -48,24 +48,24 @@ export class UserService {
     .catch(this.errorHandler);
   }
 
-  getLeaderRequests(): any {
-    return this.http.post(this.urlService.localUrl+this.urlService.leaderRequestsUrl,
+  getLeaderRequests(data: any): any {
+    return this.http.post(this.urlService.localUrl+this.urlService.leaderRequestsUrl,JSON.stringify(data),
       {headers: this.headers})
-    .map(res =>  {
-      this.leaderRequests = res.json().leaders ;
-      this.totalRequests = this.leaderRequests.length
+      .map(res =>  {
+        this.leaderRequests = res.json().leaders;
+        this.totalRequests = this.leaderRequests.length
 
-    })
-    .catch(this.errorHandler);
+      })
+      .catch(this.errorHandler);
   }
- verifyLeader(data: any) :any {
-  return this.http.post(this.urlService.localUrl + this.urlService.verifyUrl, JSON.stringify(data), {headers: this.headers})
-    .map(res => {
-      res.json().data as any
-      }
-    )
-    .catch(this.errorHandler)
-}
+  verifyLeader(data: any) :any {
+    return this.http.post(this.urlService.localUrl + this.urlService.verifyUrl, JSON.stringify(data), {headers: this.headers})
+      .map(res => {
+          res.json().data as any
+        }
+      )
+      .catch(this.errorHandler)
+  }
 denyLeader(denyRequest: any) : Observable <void> {
     return this.http.post(this.urlService.localUrl + this.urlService.denyUrl,JSON.stringify(denyRequest), {headers: this.headers})
       .map(res => { res.json().data as any
