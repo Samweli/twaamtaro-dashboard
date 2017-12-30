@@ -56,7 +56,6 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('roles', JSON.stringify(this.userData.users.roles));
           localStorage.setItem('street', JSON.stringify(this.userData.users.street));
 
-          location.reload();
           this.router.navigate(['dashboard/admin']);
 
         }
