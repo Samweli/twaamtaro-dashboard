@@ -164,7 +164,10 @@ export class RanksComponent implements OnInit, AfterViewInit {
           }
       });
 
-}
+  }
+  printRanks(){
+    window.print();
+  }
   ngAfterViewInit() {
     document.getElementById('msgBox').style.display='none';
   }

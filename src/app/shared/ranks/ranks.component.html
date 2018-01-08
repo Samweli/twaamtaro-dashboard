@@ -11,8 +11,11 @@
         </div>
         <div class="box-body">
           <div class="w3-row">
+            <div>
+                <button (click)="printRanks()" class="w3-btn w3-right w3-block w3-blue w3-section w3-padding" id="printRanksBtn"> Print Ranks Table</button>
+            </div>
               <!-- Chart Canvas -->
-            <div >
+        <div >
                 <google-chart [data]="tableChartData"  (chartSelect)='select($event)'></google-chart>
             </div>
             <div id="alert" class="w3-modal">
