@@ -113,7 +113,7 @@ export class RanksComponent implements OnInit, AfterViewInit {
                 page: 'enable',
                 pageSize: 20,
                 sort: 'enable',
-
+                showRowNumber: true
               },
               view: {
                 'columns': [1,2,3,4,5]
@@ -166,6 +166,8 @@ export class RanksComponent implements OnInit, AfterViewInit {
 
   }
   printRanks(){
+    document.getElementById("ranks").classList.remove("box", "w3-border", "w3-card-2", "w3-padding");
+    document.getElementById("content-wrapper").classList.remove("content-wrapper")
     window.print();
   }
   ngAfterViewInit() {
@@ -175,5 +177,10 @@ export class RanksComponent implements OnInit, AfterViewInit {
     this.subscribeToLangChanged();
     this.closestreet();
     this.refreshText();
-    }
+  //Restore Styles after printing  
+    window.onafterprint = function restoreStyles(){
+      document.getElementById("ranks").classList.add("box", "w3-border", "w3-card-2", "w3-padding");
+      document.getElementById("content-wrapper").classList.add("content-wrapper")
+      }
+  }
 }

@@ -1,13 +1,13 @@
-<div class="content-wrapper" >
+<div id="content-wrapper" class="content-wrapper" >
   <section class="content">
 
-          <div class="box w3-card-2 w3-border w3-border-teal" >
+          <div id="reports" class="box w3-card-2 w3-border w3-border-teal" >
             <div class="box-header with-border">
               <section class="content-header">
                 <h3 class=" w3-center">{{'report' | translate}} </h3>
             </section>
 
-              <div class="box-tools pull-right">
+              <div id="boxTools" class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                   </button>
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -62,16 +62,16 @@
                  
                 </form>
                 <div id="printArea">
-                <div class="w3-row" id="piecanvas">
+                <div class="w3-row w3-padding-bottom" id="piecanvas">
                    <!-- Pie Chart Canvas -->
-                  <div class="w3-col m6 s12">
+                  <div class="w3-half s12">
                     <google-chart [data]="reportChart" (chartError)='error($event)'></google-chart>
                   </div>
-                  <div class="w3-col m6 s12">
+                  <div class="w3-half s12">
                     <google-chart [data]="adoptedReportChart" (chartError)='error($event)'></google-chart>
                   </div>
-                 
                 </div>
+              
                 <div class="w3-row" id="tablecanvas">
                    <!--Table Chart Canvas -->
                    <div class="w3-col w3-responsive">
@@ -88,12 +88,12 @@
                           </thead>
                          
                           <tr *ngFor="let area of streets">
-                              <td>area.street.street_name</td>
+                              <td>{{ area.street.street_name }}</td>
                               <td>N/A</td>
-                              <td>area.details.adopted</td>
-                              <td>area.details.cleaned</td>
-                              <td>area.details.uncleaned</td>
-                              <td>area.details.need_help</td>
+                              <td>{{ area.details.adopted }}</td>
+                              <td>{{ area.details.cleaned }}</td>
+                              <td>{{ area.details.uncleaned }}</td>
+                              <td>{{ area.details.need_help }}</td>
                             </tr>
                         </table>
                   </div>

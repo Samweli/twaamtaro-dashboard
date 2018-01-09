@@ -119,7 +119,10 @@ export class ReportComponent implements OnInit{
             pieHole: 0.3,
       
             height: 500,
-            colors:['#5cb85c','#eea236','#6495ed']
+            colors:['#5cb85c','#eea236','#6495ed'],
+            chartArea: {
+              height: 'auto',
+            }
           },
         }; //End Cleanness ratio chart
 
@@ -134,7 +137,10 @@ export class ReportComponent implements OnInit{
             'title': 'Drain Adoption in '+ street.street.street_name,
             pieHole: 0.3,
             height: 500,
-            colors:['#964f8e','grey']
+            colors:['#964f8e','grey'],
+            chartArea: {
+              height:'auto',
+            }
           },
         }; //End adoption chart
       }
@@ -159,13 +165,20 @@ export class ReportComponent implements OnInit{
     this.displayDiv("tablecanvas","show");
   }
   printReport(){
-    console.log("We are about to print you");
+    var reportsArea = document.getElementById("reports");
+    reportsArea.classList.remove("box", "w3-border", "w3-card-2", "w3-border-teal");
+    document.getElementById("content-wrapper").classList.remove("content-wrapper")
     window.print();
   }
 
+  ngAf
   ngOnInit() {
     this.displayDiv("tablecanvas","hide");
     this.streetData();
+    window.onafterprint = function restoreStyles(){
+    document.getElementById("reports").classList.add("box", "w3-border", "w3-card-2", "w3-border-teal");
+    document.getElementById("content-wrapper").classList.add("content-wrapper")
+    }
   }
 
 }

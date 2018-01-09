@@ -3,24 +3,33 @@
 }
 @media print {
     
-    #reportForm, #reportBtns {
+    #boxTools, #reportForm, #reportBtns {
         display: none;
     }
     #printHeader {
         display: block;
+    }
+    #piecanvas google-chart{
+        display: block;
+        width: 50%;
     }
     #printArea {
         display: block;
         background-color: white;
         height: 100%;
         width: 100%;
-        position: fixed;
-        top: 0;
-        left: 0;
+        padding: 5px;
         margin: 0;
-        padding: 15px;
         font-size: 14px;
         line-height: 18px;
         border-color: none;
+        overflow: hidden;
+    }
+    #printArea #piecanvas {
+        transform: scale(0.7);
+        position: relative;
+    }
+    #printArea #tablecanvas {
+        position: relative;
     }
 }
