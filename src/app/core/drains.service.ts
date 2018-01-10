@@ -53,11 +53,11 @@ export class DrainsService {
 
   getFilteredHelp(status?) {
     if (status == null ) {
-      console.log("Null Service")
+      
       return this.getHelpDetails();
     }
     else {
-      console.log("Non-Null Service")
+     
       return this.getHelpDetails()
         .map(drains => drains.find(drain => drain.status === status))
         .catch(this.errorHandler);
@@ -71,9 +71,7 @@ export class DrainsService {
   }
   getDrainData():Observable<any> {
     return this.http.get(this.urlService.apiUrl + this.urlService.drainDataUrl)
-      .map((response: Response) => {
-        this.drainData = response.json();
-      })
+      .map((response: Response) => this.drainData = response.json() )
       .catch(this.errorHandler);
 
   }
