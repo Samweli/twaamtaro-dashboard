@@ -29,7 +29,6 @@ export class LeftSideComponent implements OnInit {
         var theStreet = this.sessionService.getUserStreet();
         this.userStreet = theStreet.id;
       }
-
     // standing data
     this.supportedLangs = [
       {display: 'English', value: 'en'},
