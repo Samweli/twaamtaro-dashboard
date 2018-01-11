@@ -12,7 +12,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ReportComponent } from './../../reports/reports.component';
 import { RanksComponent } from './../../ranks/ranks.component';
 import { NotFoundComponent } from './../../not-found/not-found.component';
-import { UsersComponent } from './../../users/users-list/users.component';
+import { UsersComponent } from './../../users/users/users.component';
+import { UsersListComponent } from './../../users/users-list/users-list.component';
 import { UserDetailComponent } from './../../users/user-detail/user-detail.component';
 
 @NgModule({
@@ -38,6 +39,7 @@ import { UserDetailComponent } from './../../users/user-detail/user-detail.compo
           { path: 'drain-list', component: DrainListComponent },
           { path: 'help-drains', component: HelpDrainComponent },
           { path: 'users', component: UsersComponent }, 
+          { path: 'users-list/:id', component: UsersListComponent }, 
           { path: 'ranks', component: RanksComponent }, 
           { path: 'user-details/:id', component: UserDetailComponent }, 
           { path: '*', component: NotFoundComponent },

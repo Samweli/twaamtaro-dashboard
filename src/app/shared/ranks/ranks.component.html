@@ -15,6 +15,26 @@
             <div >
                 <google-chart [data]="tableChartData"  (chartSelect)='select($event)'></google-chart>
             </div>
+
+            <div>
+                <h3>The Number of Citizens based on the Streets</h3>
+
+                <table class="w3-table w3-hoverable w3-responsive w3-white">
+                    <thead>
+                    <tr class="w3-light-grey w3-border-bottom" >
+                      <th>Street</th>
+                      <th>No. Of Citizens</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let area of (p)">
+                      <td>{{ area.street }}  </td>
+                      <td> {{ area.population }}</td>
+                    </tr>
+                    </tbody>
+                  </table>
+
+            </div>
             <div id="alert" class="w3-modal">
                 <div id="" class="w3-modal-content w3-card-4" >
                     <header class="w3-container w3-theme-d1 w3-center">

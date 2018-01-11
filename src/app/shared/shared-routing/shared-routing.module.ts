@@ -15,7 +15,8 @@ import { ReportComponent } from './../../shared/reports/reports.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedComponent } from "./../../shared/shared.component";
 import { UnknownDrainsComponent } from './../../shared/drains/unknown-drains/unknown-drains.component';
-import { UsersComponent } from './../../shared/users/users-list/users.component';
+import { UsersComponent } from "./../../shared/users/users/users.component";
+import { UsersListComponent } from './../../shared/users/users-list/users-list.component';
 import { UserDetailComponent } from './../../shared/users/user-detail/user-detail.component';
 import { VerifyLeaderComponent } from "./../../shared/verify-leader/verify-leader.component";
 
@@ -41,6 +42,7 @@ import { AuthGuard } from "./../../core/auth.guard";
           { path: 'unknown-drains', component: UnknownDrainsComponent },
           { path: 'user-details/:id', component: UserDetailComponent },
           { path: 'users', component: UsersComponent },
+          { path: 'users-list/:street', component: UsersListComponent },
           { path: 'verify', component: VerifyLeaderComponent }, 
           { path: '*', component: NotFoundComponent },
         ] ,    

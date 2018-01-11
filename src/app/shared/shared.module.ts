@@ -17,7 +17,7 @@ import { SharedComponent } from "./shared.component";
 import { UnknownDrainsComponent } from './drains/unknown-drains/unknown-drains.component';
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
 import { UserSearchComponent } from './users/user-search/user-search.component';
-import { UsersComponent } from './users/users-list/users.component';
+import { UsersComponent } from './users/users/users.component';
 
 import { Directive } from '@angular/core';
 import { NgModule } from '@angular/core';
@@ -34,7 +34,6 @@ import { HelpDrainModule } from './../shared/drains/help-drain/help-drain.module
 import { DrainListModule } from './../shared/drains/all-drains/all-drains.module';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { ReportModule } from './../shared/reports/reports.module';
-import { UserModule } from "./../shared/users/users-list/users.module";
 import { FilterDrainsModule } from './../shared/drains/filter-drains/filter-drains.module';
 
 import { NotificationBarModule } from "./notification-bar/notification-bar.module";
@@ -53,6 +52,7 @@ import { StreetVEOPipe, UserStreetPipe } from "./../core/user.pipe";
 import { NotifyComponent } from './notify/notify.component';
 import { RegisterComponent } from './register/register.component';
 import { VerifyLeaderComponent } from './verify-leader/verify-leader.component';
+import { UsersListComponent } from './users/users-list/users-list.component';
 
 @NgModule({
   imports: [
@@ -64,7 +64,6 @@ import { VerifyLeaderComponent } from './verify-leader/verify-leader.component';
     CleanDrainModule,
     HelpDrainModule,
     ReportModule,
-    UserModule,
   //UserDetailModule,
     ReactiveFormsModule,
     FormsModule,
@@ -99,6 +98,7 @@ import { VerifyLeaderComponent } from './verify-leader/verify-leader.component';
     NotifyComponent,
     RegisterComponent,
     VerifyLeaderComponent,
+    UsersListComponent,
   ],
   exports: [SharedComponent],
   providers: [

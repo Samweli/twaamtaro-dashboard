@@ -13,7 +13,7 @@ import { SharedComponent } from "./../shared/shared.component";
 import { UnknownDrainsComponent } from './../shared/drains/unknown-drains/unknown-drains.component';
 
 import { NotFoundComponent } from './../shared/not-found/not-found.component';
-import { UsersComponent } from './../shared/users/users-list/users.component';
+import { UsersListComponent } from './../shared/users/users-list/users-list.component';
 import { UserDetailComponent } from './../shared/users/user-detail/user-detail.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';

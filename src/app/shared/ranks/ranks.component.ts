@@ -4,9 +4,9 @@ import { DrainsService } from './../../core/drains.service';
 import { AuthService} from "./../../core/auth.service";
 import { ChartSelectEvent } from 'ng2-google-charts';
 import { UserService } from "./../../core/user.service";
-import {TranslateService} from "../../transilate/translate.service";
+import { TranslateService} from "../../transilate/translate.service";
 import { NgProgress } from 'ngx-progressbar';
-
+import { StreetService } from "../../core/streets.service";
 
 @Component({
   selector: 'app-ranks',
@@ -28,7 +28,9 @@ export class RanksComponent implements OnInit, AfterViewInit {
   message: string;
   column: number ;
   selectedRowValues: any[];
-  //street: any = {'street_id': ''};
+  streets: any;
+  areaCount: any =[];
+  citizens: any;
 
   cssClassNames = {headerCell: 'w3-teal w3-padding', hoverTableRow: 'w3-grey', tableRow: 'w3-striped'};
 
@@ -37,7 +39,8 @@ export class RanksComponent implements OnInit, AfterViewInit {
     public authService: AuthService,
     private userService: UserService,
     private _translate: TranslateService,
-    public ngProgress: NgProgress
+    public ngProgress: NgProgress,
+    private streetService: StreetService
  ) { }
 
 
@@ -83,7 +86,27 @@ export class RanksComponent implements OnInit, AfterViewInit {
   close(id) {
     document.getElementById(id).style.display='none';
   }
+   //Get the population of users in a particular street
+   getStreetsPopulation(users) {
+    this.streetService.getStreets()
+    .subscribe(res => {
+      this.streets = res
+      //this.countUsers(this.streets.id,users)
+        this.streets.forEach(street => {
+        var userCount = 0;
+     for (let i = 0; i < users.length; i++) {       
+      if(street.id == users[i].street.id) {
+       userCount++
+      }
+    } 
+    this.areaCount.push({'"ward"':street.ward_name, '"street"':street.street_name, '"population"':userCount})
+      });
+     console.log("In Ranks " + this.areaCount);
+     var p = JSON.parse(this.areaCount);
+     return p;
 
+    })
+  }
   //Fetch Ranking Data and generate ranking table.
   ranksData(): void {
     this.ngProgress.start();
@@ -133,6 +156,11 @@ export class RanksComponent implements OnInit, AfterViewInit {
 
           }
         );
+        this.userService.getUsers().subscribe(res =>{
+          this.citizens = res; 
+          this.getStreetsPopulation(this.citizens);
+        });
+        
     this.ngProgress.done();
   }
   refreshText (){
