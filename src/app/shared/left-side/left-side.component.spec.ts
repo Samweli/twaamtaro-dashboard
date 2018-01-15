@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminLeftSideComponent } from './admin-left-side.component';
+import { LeftSideComponent } from './left-side.component';
 
-describe('AdminLeftSideComponent', () => {
-  let component: AdminLeftSideComponent;
-  let fixture: ComponentFixture<AdminLeftSideComponent>;
+describe('LeftSideComponent', () => {
+  let component: LeftSideComponent;
+  let fixture: ComponentFixture<LeftSideComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdminLeftSideComponent ]
+      declarations: [ LeftSideComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminLeftSideComponent);
+    fixture = TestBed.createComponent(LeftSideComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
