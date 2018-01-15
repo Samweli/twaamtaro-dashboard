@@ -57,17 +57,17 @@
                         <option *ngFor="let street of (streets)" [value]="street.street.city_name">{{street.street.street_name}}</option>
                       </select>
                     </div>
-                    <button (click)="buildReport()" class="w3-btn w3-right w3-block w3-blue w3-section w3-padding" [disabled]="streetControl.invalid">{{'send'| translate}}</button>
+                    <button (click)="buildReport()" class="w3-btn w3-right w3-block w3-blue w3-section w3-padding" [disabled]="streetControl.invalid && wardControl.invalid || districtControl.invalid || regionControl.invalid">{{'send'| translate}}</button>
                   </div>
                  
                 </form>
                 <div id="printArea">
                 <div class="w3-row w3-padding-bottom" id="piecanvas">
                    <!-- Pie Chart Canvas -->
-                  <div class="w3-half s12">
+                  <div class="w3-col m6 s12">
                     <google-chart [data]="reportChart" (chartError)='error($event)'></google-chart>
                   </div>
-                  <div class="w3-half s12">
+                  <div class="w3-col m6 s12">
                     <google-chart [data]="adoptedReportChart" (chartError)='error($event)'></google-chart>
                   </div>
                 </div>
@@ -75,6 +75,7 @@
                 <div class="w3-row" id="tablecanvas">
                    <!--Table Chart Canvas -->
                    <div class="w3-col w3-responsive">
+                     <h3 class="w3-center">Cleanness Reports in All the Streets</h3>
                       <table class="w3-table-all w3-hoverable">
                           <thead>
                             <tr class="w3-dark-grey">

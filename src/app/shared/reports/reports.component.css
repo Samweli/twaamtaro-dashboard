@@ -1,7 +1,7 @@
 #printHeader {
     display: none;
 }
-@media print {
+@media print and (overflow-block: paged){
     
     #boxTools, #reportForm, #reportBtns {
         display: none;
@@ -9,24 +9,16 @@
     #printHeader {
         display: block;
     }
-    #piecanvas google-chart{
-        display: block;
-        width: 50%;
-    }
     #printArea {
         display: block;
         background-color: white;
         height: 100%;
         width: 100%;
         padding: 5px;
-        margin: 0;
-        font-size: 14px;
-        line-height: 18px;
-        border-color: none;
         overflow: hidden;
     }
     #printArea #piecanvas {
-        transform: scale(0.7);
+        transform: scale(0.5);
         position: relative;
     }
     #printArea #tablecanvas {

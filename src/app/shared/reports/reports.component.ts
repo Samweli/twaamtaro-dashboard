@@ -68,7 +68,7 @@ export class ReportComponent implements OnInit{
           ['Need Help', needHelp],
         ],
         options: {
-          'title': 'General Cleanness Report in all Strets',
+          'title': 'General Cleanness Report in all streets in '+ this.ward.name+ ' ward',
           pieHole: 0.3,
     
           height: 500,
@@ -93,7 +93,7 @@ export class ReportComponent implements OnInit{
           ['Not Adopted', notAdopted],
         ],
         options: {
-          'title': 'Drain Adoption in All streets' ,
+          'title': 'Drain Adoption in all streets in '+ this.ward.name+ ' ward' ,
           pieHole: 0.3,
           height: 500,
           colors:['#964f8e','grey']
@@ -115,7 +115,7 @@ export class ReportComponent implements OnInit{
             ['Need Help', street.details.need_help],
           ],
           options: {
-            'title': 'General Cleanness Report in '+ street.street.street_name,
+            'title': 'General Cleanness Report in '+ street.street.street_name +', '+street.street.municipal_name,
             pieHole: 0.3,
       
             height: 500,
@@ -134,7 +134,7 @@ export class ReportComponent implements OnInit{
             ['Not Adopted', street.details.not_adopted],
           ],
           options: {
-            'title': 'Drain Adoption in '+ street.street.street_name,
+            'title': 'Drain Adoption in '+ street.street.street_name+', '+street.street.municipal_name,
             pieHole: 0.3,
             height: 500,
             colors:['#964f8e','grey'],
