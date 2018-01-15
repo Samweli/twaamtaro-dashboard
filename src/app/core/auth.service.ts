@@ -24,7 +24,7 @@ export class AuthService {
     ) { }
 
   login(user): any {
-    return this.http.post(this.localLoginUrl, {user}, {headers: this.headers})
+    return this.http.post(this.loginUrl, {user}, {headers: this.headers})
         .map(res => {
             this.userdata = res.json();
            })

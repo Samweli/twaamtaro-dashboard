@@ -26,7 +26,6 @@ export class VerifyLeaderComponent implements OnInit {
       .subscribe(res => {
         this.leaderRequests = this.userService.leaderRequests.filter(rq => this.filterCondition(rq));
         this.allRequests = this.userService.totalRequests
-        console.log(this.leaderRequests);
         console.log(this.userService.leaderRequests)
         }
       )
