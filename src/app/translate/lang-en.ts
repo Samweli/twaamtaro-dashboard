@@ -20,7 +20,27 @@ export const LANG_EN_TRANS = {
   'adopted': "Adopted drains",
   'not_adopted': 'Not adopted',
   'others': 'Others',
+
+
+  /*need help transilation*/
   'need': 'Drains that need help',
+  'need_help_opened': 'Opened',
+  'button_pending': 'Approve',
+  'button_resolve': 'Resolve',
+  'resolved': 'resolved',
+  'pending': 'approved',
+  'need_help_pending': 'Approved',
+  'need_help_resolved': 'Resolved',
+  'need_help_status': 'Status',
+  'need_help_category': 'Help Needed',
+  'change_status_column': 'Change status',
+  'not_yet': 'Not yet',
+
+  /* filters translation*/
+  'choose_municipal': 'Choose Municipal',
+  'choose_ward': 'Choose Ward',
+  'choose_street': 'Choose Street',
+  'choose_status': 'Choose Status',
 
   /*side-menu translation*/
   'dashboard': 'Dashboard',
@@ -44,7 +64,7 @@ export const LANG_EN_TRANS = {
   'full_name': 'Full Name',
   'phone_number': 'Phone Number',
   'ranks_details': 'Cleanness ranks based on streets',
-  'location': 'Select a location',
+  'location': 'Select a Region/Status',
   'has': 'Has',
   'drain_no': 'Drain no',
   'help': 'Help Details',

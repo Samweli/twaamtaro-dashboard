@@ -19,7 +19,28 @@ export const LANG_SW_TRANS = {
   'adopted': "Mitaro iliyotwaliwa",
   'need': 'Mitaro inayohitaji msaada',
   'others': 'Mingineyo',
+
+  /* need help translation*/
   'need_help': 'Msaada ',
+  'button_pending': 'Thibitisha',
+  'button_resolve': 'Tatua',
+  'resolved': 'limeshugulikiwa',
+  'pending': 'limethibitishwa',
+  'limethibitishwa': 'imekubali wowowww',
+  'need_help_opened': 'Limewasilishwa',
+  'need_help_pending': 'Limethibitishwa',
+  'need_help_resolved': 'Limetatuliwa',
+  'need_help_category': 'Msaada Unaohitajika',
+  'change_status_column': 'Badili Hali',
+  'need_help_status': 'Hali',
+  'not_yet': 'Bado',
+
+    /* filters translation*/
+    'choose_municipal': 'Chagua Manispaa',
+    'choose_ward': 'Chagua Kata',
+    'choose_street': 'Chagua Mtaa',
+    'choose_status': 'Chagua Hali',
+
     /*side-menu translation*/
   'dashboard': 'Dashibodi',
   'map' : 'Fungua ramani',
@@ -46,7 +67,7 @@ export const LANG_SW_TRANS = {
   'help_category': 'Aina ya msaada',
   'extra': 'Maelezo zaidi',
   'ranks_details': 'Nafasi za usafi kulingana na mitaa',
-  'location': 'Chagua Eneo/Sehemu',
+  'location': 'Chagua Eneo/Hali',
   'has': 'ina',
   'district': 'Wilaya',
   'municipal': 'Manispaa',

@@ -29,7 +29,7 @@ export class HelpDrainComponent implements OnInit {
   today: any;
   searchKey: any;
   weoStatusColumn: boolean = false;
-  veoStatusColumn: boolean = false;
+  meoStatusColumn: boolean = false;
   disableWardSelect: boolean = true;
   disableStreetSelect: boolean = true;
   filterObject: any = {};
@@ -161,11 +161,12 @@ export class HelpDrainComponent implements OnInit {
   // initilizes varible which hides or shows status column
   // in the html template
   conditionalInitializer(){
-    if(this.sessionService.hasRole("weo")){
-      this.weoStatusColumn = this.sessionService.hasRole("weo")
+    if(this.sessionService.hasRole("meo")){
+      this.meoStatusColumn = this.sessionService.hasRole("meo");
     }
-    else if(this.sessionService.hasRole("veo")){
-      this.veoStatusColumn = this.sessionService.hasRole("veo")
+    else if(this.sessionService.hasRole("weo")){
+      
+      this.weoStatusColumn = this.sessionService.hasRole("weo");
     }
 
   }
