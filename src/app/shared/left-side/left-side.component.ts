@@ -21,16 +21,17 @@ export class LeftSideComponent implements OnInit {
   theUser = JSON.parse(this.sessionService.getLoggedUser());
 
   loggedUser: any = {};
-  if (theUser) {
-    this.loggedUser = this.theUser.first_name + " " +this.theUser.last_name ;
-  }
-
 
   public translatedText: string;
   public supportedLanguages: any[];
   supportedLangs: any;
 
   ngOnInit() {
+    if(this.authService.isLoggedIn()) {
+    var theUser = JSON.parse(this.sessionService.getLoggedUser());
+    this.loggedUser = theUser.first_name + " " + theUser.last_name ;
+    }
+
     // standing data
     this.supportedLangs = [
       {display: 'English', value: 'en'},

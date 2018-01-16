@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
         private ngProgress: NgProgress
       ) { }
 
-  countryCode = "255";  
+  countryCode = "255";
   err: any;
   loading = false;
   userData: any;
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
   user: any = { 'sms_number': '','password': '' };
   loginCalled = false;
   inputsToFormat = {'phone':''};
-  
+
   formatPhoneNumber(phoneNumber) {
     var formattedNumber: any;
     if(phoneNumber.startsWith("0")) {
@@ -53,20 +53,21 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(this.user)
     .subscribe(res => {
-      
+
       this.loginCalled = true;
       this.userData = this.authService.userdata;
 
       if (this.userData && this.userData.users.authentication_token) {
           localStorage.setItem('currentUser', JSON.stringify(this.userData.users.authentication_token));
-          
+
           /* New localStorage Data */
           localStorage.setItem('loggedUser', JSON.stringify(this.userData.users));
           localStorage.setItem('roles', JSON.stringify(this.userData.users.roles));
           localStorage.setItem('street', JSON.stringify(this.userData.users.street));
 
+          location.reload();
           this.router.navigate(['dashboard/admin']);
-        
+
       }
     }, error => {
       this.loginCalled = true;
@@ -74,14 +75,17 @@ export class LoginComponent implements OnInit {
     });
     this.ngProgress.done();
   };
-    
-  logout() { 
+
+  logout() {
    this.authService.logout();
    this.router.navigateByUrl('/');
   }
-  
-  closemodal() 
+
+  closemodal()
   {
+    // document.getElementById("errors").innerHTML = " ";
+    var theForm = <HTMLFormElement>document.getElementById("loginForm");
+    theForm.reset();
     var modal = document.getElementById('loginmodal');
     window.onclick = function(event) {
       if (event.target == modal) {
@@ -90,7 +94,10 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  closelogin(){ 
+  closelogin(){
+    document.getElementById("errors").innerHTML = " ";
+    var theForm = <HTMLFormElement>document.getElementById("loginForm");
+    theForm.reset();
     document.getElementById('loginmodal').style.display='none';
   }
 

@@ -33,18 +33,23 @@ export class RegisterComponent implements OnInit {
   inputsToFormat: any = {'password':'','phone':''};
   user: any = {'first_name': '','last_name': '','email': '','street_id': '','sms_number': 'userPho', 'password': '' };
   countryCode = "255";
-  
+
   formatPhoneNumber(phoneNumber) {
+    var formattedNumber: any;
     if(phoneNumber.startsWith("0")) {
-        var formattedNumber = this.countryCode.concat(phoneNumber.slice(1))
-        return formattedNumber;
+      formattedNumber = this.countryCode.concat(phoneNumber.slice(1))
+      return formattedNumber;
+    }
+    else if(phoneNumber.startsWith("+")) {
+      formattedNumber = phoneNumber.replace("+","");
+      return formattedNumber;
     }
     else {
         return phoneNumber;
     }
   }
 
-  
+
   register() {
     this.isCalled = true;
     this.ngProgress.start();
@@ -63,13 +68,16 @@ export class RegisterComponent implements OnInit {
       this.drainService
         .getRanksData()
         .subscribe( data => {
-          this.streets = this.drainService.ranksData; 
+          this.streets = this.drainService.ranksData;
         });
-  
+
     }
-  
-    closemodal() 
+
+    closemodal()
     {
+      // document.getElementById("errors").innerHTML = " ";
+      var theForm = <HTMLFormElement>document.getElementById("regForm");
+      theForm.reset();
       var modal = document.getElementById('registermodal');
       window.onclick = function(event) {
           if (event.target == modal) {
@@ -77,7 +85,10 @@ export class RegisterComponent implements OnInit {
           }
       }
     }
-    closeregister(){ 
+    closeregister(){
+      document.getElementById("errors").innerHTML = " ";
+      var theForm = <HTMLFormElement>document.getElementById("regForm");
+      theForm.reset();
       document.getElementById('registermodal').style.display='none';
     }
   ngOnInit() {
