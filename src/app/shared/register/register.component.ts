@@ -22,7 +22,8 @@ export class RegisterComponent implements OnInit {
     public ngProgress: NgProgress,
     private router: Router,
     private userService: UserService,
-    private formErrorsService: FormErrorsService
+    private formErrorsService: FormErrorsService,
+    private sessionService: SessionService
   ) { }
 
   countryCode = "255";
@@ -32,6 +33,7 @@ export class RegisterComponent implements OnInit {
   isCalled: any = false;
   inputsToFormat: any = { 'password': '' };
   user: any = { 'first_name': '', 'last_name': '', 'email': '', 'street_id': '', 'sms_number': '', 'password': '' };
+  redirectUser: any = {'sms_number': this.user.sms_number, 'password': this.user.password};
 
   formatPhoneNumber(phoneNumber) {
     var formattedNumber: any;
@@ -54,10 +56,14 @@ export class RegisterComponent implements OnInit {
     
     this.userService.createUser(this.user)
       .subscribe(res => {
-        this.regUser = this.userService.regRes; 
         this.regStatus = true;
         this.isCalled = true;
         this.ngProgress.done();
+      
+        //Redirect after successful registration
+        this.sessionService.setCurrentUser(res);
+        location.reload();
+
       }, error => {
         this.formErrorsService.error(error);
         this.ngProgress.done();
@@ -74,7 +80,7 @@ export class RegisterComponent implements OnInit {
   }
 
   closemodal() {
-    var modal = document.getElementById('registermodal');
+    let modal = document.getElementById('registermodal');
     window.onclick = function (event) {
       if (event.target == modal) {
         modal.style.display = "none";
