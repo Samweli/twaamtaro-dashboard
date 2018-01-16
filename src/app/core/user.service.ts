@@ -73,7 +73,6 @@ denyLeader(denyRequest: any) : Observable <void> {
 
 }
   errorHandler(error: Response) {
-    console.error(error);
     return Observable.throw(error || 'Sorry, something went wrong');
 
  }

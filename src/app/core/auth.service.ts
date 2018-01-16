@@ -24,6 +24,7 @@ export class AuthService {
         return this.http.post(this.loginUrl, { user }, { headers: this.headers })
             .map(res => {
             this.userdata = res.json();
+            location.reload()
         })
         .catch(this.handleError);
     }

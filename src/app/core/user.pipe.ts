@@ -5,7 +5,7 @@ import { Street, Role } from './user';
 @Pipe({ name: 'streetVEO' })
 export class StreetVEOPipe implements PipeTransform {
   transform(users: Role[]) {
-    return users.filter(user => user.role == 2 );
+    return users.filter(user => user.roles == 2 );
   }
 }
 
