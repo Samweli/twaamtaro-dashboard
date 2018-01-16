@@ -66,7 +66,6 @@ export class UserService {
   }
 
   errorHandler(error: Response) {
-    console.error(error);
     return Observable.throw(error || 'Sorry, something went wrong');
           
  }
