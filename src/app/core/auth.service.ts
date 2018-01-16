@@ -12,12 +12,12 @@ export class AuthService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
   loggedIn: any;
+  loginRes: any;
   userdata: any;
   loggedUser: any;
   userName: any;
   userRole: any;
   errStatus: any;
-  loginRes = false ;
   constructor(
         private http: Http,
         private router: Router,
@@ -27,7 +27,9 @@ export class AuthService {
     return this.http.post(this.localLoginUrl, {user}, {headers: this.headers})
         .map(res => {
             this.userdata = res.json();
-           })
+
+            // location.reload()
+        })
         .catch(this.handleError);
     }
 
@@ -44,8 +46,10 @@ export class AuthService {
         localStorage.clear();
         this.loggedIn = false;
     }
-    handleError(error: any): any {
+
+    private handleError(error: any): any {
         this.loginRes = false;
+        console.error('An error occurred', error);
     }
 
 

@@ -19,9 +19,9 @@
               </thead>
               <tbody>
               <tbody>
-              <tr *ngFor="let user of (users | streetVEO)">
-                <td>{{user.first_name}} {{user.last_name}} </td>
-                <td> {{ streetName }}</td>
+              <tr *ngFor="let veo of (veos)">
+                <td>{{veo.first_name}} {{veo.last_name}} </td>
+                <td> {{ veo.street.street_name }}</td>
               </tr>
               </tbody>
             </table>
@@ -36,7 +36,10 @@
             <div class="w3-container">
               <div class="w3-padding">
                   <img src="assets/img/citizens.png" title="Citizens" width="50" height="50">
-                  <h4 class="w3-right"> <strong>{{ usersCount }}</strong> {{'citizens'| translate}}</h4>
+                  <span class="w3-right">
+                    <h4> <strong>{{ usersCount }}</strong> {{'citizens'| translate}}</h4>
+                    <!--button *ngIf="authService.isLogged() && checkRole(loggedUser.roles,'2')">View Your Citizens</button-->
+                  </span>
               </div>
               <hr>
               <div class="w3-padding">

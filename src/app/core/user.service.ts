@@ -13,6 +13,7 @@ import 'rxjs/add/observable/throw';
 @Injectable()
 export class UserService {
   private headers = new Headers({'Content-Type': 'application/json'});
+
   constructor(private http: Http, private urlService: UsersUrlService) { }
   users: User[];
   verifyResponse: any;
@@ -20,6 +21,7 @@ export class UserService {
   leaderRequests: any;
   regRes: any;
   regStatus: any;
+
 
   getUsers(): any {
     return this.http.get(this.urlService.localUrl+this.urlService.usersUrl,
@@ -78,7 +80,6 @@ export class UserService {
 
   }
   errorHandler(error: Response) {
-    console.error(error);
     return Observable.throw(error || 'Sorry, something went wrong');
 
   }

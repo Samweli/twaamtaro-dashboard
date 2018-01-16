@@ -9,7 +9,6 @@ import { TranslateService } from "../../translate/translate.service";
   styleUrls: ['./left-side.component.css']
 })
 export class LeftSideComponent implements OnInit {
-
   constructor(
     public authService: AuthService,
     public sessionService: SessionService,
@@ -17,19 +16,15 @@ export class LeftSideComponent implements OnInit {
   ) { }
   notifyCitizens() {
   }
-
-  theUser = JSON.parse(this.sessionService.getLoggedUser());
-
-  loggedUser: any = {};
-
+  loggedUser;
   public translatedText: string;
   public supportedLanguages: any[];
   supportedLangs: any;
 
   ngOnInit() {
     if(this.authService.isLoggedIn()) {
-    var theUser = JSON.parse(this.sessionService.getLoggedUser());
-    this.loggedUser = theUser.first_name + " " + theUser.last_name ;
+      var theUser = JSON.parse(this.sessionService.getLoggedUser());
+      this.loggedUser = theUser.first_name + " " + theUser.last_name ;
     }
 
     // standing data
@@ -48,24 +43,22 @@ export class LeftSideComponent implements OnInit {
     this.selectLang('sw');
   }
 
-    isCurrentLang(lang: string) {
-       return lang === this._translate.currentLang;
-    }
+  isCurrentLang(lang: string) {
+    return lang === this._translate.currentLang;
+  }
 
-    selectLang(lang: string) {
+  selectLang(lang: string) {
     // set default;
     this._translate.use(lang);
     // this.refreshText(); // remove
-    }
+  }
 
-    refreshText() {
-      this.translatedText = this._translate.instant('all');
-    }
+  refreshText() {
+    this.translatedText = this._translate.instant('all');
+  }
 
-    subscribeToLangChanged() {
-      return this._translate.onLangChanged.subscribe(x => this.refreshText());
-      }
+  subscribeToLangChanged() {
+    return this._translate.onLangChanged.subscribe(x => this.refreshText());
+  }
 
 }
-
-

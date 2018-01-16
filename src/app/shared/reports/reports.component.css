@@ -1,0 +1,27 @@
+#printHeader {
+    display: none;
+}
+@media print and (overflow-block: paged){
+    
+    #boxTools, #reportForm, #reportBtns {
+        display: none;
+    }
+    #printHeader {
+        display: block;
+    }
+    #printArea {
+        display: block;
+        background-color: white;
+        height: 100%;
+        width: 100%;
+        padding: 5px;
+        overflow: hidden;
+    }
+    #printArea #piecanvas {
+        transform: scale(0.5);
+        position: relative;
+    }
+    #printArea #tablecanvas {
+        position: relative;
+    }
+}
