@@ -22,63 +22,64 @@ export class UserService {
   regStatus: any;
 
   getUsers(): any {
-    return this.http.get(this.urlService.apiUrl+this.urlService.usersUrl,
+    return this.http.get(this.urlService.localUrl+this.urlService.usersUrl,
       {headers: this.headers})
-    .map((response: Response) => response.json().users)
-    .catch(this.errorHandler);
+      .map((response: Response) => response.json().users)
+      .catch(this.errorHandler);
   }
 
   getUser(id): any {
     return this.getUsers()
-    .map(users => users.find(user => user.id === id))
-    .catch(this.errorHandler);
+      .map(users => users.find(user => user.id === id))
+      .catch(this.errorHandler);
   }
 
   createUser(user) {
-    return this.http.post(this.urlService.apiUrl+this.urlService.registerUserUrl, {user})
-    .map((response: Response) =>
+    return this.http.post(this.urlService.localUrl+this.urlService.registerUserUrl, {user})
+      .map((response: Response) =>
       {
-       this.regRes = response.json();
+        this.regRes = response.json();
       })
-    .catch(this.errorHandler);
+      .catch(this.errorHandler);
   }
 
   alertLeader(street_id): any {
-    return this.http.post(this.urlService.apiUrl+this.urlService.alertUrl, {street_id}, {headers: this.headers})
-    .map(res =>  res.json())
-    .catch(this.errorHandler);
+    return this.http.post(this.urlService.localUrl+this.urlService.alertUrl, {street_id}, {headers: this.headers})
+      .map(res =>  res.json())
+      .catch(this.errorHandler);
   }
 
   getLeaderRequests(data: any): any {
-    console.log("out request");
-    return this.http.post(this.urlService.apiUrl+this.urlService.leaderRequestsUrl,JSON.stringify(data),
+    return this.http.post(this.urlService.localUrl+this.urlService.leaderRequestsUrl,JSON.stringify(data),
       {headers: this.headers})
-    .map(res =>  {
-      this.leaderRequests = res.json().leaders;
-      this.totalRequests = this.leaderRequests.length
-console.log("inside request");
-    })
-    .catch(this.errorHandler);
+      .map(res =>  {
+        this.leaderRequests = res.json().leaders;
+        this.totalRequests = this.leaderRequests.length
+        console.log(this.leaderRequests );
+        console.log(this.totalRequests );
+
+
+      })
+      .catch(this.errorHandler);
   }
- verifyLeader(data: any) :any {
-  return this.http.post(this.urlService.apiUrl + this.urlService.verifyUrl, JSON.stringify(data), {headers: this.headers})
-    .map(res => {
-      res.json().data as any
-      console.log("inside request");
-      }
-    )
-    .catch(this.errorHandler)
-}
-denyLeader(denyRequest: any) : Observable <void> {
-    return this.http.post(this.urlService.apiUrl + this.urlService.denyUrl,JSON.stringify(denyRequest), {headers: this.headers})
+  verifyLeader(data: any) :any {
+    return this.http.post(this.urlService.localUrl + this.urlService.verifyUrl, JSON.stringify(data), {headers: this.headers})
+      .map(res => {
+          res.json().data as any
+        }
+      )
+      .catch(this.errorHandler)
+  }
+  denyLeader(denyRequest: any) : Observable <void> {
+    return this.http.post(this.urlService.localUrl + this.urlService.denyUrl,JSON.stringify(denyRequest), {headers: this.headers})
       .map(res => { res.json().data as any
       })
       .catch(this.errorHandler);
 
-}
+  }
   errorHandler(error: Response) {
     console.error(error);
     return Observable.throw(error || 'Sorry, something went wrong');
 
- }
+  }
 }

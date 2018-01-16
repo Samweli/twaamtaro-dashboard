@@ -24,9 +24,10 @@ export class VerifyLeaderComponent implements OnInit {
   getRequests(data) {
     this.userService.getLeaderRequests(data)
       .subscribe(res => {
-        this.leaderRequests = this.userService.leaderRequests.filter(rq => this.filterCondition(rq));
-        this.allRequests = this.userService.totalRequests
-        console.log(this.userService.leaderRequests)
+          this.leaderRequests = this.userService.leaderRequests.filter(rq => this.filterCondition(rq));
+          this.allRequests = this.userService.totalRequests
+          console.log(this.leaderRequests);
+          console.log(this.userService.leaderRequests)
         }
       )
 
@@ -68,7 +69,7 @@ export class VerifyLeaderComponent implements OnInit {
     }
 
   }
-checkLoggedInUser(){
+  checkLoggedInUser(){
 
     if(this.sessionService.hasRole('weo' )){
       this.getRequests({role_name:'veo'});
@@ -76,10 +77,10 @@ checkLoggedInUser(){
     else if(this.sessionService.hasRole('community_member')){
       this.getRequests({role_name:'weo'});
     }
-}
+  }
 
   ngOnInit() {
-  this.checkLoggedInUser();
+    this.checkLoggedInUser();
   }
 
 }
