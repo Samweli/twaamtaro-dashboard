@@ -32,8 +32,8 @@ export class HeaderComponent implements OnInit {
   loggedIn: any;
   isLoggedIn()
   {
-      this.loggedIn = this.authService.isLoggedIn();
-      return this.loggedIn;
+    this.loggedIn = this.authService.isLoggedIn();
+    return this.loggedIn;
   }
 
   //Get total number of leader requests for notifications
@@ -41,10 +41,10 @@ export class HeaderComponent implements OnInit {
   leaderReq(data) {
     console.log('inside header');
     this.userService.getLeaderRequests(data)
-    .subscribe(res => {
-      this.requests = this.userService.totalRequests
+      .subscribe(res => {
+        this.requests = this.userService.totalRequests
 
-    })
+      })
   }
   checkNotification(){
     if(this.sessionService.hasRole('weo')){

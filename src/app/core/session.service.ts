@@ -28,7 +28,7 @@ export class SessionService {
     if(this.getUserRole()){
       let roleArray: any = JSON.parse(this.getUserRole());
       boolValue = roleArray.some((data) => data.name == roleName );
-      console.log(roleArray);
+
     }
     else{
       boolValue = false;
