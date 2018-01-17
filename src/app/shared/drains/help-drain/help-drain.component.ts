@@ -33,7 +33,7 @@ export class HelpDrainComponent implements OnInit {
   disableWardSelect: boolean = true;
   disableStreetSelect: boolean = true;
   filterObject: any = {};
-  searchInfo: any = {};
+  searchInfo: any;
 
   constructor(
     private drainService: DrainsService,
@@ -90,7 +90,13 @@ export class HelpDrainComponent implements OnInit {
   updateStatus(data: any, statusValue: string){
     this.drainService.update_status({need_help_id: data.id, status: statusValue})
     .subscribe( res => {
-      this.searchNeedHelp(this.searchInfo);
+      if(this.searchInfo){
+        this.searchNeedHelp(this.searchInfo);
+      }
+      else{
+        this.getFilteredDrains();
+      }
+      
       console.log('update was successfully, we have refreshed table');
       console.log(this.searchInfo);
     }, err => {
