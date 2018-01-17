@@ -33,6 +33,7 @@ export class HelpDrainComponent implements OnInit {
   disableWardSelect: boolean = true;
   disableStreetSelect: boolean = true;
   filterObject: any = {};
+  searchInfo: any = {};
 
   constructor(
     private drainService: DrainsService,
@@ -89,6 +90,9 @@ export class HelpDrainComponent implements OnInit {
   updateStatus(data: any, statusValue: string){
     this.drainService.update_status({need_help_id: data.id, status: statusValue})
     .subscribe( res => {
+      this.searchNeedHelp(this.searchInfo);
+      console.log('update was successfully, we have refreshed table');
+      console.log(this.searchInfo);
     }, err => {
     })
   }
@@ -97,6 +101,7 @@ export class HelpDrainComponent implements OnInit {
   // street_name, ward_name, municipal_name or status
   //of the need help
   searchNeedHelp(data){
+    this.searchInfo = data;
     this.drainService.searchNeedHelps(data)
       .subscribe(res => {
         this.pagedDrains = res
