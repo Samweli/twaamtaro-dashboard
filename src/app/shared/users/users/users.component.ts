@@ -44,24 +44,10 @@ export class UsersComponent implements OnInit, AfterViewInit {
     private _translate: TranslateService
   ) { }
 
-  //Checks a user role
-  checkRole(roles, roleId){
-    for(var i = 0; i <= roles.length; i++){
-      if(roles[i] != undefined && roles[i].id == roleId){
-        return true
-      }
-       else
-      {
-        return false;
-      }
-    }
-  }
-  
-
   //Creates an array of VEOs
   getVeos(users){
     for (let i = 0; i < users.length; i++) {
-      if (this.checkRole(users[i].roles, '2')) {
+      if (this.userService.checkRole(users[i].roles, '2')) {
         this.veos.push(users[i])
       }
   };
@@ -71,7 +57,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
   //Creates an array of WEOs
   getWeos(users){
     for (let i = 0; i < users.length; i++) {
-      if (this.checkRole(users[i].roles, '3')) {
+      if (this.userService.checkRole(users[i].roles, '3')) {
         this.weos.push(users[i])
       }
   };
@@ -132,13 +118,13 @@ export class UsersComponent implements OnInit, AfterViewInit {
     //Get Number of registered users based on roles
         for (var i = 0; i < this.users.length; i++) {
           this.getStreetName(user[i].street_id);
-          if (this.checkRole(this.users[i].roles, '3')) {
+          if (this.userService.checkRole(this.users[i].roles, '3')) {
               this.wardLeadersCount++;
             }
-          else if (this.checkRole(this.users[i].roles, '2')){
+          else if (this.userService.checkRole(this.users[i].roles, '2')){
               this.streetLeadersCount++;
             }
-          else if(this.checkRole(this.users[i].roles, '1')){
+          else if(this.userService.checkRole(this.users[i].roles, '1')){
               this.usersCount++;
             }
           }
