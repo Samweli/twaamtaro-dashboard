@@ -57,7 +57,7 @@
           </thead>
           <tbody>
           <tr *ngFor="let drain of pagedDrains">
-            <td><a (click)="helpmodal(drain.gid, drain.need_help_category.category_name, drain.help_needed)" >{{drain.gid}}</a></td>
+            <td><a (click)="helpmodal(drain)" >{{drain.gid}}</a></td>
 						<td>{{drain.need_help_category.category_name}}</td>
 						<td>{{drain.status | translate }}</td>
             <td>{{drain.user.street.street_name}}</td>
@@ -71,9 +71,9 @@
 							<div *ngIf="drain.resolved">{{drain.resolved | date }}</div>
 						</td>
 						<td *ngIf="weoStatusColumn">
-							<button [disabled] = "drain.status == 'pending'" (click)="updateStatus(drain, 'pending')">{{'button_pending' | translate }}</button></td>
+							<button [disabled] = "drain.status == 'pending'" (click)="descriptionModal(drain, 'pending')">{{'button_pending' | translate }}</button></td>
 						<td *ngIf="meoStatusColumn">
-								<button [disabled] = "drain.status == 'resolved'" (click)="updateStatus(drain, 'resolved')">{{'button_resolve' | translate }}</button></td>
+								<button [disabled] = "drain.status == 'resolved'" (click)="descriptionModal(drain, 'resolved')">{{'button_resolve' | translate }}</button></td>
           </tr>
 
             <div id="helpdetails" class="w3-modal w3-margin-top">
@@ -84,8 +84,35 @@
                   <h3>{{'drain_no'| translate}} {{ thedrain	}} {{'help'| translate}}</h3>
                 </header>
                 <div class="w3-container w3-padding">
-                  <p><strong class="w3-padding-right">{{'help_category'| translate}}: </strong>{{ helpCategory }}</p>
-                  <p><strong class="w3-padding-right">{{'extra'| translate}}: </strong>{{ helpNeeded }}</p>
+                  <p><strong class="w3-padding-right">{{'help_category'| translate}}: </strong>{{ needHelpCategory.category_name }}</p>
+                  <p><strong class="w3-padding-right">{{'extra'| translate}}: </strong>{{ needHelpObject.help_needed }}</p>
+                </div>
+              </div>
+						</div>
+						<div id="description_modal" class="w3-modal">
+              <div class="w3-modal-content w3-card-4">
+                <header class="w3-container w3-theme-d3 w3-center">
+								<span (click)="closeDescriptionModal()"
+                      class="w3-button w3-display-topright w3-padding w3-hover-teal">&times;</span>
+                  <h3>{{'status_change_description'| translate}}</h3>
+                </header>
+                <div class="w3-container w3-padding">
+									<div>lets look at ng model {{description}}</div>
+										<form>
+												<div class="w3-section w3-padding">
+													<div class="form-group">
+														<textarea class="w3-input w3-border w3-margin-bottom" [(ngModel)]="description" name="description" 
+															placeholder="{{'status_change_placeholder'| translate}}"  rows="4" cols="50" ></textarea>
+													</div>
+
+												<div>
+													<section class="w3-right form-group">
+															<button (click)="closeDescriptionModal()" class=" w3-btn w3-red w3-padding">{{'need_help_description_cancel'| translate}}</button>
+														<button  class="w3-btn w3-green w3-padding" (click)="updateStatus()">{{'need_help_description_submit'| translate}}</button>
+													</section>
+												</div>
+												</div>
+											</form>
                 </div>
               </div>
             </div>

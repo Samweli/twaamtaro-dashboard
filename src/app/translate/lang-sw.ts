@@ -34,6 +34,10 @@ export const LANG_SW_TRANS = {
   'change_status_column': 'Badili Hali',
   'need_help_status': 'Hali',
   'not_yet': 'Bado',
+  'status_change_description': 'Maelezo kutokana na ubadilishaji wa hali',
+  'status_change_placeholder': 'Sio lazima kujaza',
+  'need_help_description_submit': 'Sawa',
+  'need_help_description_cancel': 'Ghairi',
 
     /* filters translation*/
     'choose_municipal': 'Chagua Manispaa',

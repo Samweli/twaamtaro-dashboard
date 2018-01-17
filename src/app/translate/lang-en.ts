@@ -35,6 +35,10 @@ export const LANG_EN_TRANS = {
   'need_help_category': 'Help Needed',
   'change_status_column': 'Change status',
   'not_yet': 'Not yet',
+  'status_change_description': 'Add Description for Status change',
+  'status_change_placeholder': 'Optional',
+  'need_help_description_submit': 'Ok',
+  'need_help_description_cancel': 'Cancel',
 
   /* filters translation*/
   'choose_municipal': 'Choose Municipal',

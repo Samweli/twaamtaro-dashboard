@@ -34,6 +34,10 @@ export class HelpDrainComponent implements OnInit {
   disableStreetSelect: boolean = true;
   filterObject: any = {};
   searchInfo: any;
+  description: any;
+  needHelpData: any = {};
+  needHelpObject: any = {};
+  needHelpCategory: any ={};
 
   constructor(
     private drainService: DrainsService,
@@ -87,8 +91,14 @@ export class HelpDrainComponent implements OnInit {
 
   }
 
-  updateStatus(data: any, statusValue: string){
-    this.drainService.update_status({need_help_id: data.id, status: statusValue})
+  updateStatus(){
+    console.log("ng model is fine");
+    console.log(this.description);
+    this.drainService.update_status({
+      need_help_id: this.needHelpData.data.id,
+       status: this.needHelpData.statusValue,
+       description: this.description
+    })
     .subscribe( res => {
       if(this.searchInfo){
         this.searchNeedHelp(this.searchInfo);
@@ -96,10 +106,9 @@ export class HelpDrainComponent implements OnInit {
       else{
         this.getFilteredDrains();
       }
-      
-      console.log('update was successfully, we have refreshed table');
-      console.log(this.searchInfo);
+    this.closeDescriptionModal();
     }, err => {
+      this.closeDescriptionModal();
     })
   }
 
@@ -129,12 +138,19 @@ export class HelpDrainComponent implements OnInit {
   //Get extra details of the requested help
 
 
-  helpmodal(gid,category,help)
+  helpmodal(drain:any)
   {
-    this.thedrain = gid;
-    this.helpCategory = category;
-    this.helpNeeded = help;
+    this.needHelpObject = drain;
+    this.needHelpCategory = drain.need_help_category
     document.getElementById('helpdetails').style.display='block'
+  }
+
+//  displays popup for status change description
+  descriptionModal(data: any, statusValue: string)
+  {
+    this.needHelpData.data = data;
+    this.needHelpData.statusValue = statusValue;
+    document.getElementById('description_modal').style.display='block'
   }
 
   //Close the helpmodal by clicking anywhere else in the page
@@ -146,6 +162,12 @@ export class HelpDrainComponent implements OnInit {
             modal.style.display = "none";
         }
     }
+  }
+
+  // closes popup for status change description
+  closeDescriptionModal()
+  {
+    document.getElementById('description_modal').style.display='none';
   }
 
   //Close helpmodal by clicking the close button
