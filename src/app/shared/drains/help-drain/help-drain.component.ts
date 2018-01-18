@@ -29,7 +29,15 @@ export class HelpDrainComponent implements OnInit {
   today: any;
   searchKey: any;
   weoStatusColumn: boolean = false;
-  veoStatusColumn: boolean = false;
+  meoStatusColumn: boolean = false;
+  disableWardSelect: boolean = true;
+  disableStreetSelect: boolean = true;
+  filterObject: any = {};
+  searchInfo: any;
+  description: any;
+  needHelpData: any = {};
+  needHelpObject: any = {};
+  needHelpCategory: any ={};
 
   constructor(
     private drainService: DrainsService,
@@ -46,12 +54,10 @@ export class HelpDrainComponent implements OnInit {
     var days = hours * 24;
     var years = days * 365;
 
-    console.log (d);
     this.dateCreated = new Date("d");
 
-    console.log (this.dateCreated);
     this.daysGone = Math.floor((this.today - this.dateCreated) / days);
-    console.log (this.daysGone);
+
   }
 //Fetches all drains in need of help and their details
   getFilteredDrains(status?): any {
@@ -61,47 +67,63 @@ export class HelpDrainComponent implements OnInit {
       .subscribe(
         drains => {
           this.drains = this.drainService.helpDrains;
+          console.log('all drains');
+          console.log(this.drains);
     this.setPage(1);
     this.ngProgress.done();
     });
   }
 
-// filters need help drains based on their regions(stree,ward, municipal)
-  drainFilter(data:any,key?):any{
+  // filters need help drains based on their regions(stree,ward, municipal)
+  // and Status
+  needHelpFilter(data: any){
+    if(data.from == 'regional-filters'){
+      if(data.municipal_name) this.disableWardSelect = false;
+      if(data.ward_name) this.disableStreetSelect = false;
 
-    console.log("inside parent component");
+      this.filterObject.street_name = data.street_name;
+      this.filterObject.ward_name = data.ward_name;
+      this.filterObject.municipal_name = data.municipal_name;
+    }
+    if(data.from == 'status-filters'){
+      this.filterObject.status = data.status;
+    }
 
-    console.log(key);
+    this.searchNeedHelp(data)
 
-     this.pagedDrains = this.drains.filter(drain => drain.user.street[key.level] == key.event);
-    console.log(this.drains);
   }
 
-
-// filters need help drains based on their status
-  statusFilter(pagedDrains,key):any{
-    
-        console.log("inside parent component, status filter");
-    
-        console.log(key);
-    
-        this.pagedDrains = this.drains.filter(drain => drain.status == key);
-        console.log(this.drains);
-      }
-
-  updateStatus(data: any, statusValue: string){
-
-    this.drainService.update_status({need_help_id: data.id, status: statusValue})
-    .subscribe( res => {
-      console.log('it worked');
-      console.log(res);
-    }, err => {
-      console.log('error occured');
-      console.log(err);
+  updateStatus(){
+    console.log("ng model is fine");
+    console.log(this.description);
+    this.drainService.update_status({
+      need_help_id: this.needHelpData.data.id,
+       status: this.needHelpData.statusValue,
+       description: this.description
     })
-console.log("update status button clicked");
-console.log(data);
-  }    
+    .subscribe( res => {
+      if(this.searchInfo){
+        this.searchNeedHelp(this.searchInfo);
+      }
+      else{
+        this.getFilteredDrains();
+      }
+    this.closeDescriptionModal();
+    }, err => {
+      this.closeDescriptionModal();
+    })
+  }
+
+  // searches needhelps using either
+  // street_name, ward_name, municipal_name or status
+  //of the need help
+  searchNeedHelp(data){
+    this.searchInfo = data;
+    this.drainService.searchNeedHelps(data)
+      .subscribe(res => {
+        this.pagedDrains = res
+      });
+  }
 
   setPage(page: number) {
     if (page < 1 || page > this.pager.totalPages) {
@@ -118,12 +140,19 @@ console.log(data);
   //Get extra details of the requested help
 
 
-  helpmodal(gid,category,help)
+  helpmodal(drain:any)
   {
-    this.thedrain = gid;
-    this.helpCategory = category;
-    this.helpNeeded = help;
+    this.needHelpObject = drain;
+    this.needHelpCategory = drain.need_help_category
     document.getElementById('helpdetails').style.display='block'
+  }
+
+//  displays popup for status change description
+  descriptionModal(data: any, statusValue: string)
+  {
+    this.needHelpData.data = data;
+    this.needHelpData.statusValue = statusValue;
+    document.getElementById('description_modal').style.display='block'
   }
 
   //Close the helpmodal by clicking anywhere else in the page
@@ -135,6 +164,12 @@ console.log(data);
             modal.style.display = "none";
         }
     }
+  }
+
+  // closes popup for status change description
+  closeDescriptionModal()
+  {
+    document.getElementById('description_modal').style.display='none';
   }
 
   //Close helpmodal by clicking the close button
@@ -155,20 +190,22 @@ console.log(data);
   isLoggedIn()
   {
       this.loggedIn = this.authService.isLoggedIn();
-      console.log(this.loggedIn)
   }
 
+
+  // initilizes varible which hides or shows status column
+  // in the html template
   conditionalInitializer(){
-    if(this.sessionService.hasRole("weo")){
-      console.log('weo column initalize')
-      this.weoStatusColumn = this.sessionService.hasRole("weo")
+    if(this.sessionService.hasRole("meo")){
+      this.meoStatusColumn = this.sessionService.hasRole("meo");
     }
-    else if(this.sessionService.hasRole("veo")){
-      console.log('veo column initailized')
-      this.veoStatusColumn = this.sessionService.hasRole("veo")
+    else if(this.sessionService.hasRole("weo")){
+      
+      this.weoStatusColumn = this.sessionService.hasRole("weo");
     }
 
   }
+
 
   ngOnInit(): void {
     this.getFilteredDrains();

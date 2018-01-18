@@ -20,7 +20,33 @@ export const LANG_EN_TRANS = {
   'adopted': "Adopted drains",
   'not_adopted': 'Not adopted',
   'others': 'Others',
+
+
+  /*need help transilation*/
   'need': 'Drains that need help',
+  'need_help_opened': 'Opened',
+  'button_pending': 'Approve',
+  'button_resolve': 'Resolve',
+  'resolved': 'resolved',
+  'pending': 'approved',
+  'approved': 'approved',
+  'submitted': 'submitted',
+  'need_help_pending': 'Approved',
+  'need_help_resolved': 'Resolved',
+  'need_help_status': 'Status',
+  'need_help_category': 'Help Needed',
+  'change_status_column': 'Change status',
+  'not_yet': 'Not yet',
+  'status_change_description': 'Add Description for Status change',
+  'status_change_placeholder': 'Optional',
+  'need_help_description_submit': 'Ok',
+  'need_help_description_cancel': 'Cancel',
+
+  /* filters translation*/
+  'choose_municipal': 'Choose Municipal',
+  'choose_ward': 'Choose Ward',
+  'choose_street': 'Choose Street',
+  'choose_status': 'Choose Status',
 
   /*side-menu translation*/
   'dashboard': 'Dashboard',
@@ -44,7 +70,7 @@ export const LANG_EN_TRANS = {
   'full_name': 'Full Name',
   'phone_number': 'Phone Number',
   'ranks_details': 'Cleanness ranks based on streets',
-  'location': 'Select a location',
+  'location': 'Select a Region/Status',
   'has': 'Has',
   'drain_no': 'Drain no',
   'help': 'Help Details',
@@ -74,8 +100,7 @@ export const LANG_EN_TRANS = {
   'send_alert': 'Send alert messages',
   'send_awareness': 'Send awareness messages',
   'veo': 'Send message to VEO',
-  'filter': 'Status Filters',
-  'submitted': 'Submitted',
+  'filter': 'Filters',
   'progress': 'Processing',
   'done': 'Done',
   'archive': 'Archived',

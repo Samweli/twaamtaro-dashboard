@@ -10,6 +10,7 @@
 
 .filters-list {
   display: inline;
+  list-style: none;
 }
 
 .filters-list li{

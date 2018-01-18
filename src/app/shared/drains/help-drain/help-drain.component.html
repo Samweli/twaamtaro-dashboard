@@ -13,10 +13,10 @@
 
 	<!--Desktop Filters -->
 	<div class="w3-center w3-padding">
-		<!--<button class="w3-btn w3-black w3-left" (click)="showFilters()">{{'filter' | translate}}</button>-->
+		<!-- <button class="w3-btn w3-black w3-left" (click)="showFilters()">{{'filter' | translate}}</button> -->
       <ul class="filters-list">
-        <li><app-regional-filters (selectValueChaged)="drainFilter(pagedDrains,$event)"></app-regional-filters></li>
-        <li><app-status-filters (statusValueChaged)="statusFilter(pagedDrains,$event)"></app-status-filters></li>
+        <li><app-regional-filters [disableWardSelect] ="disableWardSelect" [disableStreetSelect] ="disableStreetSelect" (selectValueChaged)="needHelpFilter($event)"></app-regional-filters></li>
+        <li><app-status-filters (statusValueChaged)="needHelpFilter($event)"></app-status-filters></li>
       </ul>
 		</div>
 	<!-- End Desktop Filters -->
@@ -44,27 +44,36 @@
 					<thead>
 					<tr class="w3-light-grey w3-border-bottom" >
             <th>{{'id' | translate}}</th>
-            <th>{{'name'| translate}}</th>
+						<th>{{'need_help_category'| translate}}</th>
+						<th>{{'need_help_status'| translate}}</th>
             <th>{{'address' | translate}}</th>
             <!--<th>{{'claimed' | translate}}</th>-->
-						<th>{{'report_made' | translate}}</th>
-						<th  *ngIf="authService.isLoggedIn()">{{'leader'| translate}}</th>
-						<th *ngIf="veoStatusColumn">Badili Hali ya Msaada kuwa MUENDELEZO</th>
-						<th *ngIf="weoStatusColumn">Badili Hali ya Msaada Kuwa VIMEFANYIKA</th>
+						<th>{{'need_help_opened' | translate}}</th>
+						<th>{{'need_help_pending' | translate}}</th>
+						<th>{{'need_help_resolved' | translate}}</th>
+						<th *ngIf="meoStatusColumn">{{'change_status_column' | translate}}</th>
+						<th *ngIf="weoStatusColumn">{{'change_status_column' | translate}}</th>
           </tr>
           </thead>
           <tbody>
           <tr *ngFor="let drain of pagedDrains">
-            <td><a (click)="helpmodal(drain.gid, drain.need_help_category.category_name, drain.help_needed)" >{{drain.gid}}</a></td>
-            <td>{{drain.need_help_category.category_name}}</td>
+            <td><a (click)="helpmodal(drain)" >{{drain.gid}}</a></td>
+						<td>{{drain.need_help_category.category_name}}</td>
+						<td>{{drain.status | translate }}</td>
             <td>{{drain.user.street.street_name}}</td>
-            <td>{{drain.created_at | date }}</td>
-            <td  *ngIf="authService.isLoggedIn()">
-							{{drain.user.first_name}} {{drain.user.last_name}}</td>
-						<td *ngIf="veoStatusColumn">
-							<button (click)="updateStatus(drain, 'MUENDELEZO')">MUENDELEZO</button></td>
+						<td>{{drain.created_at | date }}</td>
+						<td>
+								<div *ngIf="!drain.pending">{{'not_yet' | translate }}</div>
+							<div *ngIf="drain.pending">{{drain.pending | date }}</div>
+						</td>
+						<td>
+								<div *ngIf="!drain.resolved">{{'not_yet' | translate }}</div>
+							<div *ngIf="drain.resolved">{{drain.resolved | date }}</div>
+						</td>
 						<td *ngIf="weoStatusColumn">
-								<button (click)="updateStatus(drain, 'VIMEFANYIKA')">VIMEFANYIKA</button></td>
+							<button [disabled] = "drain.status == 'pending'" (click)="descriptionModal(drain, 'pending')">{{'button_pending' | translate }}</button></td>
+						<td *ngIf="meoStatusColumn">
+								<button [disabled] = "drain.status == 'resolved'" (click)="descriptionModal(drain, 'resolved')">{{'button_resolve' | translate }}</button></td>
           </tr>
 
             <div id="helpdetails" class="w3-modal w3-margin-top">
@@ -75,8 +84,35 @@
                   <h3>{{'drain_no'| translate}} {{ thedrain	}} {{'help'| translate}}</h3>
                 </header>
                 <div class="w3-container w3-padding">
-                  <p><strong class="w3-padding-right">{{'help_category'| translate}}: </strong>{{ helpCategory }}</p>
-                  <p><strong class="w3-padding-right">{{'extra'| translate}}: </strong>{{ helpNeeded }}</p>
+                  <p><strong class="w3-padding-right">{{'help_category'| translate}}: </strong>{{ needHelpCategory.category_name }}</p>
+                  <p><strong class="w3-padding-right">{{'extra'| translate}}: </strong>{{ needHelpObject.help_needed }}</p>
+                </div>
+              </div>
+						</div>
+						<div id="description_modal" class="w3-modal">
+              <div class="w3-modal-content w3-card-4">
+                <header class="w3-container w3-theme-d3 w3-center">
+								<span (click)="closeDescriptionModal()"
+                      class="w3-button w3-display-topright w3-padding w3-hover-teal">&times;</span>
+                  <h3>{{'status_change_description'| translate}}</h3>
+                </header>
+                <div class="w3-container w3-padding">
+									<div>lets look at ng model {{description}}</div>
+										<form>
+												<div class="w3-section w3-padding">
+													<div class="form-group">
+														<textarea class="w3-input w3-border w3-margin-bottom" [(ngModel)]="description" name="description" 
+															placeholder="{{'status_change_placeholder'| translate}}"  rows="4" cols="50" ></textarea>
+													</div>
+
+												<div>
+													<section class="w3-right form-group">
+															<button (click)="closeDescriptionModal()" class=" w3-btn w3-red w3-padding">{{'need_help_description_cancel'| translate}}</button>
+														<button  class="w3-btn w3-green w3-padding" (click)="updateStatus()">{{'need_help_description_submit'| translate}}</button>
+													</section>
+												</div>
+												</div>
+											</form>
                 </div>
               </div>
             </div>

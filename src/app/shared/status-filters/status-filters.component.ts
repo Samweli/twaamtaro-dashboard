@@ -8,7 +8,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class StatusFiltersComponent implements OnInit {
   @Output()
   statusValueChaged: EventEmitter<any> = new EventEmitter();
-  status: any = ['MUENDELEZO','KUFANYIKA','VIMEFANIKIWA'];
+  status: any = ['submitted', 'pending', 'resolved'];
   selectedStatus: any;
 
   constructor() { }
@@ -16,7 +16,11 @@ export class StatusFiltersComponent implements OnInit {
   onChange($event){
     console.log('inside child component');
     console.log($event);
-    this.statusValueChaged.emit($event);
+    let data: any = {
+                      from: 'status-filters',
+                      status: $event
+                    }
+    this.statusValueChaged.emit(data);
 
   }
 
