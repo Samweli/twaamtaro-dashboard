@@ -1,13 +1,13 @@
-<div class="content-wrapper" >
+<div id="content-wrapper" class="content-wrapper" >
   <section class="content">
 
-          <div class="box w3-card-2 w3-border w3-border-teal" >
+          <div id="reports" class="box w3-card-2 w3-border w3-border-teal" >
             <div class="box-header with-border">
               <section class="content-header">
                 <h3 class=" w3-center">{{'report' | translate}} </h3>
             </section>
 
-              <div class="box-tools pull-right">
+              <div id="boxTools" class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                   </button>
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -15,7 +15,16 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
+              <!-- Report Buttons -->
+              <div *ngIf="reportBuild" class="w3-row-padding " id="reportBtns">
+                <div class="w3-right">
+                  <button (click)="tableReport()" class="w3-btn  w3-block w3-blue w3-section w3-padding"> View Report in a table</button>
+                  <button (click)="printReport()" class="w3-btn  w3-block w3-blue w3-section w3-padding"> Print Report</button>
+                </div>
+              </div>
+              <!-- Report Buttons -->
               <div class="w3-row-padding" >
+                 
                 <form id="reportForm" >
                   <label><b>{{'location' | translate }}</b></label>
                   <div class="w3-row-padding">
@@ -43,21 +52,52 @@
                     </div>
                     <div class="w3-col s12 m3">
                       <select class="w3-select" name="streetname" [(ngModel)]="streetname.name" required #streetControl="ngModel">
-                        <option value="" disabled selected>{{ 'street' | translate}}</option>
+                          <option value="" disabled selected>{{ 'street' | translate}}</option> 
+                          <option value="all">All</option>
                         <option *ngFor="let street of (streets)" [value]="street.street.city_name">{{street.street.street_name}}</option>
                       </select>
                     </div>
+                    <button (click)="buildReport()" class="w3-btn w3-right w3-block w3-blue w3-section w3-padding" [disabled]="streetControl.invalid && wardControl.invalid || districtControl.invalid || regionControl.invalid">{{'send'| translate}}</button>
                   </div>
-                  <button (click)="buildReport()" class="w3-btn w3-right w3-block w3-blue w3-section w3-padding" [disabled]="streetControl.invalid">{{'send'| translate}}</button>
-              </form>
-              <div class="w3-row">
-                <div class="w3-col">
-                  <google-chart [data]="reportChart" (chartError)='error($event)'></google-chart>
+                 
+                </form>
+                <div id="printArea">
+                <div class="w3-row w3-padding-bottom" id="piecanvas">
+                   <!-- Pie Chart Canvas -->
+                  <div class="w3-col">
+                    <google-chart [data]="reportChart" (chartError)='error($event)'></google-chart>
+                  </div>
+                  <!-- Chart Canvas -->
                 </div>
-                 <!-- Chart Canvas -->
-
-              </div>
-
+              
+                <div class="w3-row" id="tablecanvas">
+                   <!--Table Chart Canvas -->
+                   <div class="w3-col w3-responsive">
+                     <h3 class="w3-center">Cleanness Reports in All the Streets</h3>
+                      <table class="w3-table-all w3-hoverable">
+                          <thead>
+                            <tr class="w3-dark-grey">
+                              <th>Street</th>
+                              <th>All Drains</th>
+                              <th>Adopted</th>
+                              <th>Clean Drains</th>
+                              <th>Dirty Drains</th>
+                              <th>Need Help</th>
+                            </tr>
+                          </thead>
+                         
+                          <tr *ngFor="let area of streets">
+                              <td>{{ area.street.street_name }}</td>
+                              <td>N/A</td>
+                              <td>{{ area.details.adopted }}</td>
+                              <td>{{ area.details.cleaned }}</td>
+                              <td>{{ area.details.uncleaned }}</td>
+                              <td>{{ area.details.need_help }}</td>
+                            </tr>
+                        </table>
+                  </div>
+                </div>
+                </div> <!-- End Print -->
               </div>
               <!-- /.row -->
             </div>

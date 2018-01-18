@@ -16,3 +16,9 @@
         margin-left: 0px;
     }
 }
+
+@media print {
+    .content-wrapper {
+        display: none;
+    }
+}
