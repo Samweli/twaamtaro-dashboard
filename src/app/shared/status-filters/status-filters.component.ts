@@ -8,7 +8,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class StatusFiltersComponent implements OnInit {
   @Output()
   statusValueChaged: EventEmitter<any> = new EventEmitter();
-  status: any = ['umewasilishwa','umethibitishwa','umeshugulikiwa'];
+  status: any = ['submitted', 'pending', 'resolved'];
   selectedStatus: any;
 
   constructor() { }

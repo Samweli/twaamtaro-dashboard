@@ -67,6 +67,8 @@ export class HelpDrainComponent implements OnInit {
       .subscribe(
         drains => {
           this.drains = this.drainService.helpDrains;
+          console.log('all drains');
+          console.log(this.drains);
     this.setPage(1);
     this.ngProgress.done();
     });
