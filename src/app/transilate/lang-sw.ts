@@ -88,6 +88,9 @@ export const LANG_SW_TRANS = {
   'or': 'Au',
   'no_status': 'hapana',
   'yes_status': 'Ndio',
+
+  /* Street Reports */
+  'street-report': 'Ripoti ya Usafi Mtaa wa',
 //  footer
   'copyright': 'Hatimiliki',
   'all-right':'Haki zote zimehifadhiwa.'

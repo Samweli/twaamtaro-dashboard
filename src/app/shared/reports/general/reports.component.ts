@@ -1,6 +1,6 @@
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { DrainsService } from './../../core/drains.service';
+import { DrainsService } from './../../../core/drains.service';
 import { ChartErrorEvent } from 'ng2-google-charts';
 import { NgProgress } from 'ngx-progressbar';
 
@@ -18,7 +18,7 @@ export class ReportComponent implements OnInit{
   streetname: any = {'name': '' };
   reportBuild = false;
   reportChart: any;
-  adoptedReportChart: any;
+
   constructor(
     private drainService: DrainsService, 
     public ngProgress: NgProgress
@@ -36,6 +36,7 @@ export class ReportComponent implements OnInit{
       .getRanksData()
       .subscribe( data => {
         this.streets = this.drainService.ranksData;
+        console.log(this.streets)
         this.ngProgress.done(); 
       });
 
@@ -76,35 +77,10 @@ export class ReportComponent implements OnInit{
         },
       };
 
-      //Get Data about drain adoption
-      var adopted = 0; 
-      var allDrains; 
-      var notAdopted;
-      
-      for (let i = 0; i < this.streets.length; i++) {
-        adopted += this.streets[i].details.adopted;
-      }
-      
-      this.adoptedReportChart =  {
-        chartType: 'PieChart',
-        dataTable: [
-          ['Drain Adoption', 'Ratio'],
-          ['Adopted', adopted ],
-          ['Not Adopted', notAdopted],
-        ],
-        options: {
-          'title': 'Drain Adoption in all streets in '+ this.ward.name+ ' ward' ,
-          pieHole: 0.3,
-          height: 500,
-          colors:['#964f8e','grey']
-        },
-      };
     }
     else {
 
     this.streets.forEach( street => {
-
-
       if(street.street.street_name == this.streetname.name) {
         this.reportChart =  {
           chartType: 'PieChart',
@@ -123,29 +99,12 @@ export class ReportComponent implements OnInit{
             chartArea: {
               height: 'auto',
             }
-          },
-        }; //End Cleanness ratio chart
-
-        this.adoptedReportChart =  {
-          chartType: 'PieChart',
-          dataTable: [
-            ['Drain Adoption', 'Ratio'],
-            ['Adopted', street.details.adopted ],
-            ['Not Adopted', street.details.not_adopted],
-          ],
-          options: {
-            'title': 'Drain Adoption in '+ street.street.street_name+', '+street.street.municipal_name,
-            pieHole: 0.3,
-            height: 500,
-            colors:['#964f8e','grey'],
-            chartArea: {
-              height:'auto',
-            }
-          },
-        }; //End adoption chart
+          }, //End Options
+        };//End ReportChart
       }
     });
    } //End Else
+   this.displayDiv("tablecanvas","show");
   } //End Build Report Function
   calcPercentage(value,total){
     var percent = (value/total) * 100;
@@ -171,7 +130,7 @@ export class ReportComponent implements OnInit{
     window.print();
   }
 
-  ngAf
+  
   ngOnInit() {
     this.displayDiv("tablecanvas","hide");
     this.streetData();

@@ -1,14 +1,17 @@
 #printHeader {
     display: none;
 }
-@media print and (overflow-block: paged){
-    
+@media print {
     #boxTools, #reportForm, #reportBtns {
         display: none;
     }
     #printHeader {
         display: block;
     }
+}
+@media print and (overflow-block: paged){
+    
+   
     #printArea {
         display: block;
         background-color: white;

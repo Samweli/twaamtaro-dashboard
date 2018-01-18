@@ -86,7 +86,8 @@ export const LANG_EN_TRANS = {
   'or': 'Or',
   'no_status': 'No',
   'yes_status': 'Yes',
-
+ /*Street Reports */
+ 'street-report':'Cleanliness Report in ',
 //  footer
   'copyright': 'Copyright',
   'all-right':'All rights reserved.'
