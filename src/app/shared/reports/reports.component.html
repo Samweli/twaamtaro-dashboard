@@ -51,11 +51,8 @@
                   <button (click)="buildReport()" class="w3-btn w3-right w3-block w3-blue w3-section w3-padding" [disabled]="streetControl.invalid">{{'send'| translate}}</button>
               </form>
               <div class="w3-row">
-                <div class="w3-col m6 s12">
+                <div class="w3-col">
                   <google-chart [data]="reportChart" (chartError)='error($event)'></google-chart>
-                </div>
-                <div class="w3-col m6 s12">
-                  <google-chart [data]="adoptedReportChart" (chartError)='error($event)'  ></google-chart>
                 </div>
                  <!-- Chart Canvas -->
 

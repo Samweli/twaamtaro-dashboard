@@ -10,7 +10,7 @@ export const LANG_SW_TRANS = {
   'clean':'Misafi',
   'all': 'Mitaro Yote',
   'dirty': 'Michafu',
-  'unknown': 'Haijulikana',
+  'unknown': 'Haijulikani',
   'citizens': 'Wananchi',
   'not_adopted': 'Mitaro isiyo na watu',
   'need_help_report': 'Ripoti ya mitaro inayohitaji msaada',

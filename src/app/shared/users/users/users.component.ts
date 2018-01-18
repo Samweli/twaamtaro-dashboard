@@ -11,6 +11,7 @@ import { StreetService } from "./../../../core/streets.service";
 import { DrainsService } from "./../../../core/drains.service";
 import { SessionService } from "./../../../core/session.service";
 import { forEach } from '@angular/router/src/utils/collection';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-users',
@@ -19,7 +20,7 @@ import { forEach } from '@angular/router/src/utils/collection';
 })
 export class UsersComponent implements OnInit, AfterViewInit {
   title = 'Citizens';
-  areaCount: any = [{"ward":'', 'street':'', 'population':''}];
+  areaCount: any = [];
   errMsg: any;
   error: any;
   street: any[];
@@ -64,26 +65,9 @@ export class UsersComponent implements OnInit, AfterViewInit {
   return this.weos;
   }
 
-  getStreetUsers(){
-
-  }
-
-
-//Counts the number of users in particular area
-  /*countUsers(theArea, users) {
-    var userCount;
-     for (let i = 0; i < users.length; i++) {       
-      if(theArea === users[i].street.id) {
-       userCount++
-      }
-    } 
-    this.areaCount.push([theArea, userCount])
-    console.log(this.areaCount)
-    return this.areaCount
-  }*/
 
   //Get the population of users in a particular street
-  getStreetsPopulation(users) {
+  getStreetsPopulation(users): Observable<any> {
     this.streetService.getStreets()
     .subscribe(res => {
       this.streets = res
@@ -95,12 +79,11 @@ export class UsersComponent implements OnInit, AfterViewInit {
        userCount++
       }
     } 
-    this.areaCount.push({'"ward"':street.ward_name, '"street"':street.street_name, '"population"':userCount})
-      });
-     console.log(JSON.parse(JSON.stringify(this.areaCount)));
-     return JSON.parse(JSON.stringify(this.areaCount));
+    this.areaCount.push({'"ward"':street.ward_name, '"street"':street.street_name, '"population"':userCount},)
+    });
+     
     })
-
+    return this.areaCount;
   }
   showFullToolTip(row,size,value){
     return '<div class="w3-card-2 w3-padding w3-white"  style="width:98%"><h4>'+ size +' Citizens </h4></div>';
@@ -128,10 +111,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
               this.usersCount++;
             }
           }
-    //Count Number of Users in every street
-
-
-
+    
     //Get the number of citizens in each street
           this.treeChart =  {
             chartType: 'TreeMap',
@@ -149,11 +129,10 @@ export class UsersComponent implements OnInit, AfterViewInit {
                 ['Hananasif Ward', null, this.users.length],
                 ],
             };
+            
             this.areaCount.forEach(area => {
               this.treeChart.dataTable.push([area.ward, area.street, area.population]);
-              
             });
-            
         });
     this.ngProgress.done();
   }
@@ -172,13 +151,14 @@ export class UsersComponent implements OnInit, AfterViewInit {
   subscribeToLangChanged() {
     return this._translate.onLangChanged.subscribe(x => this.refreshText());
   }
-  ngAfterViewInit() {
-
+  ngAfterViewInit() {            
   }
+  
   ngOnInit() {
     var loggedUser = this.sessionService.getLoggedUser();
     this.getUsers();
     this.subscribeToLangChanged();
+
   }
 
 }

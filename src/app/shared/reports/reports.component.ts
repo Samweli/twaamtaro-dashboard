@@ -17,7 +17,7 @@ export class ReportComponent implements OnInit{
   ward: any = {'name': '' };
   streetname: any = {'name': '' };
   reportChart: any;
-  adoptedReportChart: any;
+
   constructor(
     private drainService: DrainsService, 
     public ngProgress: NgProgress
@@ -57,21 +57,6 @@ export class ReportComponent implements OnInit{
             pieHole: 0.3,
             height: 500,
             colors:['#5cb85c','#eea236','#6495ed']
-          },
-        };
-
-        this.adoptedReportChart =  {
-          chartType: 'PieChart',
-          dataTable: [
-            ['Drain Adoption', 'Ratio'],
-            ['Adopted', street.details.adopted ],
-            ['Not Adopted', street.details.not_adopted],
-          ],
-          options: {
-            'title': 'Drain Adoption in '+ street.street.street_name,
-            pieHole: 0.3,
-            height: 500,
-            colors:['#964f8e','grey']
           },
         };
       }
