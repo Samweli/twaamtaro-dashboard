@@ -1,11 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 
 import {AuthService} from "./../../../core/auth.service";
 import { DrainsService } from './../../../core/drains.service';
 import { PagerService } from './../../../core/paging.service';
-
-import * as _ from 'underscore';
-import { Drain } from './../drain';
+import { SessionService } from '../../../core/session.service'
 
 import { NgProgress } from 'ngx-progressbar';
 
@@ -19,7 +17,7 @@ export class HelpDrainComponent implements OnInit {
   created: any;
   daysGone: any;
   dateCreated: any;
-  drains: any;
+  drains: any = [];
   errMsg: any; // Error Message
   helpCategory : any;
   helpNeeded : any;
@@ -29,12 +27,16 @@ export class HelpDrainComponent implements OnInit {
   pagedDrains: any[]; // paged drains
   thedrain: any;
   today: any;
+  searchKey: any;
+  weoStatusColumn: boolean = false;
+  veoStatusColumn: boolean = false;
 
   constructor(
     private drainService: DrainsService,
     public authService: AuthService,
     private pagerService: PagerService,
     public ngProgress: NgProgress,
+    private sessionService: SessionService
   ) { }
 
   getDuration(d)
@@ -63,6 +65,43 @@ export class HelpDrainComponent implements OnInit {
     this.ngProgress.done();
     });
   }
+
+// filters need help drains based on their regions(stree,ward, municipal)
+  drainFilter(data:any,key?):any{
+
+    console.log("inside parent component");
+
+    console.log(key);
+
+     this.pagedDrains = this.drains.filter(drain => drain.user.street[key.level] == key.event);
+    console.log(this.drains);
+  }
+
+
+// filters need help drains based on their status
+  statusFilter(pagedDrains,key):any{
+    
+        console.log("inside parent component, status filter");
+    
+        console.log(key);
+    
+        this.pagedDrains = this.drains.filter(drain => drain.status == key);
+        console.log(this.drains);
+      }
+
+  updateStatus(data: any, statusValue: string){
+
+    this.drainService.update_status({need_help_id: data.id, status: statusValue})
+    .subscribe( res => {
+      console.log('it worked');
+      console.log(res);
+    }, err => {
+      console.log('error occured');
+      console.log(err);
+    })
+console.log("update status button clicked");
+console.log(data);
+  }    
 
   setPage(page: number) {
     if (page < 1 || page > this.pager.totalPages) {
@@ -118,9 +157,23 @@ export class HelpDrainComponent implements OnInit {
       this.loggedIn = this.authService.isLoggedIn();
       console.log(this.loggedIn)
   }
+
+  conditionalInitializer(){
+    if(this.sessionService.hasRole("weo")){
+      console.log('weo column initalize')
+      this.weoStatusColumn = this.sessionService.hasRole("weo")
+    }
+    else if(this.sessionService.hasRole("veo")){
+      console.log('veo column initailized')
+      this.veoStatusColumn = this.sessionService.hasRole("veo")
+    }
+
+  }
+
   ngOnInit(): void {
     this.getFilteredDrains();
     this.closedetails();
     this.closemodal();
+    this.conditionalInitializer();
   }
 }

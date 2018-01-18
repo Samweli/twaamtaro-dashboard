@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
-import {AuthService} from "./../../core/auth.service";
-import {TranslateService} from "../../translate/translate.service";
-import {SessionService} from "../../core/session.service";
+import { AuthService } from "./../../core/auth.service";
+import { SessionService } from "./../../core/session.service";
+import { TranslateService } from "../../translate/translate.service";
 
 @Component({
   selector: 'app-left-side',
@@ -11,17 +11,21 @@ import {SessionService} from "../../core/session.service";
 export class LeftSideComponent implements OnInit {
   constructor(
     public authService: AuthService,
-    private _translate: TranslateService,
-    private  sessionService: SessionService
+    public sessionService: SessionService,
+    private _translate: TranslateService
   ) { }
-
-
+  notifyCitizens() {
+  }
+  loggedUser;
   public translatedText: string;
   public supportedLanguages: any[];
   supportedLangs: any;
-  loggedUser: any;
 
   ngOnInit() {
+    if(this.authService.isLoggedIn()) {
+      var theUser = JSON.parse(this.sessionService.getLoggedUser());
+      this.loggedUser = theUser.first_name + " " + theUser.last_name ;
+    }
 
     // standing data
     this.supportedLangs = [
@@ -56,4 +60,5 @@ export class LeftSideComponent implements OnInit {
   subscribeToLangChanged() {
     return this._translate.onLangChanged.subscribe(x => this.refreshText());
   }
+
 }

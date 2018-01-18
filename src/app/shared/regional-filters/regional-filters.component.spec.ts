@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LeftSideComponent } from './left-side.component';
+import { RegionalFiltersComponent } from './regional-filters.component';
 
-describe('LeftSideComponent', () => {
-  let component: LeftSideComponent;
-  let fixture: ComponentFixture<LeftSideComponent>;
+describe('RegionalFiltersComponent', () => {
+  let component: RegionalFiltersComponent;
+  let fixture: ComponentFixture<RegionalFiltersComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LeftSideComponent ]
+      declarations: [ RegionalFiltersComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LeftSideComponent);
+    fixture = TestBed.createComponent(RegionalFiltersComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

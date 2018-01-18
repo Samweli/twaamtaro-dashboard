@@ -1,0 +1,13 @@
+label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: bold;
+  margin-top: 15px;
+}
+w3-select {
+  padding: 9px 0;
+  width: 100%;
+  color: #000;
+  border: 1px solid #009688;
+}

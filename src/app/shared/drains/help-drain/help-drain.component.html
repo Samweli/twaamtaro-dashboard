@@ -13,13 +13,10 @@
 
 	<!--Desktop Filters -->
 	<div class="w3-center w3-padding">
-		<button class="w3-btn w3-black w3-left" (click)="showFilters()">{{'filter' | translate}}</button>
-      <ul class="w3-hide-small w3-left">
-          <li class="w3-btn w3-white w3-border w3-border-blue" (click)="getFilteredDrains()">{{'all_button'| translate}}</li>
-          <li class="w3-btn w3-white w3-border w3-border-red" (click)="getFilteredDrains('submitted')">{{'submitted'| translate}}</li>
-          <li class="w3-btn w3-white w3-border w3-border-orange" (click)="getFilteredDrains('processing')">{{'progress' | translate}}</li>
-          <li class="w3-btn w3-white w3-border w3-border-green" (click)="getFilteredDrains('done')">{{'done'| translate}}</li>
-          <li class="w3-btn w3-white w3-border w3-border-grey" (click)="getFilteredDrains('archived')">{{'archive'| translate}}</li>
+		<!--<button class="w3-btn w3-black w3-left" (click)="showFilters()">{{'filter' | translate}}</button>-->
+      <ul class="filters-list">
+        <li><app-regional-filters (selectValueChaged)="drainFilter(pagedDrains,$event)"></app-regional-filters></li>
+        <li><app-status-filters (statusValueChaged)="statusFilter(pagedDrains,$event)"></app-status-filters></li>
       </ul>
 		</div>
 	<!-- End Desktop Filters -->
@@ -43,7 +40,7 @@
 			<div class="row">
 				<!-- templates -->
 				<div id="error"><h4></h4></div>
-				<table class="w3-table w3-hoverable w3-responsive w3-white" border="0">
+				<table class="w3-table w3-hoverable w3-responsive w3-white" border="0" id="need_help_table">
 					<thead>
 					<tr class="w3-light-grey w3-border-bottom" >
             <th>{{'id' | translate}}</th>
@@ -51,7 +48,9 @@
             <th>{{'address' | translate}}</th>
             <!--<th>{{'claimed' | translate}}</th>-->
 						<th>{{'report_made' | translate}}</th>
-            <th  *ngIf="authService.isLoggedIn()">{{'leader'| translate}}</th>
+						<th  *ngIf="authService.isLoggedIn()">{{'leader'| translate}}</th>
+						<th *ngIf="veoStatusColumn">Badili Hali ya Msaada kuwa MUENDELEZO</th>
+						<th *ngIf="weoStatusColumn">Badili Hali ya Msaada Kuwa VIMEFANYIKA</th>
           </tr>
           </thead>
           <tbody>
@@ -61,7 +60,11 @@
             <td>{{drain.user.street.street_name}}</td>
             <td>{{drain.created_at | date }}</td>
             <td  *ngIf="authService.isLoggedIn()">
-              {{drain.user.first_name}} {{drain.user.last_name}}</td>
+							{{drain.user.first_name}} {{drain.user.last_name}}</td>
+						<td *ngIf="veoStatusColumn">
+							<button (click)="updateStatus(drain, 'MUENDELEZO')">MUENDELEZO</button></td>
+						<td *ngIf="weoStatusColumn">
+								<button (click)="updateStatus(drain, 'VIMEFANYIKA')">VIMEFANYIKA</button></td>
           </tr>
 
             <div id="helpdetails" class="w3-modal w3-margin-top">
