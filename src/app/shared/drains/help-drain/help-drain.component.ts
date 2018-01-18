@@ -67,8 +67,6 @@ export class HelpDrainComponent implements OnInit {
       .subscribe(
         drains => {
           this.drains = this.drainService.helpDrains;
-          console.log('all drains');
-          console.log(this.drains);
     this.setPage(1);
     this.ngProgress.done();
     });
@@ -77,6 +75,7 @@ export class HelpDrainComponent implements OnInit {
   // filters need help drains based on their regions(stree,ward, municipal)
   // and Status
   needHelpFilter(data: any){
+    
     if(data.from == 'regional-filters'){
       if(data.municipal_name) this.disableWardSelect = false;
       if(data.ward_name) this.disableStreetSelect = false;
@@ -88,14 +87,11 @@ export class HelpDrainComponent implements OnInit {
     if(data.from == 'status-filters'){
       this.filterObject.status = data.status;
     }
-
-    this.searchNeedHelp(data)
+    this.searchNeedHelp(this.filterObject);
 
   }
 
   updateStatus(){
-    console.log("ng model is fine");
-    console.log(this.description);
     this.drainService.update_status({
       need_help_id: this.needHelpData.data.id,
        status: this.needHelpData.statusValue,
