@@ -40,6 +40,7 @@ export class HeaderComponent implements OnInit {
     this.userService.getLeaderRequests()
     .subscribe(res => {
       this.requests = this.userService.totalRequests
+
     })
   }
 

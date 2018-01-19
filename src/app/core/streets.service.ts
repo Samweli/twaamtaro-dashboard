@@ -17,11 +17,18 @@ export class StreetService {
   streetName: any
   
   getStreets(): any {
-    return this.http.get(this.urlService.apiUrl+this.urlService.streetsUrl,
+    return this.http.get(this.urlService.localUrl+this.urlService.streetsUrl,
       {headers: this.headers})
            .map((response: Response) => response.json().streets)
            .catch(this.errorHandler);
           } 
+// gets all municiplas
+  getMunicipals(): any {
+    return this.http.get(this.urlService.localUrl+this.urlService.municipalsUrl,
+      {headers: this.headers})
+           .map((response: Response) => response.json().municipals)
+           .catch(this.errorHandler);
+          }
            
     getStreet(id):any {
             return this.getStreets()
@@ -40,6 +47,22 @@ export class StreetService {
         )
         .catch(this.errorHandler);
       }
+
+      // gets all wards by municipal id
+   getMunicipalWards(id: number){
+     const url = `${this.urlService.localUrl+this.urlService.municipalsUrl}/${id}/${'wards'}`;
+     return this.http.get(url,{headers: this.headers})
+     .map((response: Response) => response.json().wards)
+     .catch(this.errorHandler)
+   }  
+   
+   // get all streets by ward id
+   getWardStreets(id: number){
+    const url = `${this.urlService.localUrl+this.urlService.wardsUrl}/${id}/${'streets'}`;
+    return this.http.get(url,{headers: this.headers})
+    .map((response: Response) => response.json().streets)
+    .catch(this.errorHandler)
+  } 
  
     
   errorHandler(error: Response) {

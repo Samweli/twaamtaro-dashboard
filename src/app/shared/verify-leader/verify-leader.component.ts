@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from "./../../core/user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-verify-leader',
@@ -9,35 +10,47 @@ import { UserService } from "./../../core/user.service";
 export class VerifyLeaderComponent implements OnInit {
   constructor(
     private userService: UserService,
+    private router: Router
   ) { }
 
-  title = 'Citizens Leadership Requests';
   errMsg: any;
-  verifyRes: any;
+  verifyRes: any ={};
   leaderRequests : any;
   allRequests : any;
-  theRequest : any;
 
-  //Getting Street leader requests 
+  //Getting Street leader requests
   getRequests() {
     this.userService.getLeaderRequests()
-      .subscribe(res => { 
-        this.leaderRequests = this.userService.leaderRequests; 
+      .subscribe(res => {
+        this.leaderRequests = this.userService.leaderRequests;
         this.allRequests = this.userService.totalRequests
-      })
+        console.log(this.allRequests);
+        }
+      )
+
+  }
+  postRequest(data) {
+    this.verifyRes.role_id = data.role_requested;
+    this.verifyRes.user_id = data.id;
+    this.userService.verifyLeader({role_id: data.role_requested, user_id: data.id})
+      .subscribe(
+        res => {
+          this.leaderRequests = this.leaderRequests.filter(d => d !== data);
+        },
+        err => {
+          console.log('error in verify')
+        }
+      )
   }
 
-  verifyLeader(userId,roleId): any {
-    this.theRequest = {
-      "user_id": userId, 
-      "role_id": roleId
-    }
-    this.userService.verifyLeader(this.theRequest)
-    .subscribe(res => {
-      this.verifyRes = this.userService.verifyResponse;         
-     }
-    )
+  denyRequest(data: any): void {
+    this.verifyRes.user_id = data.id;
+    this.userService.denyLeader({user_id: data.id})
+      .subscribe(() => {
+        this.leaderRequests = this.leaderRequests.filter(u => u !== data);
+      });
   }
+
 
   ngOnInit() {
     this.getRequests()

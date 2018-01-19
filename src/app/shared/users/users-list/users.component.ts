@@ -5,8 +5,10 @@ import { StreetVEOPipe, UserStreetPipe } from "./../../../core/user.pipe";
 import { Ng2GoogleChartsModule, ChartSelectEvent } from 'ng2-google-charts';
 
 import { NgProgress } from 'ngx-progressbar';
+
 import { AuthService } from "./../../../core/auth.service";
-import { TranslateService } from "../../../transilate/translate.service";
+import { TranslateService } from "../../../translate/translate.service";
+
 import { StreetService } from "./../../../core/streets.service";
 import { DrainsService } from "./../../../core/drains.service";
 import { SessionService } from "./../../../core/session.service";
@@ -65,6 +67,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
       if (this.checkRole(users[i].roles, '2')) {
         this.veos.push(users[i])
       }
+
   };
   return this.veos;
   }
@@ -105,6 +108,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
       //this.countUsers(this.streets.id,users)
         this.streets.forEach(street => {
         console.log('Street Id '+ street.id)
+
         var userCount;
      for (let i = 0; i < users.length; i++) {       
       if(street.id === users[i].street.id) {
@@ -123,6 +127,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
         .getUsers()
         .subscribe(user => {
           this.users = user;
+
       this.getStreetsPopulation(this.users) 
       this.getVeos(this.users);
 
