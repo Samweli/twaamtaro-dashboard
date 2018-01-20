@@ -144,19 +144,10 @@ get needHelpData() {
   ngOnInit() {
     this._needHelpData
     .subscribe(x => {
-       this.initilizeGraph();
-      // console.log(this.datePipe.transform(new Date()));
-      if(this.needHelpData){
-        console.log('looking at the dataTable');
-        console.log(this.prepareChartData(this.needHelpData, 'some data'))
-      }
-      
-    });
-  
-
-    
-    
-    
+       if(x){
+        this.initilizeGraph();
+       }
+    });   
 }
      
   
