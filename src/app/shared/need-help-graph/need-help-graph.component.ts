@@ -81,17 +81,33 @@ get needHelpData() {
 
   // prepares data that  will be displayed on chart
   private prepareChartData(filteredData:any, rangeDates:any): any[]{
-    let counter:any = 0;
-    let dataTable: any[] = [['Week','Submitted']];
+
+    let submittedCounter:any = 0;
+    let approvedCounter:any = 0;
+    let resolvedCounter:any = 0;
+    let dataTable: any[] = [['Week','Submitted', 'Approved', 'Resolved']];
    let rangeDateArray: any[] = this.getRangeDates(rangeDates);
    rangeDateArray.forEach(element => {
      filteredData.forEach(el => {
-       if(this.dateFilter(el, element)){
-         counter++;
-       }
+     if(el.status == 'submitted'){
+      if(this.dateFilter(el, element,'submitted')){
+        submittedCounter++;
+      }
+     } else if(el.status == 'pending'){
+      if(this.dateFilter(el, element,'pending')){
+        approvedCounter++;
+      }
+     } else if(el.status == 'resolved'){
+      if(this.dateFilter(el, element,'resolved')){
+        resolvedCounter++;
+      }
+     }
+
      });
-     dataTable.push([this.datePipe.transform(element.end),counter]);
-     counter = 0;
+     dataTable.push([this.datePipe.transform(element.end),submittedCounter,approvedCounter,resolvedCounter]);
+     submittedCounter = 0;
+     approvedCounter = 0;
+     resolvedCounter = 0;
    });
 
     return dataTable;
@@ -99,15 +115,15 @@ get needHelpData() {
   }
 
   // filters data based on a specified date
-  private dateFilter(suppliedData: any, date: any){
+  private dateFilter(suppliedData: any, date: any, status:any){
     let dateObj = new Date(suppliedData.created_at)
-    let  bool: any = dateObj >= date.start && dateObj <= date.end;
+    let  bool: any = dateObj.getDate() >= date.start.getDate() && dateObj.getDate() <= date.end.getDate() && suppliedData.status == status;
     return bool;
   }
 
 // returns array of dates falling in specified range
   private getRangeDates(dateRange:any): any[]{
-    let data = this.getWeeksInMonth(11,2017);
+    let data = this.getWeeksInMonth(0,2018);
     return data;
   }
 
