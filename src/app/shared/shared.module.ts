@@ -48,6 +48,7 @@ import { TranslateModule } from "../translate/translate.module";
 import { TranslatePipe } from "../translate/translate.pipe";
 import { TRANSLATION_PROVIDERS } from "../translate/translation/translation.component";
 import { UserService } from './../core/user.service';
+import { DatePipe } from '@angular/common';
 
 import { StreetVEOPipe, UserStreetPipe } from "./../core/user.pipe";
 import { NotifyComponent } from './notify/notify.component';
@@ -55,6 +56,7 @@ import { RegisterComponent } from './register/register.component';
 import { VerifyLeaderComponent } from './verify-leader/verify-leader.component';
 import { RegionalFiltersComponent } from './regional-filters/regional-filters.component';
 import { StatusFiltersComponent } from './status-filters/status-filters.component';
+import { NeedHelpGraphComponent } from './need-help-graph/need-help-graph.component';
 
 @NgModule({
   imports: [
@@ -103,6 +105,7 @@ import { StatusFiltersComponent } from './status-filters/status-filters.componen
     VerifyLeaderComponent,
     RegionalFiltersComponent,
     StatusFiltersComponent,
+    NeedHelpGraphComponent,
   ],
   exports: [SharedComponent],
   providers: [
@@ -113,6 +116,7 @@ import { StatusFiltersComponent } from './status-filters/status-filters.componen
     TRANSLATION_PROVIDERS,
     TranslateService,
     UserService,
+    DatePipe,
   ],
 })
 

@@ -40,6 +40,10 @@ export const LANG_SW_TRANS = {
   'need_help_description_submit': 'Sawa',
   'need_help_description_cancel': 'Ghairi',
 
+    /* Need help graph transilation */
+    'graph_title': 'Mchakato wa Uhugulikiwaji wa maombi ya misaada katika mitaro',
+    'need_help_graph': 'CHATI YA MAOMBI YA MISAADA YA MITARO',
+
     /* filters translation*/
     'choose_municipal': 'Chagua Manispaa',
     'choose_ward': 'Chagua Kata',

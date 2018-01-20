@@ -1,0 +1,7 @@
+<!-- <p>
+
+  <google-chart [data]="needHelpGraph" ></google-chart>
+</p> -->
+
+<google-chart [data]="lineChartData" (chartReady)="ready($event)" (chartError)="error($event)" (chartSelect)="select($event)"></google-chart>
+
