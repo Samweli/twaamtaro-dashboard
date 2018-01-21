@@ -4,11 +4,7 @@ import { DrainsService } from './../../core/drains.service';
 import { AuthService} from "./../../core/auth.service";
 import { ChartSelectEvent } from 'ng2-google-charts';
 import { UserService } from "./../../core/user.service";
-<<<<<<< HEAD
-import { TranslateService} from "../../transilate/translate.service";
-=======
-import {TranslateService} from "../../translate/translate.service";
->>>>>>> 18b383a94b74c472f1593192528a86ee9c6d8e1e
+import { TranslateService } from "../../translate/translate.service";
 import { NgProgress } from 'ngx-progressbar';
 import { StreetService } from "../../core/streets.service";
 

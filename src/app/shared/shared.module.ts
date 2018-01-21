@@ -52,12 +52,9 @@ import { StreetVEOPipe, UserStreetPipe } from "./../core/user.pipe";
 import { NotifyComponent } from './notify/notify.component';
 import { RegisterComponent } from './register/register.component';
 import { VerifyLeaderComponent } from './verify-leader/verify-leader.component';
-<<<<<<< HEAD
 import { UsersListComponent } from './users/users-list/users-list.component';
-=======
 import { RegionalFiltersComponent } from './regional-filters/regional-filters.component';
 import { StatusFiltersComponent } from './status-filters/status-filters.component';
->>>>>>> 18b383a94b74c472f1593192528a86ee9c6d8e1e
 
 @NgModule({
   imports: [
@@ -103,12 +100,9 @@ import { StatusFiltersComponent } from './status-filters/status-filters.componen
     NotifyComponent,
     RegisterComponent,
     VerifyLeaderComponent,
-<<<<<<< HEAD
     UsersListComponent,
-=======
     RegionalFiltersComponent,
     StatusFiltersComponent,
->>>>>>> 18b383a94b74c472f1593192528a86ee9c6d8e1e
   ],
   exports: [SharedComponent],
   providers: [

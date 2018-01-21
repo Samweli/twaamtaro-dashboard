@@ -76,13 +76,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
       this.streets = res
       //this.countUsers(this.streets.id,users)
         this.streets.forEach(street => {
-<<<<<<< HEAD:src/app/shared/users/users/users.component.ts
         var userCount = 0;
-=======
-        console.log('Street Id '+ street.id)
-
-        var userCount;
->>>>>>> 18b383a94b74c472f1593192528a86ee9c6d8e1e:src/app/shared/users/users-list/users.component.ts
      for (let i = 0; i < users.length; i++) {       
       if(street.id == users[i].street.id) {
        userCount++

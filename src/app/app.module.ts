@@ -14,7 +14,6 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule } from "./shared/shared.module";
 
 import { AppComponent } from './app.component';
-<<<<<<< HEAD
 import { AdminComponent } from './shared/admin/admin.component';
 import { AdminContentComponent } from './shared/admin/admin-content/admin-content.component';
 
@@ -39,8 +38,6 @@ import { UsersListComponent } from './shared/users/users-list/users-list.compone
 
 import { UnknownDrainsComponent } from './shared/drains/unknown-drains/unknown-drains.component';
 
-=======
->>>>>>> 18b383a94b74c472f1593192528a86ee9c6d8e1e
 import { AuthGuard } from "./core/auth.guard";
 import { AuthService } from "./core/auth.service";
 import { DrainsUrlService } from "./core/drains-url.service";
