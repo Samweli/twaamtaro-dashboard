@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
   user: any = { 'sms_number': '','password': '' };
   userData: any;
   theUser: any;
+  loading: any;
   
   formatPhoneNumber(phoneNumber) {
     var formattedNumber: any;

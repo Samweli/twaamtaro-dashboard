@@ -7,15 +7,14 @@ import { DirtyDrainModule } from './shared/drains/dirty-drain/dirty-drain.module
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { Directive } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ReportModule } from './shared/reports/reports.module';
 import { FormsModule } from '@angular/forms';
-import { UserDetailModule } from "./shared/users/user-detail/user-detail.module";
 import { SharedModule } from "./shared/shared.module";
 
 import { AppComponent } from './app.component';
+<<<<<<< HEAD
 import { AdminComponent } from './shared/admin/admin.component';
 import { AdminContentComponent } from './shared/admin/admin-content/admin-content.component';
 
@@ -40,6 +39,8 @@ import { UsersListComponent } from './shared/users/users-list/users-list.compone
 
 import { UnknownDrainsComponent } from './shared/drains/unknown-drains/unknown-drains.component';
 
+=======
+>>>>>>> 18b383a94b74c472f1593192528a86ee9c6d8e1e
 import { AuthGuard } from "./core/auth.guard";
 import { AuthService } from "./core/auth.service";
 import { DrainsUrlService } from "./core/drains-url.service";
@@ -48,10 +49,9 @@ import { NgProgressModule } from 'ngx-progressbar';
 import { SessionService } from "./core/session.service";
 import { SmsService } from "./core/sms.service";
 import { StreetsUrlService } from "./core/streets-url.service";
-import { TranslateService } from "./transilate/translate.service";
-import { TranslatePipe } from "./transilate/translate.pipe";
-import { TRANSLATION_PROVIDERS } from "./transilate/translation/translation.component";
+import { TRANSLATION_PROVIDERS } from "./translate/translation/translation.component";
 import { UsersUrlService } from "./core/users-url.service";
+
 
 @NgModule({
   declarations: [

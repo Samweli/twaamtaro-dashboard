@@ -42,17 +42,22 @@ import { DrainsService } from './../core/drains.service';
 import { HeaderModule } from "./header/header.module";
 import { PagerService } from './../core/paging.service';
 import { StreetService } from "./../core/streets.service";
-import { TranslateService } from "../transilate/translate.service";
-import { TransilateModule } from "../transilate/transilate.module";
-import { TranslatePipe } from "../transilate/translate.pipe";
-import { TRANSLATION_PROVIDERS } from "../transilate/translation/translation.component";
+import { TranslateService } from "../translate/translate.service";
+import { TranslateModule } from "../translate/translate.module";
+import { TranslatePipe } from "../translate/translate.pipe";
+import { TRANSLATION_PROVIDERS } from "../translate/translation/translation.component";
 import { UserService } from './../core/user.service';
 
 import { StreetVEOPipe, UserStreetPipe } from "./../core/user.pipe";
 import { NotifyComponent } from './notify/notify.component';
 import { RegisterComponent } from './register/register.component';
 import { VerifyLeaderComponent } from './verify-leader/verify-leader.component';
+<<<<<<< HEAD
 import { UsersListComponent } from './users/users-list/users-list.component';
+=======
+import { RegionalFiltersComponent } from './regional-filters/regional-filters.component';
+import { StatusFiltersComponent } from './status-filters/status-filters.component';
+>>>>>>> 18b383a94b74c472f1593192528a86ee9c6d8e1e
 
 @NgModule({
   imports: [
@@ -69,7 +74,7 @@ import { UsersListComponent } from './users/users-list/users-list.component';
     FormsModule,
     NotificationBarModule,
     HeaderModule,
-    TransilateModule,
+    TranslateModule,
     SharedRoutingModule,
   ],
   declarations: [
@@ -98,7 +103,12 @@ import { UsersListComponent } from './users/users-list/users-list.component';
     NotifyComponent,
     RegisterComponent,
     VerifyLeaderComponent,
+<<<<<<< HEAD
     UsersListComponent,
+=======
+    RegionalFiltersComponent,
+    StatusFiltersComponent,
+>>>>>>> 18b383a94b74c472f1593192528a86ee9c6d8e1e
   ],
   exports: [SharedComponent],
   providers: [

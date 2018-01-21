@@ -7,7 +7,7 @@
     <div class="w3-col l2 m2 s6 w3-padding-right" id="bar">
         <a routerLink="drain-list"><div class="w3-container w3-padding w3-white w3-hover-shadow w3-border w3-border-teal " title="Click to view all drains" id="alldrain">
         <h4>{{'all' | translate}}</h4>
-        <h4 class="w3-text-black" *ngIf="alldrains">{{ alldrains.length }}</h4>
+        <h4 class="w3-text-black" *ngIf="summaryData">{{ summaryData.all }}</h4>
       </div></a>
     </div>
 
@@ -15,28 +15,28 @@
       <a routerLink="clean-drains"><div class="w3-container w3-padding w3-white w3-hover-shadow w3-border w3-border-teal"  title="Click to view clean drains" id="clearbtn">
       <div class="w3-clear"></div><span class="w3-right"><img src="assets/img/broom.png" title="Clean Drains" width="20" height="20"></span>
         <h4>{{'clean'| translate}}</h4>
-        <h4 class="w3-text-black" *ngIf="cleandrains">{{ cleandrains.length }}</h4>
+        <h4 class="w3-text-black" *ngIf="summaryData">{{ summaryData.cleaned }}</h4>
       </div></a>
     </div>
     <div class="w3-col l2 m2 s6 w3-padding-right" id="bar">
         <a routerLink="dirty-drains"><div class="w3-container w3-padding w3-white w3-hover-shadow w3-border w3-border-teal " title="Click to view dirty drains" id="dirtybtn">
         <div class="w3-clear"></div><span class="w3-right"><img src="assets/img/trash.png" title="Dirty Drains" width="20" height="20"></span>
         <h4>{{ 'dirty' | translate}}</h4>
-        <h4 class="w3-text-black" *ngIf="dirtydrains">{{ dirtydrains.length }}</h4>
+        <h4 class="w3-text-black" *ngIf="summaryData">{{ summaryData.uncleaned }}</h4>
         </div></a>
     </div>
     <div class="w3-col l2 m2 s6 w3-padding-right" id="bar">
         <a routerLink="help-drains"><div class="w3-container w3-padding w3-white w3-hover-shadow w3-border w3-border-teal" title="Click to view drains that need help" id="filterbtn" >
         <div class="w3-clear"></div><span class="w3-right"><img src="assets/img/help.png" title="Help Needed" width="20" height="20"></span>
         <h4>{{'need_help' | translate}}</h4>
-        <h4 class="w3-text-black" *ngIf="helpdrains">{{ helpdrains.length }}</h4>
+        <h4 class="w3-text-black" *ngIf="summaryData">{{ summaryData.need_help }}</h4>
       </div></a>
     </div>
     <div class="w3-col l2 m2 s6 w3-padding-right" id="bar">
         <a routerLink="unknown-drains"><div class="w3-container w3-padding w3-white w3-hover-shadow w3-border w3-border-teal"  title="Click to view clean drains" id="clearbtn">
         <div class="w3-clear"></div><span class="w3-right"></span>
           <h4>{{'unknown' | translate}}</h4>
-          <h4 class="w3-text-black"  *ngIf="unknowndrains">{{ unknowndrains.length }}</h4>
+          <h4 class="w3-text-black"  *ngIf="summaryData">{{ summaryData.unknown }}</h4>
         </div></a>
       </div>
     <div class="w3-col l2 m2 s6 w3-padding-right" id="bar" >

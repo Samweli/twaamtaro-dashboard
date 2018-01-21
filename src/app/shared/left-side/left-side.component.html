@@ -6,15 +6,15 @@
     <!-- /.search form -->
     <div class="pull-right w3-padding">
       <a id="langlink" *ngFor="let lang of supportedLangs" (click)="selectLang(lang.value)" class="w3-padding-right" [class.w3-text-white]="isCurrentLang(lang.value)">
-       {{ lang.display }} 
+       {{ lang.display }}
       </a>
     </div>
     <div *ngIf="authService.isLoggedIn(); else noUser" class="w3-padding w3-text-white">
-      <h4>Welcome <strong>{{ loggedUser }} </strong></h4>
+      <h4>{{'welcome'| translate}}&nbsp;&nbsp;<strong>{{ loggedUser }} </strong></h4>
     </div>
     <ng-template #noUser>
       <div class=" w3-padding w3-text-white">
-        <h4>Welcome</h4>
+        <h4>{{'welcome' | translate}}</h4>
       </div>
     </ng-template>
     <!-- sidebar menu: : style can be found in sidebar.less -->
@@ -47,7 +47,7 @@
       </li>
       <li>
         <a routerLink="filter-drains">
-          <img src="assets/img/whitedrain.png" width="25" height="25">  
+          <img src="assets/img/whitedrain.png" width="25" height="25">
           <i class=""></i> <span>{{'view_drain' | translate}}</span>
           </a>
       </li>
