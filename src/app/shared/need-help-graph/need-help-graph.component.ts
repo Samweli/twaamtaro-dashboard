@@ -48,6 +48,8 @@ get needHelpData() {
     this.selectEvent = event;
   }
 
+
+  // Initilizes graph with data
   initilizeGraph(){
     this.startDate = new Date(2017,11,1);
     this.endDate = new Date(2018,0,20);
@@ -57,26 +59,10 @@ get needHelpData() {
       dataHolder.filter( data => this.graphDataFilter(data))
       this.lineChartData = {
         chartType: 'LineChart',
-        dataTable:this.prepareChartData(this.needHelpData, 'some data'),
+        dataTable:this.prepareChartData(this.needHelpData, ''),
         options: {title: this._translate.instant('graph_title')}
       };
     }
-   
-
-    // this.lineChartData = {
-    //   chartType: 'LineChart',
-    //   dataTable: [
-    //     ['Year', 'Submitted', 'Approved', 'Resolved'],
-    //     ['2004',  1000,      400,200],
-    //     ['2005',  1170,      460,300],
-    //     ['2006',  660,       1120,130],
-    //     ['2007',  1030,      540,1400]
-    //   ],
-    //   options: {title: this._translate.instant('graph_title')}
-    // };
-
-  
-   
   }
 
   // prepares data that  will be displayed on chart
@@ -85,7 +71,13 @@ get needHelpData() {
     let submittedCounter:any = 0;
     let approvedCounter:any = 0;
     let resolvedCounter:any = 0;
-    let dataTable: any[] = [['Week','Submitted', 'Approved', 'Resolved']];
+
+    let dataTable: any[] = [[
+      'Week',
+      this._translate.instant('submitted'),
+       this._translate.instant('approved'),
+       this._translate.instant('resolved')
+      ]];
    let rangeDateArray: any[] = this.getRangeDates(rangeDates);
    rangeDateArray.forEach(element => {
      filteredData.forEach(el => {
