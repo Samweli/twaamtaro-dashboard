@@ -58,6 +58,8 @@ import { RegionalFiltersComponent } from './regional-filters/regional-filters.co
 import { StatusFiltersComponent } from './status-filters/status-filters.component';
 import { NeedHelpGraphComponent } from './need-help-graph/need-help-graph.component';
 import { TimeFilterComponent } from './time-filter/time-filter.component';
+import { MonthPickerComponent } from './month-picker/month-picker.component';
+import { YearPickerComponent } from './year-picker/year-picker.component';
 
 @NgModule({
   imports: [
@@ -108,6 +110,8 @@ import { TimeFilterComponent } from './time-filter/time-filter.component';
     StatusFiltersComponent,
     NeedHelpGraphComponent,
     TimeFilterComponent,
+    MonthPickerComponent,
+    YearPickerComponent,
   ],
   exports: [SharedComponent],
   providers: [
