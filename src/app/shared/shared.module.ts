@@ -57,6 +57,7 @@ import { VerifyLeaderComponent } from './verify-leader/verify-leader.component';
 import { RegionalFiltersComponent } from './regional-filters/regional-filters.component';
 import { StatusFiltersComponent } from './status-filters/status-filters.component';
 import { NeedHelpGraphComponent } from './need-help-graph/need-help-graph.component';
+import { TimeFilterComponent } from './time-filter/time-filter.component';
 
 @NgModule({
   imports: [
@@ -106,6 +107,7 @@ import { NeedHelpGraphComponent } from './need-help-graph/need-help-graph.compon
     RegionalFiltersComponent,
     StatusFiltersComponent,
     NeedHelpGraphComponent,
+    TimeFilterComponent,
   ],
   exports: [SharedComponent],
   providers: [

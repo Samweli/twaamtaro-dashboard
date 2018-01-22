@@ -108,14 +108,26 @@ get needHelpData() {
 
   // filters data based on a specified date
   private dateFilter(suppliedData: any, date: any, status:any){
-    let dateObj = new Date(suppliedData.created_at)
+    let dateObj;
+
+    if(status == 'submitted'){
+      dateObj = new Date(suppliedData.created_at);
+    }
+    else if(status == 'pending'){
+      dateObj = new Date(suppliedData.pending);
+    }
+    else if(status == 'resolved'){
+      dateObj = new Date(suppliedData.resolved);
+
+    }
+
     let  bool: any = dateObj.getDate() >= date.start.getDate() && dateObj.getDate() <= date.end.getDate() && suppliedData.status == status;
     return bool;
   }
 
 // returns array of dates falling in specified range
   private getRangeDates(dateRange:any): any[]{
-    let data = this.getWeeksInMonth(0,2018);
+    let data = this.getWeeksInMonth(11,2017);
     return data;
   }
 
