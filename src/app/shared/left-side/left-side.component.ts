@@ -11,21 +11,22 @@ import { TranslateService } from "../../translate/translate.service";
 export class LeftSideComponent implements OnInit {
   constructor(
     public authService: AuthService,
-    private _translate: TranslateService,
-    public sessionService: SessionService
+    public sessionService: SessionService,
+    private _translate: TranslateService
   ) { }
-
-    public translatedText: string;
-    public supportedLanguages: any[];
-    supportedLangs: any;
-    loggedUser: any;
+  notifyCitizens() {
+  }
+  loggedUser;
+  public translatedText: string;
+  public supportedLanguages: any[];
+  supportedLangs: any;
 
   ngOnInit() {
-    //Get user's name from session
-   /* if (this.authService.isLoggedIn()) {
-        var theUser = JSON.parse(this.sessionService.getLoggedUser());
-        this.loggedUser = theUser.first_name + " " + theUser.last_name;
-      }*/
+    if(this.authService.isLoggedIn()) {
+      var theUser = JSON.parse(this.sessionService.getLoggedUser());
+      this.loggedUser = theUser.first_name + " " + theUser.last_name ;
+    }
+
     // standing data
     this.supportedLangs = [
       {display: 'English', value: 'en'},
@@ -40,27 +41,24 @@ export class LeftSideComponent implements OnInit {
     this._translate.setDefaultLang('en');
     this._translate.enableFallback(true);
     this.selectLang('sw');
-    }
+  }
 
-    isCurrentLang(lang: string) {
-      return lang === this._translate.currentLang;
-    }
+  isCurrentLang(lang: string) {
+    return lang === this._translate.currentLang;
+  }
 
-    selectLang(lang: string) {
-
-      // set default;
+  selectLang(lang: string) {
+    // set default;
     this._translate.use(lang);
-      // this.refreshText(); // remove
-    }
+    // this.refreshText(); // remove
+  }
 
-    refreshText() {
-      this.translatedText = this._translate.instant('all');
-    }
+  refreshText() {
+    this.translatedText = this._translate.instant('all');
+  }
 
-    subscribeToLangChanged() {
-      return this._translate.onLangChanged.subscribe(x => this.refreshText());
-    }
+  subscribeToLangChanged() {
+    return this._translate.onLangChanged.subscribe(x => this.refreshText());
+  }
 
 }
-
-

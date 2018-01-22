@@ -20,7 +20,7 @@ export class ReportComponent implements OnInit{
   reportChart: any;
   adoptedReportChart: any;
   constructor(
-    private drainService: DrainsService, 
+    private drainService: DrainsService,
     public ngProgress: NgProgress
   ) { }
 
@@ -31,12 +31,12 @@ export class ReportComponent implements OnInit{
   }
 
   streetData(): void {
-    this.ngProgress.start(); 
+    this.ngProgress.start();
     this.drainService
       .getRanksData()
       .subscribe( data => {
         this.streets = this.drainService.ranksData;
-        this.ngProgress.done(); 
+        this.ngProgress.done();
       });
 
   }

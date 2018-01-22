@@ -1,4 +1,3 @@
-
 <header class="main-header">
 
   <!-- Logo -->
@@ -12,27 +11,27 @@
   <nav class="navbar navbar-static-top w3-theme-d1">
     <!-- Sidebar toggle button-->
     <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-        <span class="sr-only">Toggle navigation</span>
-      </a>
+      <span class="sr-only">Toggle navigation</span>
+    </a>
 
     <div class="navbar-custom-menu">
       <ul class="nav navbar-nav">
 
         <li class="user user-menu">
-              <div class=" w3-padding" *ngIf="authService.isLoggedIn(); else signIN">
-                <a (click)="logout()" class="w3-right btn btn-default btn-flat">{{'signout'| translate}}</a>
-                <a routerLink="verify" class="w3-right w3-padding-right"><span class="w3-badge w3-red notifications">{{requests}}</span><i class="w3-text-white fa fa-bell fa-2x" aria-hidden="true"></i></a>
-             </div>
-              <ng-template #signIN>
-              <div class=" w3-padding">
-                <div class="pull-right w3-padding">
-                  <a (click)="registerbox()"  class="btn btn-default btn-flat">{{'register'| translate}}</a>
-                </div>
-                <div class="pull-right w3-padding" >
-                  <a (click)="loginbox() "  class="btn btn-default btn-flat">{{'signin' | translate}}</a>
-                </div>
+          <div class=" w3-padding" *ngIf="authService.isLoggedIn(); else signIN">
+            <a (click)="logout()" class="w3-right btn btn-default btn-flat">{{'signout'| translate}}</a>
+            <a routerLink="verify" class="w3-right w3-padding-right"><span class="w3-badge w3-red notifications">{{requests}}</span><i class="w3-text-white fa fa-bell fa-2x" aria-hidden="true"></i></a>
+          </div>
+          <ng-template #signIN>
+            <div class=" w3-padding">
+              <div class="pull-right w3-padding">
+                <a (click)="registerbox()"  class="btn btn-default btn-flat">{{'register'| translate}}</a>
               </div>
-              </ng-template>
+              <div class="pull-right w3-padding" >
+                <a (click)="loginbox() "  class="btn btn-default btn-flat">{{'signin' | translate}}</a>
+              </div>
+            </div>
+          </ng-template>
         </li>
 
 
