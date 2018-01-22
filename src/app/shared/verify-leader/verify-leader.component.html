@@ -1,47 +1,51 @@
 <div class="content-wrapper"  >
-	<div class="content">
-		<div class="box w3-card-2 w3-border" >
-		<div class="box-header with-border">
-			<h3 class=" w3-center">{{'verify_title' | translate}}</h3>
-		</div>
-		<!-- /.box-header -->
-		<div class="box-body w3-padding">
-			<div class="row">
-				<!-- templates -->
-				<div id="error"><h4>{{errMsg}}</h4></div>
+  <div class="content">
+    <div class="box w3-card-2 w3-border" >
+      <div class="box-header with-border">
+        <h3 class=" w3-center">{{'verify_title' | translate}}</h3>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body w3-padding">
+        <div class="row">
+          <!-- templates -->
+          <div id="error"><h4>{{errMsg}}</h4></div>
 
-					<table class="w3-table w3-hoverable w3-responsive w3-white" border="0" *ngIf="allRequests > 0; else noRequests">
-						<thead>
-							<tr class="w3-light-grey w3-border-bottom" >
-								<th>{{'full_name'| translate}}</th>
-								<th>{{'phone_number'| translate}}</th>
-								<th>{{'street'| translate}}</th>
-								<th>{{'action' | translate}}</th>
-							</tr>
-							</thead>
-							<tbody>
-							<tr *ngFor="let request of leaderRequests">
-								<td >{{ request.first_name }} {{ request.last_name }}</td>
-								<td>{{ request.sms_number }}</td>
-								<td>{{ request.street.street_name }}</td>
-								<td>
-                  <button (click)="denyRequest(request); $event.stopPropagation()" class="w3-btn w3-red" title="Disapprove"> <i class="fa fa-remove"></i> </button>
-                  <button (click)="postRequest(request)" class="w3-btn w3-green" title="Approve"> <i class="fa fa-check"></i> </button>
-								</td>
-							</tr>
-						</tbody>
-					</table>
+          <table class="w3-table w3-hoverable w3-responsive w3-white" border="0" *ngIf="allRequests > 0; else noRequests">
+            <thead>
+            <tr class="w3-light-grey w3-border-bottom" >
+              <th>{{'full_name'| translate}}</th>
+              <th>{{'phone_number'| translate}}</th>
+              <th>{{'municipal'| translate}}</th>
+              <th>{{'ward' | translate}}</th>
+              <th>{{'street'| translate}}</th>
+              <th>{{'action' | translate}}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let request of leaderRequests">
+              <td >{{ request.first_name }} {{ request.last_name }}</td>
+              <td>{{ request.sms_number }}</td>
+              <td>{{request.street.municipal_name}}</td>
+              <td>{{request.street.ward_name}}</td>
+              <td>{{ request.street.street_name }}</td>
+              <td>
+                <button (click)="denyRequest(request); $event.stopPropagation()" class="w3-btn w3-red" title="Disapprove"> <i class="fa fa-remove"></i> </button>
+                <button (click)="postRequest(request)" class="w3-btn w3-green" title="Approve"> <i class="fa fa-check"></i> </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
 
-        <ng-template #noRequests>
-						  <div class="w3-center w3-padding">
-							<h4>{{'no_verify'| translate}}</h4>
-						  </div>
+          <ng-template #noRequests>
+            <div class="w3-center w3-padding">
+              <h4>{{'no_verify'| translate}}</h4>
+            </div>
 
-					</ng-template>
-				</div>
-			</div>
-		<!-- ./box-body -->
-		</div>
-<!-- /.box -->
-</div>
+          </ng-template>
+        </div>
+      </div>
+      <!-- ./box-body -->
+    </div>
+    <!-- /.box -->
+  </div>
 </div>

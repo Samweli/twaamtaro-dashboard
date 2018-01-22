@@ -5,14 +5,9 @@ import { StreetVEOPipe, UserStreetPipe } from "./../../../core/user.pipe";
 import { Ng2GoogleChartsModule, ChartSelectEvent } from 'ng2-google-charts';
 
 import { NgProgress } from 'ngx-progressbar';
-
-import { AuthService } from "./../../../core/auth.service";
 import { TranslateService } from "../../../translate/translate.service";
-
 import { StreetService } from "./../../../core/streets.service";
 import { DrainsService } from "./../../../core/drains.service";
-import { SessionService } from "./../../../core/session.service";
-import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-users',
@@ -21,11 +16,11 @@ import { forEach } from '@angular/router/src/utils/collection';
 })
 export class UsersComponent implements OnInit, AfterViewInit {
   title = 'Citizens';
-  areaCount: any = [];
   errMsg: any;
   error: any;
   street: any[];
   streets: any;
+  streetCount: any = 0;
   streetLeadersCount: any = 0;
   streetId: any;streetName: any;
   treeChart: any;
@@ -33,92 +28,37 @@ export class UsersComponent implements OnInit, AfterViewInit {
   usercount: any;
   usersCount: any = 0;
   wardLeadersCount: any = 0;
-  veos = [];
-  weos = [];
+
 
 
   constructor(
-    public authService:  AuthService,
     private userService: UserService,
     public ngProgress: NgProgress,
     public drainService: DrainsService,
-    public sessionService: SessionService,
     public streetService: StreetService,
     private _translate: TranslateService
   ) { }
 
-  //Checks a user role
-  checkRole(roles, roleId){
-    for(var i = 0; i <= roles.length; i++){
-      if(roles[i] != undefined && roles[i].id == roleId){
-        return true
-      }
-       else
-      {
-        return false;
+  countStreetUsers(street, users) {
+    for (var index = 0; index < users.length; index++) {
+      console.log(users[index].street_id)
+      if(street == users[index].street_id) {
+        this.streetCount++
       }
     }
+
+    return this.streetCount
   }
-  
-
-  //Creates an array of VEOs
-  getVeos(users){
-    for (let i = 0; i < users.length; i++) {
-      if (this.checkRole(users[i].roles, '2')) {
-        this.veos.push(users[i])
-      }
-
-  };
-  return this.veos;
-  }
-
-  //Creates an array of WEOs
-  getWeos(users){
-    for (let i = 0; i < users.length; i++) {
-      if (this.checkRole(users[i].roles, '3')) {
-        this.weos.push(users[i])
-      }
-  };
-  return this.weos;
-  }
-
-  getStreetUsers(){
-
-  }
-
-
-//Counts the nnumber of users in particular area
-  /*countUsers(theArea, users) {
-    var userCount;
-     for (let i = 0; i < users.length; i++) {       
-      if(theArea === users[i].street.id) {
-       userCount++
-      }
-    } 
-    this.areaCount.push([theArea, userCount])
-    console.log(this.areaCount)
-    return this.areaCount
-  }*/
-
-  //Get the population of users in a particular street
   getStreetsPopulation(users) {
     this.streetService.getStreets()
     .subscribe(res => {
       this.streets = res
-      //this.countUsers(this.streets.id,users)
-        this.streets.forEach(street => {
+      this.countStreetUsers(this.streets.id,users)
+      /*this.streets.forEach(street => {
         console.log('Street Id '+ street.id)
+        this.countStreetUsers(street.id,users)
+      });*/
 
-        var userCount;
-     for (let i = 0; i < users.length; i++) {       
-      if(street.id === users[i].street.id) {
-       userCount++
-      }
-    } 
-    this.areaCount.push([street.id, userCount])
-    console.log(this.areaCount)
-      });
-     
     })
   }
   getUsers(): any {
@@ -127,22 +67,24 @@ export class UsersComponent implements OnInit, AfterViewInit {
         .getUsers()
         .subscribe(user => {
           this.users = user;
+     //this.countStreetUsers(1,this.users) ;
+     this.getStreetsPopulation(this.users)
 
-      this.getStreetsPopulation(this.users) 
-      this.getVeos(this.users);
-
-    //Get Number of registered users based on roles
-        for (var i = 0; i < this.users.length; i++) {
-          this.getStreetName(user[i].street_id);
-          if (this.checkRole(this.users[i].roles, '3')) {
-              this.wardLeadersCount++;
-            }
-          else if (this.checkRole(this.users[i].roles, '2')){
-              this.streetLeadersCount++;
-            }
-          else if(this.checkRole(this.users[i].roles, '1')){
+     //this.countStreetUsers(1,this.users) ;
+     this.getStreetsPopulation(this.users);
+         //Get Number of registered users based on roles
+          for (var i = 0; i < this.users.length; i++) {
+            this.getStreetName(user[i].street_id);
+            if (this.users[i].roles === 1) {
               this.usersCount++;
             }
+            else if (this.users[i].roles === 2){
+              this.streetLeadersCount++;
+            }
+            else if(this.users[i].roles === 3)
+              {
+                this.wardLeadersCount++;
+              }
           }
     //Count Number of Users in every street
 
@@ -170,6 +112,8 @@ export class UsersComponent implements OnInit, AfterViewInit {
             };
 
         });
+
+
     this.ngProgress.done();
   }
 
@@ -191,7 +135,6 @@ export class UsersComponent implements OnInit, AfterViewInit {
 
   }
   ngOnInit() {
-    var loggedUser = this.sessionService.getLoggedUser();
     this.getUsers();
     this.subscribeToLangChanged();
   }
