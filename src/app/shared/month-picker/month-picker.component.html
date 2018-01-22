@@ -1,3 +1,7 @@
-<p>
-  month-picker works!
-</p>
+
+    
+    <select>
+            <option  *ngFor="let p of months"  [selected]="mm === p.val ">{{p.name}}</option>    
+    </select>
+
+  
