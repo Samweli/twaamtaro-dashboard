@@ -50,16 +50,16 @@ get needHelpData() {
 
 
   // Initilizes graph with data
-  initilizeGraph(){
+  initilizeGraph(bindedData:any){
     this.startDate = new Date(2017,11,1);
     this.endDate = new Date(2018,0,20);
     let dateRage:any = {start: this.startDate, end: this.endDate};
-    let dataHolder = this.needHelpData;
-    if(this.needHelpData){
+    let dataHolder = bindedData;
+    if(bindedData){
       dataHolder.filter( data => this.graphDataFilter(data))
       this.lineChartData = {
         chartType: 'LineChart',
-        dataTable:this.prepareChartData(this.needHelpData, ''),
+        dataTable:this.prepareChartData(bindedData, ''),
         options: {title: this._translate.instant('graph_title')}
       };
     }
@@ -152,8 +152,10 @@ get needHelpData() {
   ngOnInit() {
     this._needHelpData
     .subscribe(x => {
+      console.log('subscribing to needhelp obj');
+      console.log(x);
        if(x){
-        this.initilizeGraph();
+        this.initilizeGraph(x);
        }
     });   
 }
