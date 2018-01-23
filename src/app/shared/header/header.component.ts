@@ -40,7 +40,7 @@ export class HeaderComponent implements OnInit {
   requests: any;
   leaderReq(data) {
     console.log('inside header');
-    this.userService.getLeaderRequests(data)
+    this.userService.getLeaderRequests()
       .subscribe(res => {
         this.requests = this.userService.totalRequests
 
