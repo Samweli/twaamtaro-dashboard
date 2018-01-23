@@ -1,7 +1,8 @@
 
     
-    <select>
-            <option  *ngFor="let p of months"  [selected]="mm === p.val ">{{p.name}}</option>    
+    <select (change)="onChange($event.target.value)">
+            <option  *ngFor="let p of months"  [selected]="mm === p.val " [ngValue]="p.val">{{p.name}}</option>    
     </select>
 
+    
   

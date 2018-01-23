@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-year-picker',
@@ -6,8 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./year-picker.component.css']
 })
 export class YearPickerComponent implements OnInit {
+
+  @Output()
+  selectedYear: EventEmitter<any> = new EventEmitter();
   private years: number[] =[];
   private yy : number;
+  data:any = {};
 
   constructor() { }
 
@@ -18,8 +22,9 @@ export class YearPickerComponent implements OnInit {
       }  
 
       onChange(year){
-        console.log('year changed');
-        console.log(year);
+        this.data.year = year;
+
+        this.selectedYear.emit(this.data);
       }
   
        getYear(){

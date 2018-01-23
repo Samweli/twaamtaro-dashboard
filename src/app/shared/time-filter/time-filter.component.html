@@ -1,4 +1,4 @@
 <div>
-  <app-year-picker></app-year-picker>
-  <app-month-picker></app-month-picker>
+  <app-year-picker (selectedYear)="graphTime($event)"></app-year-picker>
+  <app-month-picker (selectedMonth)="graphTime($event)"></app-month-picker>
 </div>

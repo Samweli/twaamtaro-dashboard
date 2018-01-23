@@ -32,16 +32,17 @@ get needHelpData() {
   needHelpGraph: any = {};
   startDate: any;
   endDate: any;
+  month:any = {};
+  year: any = {};
   public selectEvent: ChartSelectEvent;
 
   constructor( private _translate: TranslateService, private datePipe: DatePipe) { }
 
   public ready(event: ChartReadyEvent) {
-    console.log(event.message);
   }
 
   public error(event: ChartErrorEvent) {
-    console.error(event);
+    
   }
 
   public select(event: ChartSelectEvent) {
@@ -120,14 +121,17 @@ get needHelpData() {
       dateObj = new Date(suppliedData.resolved);
 
     }
+    let yearBool:any = dateObj.getFullYear() >= date.start.getFullYear() && dateObj.getFullYear() <= date.end.getFullYear();
+    let monthBool:any = dateObj.getMonth() >= date.start.getMonth() && dateObj.getMonth() <= date.end.getMonth();
+    let dayBool:any = dateObj.getDate() >= date.start.getDate() && dateObj.getDate() <= date.end.getDate()
 
-    let  bool: any = dateObj.getDate() >= date.start.getDate() && dateObj.getDate() <= date.end.getDate() && suppliedData.status == status;
+    let  bool: any = yearBool && monthBool && dayBool && suppliedData.status == status;
     return bool;
   }
 
 // returns array of dates falling in specified range
   private getRangeDates(dateRange:any): any[]{
-    let data = this.getWeeksInMonth(11,2017);
+    let data = this.getWeeksInMonth(this.month,this.year);
     return data;
   }
 
@@ -160,12 +164,32 @@ get needHelpData() {
     return true;
   }
 
+  // getting time updates from time filters
+  getTimeChanges($event){
+    let months = {
+      Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4,  Jun: 5,
+       Jul: 6,  Aug: 7, Sep: 8, Oct:9, Nov: 10, Dec: 11
+       }
+       this.year = $event.year;
+       this.month = months[$event.month];
+    console.log('Inside need help graph');
+    console.log('new year: ' + this.year);
+    console.log('new month: ' + this.month);
+    console.log('Data is available: ' + this.needHelpData);
+    this.initilizeGraph(this.needHelpData);
+  }
+
+  setTime(){
+    var today = new Date();
+    this.month = today.getMonth();
+    this.year = today.getFullYear();
+  }
+
 
   ngOnInit() {
+    this.setTime();
     this._needHelpData
     .subscribe(x => {
-      console.log('subscribing to needhelp obj');
-      console.log(x);
        if(x){
         this.initilizeGraph(x);
        }
