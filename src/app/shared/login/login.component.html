@@ -24,8 +24,7 @@
           <label>
             <b>Password</b>
           </label>
-          <input class="w3-input w3-border" [(ngModel)]="user.password" type="password" name="password" placeholder="Enter Password"
-            #password="ngModel" required>
+          <input class="w3-input w3-border" [(ngModel)]="user.password" type="password" name="password" placeholder="Enter Password" #password="ngModel" required>
           <span *ngIf="f.submitted && !password.valid" class="help-block">Password</span>
         </div>
       </div>

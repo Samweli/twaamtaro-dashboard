@@ -6,13 +6,12 @@ import { HeaderModule } from './shared/header/header.module';
 import { DirtyDrainModule } from './shared/drains/dirty-drain/dirty-drain.module';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
+//import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { NgModule } from '@angular/core';
-import { Directive } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ReportModule } from './shared/reports/general/reports.module';
 import { FormsModule } from '@angular/forms';
-import { UserDetailModule } from "./shared/users/user-detail/user-detail.module";
 import { SharedModule } from "./shared/shared.module";
 
 import { AppComponent } from './app.component';
@@ -41,17 +40,21 @@ import { UsersComponent } from './shared/users/users-list/users.component';
 import { UnknownDrainsComponent } from './shared/drains/unknown-drains/unknown-drains.component';
 
 import { AuthGuard } from "./core/auth.guard";
+import { TranslateService } from "./translate/translate.service";
+import { TranslatePipe } from "./translate/translate.pipe";
+
 import { AuthService } from "./core/auth.service";
 import { DrainsUrlService } from "./core/drains-url.service";
-import { FormErrorsService } from "./core/form-errors.service";
-import { NgProgressModule } from 'ngx-progressbar';
 import { SessionService } from "./core/session.service";
-import { SmsService } from "./core/sms.service";
-import { StreetsUrlService } from "./core/streets-url.service";
-import { TranslateService } from "./transilate/translate.service";
-import { TranslatePipe } from "./transilate/translate.pipe";
-import { TRANSLATION_PROVIDERS } from "./transilate/translation/translation.component";
 import { UsersUrlService } from "./core/users-url.service";
+import { SmsService } from "./core/sms.service";
+import { NgProgressModule } from 'ngx-progressbar';
+import { StreetsUrlService } from "./core/streets-url.service";
+
+import { FormErrorsService } from "./core/form-errors.service";
+import { TRANSLATION_PROVIDERS } from "./translate/translation/translation.component";
+
+
 
 @NgModule({
   declarations: [
@@ -81,8 +84,8 @@ import { UsersUrlService } from "./core/users-url.service";
     SessionService,
     SmsService,
     StreetsUrlService,
-    TRANSLATION_PROVIDERS,
-    UsersUrlService
+    UsersUrlService,
+    TRANSLATION_PROVIDERS
   ],
   bootstrap: [AppComponent]
 })

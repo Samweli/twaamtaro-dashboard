@@ -4,7 +4,7 @@ import { DrainsService } from './../../core/drains.service';
 import { AuthService} from "./../../core/auth.service";
 import { ChartSelectEvent } from 'ng2-google-charts';
 import { UserService } from "./../../core/user.service";
-import { TranslateService} from "../../transilate/translate.service";
+import { TranslateService } from "../../translate/translate.service";
 import { NgProgress } from 'ngx-progressbar';
 import { StreetService } from "../../core/streets.service";
 
@@ -14,7 +14,6 @@ import { StreetService } from "../../core/streets.service";
   styleUrls: ['./ranks.component.css']
 })
 export class RanksComponent implements OnInit, AfterViewInit {
-  title = 'Cleanness Ranks Based on Streets';
   ranksdata: any;
   streetName: any;
   streetId: any;
@@ -52,7 +51,7 @@ export class RanksComponent implements OnInit, AfterViewInit {
       this.loggedIn = this.authService.isLoggedIn();
   }
 
-  //Get data from selected table row 
+  //Get data from selected table row
   public select(event: ChartSelectEvent) {
     document.getElementById('alert').style.display='block';
     this.streetId = event.selectedRowValues[0];

@@ -1,0 +1,4 @@
+<div *ngIf="needHelpData">
+ <app-time-filter></app-time-filter>   
+<google-chart [data]="lineChartData" (chartReady)="ready($event)" (chartError)="error($event)" (chartSelect)="select($event)"></google-chart>
+</div>

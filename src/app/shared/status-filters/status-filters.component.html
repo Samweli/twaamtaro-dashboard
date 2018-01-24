@@ -1,0 +1,12 @@
+<form>
+  <!-- <label><b>Status filter</b></label> -->
+  <div class="w3-row-padding">
+
+    <div class="w3-col s12 m3">
+      <label>{{'choose_status' | translate}}</label>
+      <select class="w3-select" [ngModel] = "selectedStatus" (ngModelChange)= "onChange($event) " name="status" >
+        <option  *ngFor=" let s of status" [ngValue] = "s">{{s | translate}}</option>
+      </select>
+    </div>
+  </div>
+</form>

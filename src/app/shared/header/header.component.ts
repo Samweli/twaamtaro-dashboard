@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 
 import { AuthService } from "./../../core/auth.service";
 import { UserService } from "./../../core/user.service";
+import {SessionService} from "../../core/session.service";
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -13,6 +14,7 @@ export class HeaderComponent implements OnInit {
     private router: Router,
     public authService: AuthService,
     public userService: UserService,
+    private sessionService: SessionService
 
   ) { }
 
@@ -36,16 +38,27 @@ export class HeaderComponent implements OnInit {
 
   //Get total number of leader requests for notifications
   requests: any;
-  leaderReq() {
-    this.userService.getLeaderRequests()
-    .subscribe(res => {
-      this.requests = this.userService.totalRequests
-    })
+  leaderReq(data) {
+    console.log('inside header');
+    this.userService.getLeaderRequests(data)
+      .subscribe(res => {
+        this.requests = this.userService.totalRequests
+
+      })
   }
+  checkNotification(){
+    if(this.sessionService.hasRole('weo')){
+      this.leaderReq({role_name:'veo'});
+    }
+    else if(this.sessionService.hasRole('meo')){
+      this.leaderReq({role_name:'weo'});
+    }
+  }
+
 
   ngOnInit() {
     this.isLoggedIn();
-    this.leaderReq()
+    this.checkNotification();
   }
 
 

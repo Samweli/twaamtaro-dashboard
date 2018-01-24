@@ -8,7 +8,14 @@
     top: 180px;
 }
 
+.filters-list {
+  display: inline;
+  list-style: none;
+}
 
+.filters-list li{
+  list-style-type: none;
+}
 @media(max-width: 768px){
     .w3-modal-content {
         width: 500px;

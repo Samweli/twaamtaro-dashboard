@@ -10,10 +10,7 @@
     "pree2e": "webdriver-manager update",
     "e2e": "protractor",
     "preinstall": "npm install -g http-server",
-    "postinstall": "ng build && mv dist/* .",
-    "clean": "rm -rf dist",
-    "build_prod": "npm run build && browserify -s main dist/main.js > dist/bundle.js && npm run minify",
-    "minify": "uglifyjs dist/bundle.js --screw-ie8 --compress --mangle --output dist/bundle.min.js"
+    "postinstall": "ng build && mv dist/* ."
   },
   "private": true,
   "dependencies": {
@@ -41,7 +38,6 @@
     "@types/jqueryui": "^1.11.35",
     "@types/morris.js": "^0.5.6",
     "@types/node": "~6.0.60",
-    "@types/underscore": "^1.8.3",
     "admin-lte": "^2.3.11",
     "bootstrap": "^3.3.7",
     "bootstrap-datepicker": "^1.7.1",

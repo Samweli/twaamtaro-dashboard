@@ -43,17 +43,24 @@ import { DrainsService } from './../core/drains.service';
 import { HeaderModule } from "./header/header.module";
 import { PagerService } from './../core/paging.service';
 import { StreetService } from "./../core/streets.service";
-import { TranslateService } from "../transilate/translate.service";
-import { TransilateModule } from "../transilate/transilate.module";
-import { TranslatePipe } from "../transilate/translate.pipe";
-import { TRANSLATION_PROVIDERS } from "../transilate/translation/translation.component";
+import { TranslateService } from "../translate/translate.service";
+import { TranslateModule } from "../translate/translate.module";
+import { TranslatePipe } from "../translate/translate.pipe";
+import { TRANSLATION_PROVIDERS } from "../translate/translation/translation.component";
 import { UserService } from './../core/user.service';
+import { DatePipe } from '@angular/common';
 
 import { StreetVEOPipe, UserStreetPipe } from "./../core/user.pipe";
 import { NotifyComponent } from './notify/notify.component';
 import { RegisterComponent } from './register/register.component';
 import { VerifyLeaderComponent } from './verify-leader/verify-leader.component';
 import { StreetReportComponent } from './reports//street-report/street-report.component';
+import { RegionalFiltersComponent } from './regional-filters/regional-filters.component';
+import { StatusFiltersComponent } from './status-filters/status-filters.component';
+import { NeedHelpGraphComponent } from './need-help-graph/need-help-graph.component';
+import { TimeFilterComponent } from './time-filter/time-filter.component';
+import { MonthPickerComponent } from './month-picker/month-picker.component';
+import { YearPickerComponent } from './year-picker/year-picker.component';
 
 @NgModule({
   imports: [
@@ -71,7 +78,7 @@ import { StreetReportComponent } from './reports//street-report/street-report.co
     FormsModule,
     NotificationBarModule,
     HeaderModule,
-    TransilateModule,
+    TranslateModule,
     SharedRoutingModule,
   ],
   declarations: [
@@ -101,6 +108,12 @@ import { StreetReportComponent } from './reports//street-report/street-report.co
     RegisterComponent,
     VerifyLeaderComponent,
     StreetReportComponent,
+    RegionalFiltersComponent,
+    StatusFiltersComponent,
+    NeedHelpGraphComponent,
+    TimeFilterComponent,
+    MonthPickerComponent,
+    YearPickerComponent,
   ],
   exports: [SharedComponent],
   providers: [
@@ -111,6 +124,7 @@ import { StreetReportComponent } from './reports//street-report/street-report.co
     TRANSLATION_PROVIDERS,
     TranslateService,
     UserService,
+    DatePipe,
   ],
 })
 
