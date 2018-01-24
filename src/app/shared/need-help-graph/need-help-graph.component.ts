@@ -166,16 +166,14 @@ get needHelpData() {
 
   // getting time updates from time filters
   getTimeChanges($event){
+
     let months = {
       Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4,  Jun: 5,
        Jul: 6,  Aug: 7, Sep: 8, Oct:9, Nov: 10, Dec: 11
        }
-       this.year = $event.year;
-       this.month = months[$event.month];
-    console.log('Inside need help graph');
-    console.log('new year: ' + this.year);
-    console.log('new month: ' + this.month);
-    console.log('Data is available: ' + this.needHelpData);
+       this.year = $event.year? $event.year: this.year;
+       this.month = $event.month? months[$event.month]: this.month;
+
     this.initilizeGraph(this.needHelpData);
   }
 

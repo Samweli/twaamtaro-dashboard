@@ -31,7 +31,7 @@ export class YearPickerComponent implements OnInit {
           var today = new Date();
           this.yy = today.getFullYear();        
           for(var i = (this.yy-100); i <= this.yy; i++){
-          this.years.push(i);}
+          this.years.unshift(i);}
       }
 
 }

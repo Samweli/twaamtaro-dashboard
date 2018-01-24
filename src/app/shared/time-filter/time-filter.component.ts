@@ -21,7 +21,7 @@ export class TimeFilterComponent implements OnInit {
     else if($event.month){
       this.time.month = $event.month;
     }
-    if(this.time.year && this.time.month){
+    if(this.time.year || this.time.month){
       this.selectedTime.emit(this.time);
     }
 
