@@ -10,7 +10,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ReportModule } from './shared/reports/reports.module';
+import { ReportModule } from './shared/reports/general/reports.module';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from "./shared/shared.module";
 
@@ -31,7 +31,7 @@ import { LoginComponent } from './shared/login/login.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { NotificationBarComponent } from "./shared/notification-bar/notification-bar.component";
 import { RanksComponent } from './shared/ranks/ranks.component';
-import { ReportComponent } from './shared/reports/reports.component';
+import { ReportComponent } from './shared/reports/general/reports.component';
 import { SharedComponent } from "./shared/shared.component";
 import { UserDetailComponent } from './shared/users/user-detail/user-detail.component';
 import { UserSearchComponent } from './shared/users/user-search/user-search.component';

@@ -2,7 +2,7 @@ import { DashboardComponent } from './../shared/dashboard/dashboard.component';
 import { AppComponent } from "./../app.component";
 import { AdminComponent } from './../shared/admin/admin.component';
 import { LoginComponent } from "./../shared/login/login.component";
-import { ReportComponent } from './../shared/reports/reports.component';
+import { ReportComponent } from './../shared/reports/general/reports.component';
 import { DrainListComponent } from './../shared/drains/all-drains/all-drains.component';
 import { DirtyDrainComponent } from './../shared/drains/dirty-drain/dirty-drain.component';
 import { CleanDrainComponent } from './../shared/drains/clean-drain/clean-drain.component';

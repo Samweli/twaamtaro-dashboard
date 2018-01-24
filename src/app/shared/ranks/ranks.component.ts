@@ -30,7 +30,7 @@ export class RanksComponent implements OnInit, AfterViewInit {
   streets: any;
   areaCount: any =[];
   citizens: any;
-
+  users: any;
   cssClassNames = {headerCell: 'w3-teal w3-padding', hoverTableRow: 'w3-grey', tableRow: 'w3-striped'};
 
   constructor(
@@ -100,10 +100,8 @@ export class RanksComponent implements OnInit, AfterViewInit {
     } 
     this.areaCount.push({'"ward"':street.ward_name, '"street"':street.street_name, '"population"':userCount})
       });
-     console.log("In Ranks " + this.areaCount);
-     var p = JSON.parse(this.areaCount);
-     return p;
-
+  
+     return this.areaCount;
     })
   }
   //Fetch Ranking Data and generate ranking table.
@@ -157,7 +155,7 @@ export class RanksComponent implements OnInit, AfterViewInit {
         );
         this.userService.getUsers().subscribe(res =>{
           this.citizens = res; 
-          this.getStreetsPopulation(this.citizens);
+         this.users = this.getStreetsPopulation(this.citizens);
         });
         
     this.ngProgress.done();

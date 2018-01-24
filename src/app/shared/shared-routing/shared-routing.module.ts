@@ -11,7 +11,8 @@ import { HelpDrainComponent } from './../../shared/drains/help-drain/help-drain.
 import { NotFoundComponent } from './../../shared/not-found/not-found.component';
 import { NotifyComponent } from './../../shared/notify/notify.component';
 import { RanksComponent } from './../../shared/ranks/ranks.component';
-import { ReportComponent } from './../../shared/reports/reports.component';
+import { ReportComponent } from './../../shared/reports/general/reports.component';
+import { StreetReportComponent } from './../../shared/reports/street-report/street-report.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedComponent } from "./../../shared/shared.component";
 import { UnknownDrainsComponent } from './../../shared/drains/unknown-drains/unknown-drains.component';
@@ -39,6 +40,7 @@ import { AuthGuard } from "./../../core/auth.guard";
           { path: 'notify-citizens', component: NotifyComponent },
           { path: 'ranks', component: RanksComponent },  
           { path: 'reports', component: ReportComponent },
+          { path: 'reports/street-report/:id', component: StreetReportComponent },
           { path: 'unknown-drains', component: UnknownDrainsComponent },
           { path: 'user-details/:id', component: UserDetailComponent },
           { path: 'users', component: UsersComponent },
