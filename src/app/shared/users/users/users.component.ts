@@ -146,7 +146,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
 
     }
   refreshText(){
-    this.getUsers();
+    //this.getUsers();
   }
   subscribeToLangChanged() {
     return this._translate.onLangChanged.subscribe(x => this.refreshText());
