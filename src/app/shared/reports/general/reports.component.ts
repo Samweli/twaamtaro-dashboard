@@ -36,7 +36,6 @@ export class ReportComponent implements OnInit{
       .getRanksData()
       .subscribe( data => {
         this.streets = this.drainService.ranksData;
-        console.log(this.streets)
         this.ngProgress.done(); 
       });
 
@@ -71,7 +70,7 @@ export class ReportComponent implements OnInit{
         options: {
           'title': 'General Cleanness Report in all streets in '+ this.ward.name+ ' ward',
           pieHole: 0.3,
-    
+          width: 800,
           height: 500,
           colors:['#5cb85c','#eea236','#6495ed']
         },
@@ -91,13 +90,14 @@ export class ReportComponent implements OnInit{
             ['Need Help', street.details.need_help],
           ],
           options: {
-            'title': 'General Cleanness Report in '+ street.street.street_name +', '+street.street.municipal_name,
+            'title': 'General Cleanness Report in '+ street.street.street_name,
             pieHole: 0.3,
-      
+            width: 800,
             height: 500,
             colors:['#5cb85c','#eea236','#6495ed'],
             chartArea: {
               height: 'auto',
+              float: 'left',
             }
           }, //End Options
         };//End ReportChart
@@ -106,6 +106,7 @@ export class ReportComponent implements OnInit{
    } //End Else
    this.displayDiv("tablecanvas","show");
   } //End Build Report Function
+
   calcPercentage(value,total){
     var percent = (value/total) * 100;
     return percent;

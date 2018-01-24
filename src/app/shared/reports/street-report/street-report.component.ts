@@ -31,10 +31,7 @@ export class StreetReportComponent implements OnInit {
       this.drainService.getRanksData()
       .subscribe(res => {
         this.streets = this.drainService.ranksData;
-        console.log(this.streets)
-
         this.reportedstreet = this.streets.filter(report => report.street.id == this.street);
-        console.log(this.reportedstreet);
       })
       
     }
@@ -46,7 +43,6 @@ export class StreetReportComponent implements OnInit {
 
   ngOnInit() {
     this.getStreetReport()
-    console.log(this.street)
   }
 
 }

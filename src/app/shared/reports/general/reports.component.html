@@ -16,9 +16,11 @@
             <!-- /.box-header -->
             <div class="box-body">
               <!-- Report Buttons -->
+
+              <h3 id="printHeader" class="w3-center">Ripoti ya Usafi  </h3>
               <div *ngIf="reportBuild" class="w3-row-padding " id="reportBtns">
                 <div class="w3-right">
-                  <button (click)="printReport()" class="w3-btn  w3-block w3-blue w3-section w3-padding"> Print Report</button>
+                  <button (click)="printReport()" class="w3-btn  w3-block w3-blue w3-section w3-padding"> Print/Export Report</button>
                 </div>
               </div>
               <!-- Report Buttons -->
@@ -53,18 +55,18 @@
                       <select class="w3-select" name="streetname" [(ngModel)]="streetname.name" required #streetControl="ngModel">
                           <option value="" disabled selected>{{ 'street' | translate}}</option> 
                           <option value="all">All</option>
-                        <option *ngFor="let street of (streets)" [value]="street.street.city_name">{{street.street.street_name}}</option>
+                        <option *ngFor="let street of (streets)" [value]="street.street.street_name">{{street.street.street_name}}</option>
                       </select>
                     </div>
-                    <button (click)="buildReport()" class="w3-btn w3-right w3-block w3-blue w3-section w3-padding" [disabled]="streetControl.invalid && wardControl.invalid || districtControl.invalid || regionControl.invalid">{{'send'| translate}}</button>
+                    <button (click)="buildReport()" class="w3-btn w3-right w3-block w3-blue w3-section w3-padding" [disabled]="streetControl.invalid || wardControl.invalid || districtControl.invalid || regionControl.invalid">{{'send'| translate}}</button>
                   </div>
                  
                 </form>
                 <div id="printArea">
-                <div class="w3-row w3-padding-bottom w3-center" id="piecanvas">
+                <div class="w3-row w3-padding-bottom" id="piecanvas">
                    <!-- Pie Chart Canvas -->
-                  <div class="w3-col">
-                    <google-chart [data]="reportChart" (chartError)='error($event)'></google-chart>
+                  <div class="w3-col" >
+                    <google-chart [data]="reportChart" (chartError)='error($event)' ></google-chart>
                   </div>
                   <!-- Chart Canvas -->
                 </div>

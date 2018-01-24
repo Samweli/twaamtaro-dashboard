@@ -3,16 +3,27 @@
 
 		<div class="box w3-card-2 w3-border" >
       <div class="box-header with-border">
-        <h3 class=" w3-center">{{ 'street-report' | translate }}</h3>
+		<button (click)="goBack()" class="w3-btn w3-left w3-margin w3-blue w3-padding"><i class="fa fa-arrow-left" aria-hidden="true"></i> Go Back</button>
+        <h3 *ngFor="let report of (reportedstreet)" class=" w3-center">{{ 'street-report' | translate }} {{report.street.street_name}}</h3>
       </div><!-- /.box-header -->
     
 		<div class="box-body w3-padding">
 			<div class="row">
+
 				<!-- templates -->
 				<div id="error"><h4>{{ErrMsg}}</h4></div>
 				
 				<div *ngFor="let report of (reportedstreet)">
-				<h3>{{report.street.street_name}} {{street}}</h3>
+				<h3 class="w3-padding">{{report.street.street_name}} {{'has'|translate}}</h3>
+				<h4 class="w3-padding">{{report.details.adopted}} {{ 'adopted' | translate}}</h4>
+				<h4 class="w3-padding">{{report.details.cleaned}} {{'clean' | translate}}</h4>
+				<h4 class="w3-padding">{{report.details.uncleaned}} {{'dirty'| translate}}</h4>
+				<h4 class="w3-padding">{{report.details.need_help}} {{'need' | translate}}</h4>
+
+
+
+
+
 				</div>
 				
 				</div>

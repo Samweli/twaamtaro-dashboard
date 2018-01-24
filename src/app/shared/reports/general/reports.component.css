@@ -2,16 +2,27 @@
     display: none;
 }
 @media print {
+   .box-body {
+        left: 0px;
+        padding: 0px;
+    }
+    .content {
+        height: auto;
+        padding:0px;
+        margin-right: auto; 
+        margin-left: 0;
+        left: -360px;
+        padding-left: 0px;
+        padding-right: 15px;
+    }
+    
     #boxTools, #reportForm, #reportBtns {
         display: none;
     }
+
     #printHeader {
         display: block;
     }
-}
-@media print and (overflow-block: paged){
-    
-   
     #printArea {
         display: block;
         background-color: white;
@@ -19,12 +30,22 @@
         width: 100%;
         padding: 5px;
         overflow: hidden;
+        margin-left: 0px;
     }
     #printArea #piecanvas {
-        transform: scale(0.5);
+        padding: 0px;
+        margin: 0px;
         position: relative;
     }
+
     #printArea #tablecanvas {
         position: relative;
     }
+    .sidebar-mini.sidebar-collapse .content-wrapper, .sidebar-mini.sidebar-collapse .right-side, .sidebar-mini.sidebar-collapse .main-footer {
+        margin-left: 0px !important;
+    }
+    .content-wrapper, .right-side, .main-footer {
+        margin-left: 0px;
+    }    
+
 }
