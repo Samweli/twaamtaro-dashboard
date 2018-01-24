@@ -18,6 +18,35 @@ export const LANG_SW_TRANS = {
   'need': 'Mitaro inayohitaji msaada',
   'others': 'Mingineyo',
   'need_help': 'Msaada ',
+  'button_pending': 'Thibitisha',
+  'button_resolve': 'Tatua',
+  'resolved': 'limeshugulikiwa',
+  'approved': 'limethibitishwa',
+  'submitted': 'limewasilishwa',
+  'pending': 'limethibitishwa',
+  'need_help_opened': 'Limewasilishwa',
+  'need_help_pending': 'Limethibitishwa',
+  'need_help_resolved': 'Limetatuliwa',
+  'need_help_category': 'Msaada Unaohitajika',
+  'change_status_column': 'Badili Hali',
+  'need_help_status': 'Hali',
+  'not_yet': 'Bado',
+  'status_change_description': 'Maelezo kutokana na ubadilishaji wa hali',
+  'status_change_placeholder': 'Sio lazima kujaza',
+  'need_help_description_submit': 'Sawa',
+  'need_help_description_cancel': 'Ghairi',
+
+    /* Need help graph transilation */
+    'graph_title': 'Mchakato wa Uhugulikiwaji wa maombi ya misaada katika mitaro',
+    'need_help_graph': 'CHATI YA MAOMBI YA MISAADA YA MITARO',
+    'select-time': 'Tumia menyu kubadili muda',
+
+    /* filters translation*/
+    'choose_municipal': 'Chagua Manispaa',
+    'choose_ward': 'Chagua Kata',
+    'choose_street': 'Chagua Mtaa',
+    'choose_status': 'Chagua Hali',
+
     /*side-menu translation*/
   'dashboard': 'Dashibodi',
   'map' : 'Fungua ramani',
