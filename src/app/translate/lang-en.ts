@@ -42,6 +42,10 @@ export const LANG_EN_TRANS = {
   'need_help_description_submit': 'Ok',
   'need_help_description_cancel': 'Cancel',
 
+  /* Need help graph transilation */
+  'graph_title': 'Trend of Processing Drain Help Requests',
+  'need_help_graph': 'GRAPH FOR DRAIN HELP REQUESTS',
+
   /* filters translation*/
   'choose_municipal': 'Choose Municipal',
   'choose_ward': 'Choose Ward',

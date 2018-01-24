@@ -11,8 +11,8 @@ import { TranslateService } from "../../translate/translate.service";
 export class LeftSideComponent implements OnInit {
   constructor(
     public authService: AuthService,
-    private _translate: TranslateService,
-    public sessionService: SessionService
+    public sessionService: SessionService,
+    private _translate: TranslateService
   ) { }
 
     public translatedText: string;
@@ -43,27 +43,24 @@ export class LeftSideComponent implements OnInit {
     this._translate.setDefaultLang('en');
     this._translate.enableFallback(true);
     this.selectLang('sw');
-    }
+  }
 
-    isCurrentLang(lang: string) {
-      return lang === this._translate.currentLang;
-    }
+  isCurrentLang(lang: string) {
+    return lang === this._translate.currentLang;
+  }
 
-    selectLang(lang: string) {
-
-      // set default;
+  selectLang(lang: string) {
+    // set default;
     this._translate.use(lang);
-      // this.refreshText(); // remove
-    }
+    // this.refreshText(); // remove
+  }
 
-    refreshText() {
-      this.translatedText = this._translate.instant('all');
-    }
+  refreshText() {
+    this.translatedText = this._translate.instant('all');
+  }
 
-    subscribeToLangChanged() {
-      return this._translate.onLangChanged.subscribe(x => this.refreshText());
-    }
+  subscribeToLangChanged() {
+    return this._translate.onLangChanged.subscribe(x => this.refreshText());
+  }
 
 }
-
-
