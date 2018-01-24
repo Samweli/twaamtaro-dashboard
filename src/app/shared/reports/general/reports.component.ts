@@ -1,15 +1,16 @@
 
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { DrainsService } from './../../core/drains.service';
+import { Component, OnInit, OnDestroy, AfterViewInit} from '@angular/core';
+import { DrainsService } from './../../../core/drains.service';
 import { ChartErrorEvent } from 'ng2-google-charts';
 import { NgProgress } from 'ngx-progressbar';
+import { TranslateService } from "../../../translate/translate.service";
 
 @Component({
   selector: 'reports',
   templateUrl: './reports.component.html',
   styleUrls: ['./reports.component.css']
 })
-export class ReportComponent implements OnInit{
+export class ReportComponent implements OnInit, AfterViewInit{
   title = 'Cleanness Reports';
   streets: any;
   region: any = {'name': '' };
@@ -18,10 +19,12 @@ export class ReportComponent implements OnInit{
   streetname: any = {'name': '' };
   reportBuild = false;
   reportChart: any;
-  adoptedReportChart: any;
+  public translatedText: string;
+
   constructor(
     private drainService: DrainsService,
-    public ngProgress: NgProgress
+    public ngProgress: NgProgress,
+    private translateService: TranslateService
   ) { }
 
   public error(event: ChartErrorEvent) {
@@ -63,90 +66,50 @@ export class ReportComponent implements OnInit{
         chartType: 'PieChart',
         dataTable: [
           ['Cleanness Feedback', 'Ratio'],
-          ['Clean Drains', clean ],
-          ['Dirty Drains', unclean ],
-          ['Need Help', needHelp],
+          [this.translateService.instant('clean'), clean ],
+          [this.translateService.instant('dirty'), unclean ],
+          [this.translateService.instant('need_help'), needHelp],
         ],
         options: {
-          'title': 'General Cleanness Report in all streets in '+ this.ward.name+ ' ward',
+          'title': this.translateService.instant('general-report-all')+ this.ward.name,
           pieHole: 0.3,
-    
+          width: 800,
           height: 500,
           colors:['#5cb85c','#eea236','#6495ed']
         },
       };
 
-      //Get Data about drain adoption
-      var adopted = 0; 
-      var allDrains; 
-      var notAdopted;
-      
-      for (let i = 0; i < this.streets.length; i++) {
-        adopted += this.streets[i].details.adopted;
-      }
-      
-      this.adoptedReportChart =  {
-        chartType: 'PieChart',
-        dataTable: [
-          ['Drain Adoption', 'Ratio'],
-          ['Adopted', adopted ],
-          ['Not Adopted', notAdopted],
-        ],
-        options: {
-          'title': 'Drain Adoption in all streets in '+ this.ward.name+ ' ward' ,
-          pieHole: 0.3,
-          height: 500,
-          colors:['#964f8e','grey']
-        },
-      };
     }
     else {
 
     this.streets.forEach( street => {
-
-
       if(street.street.street_name == this.streetname.name) {
         this.reportChart =  {
           chartType: 'PieChart',
           dataTable: [
             ['Cleanness Feedback', 'Ratio'],
-            ['Clean Drains', street.details.cleaned ],
-            ['Dirty Drains', street.details.uncleaned ],
-            ['Need Help', street.details.need_help],
+            [this.translateService.instant('clean'), street.details.cleaned ],
+            [this.translateService.instant('dirty'), street.details.uncleaned ],
+            [this.translateService.instant('need_help'), street.details.need_help],
           ],
           options: {
-            'title': 'General Cleanness Report in '+ street.street.street_name +', '+street.street.municipal_name,
+            'title': this.translateService.instant('general-report-street')+ street.street.street_name,
             pieHole: 0.3,
-      
+            width: 800,
             height: 500,
             colors:['#5cb85c','#eea236','#6495ed'],
             chartArea: {
               height: 'auto',
+              float: 'left',
             }
-          },
-        }; //End Cleanness ratio chart
-
-        this.adoptedReportChart =  {
-          chartType: 'PieChart',
-          dataTable: [
-            ['Drain Adoption', 'Ratio'],
-            ['Adopted', street.details.adopted ],
-            ['Not Adopted', street.details.not_adopted],
-          ],
-          options: {
-            'title': 'Drain Adoption in '+ street.street.street_name+', '+street.street.municipal_name,
-            pieHole: 0.3,
-            height: 500,
-            colors:['#964f8e','grey'],
-            chartArea: {
-              height:'auto',
-            }
-          },
-        }; //End adoption chart
+          }, //End Options
+        };//End ReportChart
       }
     });
    } //End Else
+   this.displayDiv("tablecanvas","show");
   } //End Build Report Function
+
   calcPercentage(value,total){
     var percent = (value/total) * 100;
     return percent;
@@ -161,6 +124,8 @@ export class ReportComponent implements OnInit{
         element.style.display = "block";
         }
   }
+
+  /* Print Functions*/
   tableReport(){
     this.displayDiv("tablecanvas","show");
   }
@@ -171,14 +136,26 @@ export class ReportComponent implements OnInit{
     window.print();
   }
 
-  ngAf
+  /*Translations */
+  refreshText() {
+    this.buildReport()
+  }
+
+  subscribeToLangChanged() {
+    return this.translateService.onLangChanged.subscribe(x => this.refreshText());
+  }
+  
   ngOnInit() {
     this.displayDiv("tablecanvas","hide");
+    this.subscribeToLangChanged()
     this.streetData();
     window.onafterprint = function restoreStyles(){
     document.getElementById("reports").classList.add("box", "w3-border", "w3-card-2", "w3-border-teal");
     document.getElementById("content-wrapper").classList.add("content-wrapper")
     }
   }
+    ngAfterViewInit(){
+  }
+
 
 }

@@ -16,10 +16,11 @@
             <!-- /.box-header -->
             <div class="box-body">
               <!-- Report Buttons -->
+
+              <h3 id="printHeader" class="w3-center">Ripoti ya Usafi  </h3>
               <div *ngIf="reportBuild" class="w3-row-padding " id="reportBtns">
                 <div class="w3-right">
-                  <button (click)="tableReport()" class="w3-btn  w3-block w3-blue w3-section w3-padding"> View Report in a table</button>
-                  <button (click)="printReport()" class="w3-btn  w3-block w3-blue w3-section w3-padding"> Print Report</button>
+                  <button (click)="printReport()" class="w3-btn  w3-block w3-blue w3-section w3-padding"> {{'print' | translate}} {{'thetable' | translate}} </button>
                 </div>
               </div>
               <!-- Report Buttons -->
@@ -54,43 +55,39 @@
                       <select class="w3-select" name="streetname" [(ngModel)]="streetname.name" required #streetControl="ngModel">
                           <option value="" disabled selected>{{ 'street' | translate}}</option> 
                           <option value="all">All</option>
-                        <option *ngFor="let street of (streets)" [value]="street.street.city_name">{{street.street.street_name}}</option>
+                        <option *ngFor="let street of (streets)" [value]="street.street.street_name">{{street.street.street_name}}</option>
                       </select>
                     </div>
-                    <button (click)="buildReport()" class="w3-btn w3-right w3-block w3-blue w3-section w3-padding" [disabled]="streetControl.invalid && wardControl.invalid || districtControl.invalid || regionControl.invalid">{{'send'| translate}}</button>
+                    <button (click)="buildReport()" class="w3-btn w3-right w3-block w3-blue w3-section w3-padding" [disabled]="streetControl.invalid || wardControl.invalid || districtControl.invalid || regionControl.invalid">{{'send'| translate}}</button>
                   </div>
                  
                 </form>
                 <div id="printArea">
                 <div class="w3-row w3-padding-bottom" id="piecanvas">
                    <!-- Pie Chart Canvas -->
-                  <div class="w3-col m6 s12">
-                    <google-chart [data]="reportChart" (chartError)='error($event)'></google-chart>
+                  <div class="w3-col" >
+                    <google-chart [data]="reportChart" (chartError)='error($event)' ></google-chart>
                   </div>
-                  <div class="w3-col m6 s12">
-                    <google-chart [data]="adoptedReportChart" (chartError)='error($event)'></google-chart>
-                  </div>
+                  <!-- Chart Canvas -->
                 </div>
               
                 <div class="w3-row" id="tablecanvas">
                    <!--Table Chart Canvas -->
                    <div class="w3-col w3-responsive">
-                     <h3 class="w3-center">Cleanness Reports in All the Streets</h3>
+                     <h3 class="w3-center">{{'general-report-all' | translate}}</h3>
                       <table class="w3-table-all w3-hoverable">
                           <thead>
                             <tr class="w3-dark-grey">
-                              <th>Street</th>
-                              <th>All Drains</th>
-                              <th>Adopted</th>
-                              <th>Clean Drains</th>
-                              <th>Dirty Drains</th>
-                              <th>Need Help</th>
+                              <th>{{'street'| translate}}</th>
+                              <th>{{'adopted' | translate}}</th>
+                              <th>{{'clean' | translate}}</th>
+                              <th>{{'dirty'| translate}}</th>
+                              <th>{{'need_help'| translate}}</th>
                             </tr>
                           </thead>
                          
                           <tr *ngFor="let area of streets">
-                              <td>{{ area.street.street_name }}</td>
-                              <td>N/A</td>
+                              <td><a routerLink="./street-report/{{area.street.id}}">{{ area.street.street_name }}</a></td>
                               <td>{{ area.details.adopted }}</td>
                               <td>{{ area.details.cleaned }}</td>
                               <td>{{ area.details.uncleaned }}</td>

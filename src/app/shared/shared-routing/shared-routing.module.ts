@@ -11,11 +11,13 @@ import { HelpDrainComponent } from './../../shared/drains/help-drain/help-drain.
 import { NotFoundComponent } from './../../shared/not-found/not-found.component';
 import { NotifyComponent } from './../../shared/notify/notify.component';
 import { RanksComponent } from './../../shared/ranks/ranks.component';
-import { ReportComponent } from './../../shared/reports/reports.component';
+import { ReportComponent } from './../../shared/reports/general/reports.component';
+import { StreetReportComponent } from './../../shared/reports/street-report/street-report.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedComponent } from "./../../shared/shared.component";
 import { UnknownDrainsComponent } from './../../shared/drains/unknown-drains/unknown-drains.component';
-import { UsersComponent } from './../../shared/users/users-list/users.component';
+import { UsersComponent } from "./../../shared/users/users/users.component";
+import { UsersListComponent } from './../../shared/users/users-list/users-list.component';
 import { UserDetailComponent } from './../../shared/users/user-detail/user-detail.component';
 import { VerifyLeaderComponent } from "./../../shared/verify-leader/verify-leader.component";
 
@@ -38,10 +40,12 @@ import { AuthGuard } from "./../../core/auth.guard";
           { path: 'notify-citizens', component: NotifyComponent },
           { path: 'ranks', component: RanksComponent },  
           { path: 'reports', component: ReportComponent },
+          { path: 'reports/street-report/:id', component: StreetReportComponent },
           { path: 'unknown-drains', component: UnknownDrainsComponent },
           { path: 'user-details/:id', component: UserDetailComponent },
           { path: 'users', component: UsersComponent },
-          { path: 'verify', component: VerifyLeaderComponent, canActivate:[AuthGuard] }, 
+          { path: 'users-list/:street', component: UsersListComponent },
+          { path: 'verify', component: VerifyLeaderComponent }, 
           { path: '*', component: NotFoundComponent },
         ] ,    
       }, 
