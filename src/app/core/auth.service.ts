@@ -9,6 +9,7 @@ export class AuthService {
 
   // private loginUrl = `http://twaamtaro.org/api/v1/sessions/`;
   private loginUrl = `http://twaamtaro.org/api/v1/sessions/`
+
   private headers = new Headers({'Content-Type': 'application/json'});
   loggedIn: any;
   loginRes: any;

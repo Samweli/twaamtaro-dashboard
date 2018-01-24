@@ -22,7 +22,7 @@ export class VerifyLeaderComponent implements OnInit {
 
   //Getting Street leader requests
   getRequests(data) {
-    this.userService.getLeaderRequests(data)
+    this.userService.getLeaderRequests()
       .subscribe(res => {
           this.leaderRequests = this.userService.leaderRequests.filter(rq => this.filterCondition(rq));
           this.allRequests = this.userService.totalRequests
@@ -74,7 +74,7 @@ export class VerifyLeaderComponent implements OnInit {
     if(this.sessionService.hasRole('weo' )){
       this.getRequests({role_name:'veo'});
     }
-    else if(this.sessionService.hasRole('community_member')){
+    else if(this.sessionService.hasRole('meo')){
       this.getRequests({role_name:'weo'});
     }
   }
