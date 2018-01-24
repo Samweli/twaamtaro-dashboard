@@ -20,7 +20,7 @@
               <h3 id="printHeader" class="w3-center">Ripoti ya Usafi  </h3>
               <div *ngIf="reportBuild" class="w3-row-padding " id="reportBtns">
                 <div class="w3-right">
-                  <button (click)="printReport()" class="w3-btn  w3-block w3-blue w3-section w3-padding"> Print/Export Report</button>
+                  <button (click)="printReport()" class="w3-btn  w3-block w3-blue w3-section w3-padding"> {{'print' | translate}} {{'thetable' | translate}} </button>
                 </div>
               </div>
               <!-- Report Buttons -->
@@ -74,15 +74,15 @@
                 <div class="w3-row" id="tablecanvas">
                    <!--Table Chart Canvas -->
                    <div class="w3-col w3-responsive">
-                     <h3 class="w3-center">Cleanness Reports in All the Streets</h3>
+                     <h3 class="w3-center">{{'general-report-all' | translate}}</h3>
                       <table class="w3-table-all w3-hoverable">
                           <thead>
                             <tr class="w3-dark-grey">
-                              <th>Street</th>
-                              <th>Adopted</th>
-                              <th>Clean Drains</th>
-                              <th>Dirty Drains</th>
-                              <th>Need Help</th>
+                              <th>{{'street'| translate}}</th>
+                              <th>{{'adopted' | translate}}</th>
+                              <th>{{'clean' | translate}}</th>
+                              <th>{{'dirty'| translate}}</th>
+                              <th>{{'need_help'| translate}}</th>
                             </tr>
                           </thead>
                          

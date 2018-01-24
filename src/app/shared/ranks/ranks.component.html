@@ -12,14 +12,14 @@
           <div class="box-body">
             <div class="w3-row">
               <div>
-                  <button (click)="printRanks()" class="w3-btn w3-right w3-block w3-blue w3-section w3-padding" id="printRanksBtn"> Print Ranks Table</button>
+                  <button (click)="printRanks()" class="w3-btn w3-right w3-block w3-teal w3-section w3-padding" id="printRanksBtn"> {{'print' | translate}} {{'thetable' | translate}} </button>
               </div>
                 <!-- Chart Canvas -->
           <div >
                   <google-chart [data]="tableChartData"  (chartSelect)='select($event)'></google-chart>
               </div>
   
-              <div>
+              <!--div>
                   <h3>The Number of Citizens based on the Streets</h3>
   
                   <table class="w3-table w3-hoverable w3-responsive w3-white">
@@ -30,14 +30,14 @@
                       </tr>
                       </thead>
                       <tbody>
-                      <tr *ngFor="let area of users">
+                      <tr *ngFor="let area of users | async">
                         <td>{{ area.street }}  </td>
                         <td> {{ area.population }}</td>
                       </tr>
                       </tbody>
                     </table>
   
-              </div>
+              </div-->
               <div id="alert" class="w3-modal">
                   <div id="" class="w3-modal-content w3-card-4" >
                       <header class="w3-container w3-theme-d1 w3-center">

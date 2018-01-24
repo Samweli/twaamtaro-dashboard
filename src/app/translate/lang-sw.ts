@@ -72,6 +72,8 @@ export const LANG_SW_TRANS = {
   'done': 'Kufanyika',
   'archive': 'Vimefanikiwa',
   'all_button': 'Yote',
+  'print': 'Chapisha',
+  'thetable':'Jedwali',
 
 
   /*notification*/
@@ -89,9 +91,13 @@ export const LANG_SW_TRANS = {
   'no_status': 'hapana',
   'yes_status': 'Ndio',
 
-  /* Street Reports */
+  //Reports
+  'report-printing-title': 'Usafi wa Mitaro',
+  'general-report-all':'Ripoti ya usafi wa mitaro katika mitaa yote katika kata ya ',
+  'general-report-street': 'Ripoti ya Usafi wa mitaro mtaa wa',
   'street-report': 'Ripoti ya Usafi Mtaa wa',
-//  footer
+
+  //  footer
   'copyright': 'Hatimiliki',
   'all-right':'Haki zote zimehifadhiwa.'
 };

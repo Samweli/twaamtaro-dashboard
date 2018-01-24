@@ -3,7 +3,7 @@ import { Injectable }    from '@angular/core';
 @Injectable()
 export class DrainsUrlService {
 
-  public apiUrl = 'http://localhost:3000/api/v1/';
+  public apiUrl = 'http://twaamtaro.org/api/v1/';
   public localUrl = 'http://localhost:3000/api/v1/';
   public drainsUrl = 'drains/?type=all';
   public cleanDrainsUrl = 'drains/?type=cleaned';
