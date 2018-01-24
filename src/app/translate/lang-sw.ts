@@ -43,6 +43,7 @@ export const LANG_SW_TRANS = {
     /* Need help graph transilation */
     'graph_title': 'Mchakato wa Uhugulikiwaji wa maombi ya misaada katika mitaro',
     'need_help_graph': 'CHATI YA MAOMBI YA MISAADA YA MITARO',
+    'select-time': 'Tumia menyu kubadili muda',
 
     /* filters translation*/
     'choose_municipal': 'Chagua Manispaa',

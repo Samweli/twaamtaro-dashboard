@@ -61,7 +61,7 @@ get needHelpData() {
       this.lineChartData = {
         chartType: 'LineChart',
         dataTable:this.prepareChartData(bindedData, ''),
-        options: {title: this._translate.instant('graph_title')}
+        options: {}
       };
     }
   }
@@ -183,8 +183,22 @@ get needHelpData() {
     this.year = today.getFullYear();
   }
 
+  subscribeToLangChanged() {
+    // refresh text
+    // please unsubribe during destroy
+    return this._translate.onLangChanged.subscribe(x => this.refreshText());
+}
 
+// performs transilation whenever language changes
+refreshText(){
+  this.initilizeGraph(this.needHelpData);
+}
+
+
+
+  
   ngOnInit() {
+    this.subscribeToLangChanged(); // subscribe to language changes
     this.setTime();
     this._needHelpData
     .subscribe(x => {
