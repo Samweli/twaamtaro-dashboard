@@ -110,6 +110,8 @@ export const LANG_EN_TRANS = {
   'done': 'Done',
   'archive': 'Archived',
   'all_button': 'All',
+  'print': 'Print/Export',
+  'thetable':'Table',
 
 
   /*notification*/
@@ -129,6 +131,12 @@ export const LANG_EN_TRANS = {
   'or': 'Or',
   'no_status': 'No',
   'yes_status': 'Yes',
+
+ /* Reports */
+ 'report-printing-title':'Drains Cleanliness',
+ 'general-report-all':'General Cleanness Report in all streets in ',
+ 'general-report-street': 'General Cleanness Report in ',
+ 'street-report':'Cleanliness Report in ',
 
 //  footer
   'copyright': 'Copyright',
