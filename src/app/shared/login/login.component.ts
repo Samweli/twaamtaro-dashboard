@@ -48,18 +48,13 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.user)
       .subscribe(res => {
         this.loginCalled = true;
+
         this.userData = this.authService.userdata;
-        if (this.userData && this.userData.users.authentication_token) {
-          localStorage.setItem('currentUser', JSON.stringify(this.userData.users.authentication_token));
-
-          /* New localStorage Data */
-          localStorage.setItem('loggedUser', JSON.stringify(this.userData.users));
-          localStorage.setItem('roles', JSON.stringify(this.userData.users.roles));
-          localStorage.setItem('street', JSON.stringify(this.userData.users.street));
-
-          this.router.navigate(['dashboard/admin']);
-
+        this.sessionService.setCurrentUser(this.userData);
+        if (this.authService.isLoggedIn()) {
+          location.reload();
         }
+        
         this.ngProgress.done();        
       }, error => {
         this.loginCalled = true;

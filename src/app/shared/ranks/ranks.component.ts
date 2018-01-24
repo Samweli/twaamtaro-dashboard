@@ -4,7 +4,7 @@ import { DrainsService } from './../../core/drains.service';
 import { AuthService} from "./../../core/auth.service";
 import { ChartSelectEvent } from 'ng2-google-charts';
 import { UserService } from "./../../core/user.service";
-import { TranslateService} from "../../translate/translate.service";
+import { TranslateService } from "../../translate/translate.service";
 import { NgProgress } from 'ngx-progressbar';
 import { StreetService } from "../../core/streets.service";
 

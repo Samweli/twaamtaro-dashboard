@@ -17,7 +17,7 @@ import { SharedComponent } from "./shared.component";
 import { UnknownDrainsComponent } from './drains/unknown-drains/unknown-drains.component';
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
 import { UserSearchComponent } from './users/user-search/user-search.component';
-import { UsersComponent } from './users/users-list/users.component';
+import { UsersComponent } from './users/users/users.component';
 
 import { Directive } from '@angular/core';
 import { NgModule } from '@angular/core';
@@ -34,7 +34,6 @@ import { HelpDrainModule } from './../shared/drains/help-drain/help-drain.module
 import { DrainListModule } from './../shared/drains/all-drains/all-drains.module';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { ReportModule } from './../shared/reports/general/reports.module';
-import { UserModule } from "./../shared/users/users-list/users.module";
 import { FilterDrainsModule } from './../shared/drains/filter-drains/filter-drains.module';
 
 import { NotificationBarModule } from "./notification-bar/notification-bar.module";
@@ -54,6 +53,7 @@ import { StreetVEOPipe, UserStreetPipe } from "./../core/user.pipe";
 import { NotifyComponent } from './notify/notify.component';
 import { RegisterComponent } from './register/register.component';
 import { VerifyLeaderComponent } from './verify-leader/verify-leader.component';
+import { UsersListComponent } from './users/users-list/users-list.component';
 import { StreetReportComponent } from './reports//street-report/street-report.component';
 import { RegionalFiltersComponent } from './regional-filters/regional-filters.component';
 import { StatusFiltersComponent } from './status-filters/status-filters.component';
@@ -72,7 +72,6 @@ import { YearPickerComponent } from './year-picker/year-picker.component';
     CleanDrainModule,
     HelpDrainModule,
     ReportModule,
-    UserModule,
   //UserDetailModule,
     ReactiveFormsModule,
     FormsModule,
@@ -82,37 +81,36 @@ import { YearPickerComponent } from './year-picker/year-picker.component';
     SharedRoutingModule,
   ],
   declarations: [
-    LeftSideComponent,
-    FooterComponent,
-    DrainListComponent,
     CleanDrainComponent,
+    DashboardComponent,
     DirtyDrainComponent,
+    DrainListComponent,
     FilterDrainsComponent,
+    FooterComponent,
     HeaderComponent,
     HelpDrainComponent,
-    ReportComponent,
+    LeftSideComponent,
+    LoginComponent,
+    MonthPickerComponent,
+    NeedHelpGraphComponent,
     NotFoundComponent,
+    NotificationBarComponent,
+    NotifyComponent,
+    RanksComponent,
+    RegionalFiltersComponent,
+    RegisterComponent,
+    ReportComponent,
+    SharedComponent,
+    StatusFiltersComponent,
+    StreetReportComponent,
+    TranslatePipe,
+    TimeFilterComponent,
+    UnknownDrainsComponent,
     UsersComponent,
     UserDetailComponent,
-    NotificationBarComponent,
-    FilterDrainsComponent,
-    FooterComponent,
-    RanksComponent,
     UserSearchComponent,
-    DashboardComponent,
-    LoginComponent,
-    UnknownDrainsComponent,
-    SharedComponent,StreetVEOPipe, UserStreetPipe,
-    TranslatePipe,
-    NotifyComponent,
-    RegisterComponent,
+    UsersListComponent,
     VerifyLeaderComponent,
-    StreetReportComponent,
-    RegionalFiltersComponent,
-    StatusFiltersComponent,
-    NeedHelpGraphComponent,
-    TimeFilterComponent,
-    MonthPickerComponent,
     YearPickerComponent,
   ],
   exports: [SharedComponent],

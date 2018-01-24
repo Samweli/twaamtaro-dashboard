@@ -35,7 +35,7 @@ import { ReportComponent } from './shared/reports/general/reports.component';
 import { SharedComponent } from "./shared/shared.component";
 import { UserDetailComponent } from './shared/users/user-detail/user-detail.component';
 import { UserSearchComponent } from './shared/users/user-search/user-search.component';
-import { UsersComponent } from './shared/users/users-list/users.component';
+import { UsersListComponent } from './shared/users/users-list/users-list.component';
 
 import { UnknownDrainsComponent } from './shared/drains/unknown-drains/unknown-drains.component';
 

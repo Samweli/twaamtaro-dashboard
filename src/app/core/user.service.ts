@@ -72,8 +72,19 @@ denyLeader(denyRequest: any) : Observable <void> {
       .map(res => { res.json().data as any
       })
       .catch(this.errorHandler);
+    }
 
-}
+  //Checks if a user has a specific role
+  checkRole(roles, roleId){
+    if(roles.some(role => role.id == roleId)) {
+      return true
+    }
+    else
+    {
+      return false;
+    }
+  }
+
   errorHandler(error: Response) {
     return Observable.throw(error || 'Sorry, something went wrong');
 
