@@ -45,6 +45,7 @@ export const LANG_EN_TRANS = {
   /* Need help graph transilation */
   'graph_title': 'Trend of Processing Drain Help Requests',
   'need_help_graph': 'GRAPH FOR DRAIN HELP REQUESTS',
+  'select-time': 'Use selects to vary the time axis',
 
   /* filters translation*/
   'choose_municipal': 'Choose Municipal',
