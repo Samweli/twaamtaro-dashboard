@@ -1,4 +1,12 @@
-<div>
-  <app-year-picker></app-year-picker>
-  <app-month-picker></app-month-picker>
+ <div class="w3-row-padding">
+    <div class="w3-col s12 m3">
+        <p><strong>Use selects to vary the time axis:</strong></p>
+      </div>
+  <div class="w3-col s12 m3">
+    <app-year-picker (selectedYear)="graphTime($event)"></app-year-picker>
+  </div>
+
+  <div class="w3-col s12 m3">
+    <app-month-picker (selectedMonth)="graphTime($event)"></app-month-picker>
+  </div>
 </div>

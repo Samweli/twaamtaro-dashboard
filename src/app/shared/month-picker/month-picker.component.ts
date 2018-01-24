@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-month-picker',
@@ -7,26 +7,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MonthPickerComponent implements OnInit {
 
+  @Output()
+  selectedMonth: EventEmitter<any> = new EventEmitter();
+
   private mm : any ;
+  data: any ={};
   months = [
-          { val: '01',  name: 'Jan' },
-          { val: '02',  name: 'Feb' },
-          { val: '03',  name: 'Mar' },
-          { val: '04',  name: 'Apr' },
-          { val: '05',  name: 'May' },
-          { val: '06',  name: 'Jun' },
-          { val: '07',  name: 'Jul' },
-          { val: '08',  name: 'Aug' },
-          { val: '09',  name: 'Sep' },
-          { val: '10',  name: 'Oct' },
-          { val: '11',  name: 'Nov' },
-          { val: '12',  name: 'Dec' }
+          { val: '0',  name: 'Jan' },
+          { val: '1',  name: 'Feb' },
+          { val: '2',  name: 'Mar' },
+          { val: '3',  name: 'Apr' },
+          { val: '4',  name: 'May' },
+          { val: '5',  name: 'Jun' },
+          { val: '6',  name: 'Jul' },
+          { val: '7',  name: 'Aug' },
+          { val: '8',  name: 'Sep' },
+          { val: '9',  name: 'Oct' },
+          { val: '10',  name: 'Nov' },
+          { val: '11',  name: 'Dec' }
       ];
   
       ngOnInit() { 
          this.getMonth(); 
   
-      }  
+      } 
+      
+      onChange(month){
+        this.data.month = month;
+        this.selectedMonth.emit(this.data);
+      }
   
       getMonth(){
       var today = new Date();
