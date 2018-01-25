@@ -115,9 +115,13 @@ export const LANG_SW_TRANS = {
   'modify': 'Badilisha',
   'send_msg': 'Tuma',
   'box-msg': 'ujumbe katika sanduku la ujumbe ',
+  'verify_title': 'Maombi ya Uongozi',
+  'no_verify': 'Hakuna maombi yoyote ya uongozi',
+  'action': 'Vitendo',
   'or': 'Au',
-  'no_status': 'hapana',
-  'yes_status': 'Ndio',
+  'no_status': 'Hapana',
+  'yes_status': 'Ndiyo',
+
 
   //Reports
   'report-printing-title': 'Usafi wa Mitaro',
