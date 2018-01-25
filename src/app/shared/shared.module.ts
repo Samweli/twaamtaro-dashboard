@@ -60,6 +60,7 @@ import { NeedHelpGraphComponent } from './need-help-graph/need-help-graph.compon
 import { TimeFilterComponent } from './time-filter/time-filter.component';
 import { MonthPickerComponent } from './month-picker/month-picker.component';
 import { YearPickerComponent } from './year-picker/year-picker.component';
+import { NeedhelpSearchComponent } from './needhelp-search/needhelp-search.component';
 
 @NgModule({
   imports: [
@@ -112,6 +113,7 @@ import { YearPickerComponent } from './year-picker/year-picker.component';
     TimeFilterComponent,
     MonthPickerComponent,
     YearPickerComponent,
+    NeedhelpSearchComponent,
   ],
   exports: [SharedComponent],
   providers: [
