@@ -1,3 +1,7 @@
-<p>
-  needhelp-search works!
-</p>
+<h5> Need Help Request Search </h5>
+<input  ngui-auto-complete
+placeholder="need help request search"
+  [(ngModel)]="selected" 
+  [source]="observableSource.bind(this)"  
+  list-formatter="street_name"  (ngModelChange)="search($event)"/>
+  

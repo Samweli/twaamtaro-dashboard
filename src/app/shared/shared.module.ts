@@ -61,6 +61,7 @@ import { TimeFilterComponent } from './time-filter/time-filter.component';
 import { MonthPickerComponent } from './month-picker/month-picker.component';
 import { YearPickerComponent } from './year-picker/year-picker.component';
 import { NeedhelpSearchComponent } from './needhelp-search/needhelp-search.component';
+import { NguiAutoCompleteModule } from '@ngui/auto-complete';
 
 @NgModule({
   imports: [
@@ -80,6 +81,7 @@ import { NeedhelpSearchComponent } from './needhelp-search/needhelp-search.compo
     HeaderModule,
     TranslateModule,
     SharedRoutingModule,
+    NguiAutoCompleteModule,
   ],
   declarations: [
     LeftSideComponent,
