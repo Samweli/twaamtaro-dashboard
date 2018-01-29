@@ -118,7 +118,9 @@ export class DrainsService {
       .catch(this.errorHandler);
   }
 
-
+  filterDrains(data):any{
+    //To be worked on after API updates.
+  }
 
   errorHandler(error: Response) {
     console.error(error);

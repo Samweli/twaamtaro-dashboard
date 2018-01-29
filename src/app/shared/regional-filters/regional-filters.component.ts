@@ -44,7 +44,6 @@ export class RegionalFiltersComponent implements OnInit {
                 };
 
 
-
     this.selectValueChaged.emit(data);
 
   }
