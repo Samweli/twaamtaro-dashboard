@@ -24,10 +24,10 @@ export class VerifyLeaderComponent implements OnInit {
   getRequests(data) {
     this.userService.getLeaderRequests(data)
       .subscribe(res => {
-          this.leaderRequests = this.userService.leaderRequests.filter(rq => this.filterCondition(rq));
-          this.allRequests = this.userService.totalRequests
+          this.leaderRequests = res.filter(rq => this.filterCondition(rq));
+          this.allRequests = res.length;
           console.log(this.leaderRequests);
-          console.log(this.userService.leaderRequests)
+          console.log(this.allRequests);
         }
       )
 
@@ -58,23 +58,24 @@ export class VerifyLeaderComponent implements OnInit {
 
   filterCondition(data):boolean{
     if(this.sessionService.hasRole('weo')) {
-      let street = JSON.parse(this.sessionService.getUserStreet());
-      let bool = data.street.ward_name == street.ward_name;
+      let user = this.sessionService.getCurrentLoggedUser();
+       let bool = data.ward.ward_name == user.ward.ward_name;
       return bool;
     }
-    else if(this.sessionService.hasRole('community_member')){
-      let street = JSON.parse(this.sessionService.getUserStreet());
-      let munc = data.street.municipal_name == street.municipal_name;
-      return munc;
+    else if(this.sessionService.hasRole('meo')){
+      let user = this.sessionService.getCurrentLoggedUser();
+      let bool = data.municipal.municipal_name == user.municipal.municipal_name;
+      return bool;
     }
 
   }
+  /*checking role request*/
   checkLoggedInUser(){
 
     if(this.sessionService.hasRole('weo' )){
       this.getRequests({role_name:'veo'});
     }
-    else if(this.sessionService.hasRole('community_member')){
+    else if(this.sessionService.hasRole('meo')){
       this.getRequests({role_name:'weo'});
     }
   }
