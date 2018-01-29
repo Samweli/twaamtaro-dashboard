@@ -34,6 +34,7 @@ export const LANG_SW_TRANS = {
   'status_change_placeholder': 'Sio lazima kujaza',
   'need_help_description_submit': 'Sawa',
   'need_help_description_cancel': 'Ghairi',
+  'searchErr':'Mtaro huu haupo kwenye orodha hii',
 
     /* Need help graph transilation */
     'graph_title': 'Mchakato wa Uhugulikiwaji wa maombi ya misaada katika mitaro',
@@ -102,6 +103,7 @@ export const LANG_SW_TRANS = {
   'all_button': 'Yote',
   'print': 'Chapisha',
   'thetable':'Jedwali',
+  'search': 'Tafuta',
 
 
   /*notification*/

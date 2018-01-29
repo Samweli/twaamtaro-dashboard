@@ -41,6 +41,7 @@ export const LANG_EN_TRANS = {
   'status_change_placeholder': 'Optional',
   'need_help_description_submit': 'Ok',
   'need_help_description_cancel': 'Cancel',
+  'searchErr': 'The drain is not found on this list',
 
   /* Need help graph transilation */
   'graph_title': 'Trend of Processing Drain Help Requests',
@@ -112,6 +113,7 @@ export const LANG_EN_TRANS = {
   'all_button': 'All',
   'print': 'Print/Export',
   'thetable':'Table',
+  'search': 'Search',
 
 
   /*notification*/

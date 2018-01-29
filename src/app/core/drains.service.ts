@@ -23,6 +23,8 @@ export class DrainsService {
   drainData: any;
   ranksData: any;
   helpDrains: any;
+  err: any;
+  
   getDrains(): Observable<any[]> {
     return this.http.get(this.urlService.apiUrl+this.urlService.drainsUrl)
       .map((response: Response) => response.json().drains)
