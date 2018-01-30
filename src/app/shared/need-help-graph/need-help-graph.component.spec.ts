@@ -1,21 +1,20 @@
-
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FooterComponent } from './footer.component';
+import { NeedHelpGraphComponent } from './need-help-graph.component';
 
-describe('AdminFooterComponent', () => {
-  let component: FooterComponent;
-  let fixture: ComponentFixture<FooterComponent>;
+describe('NeedHelpGraphComponent', () => {
+  let component: NeedHelpGraphComponent;
+  let fixture: ComponentFixture<NeedHelpGraphComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FooterComponent ]
+      declarations: [ NeedHelpGraphComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FooterComponent);
+    fixture = TestBed.createComponent(NeedHelpGraphComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

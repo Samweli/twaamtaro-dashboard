@@ -14,19 +14,21 @@ export class LeftSideComponent implements OnInit {
     public sessionService: SessionService,
     private _translate: TranslateService
   ) { }
-  notifyCitizens() {
-  }
-  loggedUser;
-  public translatedText: string;
-  public supportedLanguages: any[];
-  supportedLangs: any;
+
+    public translatedText: string;
+    public supportedLanguages: any[];
+    supportedLangs: any;
+    loggedUser: any;
+    userStreet: any;
 
   ngOnInit() {
-    if(this.authService.isLoggedIn()) {
-      var theUser = JSON.parse(this.sessionService.getLoggedUser());
-      this.loggedUser = theUser.first_name + " " + theUser.last_name ;
-    }
-
+    //Get user's name from session
+   if (this.authService.isLoggedIn()) {
+        var theUser = JSON.parse(this.sessionService.getLoggedUser());
+        this.loggedUser = theUser.first_name + " " + theUser.last_name;
+        var theStreet = this.sessionService.getUserStreet();
+        //this.userStreet = theStreet.id;
+      }
     // standing data
     this.supportedLangs = [
       {display: 'English', value: 'en'},

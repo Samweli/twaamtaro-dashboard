@@ -14,6 +14,7 @@ import { NgProgress } from 'ngx-progressbar';
   providers: []
 })
 export class HelpDrainComponent implements OnInit {
+
   created: any;
   daysGone: any;
   dateCreated: any;

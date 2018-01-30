@@ -40,6 +40,7 @@ export class HeaderComponent implements OnInit {
   requests: any;
   leaderReq(data) {
     this.userService.getLeaderRequests(data)
+
       .subscribe(res => {
         this.requests = res.length;
 

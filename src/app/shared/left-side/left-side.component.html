@@ -24,7 +24,7 @@
         <a routerLink="home"><i class="fa fa-dashboard"></i> <span>{{ 'dashboard'| translate}}</span></a>
       </li>
       <li>
-        <a href="http://www.twaamtaro.org" target="_blank">
+        <a href="http://twaamtaro.org" target="_blank">
             <i class="fa fa-globe"></i> <span>{{'map' | translate}}</span>
           </a>
       </li>
@@ -51,8 +51,8 @@
           <i class=""></i> <span>{{'view_drain' | translate}}</span>
           </a>
       </li>
-      <li>
-        <a routerLink="users">
+      <li *ngIf="authService.isLoggedIn()">
+        <a routerLink="users-list/{{userStreet}}">
             <i class="fa fa-users"></i> <span>{{ 'citizens' | translate}}</span>
           </a>
       </li>

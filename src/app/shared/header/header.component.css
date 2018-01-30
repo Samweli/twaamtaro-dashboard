@@ -12,6 +12,11 @@
   position: absolute;
   top: 5px;
 }
+.main-header .logo {
+  font-size: 16px;
+  padding: 0 10px;
+  font-weight: 200;
+}
 @media (min-width: 768px) {
   .navbar-nav > li > a {
      padding-top: 10px;

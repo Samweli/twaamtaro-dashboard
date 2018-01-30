@@ -42,6 +42,11 @@ export const LANG_EN_TRANS = {
   'need_help_description_submit': 'Ok',
   'need_help_description_cancel': 'Cancel',
 
+  /* Need help graph transilation */
+  'graph_title': 'Trend of Processing Drain Help Requests',
+  'need_help_graph': 'GRAPH FOR DRAIN HELP REQUESTS',
+  'select-time': 'Use selects to vary the time axis',
+
   /* filters translation*/
   'choose_municipal': 'Choose Municipal',
   'choose_ward': 'Choose Ward',
@@ -105,6 +110,8 @@ export const LANG_EN_TRANS = {
   'done': 'Done',
   'archive': 'Archived',
   'all_button': 'All',
+  'print': 'Print/Export',
+  'thetable':'Table',
 
 
   /*notification*/
@@ -124,6 +131,12 @@ export const LANG_EN_TRANS = {
   'or': 'Or',
   'no_status': 'No',
   'yes_status': 'Yes',
+
+ /* Reports */
+ 'report-printing-title':'Drains Cleanliness',
+ 'general-report-all':'General Cleanness Report in all streets in ',
+ 'general-report-street': 'General Cleanness Report in ',
+ 'street-report':'Cleanliness Report in ',
 
 //  footer
   'copyright': 'Copyright',

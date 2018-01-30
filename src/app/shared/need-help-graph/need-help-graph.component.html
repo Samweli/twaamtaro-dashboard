@@ -1,0 +1,6 @@
+<div *ngIf="needHelpData">
+ <div class="w3-padding">
+    <app-time-filter (selectedTime)="getTimeChanges($event)"></app-time-filter> 
+ </div>  
+<google-chart [data]="lineChartData" (chartReady)="ready($event)" (chartError)="error($event)" (chartSelect)="select($event)"></google-chart>
+</div>

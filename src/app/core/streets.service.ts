@@ -15,14 +15,14 @@ export class StreetService {
   constructor(private http: Http, private urlService: StreetsUrlService) { }
   streetName: any;
   getStreets(): any {
-    return this.http.get(this.urlService.localUrl+this.urlService.streetsUrl,
+    return this.http.get(this.urlService.apiUrl+this.urlService.streetsUrl,
       {headers: this.headers})
            .map((response: Response) => response.json().streets)
            .catch(this.errorHandler);
           }
 // gets all municiplas
   getMunicipals(): any {
-    return this.http.get(this.urlService.localUrl+this.urlService.municipalsUrl,
+    return this.http.get(this.urlService.apiUrl+this.urlService.municipalsUrl,
       {headers: this.headers})
            .map((response: Response) => response.json().municipals)
            .catch(this.errorHandler);
@@ -51,14 +51,14 @@ export class StreetService {
 
       // gets all wards by municipal id
    getMunicipalWards(id: number){
-     const url = `${this.urlService.localUrl+this.urlService.municipalsUrl}/${id}/${'wards'}`;
+     const url = `${this.urlService.apiUrl+this.urlService.municipalsUrl}/${id}/${'wards'}`;
      return this.http.get(url,{headers: this.headers})
      .map((response: Response) => response.json().wards)
      .catch(this.errorHandler);
    }
    // get all streets by ward id
    getWardStreets(id: number){
-    const url = `${this.urlService.localUrl+this.urlService.wardsUrl}/${id}/${'streets'}`;
+    const url = `${this.urlService.apiUrl+this.urlService.wardsUrl}/${id}/${'streets'}`;
     return this.http.get(url,{headers: this.headers})
     .map((response: Response) => response.json().streets)
     .catch(this.errorHandler);
