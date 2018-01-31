@@ -39,6 +39,11 @@ export class HelpDrainComponent implements OnInit {
   needHelpData: any = {};
   needHelpObject: any = {};
   needHelpCategory: any ={};
+  baseUrl:any;
+  needhelp:boolean =true;
+  lat:any;
+  long:any;
+  gid:any;
 
   constructor(
     private drainService: DrainsService,
@@ -193,6 +198,8 @@ export class HelpDrainComponent implements OnInit {
   // initilizes varible which hides or shows status column
   // in the html template
   conditionalInitializer(){
+    this.needhelp = true;
+    this.baseUrl = 'http://twaamtaro.org';
     if(this.sessionService.hasRole("meo")){
       this.meoStatusColumn = this.sessionService.hasRole("meo");
     }

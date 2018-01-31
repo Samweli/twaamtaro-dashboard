@@ -80,16 +80,16 @@
           </thead>
           <tbody>
           <tr *ngFor="let drain of pagedDrains">
-            <td><a (click)="helpmodal(drain)" >{{drain.gid}}</a></td>
-						<td>{{drain.need_help_category.category_name}}</td>
-						<td>{{drain.status | translate }}</td>
-            <td>{{drain.user.street.street_name}}</td>
-						<td>{{drain.created_at | date }}</td>
-						<td>
+            <td><a href="{{baseUrl}}/?needhelp={{needhelp}}&gid={{drain.gid}}&lat={{drain.lat}}&long={{drain.long}}" target="_blank">{{drain.gid}}</a></td>
+						<td (click)="helpmodal(drain)" >{{drain.need_help_category.category_name}}</td>
+						<td (click)="helpmodal(drain)">{{drain.status | translate }}</td>
+            <td (click)="helpmodal(drain)">{{drain.user.street.street_name}}</td>
+						<td (click)="helpmodal(drain)">{{drain.created_at | date }}</td>
+						<td (click)="helpmodal(drain)">
 								<div *ngIf="!drain.pending">{{'not_yet' | translate }}</div>
 							<div *ngIf="drain.pending">{{drain.pending | date }}</div>
 						</td>
-						<td>
+						<td (click)="helpmodal(drain)">
 								<div *ngIf="!drain.resolved">{{'not_yet' | translate }}</div>
 							<div *ngIf="drain.resolved">{{drain.resolved | date }}</div>
 						</td>
