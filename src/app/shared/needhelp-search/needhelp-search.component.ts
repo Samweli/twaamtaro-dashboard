@@ -19,7 +19,7 @@ export class NeedhelpSearchComponent implements OnInit {
   
   observableSource = (keyword: any): Observable<any[]> => {
     let url: string = 
-      'http://localhost:3000/search?q='+keyword
+      'http://twaamtaro.org/search?q='+keyword
     if (keyword) {
       return this.http.get(url)
         .map(res => {
