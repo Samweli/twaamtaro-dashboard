@@ -15,8 +15,7 @@ export class SessionService {
   }
 
   setCurrentLoggedUser(user){
-  
-    localStorage.setItem('currentLoggedUser', JSON.stringify(user));
+   localStorage.setItem('currentLoggedUser', JSON.stringify(user));
   }
 
   getCurrentLoggedUser(){
