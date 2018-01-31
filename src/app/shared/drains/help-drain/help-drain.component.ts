@@ -194,15 +194,12 @@ export class HelpDrainComponent implements OnInit {
       this.loggedIn = this.authService.isLoggedIn();
   }
 
-
   // initilizes varible which hides or shows status column
   // in the html template
   conditionalInitializer(){
     this.needhelp = true;
     this.baseUrl = 'http://twaamtaro.org';
-    this.gid = 2369;
-    this.lat = -6.79881;
-    this.long = 39.2638;
+  
     if(this.sessionService.hasRole("meo")){
       this.meoStatusColumn = this.sessionService.hasRole("meo");
     }
@@ -212,7 +209,6 @@ export class HelpDrainComponent implements OnInit {
     }
 
   }
-
 
   ngOnInit(): void {
     this.getFilteredDrains();

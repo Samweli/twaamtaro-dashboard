@@ -26,13 +26,14 @@ export class AuthService {
     login(user): any {
         return this.http.post(this.loginUrl, { user }, { headers: this.headers })
             .map(res => {
-            this.userdata = res.json();
-        })
-        .catch(this.handleError);
+                this.loginRes = true;
+                this.userdata = res.json().users;
+            })
+            .catch(this.handleError);
     }
 
     isLoggedIn() {
-        if (localStorage.getItem("currentUser") == null) {
+        if (localStorage.getItem("currentUserToken") == null) {
             this.loggedIn == false;
             return this.loggedIn;            }
         else {

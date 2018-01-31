@@ -1,21 +1,20 @@
-
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FooterComponent } from './footer.component';
+import { NeedhelpSearchComponent } from './needhelp-search.component';
 
-describe('AdminFooterComponent', () => {
-  let component: FooterComponent;
-  let fixture: ComponentFixture<FooterComponent>;
+describe('NeedhelpSearchComponent', () => {
+  let component: NeedhelpSearchComponent;
+  let fixture: ComponentFixture<NeedhelpSearchComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FooterComponent ]
+      declarations: [ NeedhelpSearchComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FooterComponent);
+    fixture = TestBed.createComponent(NeedhelpSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
