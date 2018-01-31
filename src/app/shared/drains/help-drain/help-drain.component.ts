@@ -199,10 +199,7 @@ export class HelpDrainComponent implements OnInit {
   // in the html template
   conditionalInitializer(){
     this.needhelp = true;
-    this.baseUrl = 'http://localhost:3000';
-    this.gid = 2369;
-    this.lat = -6.79881;
-    this.long = 39.2638;
+    this.baseUrl = 'http://twaamtaro.org';
     if(this.sessionService.hasRole("meo")){
       this.meoStatusColumn = this.sessionService.hasRole("meo");
     }
