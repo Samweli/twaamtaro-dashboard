@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
         public ngProgress: NgProgress,
         public router: Router,
         public sessionService: SessionService ) { }
-  
+
   countryCode = "255";
   inputsToFormat = { 'phone': '' };
   loginCalled: any = false;
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   userData: any;
   theUser: any;
   loading: any;
-  
+
   formatPhoneNumber(phoneNumber) {
     var formattedNumber: any;
     if (phoneNumber.startsWith("0")) {
@@ -48,19 +48,17 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.user)
       .subscribe(res => {
         this.loginCalled = true;
+
+
         this.userData = this.authService.userdata;
-        if (this.userData && this.userData.users.authentication_token) {
-          localStorage.setItem('currentUser', JSON.stringify(this.userData.users.authentication_token));
-
-          /* New localStorage Data */
-          localStorage.setItem('loggedUser', JSON.stringify(this.userData.users));
-          localStorage.setItem('roles', JSON.stringify(this.userData.users.roles));
-          localStorage.setItem('street', JSON.stringify(this.userData.users.street));
-
-          this.router.navigate(['dashboard/admin']);
-
+        this.sessionService.setCurrentUser(this.userData);
+        this.sessionService.setCurrentLoggedUser(this.authService.userdata);
+        if (this.authService.isLoggedIn()) {
+          location.reload();
         }
-        this.ngProgress.done();        
+
+
+        this.ngProgress.done();
       }, error => {
         this.loginCalled = true;
         this.formErrorsService.error(error);
@@ -68,7 +66,7 @@ export class LoginComponent implements OnInit {
       });
   };
 
-  logout() { 
+  logout() {
    this.authService.logout();
    this.router.navigateByUrl('/');
   }

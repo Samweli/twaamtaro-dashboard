@@ -30,6 +30,7 @@
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
+    "@ngui/auto-complete": "^0.16.1",
     "@types/bootstrap-datepicker": "0.0.9",
     "@types/bootstrap.v3.datetimepicker": "^4.17.41",
     "@types/daterangepicker": "^2.1.10",

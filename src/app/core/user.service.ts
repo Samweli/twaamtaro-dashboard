@@ -48,30 +48,38 @@ export class UserService {
     .catch(this.errorHandler);
   }
 
-  getLeaderRequests(): any {
-    return this.http.post(this.urlService.apiUrl+this.urlService.leaderRequestsUrl,
+  getLeaderRequests(data:any): any {
+    return this.http.post(this.urlService.apiUrl+ this.urlService.leaderRequestsUrl,JSON.stringify(data),
       {headers: this.headers})
-    .map(res =>  {
-      this.leaderRequests = res.json().leaders ;
-      this.totalRequests = this.leaderRequests.length
-    })
+    .map(res =>  res.json().leaders)
     .catch(this.errorHandler);
   }
- verifyLeader(data: any) :any {
+ verifyLeader(data: any) : any {
   return this.http.post(this.urlService.apiUrl + this.urlService.verifyUrl, JSON.stringify(data), {headers: this.headers})
     .map(res => {
-      res.json().data as any
+      res.json().data as any;
       }
     )
-    .catch(this.errorHandler)
+    .catch(this.errorHandler);
 }
 denyLeader(denyRequest: any) : Observable <void> {
     return this.http.post(this.urlService.apiUrl + this.urlService.denyUrl,JSON.stringify(denyRequest), {headers: this.headers})
-      .map(res => { res.json().data as any
+      .map(res => { res.json().data as any;
       })
       .catch(this.errorHandler);
+    }
 
-}
+  //Checks if a user has a specific role
+  checkRole(roles, roleId){
+    if(roles.some(role => role.id == roleId)) {
+      return true
+    }
+    else
+    {
+      return false;
+    }
+  }
+
   errorHandler(error: Response) {
     return Observable.throw(error || 'Sorry, something went wrong');
 

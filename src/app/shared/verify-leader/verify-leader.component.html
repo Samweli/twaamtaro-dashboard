@@ -25,8 +25,8 @@
             <tr *ngFor="let request of leaderRequests">
               <td >{{ request.first_name }} {{ request.last_name }}</td>
               <td>{{ request.sms_number }}</td>
-              <td>{{request.street.municipal_name}}</td>
-              <td>{{request.street.ward_name}}</td>
+              <td>{{request.municipal.municipal_name}}</td>
+              <td>{{request.ward.ward_name}}</td>
               <td>{{ request.street.street_name }}</td>
               <td>
                 <button (click)="denyRequest(request); $event.stopPropagation()" class="w3-btn w3-red" title="Disapprove"> <i class="fa fa-remove"></i> </button>

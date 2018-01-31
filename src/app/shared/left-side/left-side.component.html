@@ -51,8 +51,8 @@
           <i class=""></i> <span>{{'view_drain' | translate}}</span>
           </a>
       </li>
-      <li>
-        <a routerLink="users">
+      <li *ngIf="authService.isLoggedIn()">
+        <a routerLink="users-list/{{userStreet}}">
             <i class="fa fa-users"></i> <span>{{ 'citizens' | translate}}</span>
           </a>
       </li>
