@@ -23,6 +23,8 @@ export class DrainsService {
   drainData: any;
   ranksData: any;
   helpDrains: any;
+  err: any;
+  
   getDrains(): Observable<any[]> {
     return this.http.get(this.urlService.apiUrl+this.urlService.drainsUrl)
       .map((response: Response) => response.json().drains)
@@ -116,7 +118,9 @@ export class DrainsService {
       .catch(this.errorHandler);
   }
 
-
+  filterDrains(data):any{
+    //To be worked on after API updates.
+  }
 
   errorHandler(error: Response) {
     console.error(error);

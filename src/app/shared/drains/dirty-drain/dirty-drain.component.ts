@@ -20,6 +20,7 @@ export class DirtyDrainComponent implements OnInit {
   pager: any = {}; // pager object
   pagedDrains: any[]; // paged drains
   errMsg: any; // Error Message
+  sErr: any; //Search Error
 
   constructor(private drainService: DrainsService, private pagerService: PagerService, public ngProgress: NgProgress) { }
   
@@ -35,6 +36,24 @@ export class DirtyDrainComponent implements OnInit {
           }
         );
   }
+  theSearch(query){
+    return ((drain) => ((drain.gid.toString().toLowerCase().indexOf(query.toLowerCase()) > -1)||(drain.address.toString().toLowerCase().indexOf(query.toLowerCase()) > -1)))
+  }
+
+  //Searches for a drain in the list of clean drains
+  searchDrain(query){
+    this.ngProgress.start()
+    let result = this.drains.filter(this.theSearch(query));
+    if (result.length > 0) {
+      this.sErr = false;
+      this.pagedDrains = result;
+    }
+    else {
+      this.sErr = true;
+    }
+    this.ngProgress.done()
+  }
+  
   setPage(page: number) {
     if (page < 1 || page > this.pager.totalPages) {
         return;
@@ -48,5 +67,6 @@ export class DirtyDrainComponent implements OnInit {
   } 
   ngOnInit(): void {
     this.getDrains();
+    this.sErr = false;
   }
 }
