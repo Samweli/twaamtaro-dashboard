@@ -41,6 +41,8 @@ export const LANG_EN_TRANS = {
   'status_change_placeholder': 'Optional',
   'need_help_description_submit': 'Ok',
   'need_help_description_cancel': 'Cancel',
+  'needhelp_search': 'Need Help Request Search',
+  'search_placeholder': 'search by street name',
 
   /* Need help graph transilation */
   'graph_title': 'Trend of Processing Drain Help Requests',
