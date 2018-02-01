@@ -44,12 +44,12 @@
             <i class="fa fa-area-chart"></i> <span>{{'report' | translate}}</span>
           </a>
       </li>
-      <!--li>
+      <li>
         <a routerLink="filter-drains">
           <img src="assets/img/whitedrain.png" width="25" height="25">
           <i class=""></i> <span>{{'view_drain' | translate}}</span>
           </a>
-      </li-->
+      </li>
       <li *ngIf="authService.isLoggedIn()">
         <a routerLink="users-list/{{userStreet}}">
             <i class="fa fa-users"></i> <span>{{ 'citizens' | translate}}</span>
