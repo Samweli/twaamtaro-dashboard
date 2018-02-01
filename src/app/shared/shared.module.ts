@@ -116,11 +116,8 @@ import { NguiAutoCompleteModule } from '@ngui/auto-complete';
     UsersListComponent,
     VerifyLeaderComponent,
     YearPickerComponent,
-<<<<<<< HEAD
     DrainsSearchComponent,
-=======
     NeedhelpSearchComponent,
->>>>>>> 360e72acee5f4af14fa1ed806369f8eb3cb06cb8
   ],
   exports: [SharedComponent],
   providers: [
