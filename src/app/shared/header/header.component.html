@@ -15,9 +15,15 @@
     </a>
 
     <div class="navbar-custom-menu">
-      <ul class="nav navbar-nav">
+      
+          <ul class="nav navbar-nav">
+            <div class="w3-show-large w3-show-medium w3-hide-small w3-right" style="padding-top:28px">
+              <a id="langlink" *ngFor="let lang of supportedLangs" (click)="selectLang(lang.value)" class="w3-padding-right" [class.w3-text-white]="isCurrentLang(lang.value)" style="display:inline; text-decoration:none">
+                  {{ lang.display }}
+              </a>
+            </div>
+          <li class="user user-menu">
 
-        <li class="user user-menu">
           <div class=" w3-padding" *ngIf="authService.isLoggedIn(); else signIN">
             <a (click)="logout()" class="w3-right btn btn-default btn-flat">{{'signout'| translate}}</a>
             <a routerLink="verify" class="w3-right w3-padding-right"><span class="w3-badge w3-red notifications">{{requests}}</span><i class="w3-text-white fa fa-bell fa-2x" aria-hidden="true"></i></a>

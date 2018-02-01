@@ -34,6 +34,7 @@ export const LANG_SW_TRANS = {
   'status_change_placeholder': 'Sio lazima kujaza',
   'need_help_description_submit': 'Sawa',
   'need_help_description_cancel': 'Ghairi',
+  'searchErr':'Mtaro huu haupo kwenye orodha hii',
   'needhelp_search': 'Tafuta maombi ya misaada',
   'search_placeholder': 'tumia jina  la mtaa kutafuta',
 
@@ -104,6 +105,7 @@ export const LANG_SW_TRANS = {
   'all_button': 'Yote',
   'print': 'Chapisha',
   'thetable':'Jedwali',
+  'search': 'Tafuta',
 
 
   /*notification*/
@@ -117,9 +119,13 @@ export const LANG_SW_TRANS = {
   'modify': 'Badilisha',
   'send_msg': 'Tuma',
   'box-msg': 'ujumbe katika sanduku la ujumbe ',
+  'verify_title': 'Maombi ya Uongozi',
+  'no_verify': 'Hakuna maombi yoyote ya uongozi',
+  'action': 'Vitendo',
   'or': 'Au',
-  'no_status': 'hapana',
-  'yes_status': 'Ndio',
+  'no_status': 'Hapana',
+  'yes_status': 'Ndiyo',
+
 
   //Reports
   'report-printing-title': 'Usafi wa Mitaro',

@@ -2,9 +2,8 @@
   <!-- sidebar: style can be found in sidebar.less -->
   <section class="sidebar">
     <!-- search form -->
-    <app-user-search></app-user-search>
     <!-- /.search form -->
-    <div class="pull-right w3-padding">
+    <div class="w3-hide-large w3-hide-medium w3-show-small pull-right w3-padding">
       <a id="langlink" *ngFor="let lang of supportedLangs" (click)="selectLang(lang.value)" class="w3-padding-right" [class.w3-text-white]="isCurrentLang(lang.value)">
        {{ lang.display }}
       </a>

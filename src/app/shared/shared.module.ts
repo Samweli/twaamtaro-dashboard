@@ -61,6 +61,7 @@ import { NeedHelpGraphComponent } from './need-help-graph/need-help-graph.compon
 import { TimeFilterComponent } from './time-filter/time-filter.component';
 import { MonthPickerComponent } from './month-picker/month-picker.component';
 import { YearPickerComponent } from './year-picker/year-picker.component';
+import { DrainsSearchComponent } from './drains/drains-search/drains-search.component';
 import { NeedhelpSearchComponent } from './needhelp-search/needhelp-search.component';
 import { NguiAutoCompleteModule } from '@ngui/auto-complete';
 
@@ -115,7 +116,11 @@ import { NguiAutoCompleteModule } from '@ngui/auto-complete';
     UsersListComponent,
     VerifyLeaderComponent,
     YearPickerComponent,
+<<<<<<< HEAD
+    DrainsSearchComponent,
+=======
     NeedhelpSearchComponent,
+>>>>>>> 360e72acee5f4af14fa1ed806369f8eb3cb06cb8
   ],
   exports: [SharedComponent],
   providers: [
