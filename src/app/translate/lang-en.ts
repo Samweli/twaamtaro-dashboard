@@ -41,6 +41,7 @@ export const LANG_EN_TRANS = {
   'status_change_placeholder': 'Optional',
   'need_help_description_submit': 'Ok',
   'need_help_description_cancel': 'Cancel',
+  'searchErr': 'The drain is not found on this list',
   'needhelp_search': 'Need Help Request Search',
   'search_placeholder': 'search by street name',
 
@@ -114,6 +115,7 @@ export const LANG_EN_TRANS = {
   'all_button': 'All',
   'print': 'Print/Export',
   'thetable':'Table',
+  'search': 'Search',
 
 
   /*notification*/
