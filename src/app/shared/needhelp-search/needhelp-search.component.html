@@ -1,6 +1,9 @@
-<input  ngui-auto-complete class="w3-select"
-placeholder="{{'search_placeholder' | translate}}"
-  [(ngModel)]="selected" 
-  [source]="observableSource.bind(this)"  
-  list-formatter="street_name"  (ngModelChange)="search($event)"/>
-  
+<div class="w3-row-padding" style="padding-top:5px">
+  <br>
+    <label>{{'needhelp_search' | translate}}</label>
+    <input  ngui-auto-complete class="w3-input w3-select"
+    placeholder="{{'search_placeholder' | translate}}"
+      [(ngModel)]="selected" 
+      [source]="observableSource.bind(this)"  
+      list-formatter="street_name"  (ngModelChange)="search($event)"/>
+</div>
