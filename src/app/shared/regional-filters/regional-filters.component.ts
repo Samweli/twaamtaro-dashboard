@@ -47,6 +47,11 @@ export class RegionalFiltersComponent implements OnInit {
     this.selectValueChaged.emit(data);
 
   }
+
+needHelpSearch(data){
+this.onChange(data);
+}
+
   getStreets(){
     this.streetService.getStreets()
       .subscribe(res => {

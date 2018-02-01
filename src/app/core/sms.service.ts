@@ -21,12 +21,12 @@ export class SmsService {
     ) { }  
     
     alertLeader(street_id): any {
-        return this.http.post(this.urlService.localUrl+this.urlService.alertUrl, {street_id}, {headers: this.headers})
+        return this.http.post(this.urlService.apiUrl+this.urlService.alertUrl, {street_id}, {headers: this.headers})
             .map(res =>  res.json())
             .catch(this.errorHandler);
         }
     sendMassMsg(msg): any {
-        return this.http.post(this.urlService.localUrl+this.urlService.massMessagingUrl, {msg}, {headers: this.headers})
+        return this.http.post(this.urlService.apiUrl+this.urlService.massMessagingUrl, {msg}, {headers: this.headers})
             .map(res =>  res.json())
             .catch(this.errorHandler);
         }

@@ -45,10 +45,10 @@ export class HeaderComponent implements OnInit {
   //Get total number of leader requests for notifications
   requests: any;
   leaderReq(data) {
-    console.log('inside header');
-    this.userService.getLeaderRequests()
+    this.userService.getLeaderRequests(data)
+
       .subscribe(res => {
-        this.requests = this.userService.totalRequests
+        this.requests = res.length;
 
       })
   }

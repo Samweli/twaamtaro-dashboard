@@ -42,6 +42,8 @@ export const LANG_EN_TRANS = {
   'need_help_description_submit': 'Ok',
   'need_help_description_cancel': 'Cancel',
   'searchErr': 'The drain is not found on this list',
+  'needhelp_search': 'Need Help Request Search',
+  'search_placeholder': 'search by street name',
 
   /* Need help graph transilation */
   'graph_title': 'Trend of Processing Drain Help Requests',
