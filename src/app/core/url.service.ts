@@ -7,6 +7,9 @@ export class UrlService {
   devUrl: string = 'http://localhost:3000/api/v1/';
   baseUrl:string = this.devUrl;
 
+  // auth related url
+  public loginUrl = this.baseUrl + 'sessions';
+
   constructor() { }
 
 }
