@@ -63,7 +63,7 @@ export class RegisterComponent implements OnInit {
         //Redirect after successful registration
         this.sessionService.setCurrentUser(res.users);
         this.sessionService.setCurrentLoggedUser(res.users);
-       // location.reload();
+        location.reload();
 
       }, error => {
         this.formErrorsService.error(error);

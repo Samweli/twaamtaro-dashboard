@@ -8,9 +8,6 @@ export class SessionService {
 
   constructor() { }
   setCurrentUser(user: any){
-    console.log('inside set current user');
-    console.log(' the user data');
-    console.log(user);
     localStorage.setItem("currentUserToken",JSON.stringify(user.authentication_token));
     localStorage.setItem('loggedUser', JSON.stringify(user));
     localStorage.setItem('roles', JSON.stringify(user.roles));
@@ -18,8 +15,6 @@ export class SessionService {
   }
 
   setCurrentLoggedUser(user: any){
-    console.log('inside set current loged user');
-    console.log(user)
    localStorage.setItem('currentLoggedUser', JSON.stringify(user));
   }
 
