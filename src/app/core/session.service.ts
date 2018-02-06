@@ -7,14 +7,19 @@ export class SessionService {
   currentUser:any;
 
   constructor() { }
-  setCurrentUser(user){
+  setCurrentUser(user: any){
+    console.log('inside set current user');
+    console.log(' the user data');
+    console.log(user);
     localStorage.setItem("currentUserToken",JSON.stringify(user.authentication_token));
     localStorage.setItem('loggedUser', JSON.stringify(user));
     localStorage.setItem('roles', JSON.stringify(user.roles));
     localStorage.setItem('street', JSON.stringify(user.street));
   }
 
-  setCurrentLoggedUser(user){
+  setCurrentLoggedUser(user: any){
+    console.log('inside set current loged user');
+    console.log(user)
    localStorage.setItem('currentLoggedUser', JSON.stringify(user));
   }
 
