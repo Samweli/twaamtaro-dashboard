@@ -24,11 +24,11 @@ export class UnknownDrainsComponent implements OnInit {
   unkownDrains(page?: number): void {
     this.ngProgress.start(); 
     this.drainService
-        .getUnknownDrains(page,20)
+        .getUnknownDrains(page,this.pagerService.drainCount)
         .subscribe(
           res => {
             this.drains = res.drains;
-            this.pager = this.pagerService.getPager(res.total, page, 20);
+            this.pager = this.pagerService.getPager(res.total, page, this.pagerService.drainCount);
             this.pagedDrains = res.drains;
           this.ngProgress.done(); 
         });
@@ -53,7 +53,6 @@ export class UnknownDrainsComponent implements OnInit {
   
 
   setPage(page: number) {
-    this.ngProgress.start(); 
     if (page < 1 || page > this.pager.totalPages) {
         return;
     }

@@ -40,17 +40,17 @@ export class DrainsService {
       .catch(this.errorHandler);
   }
 
-  // gets clean drains
+  // gets all clean drains
   getCleanDrains(page?: number, count?: number):Observable<any>  {
     return this.http.get(this.urlService.cleanDrains + this.drainUrlParams(page,count))
       .map((response: Response) =>  response.json())
       .catch(this.errorHandler);
   }
 
-
-  getDirtyDrains(): Observable<any[]> {
-    return this.http.get(this.urlService.uncleanDrains)
-      .map((response: Response) => response.json().drains)
+ // gets all unclean drains
+  getDirtyDrains(page?: number, count?: number): Observable<any> {
+    return this.http.get(this.urlService.uncleanDrains + this.drainUrlParams(page,count))
+      .map((response: Response) => response.json())
       .catch(this.errorHandler);
   }
   getHelpDetails(): any {

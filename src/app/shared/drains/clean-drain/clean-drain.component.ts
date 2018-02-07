@@ -29,11 +29,11 @@ export class CleanDrainComponent implements OnInit {
   cleanDrains(page?: number): void {
     this.ngProgress.start();
     this.drainService
-        .getCleanDrains(page,20)
+        .getCleanDrains(page,this.pagerService.drainCount)
         .subscribe(
           res => { 
             // get pager object from service
-            this.pager = this.pagerService.getPager(res.total, page, 20);
+            this.pager = this.pagerService.getPager(res.total, page, this.pagerService.drainCount);
             this.drains = res.drains;
             this.pagedDrains = res.drains;
           this.ngProgress.done();
