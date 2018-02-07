@@ -25,19 +25,29 @@ export class DrainsService {
   helpDrains: any;
   err: any;
   
-  getDrains(page?: number, count?: number): Observable<any> {
 
-    // initilizing variables for paginating drain data
-    let urlparams = `&&page=${page}&&count=${count}`
-    return this.http.get(this.urlService.allDrains+urlparams)
+  // gets all drains
+  getDrains(page?: number, count?: number): Observable<any> {
+    return this.http.get(this.urlService.allDrains + this.drainUrlParams(page,count))
       .map((response: Response) => response.json())
       .catch(this.errorHandler);
   }
-  getCleanDrains():Observable<any[]>  {
-    return this.http.get(this.urlService.cleanDrains)
-      .map((response: Response) =>  response.json().drains)
+
+  // gets all unknown drains
+  getUnknownDrains(page?: number, count?: number):Observable<any> {
+    return this.http.get(this.urlService.unkonwnDrains + this.drainUrlParams(page,count))
+      .map((response: Response) => response.json())
       .catch(this.errorHandler);
   }
+
+  // gets clean drains
+  getCleanDrains(page?: number, count?: number):Observable<any>  {
+    return this.http.get(this.urlService.cleanDrains + this.drainUrlParams(page,count))
+      .map((response: Response) =>  response.json())
+      .catch(this.errorHandler);
+  }
+
+
   getDirtyDrains(): Observable<any[]> {
     return this.http.get(this.urlService.uncleanDrains)
       .map((response: Response) => response.json().drains)
@@ -69,11 +79,13 @@ export class DrainsService {
     }
 
   }
-  getUnknownDrains():Observable<any[]> {
-    return this.http.get(this.urlService.unkonwnDrains)
-      .map((response: Response) => response.json().drains)
-      .catch(this.errorHandler);
-  }
+
+    // appends url parameters for pagination of drains
+    drainUrlParams(page: number, count: number): string{
+      return `&&page=${page}&&count=${count}`
+    }
+
+
   getDrainData():Observable<any> {
     return this.http.get(this.urlService.dataForDrains)
       .map((response: Response) => this.drainData = response.json() )
@@ -124,7 +136,6 @@ export class DrainsService {
   }
 
   errorHandler(error: Response) {
-    console.error(error);
     return Observable.throw(error || 'Sorry, something went wrong');
 
   }

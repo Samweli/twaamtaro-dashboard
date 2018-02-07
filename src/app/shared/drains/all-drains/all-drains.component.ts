@@ -34,7 +34,7 @@ export class DrainListComponent implements OnInit {
   getDrains(): any {
     this.ngProgress.start();
     this.drainService
-      .getDrains(1,100)
+      .getDrains(1,20)
       .subscribe(res => {
         this.drains = res.drains;
         this.setPage(1);
@@ -73,16 +73,18 @@ export class DrainListComponent implements OnInit {
 
       // get current page of items
       this.drainService
-      .getDrains(page,100)
+      .getDrains(page,20)
       .subscribe(res => {
-        this.pager = this.pagerService.getPager(res.total, page, 100);
+        // get pager object from service
+        this.pager = this.pagerService.getPager(res.total, page, 20);
         this.pagedDrains = res.drains;
         this.ngProgress.done();
       });
   }
 
   ngOnInit(): void {
-    this.getDrains();
+    //this.getDrains();
+    this.setPage(1);
     this.sErr = false; 
   }
 }

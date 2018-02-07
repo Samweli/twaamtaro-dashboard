@@ -21,14 +21,15 @@ export class UnknownDrainsComponent implements OnInit {
   sErr: any;
 
   constructor(private drainService: DrainsService, private pagerService: PagerService, public ngProgress: NgProgress) { }
-  unkownDrains(): void {
+  unkownDrains(page?: number): void {
     this.ngProgress.start(); 
     this.drainService
-        .getUnknownDrains()
+        .getUnknownDrains(page,20)
         .subscribe(
-          drains => {
-            this.drains = drains;
-          this.setPage(1);
+          res => {
+            this.drains = res.drains;
+            this.pager = this.pagerService.getPager(res.total, page, 20);
+            this.pagedDrains = res.drains;
           this.ngProgress.done(); 
         });
   }
@@ -52,18 +53,16 @@ export class UnknownDrainsComponent implements OnInit {
   
 
   setPage(page: number) {
+    this.ngProgress.start(); 
     if (page < 1 || page > this.pager.totalPages) {
         return;
     }
 
-    // get pager object from service
-    this.pager = this.pagerService.getPager(this.drains.length, page, 20);
+ this.unkownDrains(page);
 
-    // get current page of items
-    this.pagedDrains = this.drains.slice(this.pager.startIndex, this.pager.endIndex + 1);
   }
   ngOnInit() {
-    this.unkownDrains();
+    this.setPage(1);
     this.sErr;
   }
 
