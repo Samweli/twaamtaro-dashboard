@@ -25,9 +25,12 @@ export class DrainsService {
   helpDrains: any;
   err: any;
   
-  getDrains(): Observable<any[]> {
-    return this.http.get(this.urlService.allDrains)
-      .map((response: Response) => response.json().drains)
+  getDrains(page?: number, count?: number): Observable<any> {
+
+    // initilizing variables for paginating drain data
+    let urlparams = `&&page=${page}&&count=${count}`
+    return this.http.get(this.urlService.allDrains+urlparams)
+      .map((response: Response) => response.json())
       .catch(this.errorHandler);
   }
   getCleanDrains():Observable<any[]>  {
