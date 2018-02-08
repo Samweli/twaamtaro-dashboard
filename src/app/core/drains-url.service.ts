@@ -6,6 +6,8 @@ export class DrainsUrlService {
 
   constructor(private _urlService: UrlService) { }
 
+
+
   public apiUrl = 'http://twaamtaro.org/api/v1/';
   public localUrl = 'http://localhost:3000/api/v1/';
   public drainsUrl = 'drains/?type=all';
