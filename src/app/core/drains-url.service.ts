@@ -1,7 +1,12 @@
 import { Injectable }    from '@angular/core';
+import { UrlService } from './url.service'
 
 @Injectable()
 export class DrainsUrlService {
+
+  constructor(private _urlService: UrlService) { }
+
+
 
   public apiUrl = 'http://twaamtaro.org/api/v1/';
   public localUrl = 'http://localhost:3000/api/v1/';
@@ -17,7 +22,22 @@ export class DrainsUrlService {
   public status = 'need_helps/status';
   public search = 'need_helps/search';
 
-  constructor() { }
+  // connecting base url with api end points
+  public allDrains = this._urlService.baseUrl + this.drainsUrl;
+  public cleanDrains = this._urlService.baseUrl + this.cleanDrainsUrl;
+  public uncleanDrains = this._urlService.baseUrl + this.dirtyDrainsUrl;
+  public needHelps = this._urlService.baseUrl + this.helpDetailsUrl;
+  public needHelpDrains = this._urlService.baseUrl + this.helpDrainsUrl;
+  public unkonwnDrains = this._urlService.baseUrl + this.unknownDrainsUrl;
+  public dataForDrains = this._urlService.baseUrl + this.drainDataUrl;
+  public drainRanks = this._urlService.baseUrl + this.ranksDataUrl;
+  public verifyUser = this._urlService.baseUrl + this.verifyUrl;
+  public needHelpStatus = this._urlService.baseUrl + this.status;
+  public needHelpSearch = this._urlService.baseUrl + this.search;
+
+
+
+  
 
 }
 
