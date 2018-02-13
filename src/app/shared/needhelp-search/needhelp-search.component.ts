@@ -1,4 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { DrainsService } from './../../core/drains.service';
+import { NgProgress } from 'ngx-progressbar';
+import { Component, OnInit, Output, Input,  EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
@@ -11,34 +13,23 @@ import 'rxjs/add/observable/of';
   styleUrls: ['./needhelp-search.component.css']
 })
 export class NeedhelpSearchComponent implements OnInit {
-
-  @Output()
-  searchValueChanged: EventEmitter<any> = new EventEmitter();
-
-  constructor(public http: Http) {}
+  @Input() query: any;
+  @Output() searchQuery = new EventEmitter<any>()
   
-  observableSource = (keyword: any): Observable<any[]> => {
-    let url: string = 
-      'http://twaamtaro.org/search?q='+keyword
-    if (keyword) {
-      return this.http.get(url)
-        .map(res => {
-          let json = res.json();
-          return json.streets;
-        })
-    } else {
-      return Observable.of([]);
-    }
-  }
+  constructor(
+    private ngProgress: NgProgress,
+    private drainService: DrainsService
+  ) { }
 
-  search(data){
+  streets: any;
+  q: any = {'value': '' };
+  thedrains: any; 
 
-    if(data.street_name){
-      console.log('looking agin');
-      console.log(data);
-      this.searchValueChanged.emit(data);
-    }
-    
+  //This function emits the input value to be used in another component
+  emitValue($event)
+  {
+    this.query = this.q.value;
+    this.searchQuery.emit(this.query);
   }
 
   ngOnInit() {

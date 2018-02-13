@@ -1,9 +1,8 @@
-<div class="w3-row-padding" style="padding-top:5px">
-  <br>
-    <label>{{'needhelp_search' | translate}}</label>
-    <input  ngui-auto-complete class="w3-input w3-select"
-    placeholder="{{'search_placeholder' | translate}}"
-      [(ngModel)]="selected" 
-      [source]="observableSource.bind(this)"  
-      list-formatter="street_name"  (ngModelChange)="search($event)"/>
-</div>
+<form id="searchDrainForm" class="w3-padding-bottom" >
+    <div class="w3-row-padding w3-center">
+      <div class="w3-center" >
+        <input type="text" name="q" class="w3-input w3-border" placeholder="{{'search'| translate}}" [(ngModel)]="q.value" required #qControl="ngModel" >
+        <button (click)="emitValue($event)" class="w3-btn w3-block w3-teal w3-padding" [disabled]=" q.invalid">{{'search'| translate}}</button>
+      </div>
+    </div>
+  </form>
