@@ -1,3 +1,4 @@
+import { DataService } from './../../../core/data.service';
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 
 import {AuthService} from "./../../../core/auth.service";
@@ -50,7 +51,8 @@ export class HelpDrainComponent implements OnInit {
     public authService: AuthService,
     private pagerService: PagerService,
     public ngProgress: NgProgress,
-    private sessionService: SessionService
+    private sessionService: SessionService,
+    private dataService: DataService
   ) { }
 
   getDuration(d)
@@ -73,6 +75,7 @@ export class HelpDrainComponent implements OnInit {
       .subscribe(
         drains => {
           this.drains = this.drainService.helpDrains;
+          this.dataService.storeNeedHelpRequests(this.drains);
     this.setPage(1);
     this.ngProgress.done();
     });
@@ -210,7 +213,19 @@ export class HelpDrainComponent implements OnInit {
 
   }
 
+  // subscribing to need help requests
+  // search results
+  subscribeToSearchResults(){
+    this.dataService.onSearchResultsReady
+    .subscribe( results => {
+      console.log('data real comes');
+      console.log(results);
+    });
+  }
+  
+
   ngOnInit(): void {
+    this.subscribeToSearchResults();
     this.getFilteredDrains();
     this.closedetails();
     this.closemodal();

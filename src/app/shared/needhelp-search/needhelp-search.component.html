@@ -2,7 +2,7 @@
     <div class="w3-row-padding w3-center">
       <div class="w3-center" >
         <input type="text" name="q" class="w3-input w3-border" placeholder="{{'search'| translate}}" [(ngModel)]="q.value" required #qControl="ngModel" >
-        <button (click)="emitValue($event)" class="w3-btn w3-block w3-teal w3-padding" [disabled]=" q.invalid">{{'search'| translate}}</button>
+        <button (click)="passSearchKey()" class="w3-btn w3-block w3-teal w3-padding" [disabled]=" q.invalid">{{'search'| translate}}</button>
       </div>
     </div>
   </form>

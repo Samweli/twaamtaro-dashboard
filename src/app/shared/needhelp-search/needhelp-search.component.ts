@@ -1,3 +1,4 @@
+import { DataService } from './../../core/data.service';
 import { DrainsService } from './../../core/drains.service';
 import { NgProgress } from 'ngx-progressbar';
 import { Component, OnInit, Output, Input,  EventEmitter } from '@angular/core';
@@ -18,7 +19,8 @@ export class NeedhelpSearchComponent implements OnInit {
   
   constructor(
     private ngProgress: NgProgress,
-    private drainService: DrainsService
+    private drainService: DrainsService,
+    private dataService: DataService
   ) { }
 
   streets: any;
@@ -30,6 +32,12 @@ export class NeedhelpSearchComponent implements OnInit {
   {
     this.query = this.q.value;
     this.searchQuery.emit(this.query);
+  }
+
+  // passes search key to the DataService
+  // data service will do the searching
+  passSearchKey(){
+    this.dataService.searchNeedHelpRequests(this.q.value);
   }
 
   ngOnInit() {
