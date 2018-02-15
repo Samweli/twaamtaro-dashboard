@@ -9,6 +9,14 @@
           <div class="row">
             <!-- templates -->
             <div id="error"><h4>{{ErrMsg}}</h4></div>
+
+            <!-- Drains Search Area-->
+              <div id="drains-search" class="w3-row" >
+                <drains-search (searchQuery)= "searchDrain($event)"></drains-search>
+              </div>
+              <div *ngIf="sErr" class="w3-margin w3-panel w3-padding w3-border w3-border-orange w3-center">{{ 'searchErr' | translate }}</div>
+            <!-- End Search -->
+
             <table class="w3-table w3-hoverable w3-responsive w3-white" border="0">
               <thead>
               <tr class="w3-light-grey w3-border-bottom" >

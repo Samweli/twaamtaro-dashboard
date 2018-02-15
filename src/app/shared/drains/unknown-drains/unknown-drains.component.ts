@@ -18,32 +18,51 @@ export class UnknownDrainsComponent implements OnInit {
   ErrMsg: string;
   pager: any = {}; // pager object
   pagedDrains: any[]; // paged drains
+  sErr: any;
 
   constructor(private drainService: DrainsService, private pagerService: PagerService, public ngProgress: NgProgress) { }
-  unkownDrains(): void {
+  unkownDrains(page?: number): void {
     this.ngProgress.start(); 
     this.drainService
-        .getUnknownDrains()
+        .getUnknownDrains(page,this.pagerService.drainCount)
         .subscribe(
-          drains => {
-            this.drains = drains;
-          this.setPage(1);
+          res => {
+            this.drains = res.drains;
+            this.pager = this.pagerService.getPager(res.total, page, this.pagerService.drainCount);
+            this.pagedDrains = res.drains;
           this.ngProgress.done(); 
         });
   }
+  theSearch(query){
+    return ((drain) => ((drain.gid.toString().toLowerCase().indexOf(query.toLowerCase()) > -1)||(drain.address.toString().toLowerCase().indexOf(query.toLowerCase()) > -1)))
+  }
+
+  //Searches for a drain in the list of clean drains
+  searchDrain(query){
+    this.ngProgress.start()
+    let result = this.drains.filter(this.theSearch(query));
+    if (result.length > 0) {
+      this.sErr = false;
+      this.pagedDrains = result;
+    }
+    else {
+      this.sErr = true;
+    }
+    this.ngProgress.done()
+  }
+  
+
   setPage(page: number) {
     if (page < 1 || page > this.pager.totalPages) {
         return;
     }
 
-    // get pager object from service
-    this.pager = this.pagerService.getPager(this.drains.length, page, 20);
+ this.unkownDrains(page);
 
-    // get current page of items
-    this.pagedDrains = this.drains.slice(this.pager.startIndex, this.pager.endIndex + 1);
   }
   ngOnInit() {
-    this.unkownDrains()
+    this.setPage(1);
+    this.sErr;
   }
 
 }
