@@ -1,11 +1,12 @@
 import { Injectable, EventEmitter } from '@angular/core';
+import {DrainsService} from "./drains.service";
 
 @Injectable()
 export class DataService {
 
-  public onSearchResultsReady: EventEmitter<string> = new EventEmitter<string>();
+  public onSearchResultsReady: EventEmitter<any[]> = new EventEmitter<any[]>();
 
-  constructor() { }
+  constructor(private needHelpService: DrainsService) { }
 
   storeNeedHelpRequests(data: any){
     localStorage.setItem('allNeedHelpRequests', JSON.stringify(data));
@@ -15,10 +16,15 @@ export class DataService {
     return JSON.parse(localStorage.getItem('allNeedHelpRequests'));
   }
 
-  // searches need helps based on supplied 
+  // searches need helps based on supplied
   // parameter
   searchNeedHelpRequests(searchParam){
-    this.onSearchResultsReady.emit(searchParam);
+    this.needHelpService.searchNeedHelps({column: 'street_name', key: searchParam})
+      .subscribe( res => {
+        console.log('emiting the response');
+        this.onSearchResultsReady.emit(res);
+      });
+
   }
 
 
