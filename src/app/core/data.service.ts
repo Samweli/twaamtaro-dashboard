@@ -1,5 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import {DrainsService} from "./drains.service";
+import { NeedHelpUrlParam } from './user';
 
 @Injectable()
 export class DataService {
@@ -18,8 +19,8 @@ export class DataService {
 
   // searches need helps based on supplied
   // parameter
-  searchNeedHelpRequests(searchParam){
-    this.needHelpService.searchNeedHelps({column: 'street_name', key: searchParam})
+  searchNeedHelpRequests(searchParam: NeedHelpUrlParam){
+    this.needHelpService.searchNeedHelps(searchParam)
       .subscribe( res => {
         console.log('emiting the response');
         this.onSearchResultsReady.emit(res);

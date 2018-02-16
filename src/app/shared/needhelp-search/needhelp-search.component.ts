@@ -16,6 +16,11 @@ import 'rxjs/add/observable/of';
 export class NeedhelpSearchComponent implements OnInit {
   @Input() query: any;
   @Output() searchQuery = new EventEmitter<any>()
+
+  category_bool: boolean = false;
+  street_bool: boolean = false;
+  drains_bool: boolean = false;
+  autoCompleteData: any = {};
   
   constructor(
     private ngProgress: NgProgress,
@@ -36,22 +41,24 @@ export class NeedhelpSearchComponent implements OnInit {
 
   // passes search key to the DataService
   // data service will do the searching
-  passSearchKey(){
-    this.dataService.searchNeedHelpRequests(this.q.value);
+  passSearchKey(column, key){
+    this.dataService.searchNeedHelpRequests({column: column, key: key});
   }
 
   // provides results
   // for autocompleting search
-  autoComplete(){
-    this.drainService.searchAutoComplete('hana')
+  autoComplete(q: any){
+    console.log('yap search key');
+    this.drainService.searchAutoComplete(q)
     .subscribe( res => {
-      console.log('service is working');
-      console.log(res);
+      this.autoCompleteData = res;
+      this.category_bool = res.categories.length != 0? true: false;
+      this.street_bool = res.streets.length != 0? true: false;
+      this.drains_bool = res.drains.length != 0? true: false;
     });
   }
 
   ngOnInit() {
-    this.autoComplete();
   }
 
 }

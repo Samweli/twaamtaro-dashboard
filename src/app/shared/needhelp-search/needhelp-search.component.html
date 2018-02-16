@@ -1,8 +1,30 @@
 <form id="searchDrainForm" class="w3-padding-bottom" >
     <div class="w3-row-padding w3-center">
       <div class="w3-center" >
-        <input type="text" name="q" class="w3-input w3-border" placeholder="{{'search'| translate}}" [(ngModel)]="q.value" required #qControl="ngModel" >
-        <button (click)="passSearchKey()" class="w3-btn w3-block w3-teal w3-padding" [disabled]=" q.invalid">{{'search'| translate}}</button>
+        <input type="text" name="q" class="w3-input w3-border" placeholder="{{'search'| translate}}" [(ngModel)]="q.value" required #qControl="ngModel"   (keyup)="autoComplete(q.value)" autocomplete="off">
+        <ul>
+          <li *ngIf="category_bool">Need Help request categories
+            <ul>
+              <li *ngFor="let category of autoCompleteData.categories" (click)="passSearchKey('category_name', category.category_name )">
+                {{category.category_name}}
+              </li>
+            </ul>
+          </li>
+          <li *ngIf="drains_bool">Drain Addresses
+            <ul>
+              <li *ngFor="let drain of autoCompleteData.drains" (click)="passSearchKey('address', drain.address )">
+                {{drain.address}}
+              </li>
+            </ul>
+          </li>
+          <li *ngIf="street_bool">Streets
+            <ul>
+              <li *ngFor="let street of autoCompleteData.streets" (click)="passSearchKey('street_name', street.street_name )">
+                {{street.street_name}}
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
   </form>

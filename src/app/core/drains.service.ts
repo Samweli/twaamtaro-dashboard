@@ -11,6 +11,7 @@ import 'rxjs/add/operator/filter';
 
 import { Drain } from './../shared/drains/drain';
 import {NeedHelpUrlParam} from "./user";
+import { of } from 'rxjs/observable/of';
 
 
 @Injectable()
@@ -139,7 +140,11 @@ export class DrainsService {
       .catch(this.errorHandler)
   }
 
-  searchAutoComplete(q: any): Observable<any[]>{
+  searchAutoComplete(q: any): Observable<any>{
+    if (!q.trim()) {
+      // if not search term, return empty hero array.
+      return of();
+    }
     let urlParam = `/?q=${q}`;
    return this.http.get(this.urlService.needHelpAutoComplete + urlParam)
     .map( res => res.json())
