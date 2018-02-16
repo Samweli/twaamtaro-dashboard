@@ -139,6 +139,13 @@ export class DrainsService {
       .catch(this.errorHandler)
   }
 
+  searchAutoComplete(q: any): Observable<any[]>{
+    let urlParam = `/?q=${q}`;
+   return this.http.get(this.urlService.needHelpAutoComplete + urlParam)
+    .map( res => res.json())
+    .catch(this.errorHandler)
+  }
+
 
 
 

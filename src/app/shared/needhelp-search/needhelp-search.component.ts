@@ -40,7 +40,18 @@ export class NeedhelpSearchComponent implements OnInit {
     this.dataService.searchNeedHelpRequests(this.q.value);
   }
 
+  // provides results
+  // for autocompleting search
+  autoComplete(){
+    this.drainService.searchAutoComplete('hana')
+    .subscribe( res => {
+      console.log('service is working');
+      console.log(res);
+    });
+  }
+
   ngOnInit() {
+    this.autoComplete();
   }
 
 }
