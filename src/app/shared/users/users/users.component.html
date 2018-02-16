@@ -82,6 +82,12 @@
           </div>
         </div>
     </div>
+
+    <!-- Users Lists -->
+    <div *ngIf="authService.isLoggedIn()">
+      <users-list></users-list>
+      
+    </div>
 <!--hr style = "width:100%; border-color:#c8c8c8; border-width:1px; ">
     <div class="w3-row">
         <div class=" w3-col m12 s12">
