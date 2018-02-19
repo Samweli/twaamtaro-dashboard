@@ -20,6 +20,7 @@ export class NeedhelpSearchComponent implements OnInit {
   category_bool: boolean = false;
   street_bool: boolean = false;
   drains_bool: boolean = false;
+  show_results: boolean = false;
   autoCompleteData: any = {};
   
   constructor(
@@ -42,12 +43,15 @@ export class NeedhelpSearchComponent implements OnInit {
   // passes search key to the DataService
   // data service will do the searching
   passSearchKey(column, key){
+    console.log('passKey called');
+    this.show_results = false;
     this.dataService.searchNeedHelpRequests({column: column, key: key});
   }
 
   // provides results
   // for autocompleting search
   autoComplete(q: any){
+    this.show_results = this.show_results? this.show_results: true;
     console.log('yap search key');
     this.drainService.searchAutoComplete(q)
     .subscribe( res => {
